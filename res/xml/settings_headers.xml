@@ -57,6 +57,35 @@
         android:fragment="com.android.settings.WirelessSettings"
         android:icon="@drawable/empty_icon" />
 
+
+
+
+
+
+
+
+
+    <!-- CUSTOMIZE -->
+    <header android:title="@string/header_category_customize" />
+  
+    <!-- STATUSBAR -->
+    <header
+        android:id="@+id/statusbar_settings"
+        android:icon="@drawable/ic_settings_display"
+        android:fragment="com.android.settings.CustomSettings"
+        android:title="@string/statusbar_settings" />
+	
+
+
+
+
+
+
+
+
+
+
+
     <!-- DEVICE -->
     <header android:title="@string/header_category_device" />
 
