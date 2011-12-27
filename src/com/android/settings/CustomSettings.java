@@ -18,11 +18,6 @@ package com.android.settings;
 
 
 
-
-
-import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
-
-import android.content.ContentResolver;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.CheckBoxPreference;
@@ -33,10 +28,8 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
-import android.view.IWindowManager;
-import android.view.Surface;
 
-import java.util.ArrayList;
+
 
 public class CustomSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -49,10 +42,10 @@ public class CustomSettings extends SettingsPreferenceFragment implements
 	private static final String CARRIER_CUSTOM_TEXT = "carrier_custom_text";
     
     private CheckBoxPreference mShowCarrier;
-    private CheckBoxPreference mCarrierCustom;
-
     private Preference mCarrierColor;
+    private CheckBoxPreference mCarrierCustom;
     private Preference mCarrierCustomText;
+
 
 	
 	
@@ -62,37 +55,33 @@ public class CustomSettings extends SettingsPreferenceFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ContentResolver resolver = getActivity().getContentResolver();
+
 
         addPreferencesFromResource(R.xml.custom_settings);
         
         mShowCarrier = (CheckBoxPreference) findPreference(SHOW_CARRIER);
 		mShowCarrier.setOnPreferenceChangeListener(this);
+        mCarrierColor = (Preference) findPreference(CARRIER_COLOR);
+		mCarrierColor.setOnPreferenceChangeListener(this);
         mCarrierCustom = (CheckBoxPreference) findPreference(CARRIER_CUSTOM);
 		mCarrierCustom.setOnPreferenceChangeListener(this);
-        
+        mCarrierCustomText = (Preference) findPreference(CARRIER_CUSTOM_TEXT);
+		mCarrierCustomText.setOnPreferenceChangeListener(this);
 
-   }
-    
-    
-
-
+    }
 
     
     @Override
     public void onResume() {
         super.onResume();
-
-        
-   
-                
+          
     }
 
+    
     @Override
     public void onPause() {
         super.onPause();
 
-       
     }
 
  
@@ -101,27 +90,46 @@ public class CustomSettings extends SettingsPreferenceFragment implements
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
+    
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
   
     	final String key = preference.getKey();
         if (SHOW_CARRIER.equals(key)) {
-            //int value = Integer.parseInt((String) objValue);
-
-            int value = (Boolean) objValue? 1 : 0;
-
-
+           int value = (Boolean) objValue? 1 : 0;
             try {
                 Settings.System.putInt(getContentResolver(), Settings.System.STATUSBAR_CARRIER_SHOW, value);
             } catch (NumberFormatException e) {
-                Log.e(TAG, "could not save value", e);
+                Log.e(TAG, "could not save SHOW_CARRIER value", e);
             }
+        } else if (CARRIER_COLOR.equals(key)) {
+            int value = (Integer) objValue;
+            try {
+                Settings.System.putInt(getContentResolver(), Settings.System.STATUSBAR_CARRIER_COLOR, value);
+            } catch (NumberFormatException e) {
+                Log.e(TAG, "could not save CARRIER_COLOR value", e);
+            }
+        } else if (CARRIER_CUSTOM.equals(key)) {
+            int value = (Boolean) objValue? 1 : 0;
+            try {
+                Settings.System.putInt(getContentResolver(), Settings.System.STATUSBAR_CARRIER_CUSTOM, value);
+            } catch (NumberFormatException e) {
+                Log.e(TAG, "could not save CARRIER_CUSTOM value", e);
+            }
+        } else if (CARRIER_CUSTOM_TEXT.equals(key)) {
+            try {
+                Settings.System.putString(getContentResolver(), Settings.System.STATUSBAR_CARRIER_CUSTOM_TEXT, (String) objValue);
+            } catch (NumberFormatException e) {
+                Log.e(TAG, "could not save CARRIER_CUSTOM_TEXT value", e);
+            }   
+        	
         }
-    	
-    	
-  	
-
+ 
+    
 
         return true;
     }
+    
+    
+    
 }

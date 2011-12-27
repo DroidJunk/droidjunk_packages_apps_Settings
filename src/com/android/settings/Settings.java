@@ -563,7 +563,7 @@ public class Settings extends PreferenceActivity implements ButtonBarHandler {
         // Ignore the adapter provided by PreferenceActivity and substitute ours instead
         super.setListAdapter(new HeaderAdapter(this, mHeaders));
     }
-    
+
     /*
      * Settings subclasses for launching independently.
      */
