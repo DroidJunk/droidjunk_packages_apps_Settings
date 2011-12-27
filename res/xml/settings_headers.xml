@@ -71,7 +71,7 @@
     <!-- STATUSBAR -->
     <header
         android:id="@+id/statusbar_settings"
-        android:icon="@drawable/ic_settings_display"
+        android:icon="@drawable/ic_settings_tranquility"
         android:fragment="com.android.settings.CustomSettings"
         android:title="@string/statusbar_settings" />
 	
