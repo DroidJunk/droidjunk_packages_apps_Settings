@@ -33,8 +33,6 @@
     <string name="header_category_personal">PERSONAL</string>
     <!-- Settings main menu category heading. System (Updates, data, accessibility, about phone). [CHAR LIMIT=40] -->
     <string name="header_category_system">SYSTEM</string>
-    <!-- Settings main menu category heading. System (Updates, data, accessibility, about phone). [CHAR LIMIT=40] -->
-    <string name="header_category_customize">CUSTOMIZE</string>
 
     <!-- Phone info -->
     <!-- Phone Info screen. Button label to turn on the radio . Only shown in diagnostic screen, so precise translation is not needed. -->
@@ -1595,12 +1593,42 @@
     <!-- Main Settings screen, setting option summary to go into search settings -->
     <string name="search_settings_summary">Manage search settings and history</string>
 
-    <!-- Customization settings -->
-    <skip/>
-    <!-- Customization screen settings -->
+
+
+
+	<!-- ***************************************************************************************** -->
+	<!-- *****************************  NEW TRANQUILITY SETTINGS   ******************************* -->
+	<!-- ***************************************************************************************** -->
+    <!-- Main Settings screen setting option name to go into the display settings screen -->
+    <string name="header_category_customize">Customize</string>
+
+    <!-- Statusbar Settings --><skip/>
+    <!-- Statusbar & toggles color and other options -->
     <string name="statusbar_settings">Statusbar Settings</string>
-    <!-- Customization screen settings -->
+    
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on Color to apply</string>    
+    
+    <string name="numpicker_set">Set</string>
+    <string name="numpicker_ok">OK</string>
+
+    <!-- Tranquility Toolbox -->
     <string name="toolbox_settings">Tranquility Toolbox</string>
+
+
+	<!-- ***************************************************************************************** -->
+	<!-- ***************************************************************************************** -->
+
+
+
+
+
+ 
+    
+    
+    
+    
+    
 
 
     <!-- Display settings --><skip/>
@@ -3792,5 +3820,15 @@ found in the list of installed apps.</string>
     from their cell phone carrier. The use of the string is similar to the string
     "system_update_settings_list_item_title" in this project. [CHAR LIMIT=25] -->
     <string name="additional_system_update_settings_list_item_title">Additional system updates</string>
+
+
+
+
+
+
+
+
+
+
 
 </resources>
