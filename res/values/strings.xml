@@ -1592,42 +1592,6 @@
     <string name="search_settings">Search</string>
     <!-- Main Settings screen, setting option summary to go into search settings -->
     <string name="search_settings_summary">Manage search settings and history</string>
-
-
-
-
-	<!-- ***************************************************************************************** -->
-	<!-- *****************************  NEW TRANQUILITY SETTINGS   ******************************* -->
-	<!-- ***************************************************************************************** -->
-    <!-- Main Settings screen setting option name to go into the display settings screen -->
-    <string name="header_category_customize">Customize</string>
-
-    <!-- Statusbar Settings --><skip/>
-    <!-- Statusbar & toggles color and other options -->
-    <string name="statusbar_settings">Statusbar Settings</string>
-    
-    <string name="dialog_color_picker">Color Picker</string>
-    <string name="press_color_to_apply">Press on Color to apply</string>    
-    
-    <string name="numpicker_set">Set</string>
-    <string name="numpicker_ok">OK</string>
-
-    <!-- Tranquility Toolbox -->
-    <string name="toolbox_settings">Tranquility Toolbox</string>
-
-
-	<!-- ***************************************************************************************** -->
-	<!-- ***************************************************************************************** -->
-
-
-
-
-
- 
-    
-    
-    
-    
     
 
 
@@ -3823,7 +3787,30 @@ found in the list of installed apps.</string>
 
 
 
+	<!-- ***************************************************************************************** -->
+	<!-- *****************************  NEW TRANQUILITY SETTINGS   ******************************* -->
+	<!-- ***************************************************************************************** -->
+    <!-- Main Settings screen setting option name to go into the display settings screen -->
+    <string name="header_category_customize">Customize</string>
 
+    <!-- Statusbar Settings --><skip/>
+    <!-- Statusbar & toggles color and other options -->
+    <string name="statusbar_settings">Statusbar Settings</string>
+    <string name="custom_pulldown_settings_title">Statusbar Pulldown Settings</string>
+    <string name="custom_toggle_settings_title">Statusbar Toggles Settings</string>
+    
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on Color to apply</string>    
+    
+    <string name="numpicker_set">Set</string>
+    <string name="numpicker_ok">OK</string>
+
+    <!-- Tranquility Toolbox -->
+    <string name="toolbox_settings">Tranquility Toolbox</string>
+
+
+	<!-- ***************************************************************************************** -->
+	<!-- ***************************************************************************************** -->
 
 
 

@@ -57,15 +57,27 @@
         android:fragment="com.android.settings.WirelessSettings"
         android:icon="@drawable/empty_icon" />
 
-    <!-- CUSTOMIZE -->
-    <header android:title="@string/header_category_customize" />
 
-    <!-- Statusbar -->
+
+
+
+
+
+
+
+	<!-- ***************************************************************************************** -->
+	<!-- *****************************  NEW TRANQUILITY SETTINGS   ******************************* -->
+	<!-- ***************************************************************************************** -->
+
+    <!-- CUSTOMIZE -->
+    <header android:title="Customize" />
+
+    <!-- Most Tranquility Custom Settings -->
     <header
-        android:id="@+id/statusbar_settings"
+        android:id="@+id/custom_settings"
         android:icon="@drawable/ic_settings_tranquility"
         android:fragment="com.android.settings.CustomSettings"
-        android:title="@string/statusbar_settings" />
+        android:title="Statusbar Settings" />
 
     <!-- Toolbox -->
     <header
@@ -73,6 +85,13 @@
         android:icon="@drawable/ic_settings_tophat"
         android:fragment="com.android.settings.SoundSettings"
         android:title="@string/toolbox_settings" />
+
+
+	<!-- ***************************************************************************************** -->
+	<!-- ***************************************************************************************** -->
+
+
+
 
 
     <!-- DEVICE -->

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="@string/statusbar_settings"
+        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+
+
+	<CheckBoxPreference 
+		android:key="show_clock"
+		android:summaryOn="Clock is on"
+		android:summaryOff="Clock is off"
+		android:title="Clock" 
+		android:defaultValue="true"	/>
+			
+ 	<CheckBoxPreference 
+	    android:dependency="show_clock"
+		android:key="clock_ampm"
+		android:summaryOn="Show am/pm"
+		android:summaryOff="Do not show am/pm"
+		android:title="Clock am/pm" 
+		android:defaultValue="false"	/>
+   				
+	<com.android.settings.ColorPickerPreference 
+	    android:dependency="show_clock"
+		android:key="clock_color"
+		android:title="Clock Color"
+		android:summary="Color for statusbar clock"
+		android:defaultValue="#ff3F9BBF" 
+		alphaSlider="false" /> 
+   				
+	<com.android.settings.ColorPickerPreference 
+		android:key="ticker_color"
+		android:title="Ticker Color"
+		android:summary="Color for statusbar ticker"
+		android:defaultValue="#ff3F9BBF" 
+		alphaSlider="false" /> 
+				
+	<com.android.settings.ColorPickerPreference 
+		android:key="date_color"
+		android:title="Date Color"
+		android:summary="Color for statusbar date"
+		android:defaultValue="#ff3F9BBF" 
+		alphaSlider="false" /> 				
+	    
+
+
+</PreferenceScreen>
+

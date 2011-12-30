@@ -31,7 +31,8 @@ import android.util.Log;
 
 
 
-public class CustomSettings extends SettingsPreferenceFragment implements
+
+public class CustomPulldownSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
 	private static final String TAG = "CustomSettings";
@@ -57,9 +58,17 @@ public class CustomSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
 
 
-        addPreferencesFromResource(R.xml.custom_settings);
+        addPreferencesFromResource(R.xml.custom_pulldown_settings);
         
- 
+        mShowCarrier = (CheckBoxPreference) findPreference(SHOW_CARRIER);
+		mShowCarrier.setOnPreferenceChangeListener(this);
+        mCarrierColor = (Preference) findPreference(CARRIER_COLOR);
+		mCarrierColor.setOnPreferenceChangeListener(this);
+        mCarrierCustom = (CheckBoxPreference) findPreference(CARRIER_CUSTOM);
+		mCarrierCustom.setOnPreferenceChangeListener(this);
+        mCarrierCustomText = (Preference) findPreference(CARRIER_CUSTOM_TEXT);
+		mCarrierCustomText.setOnPreferenceChangeListener(this);
+
     }
 
     
@@ -86,7 +95,36 @@ public class CustomSettings extends SettingsPreferenceFragment implements
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
   
-
+    	final String key = preference.getKey();
+        if (SHOW_CARRIER.equals(key)) {
+           int value = (Boolean) objValue? 1 : 0;
+            try {
+                Settings.System.putInt(getContentResolver(), Settings.System.STATUSBAR_CARRIER_SHOW, value);
+            } catch (NumberFormatException e) {
+                Log.e(TAG, "could not save SHOW_CARRIER value", e);
+            }
+        } else if (CARRIER_COLOR.equals(key)) {
+            int value = (Integer) objValue;
+            try {
+                Settings.System.putInt(getContentResolver(), Settings.System.STATUSBAR_CARRIER_COLOR, value);
+            } catch (NumberFormatException e) {
+                Log.e(TAG, "could not save CARRIER_COLOR value", e);
+            }
+        } else if (CARRIER_CUSTOM.equals(key)) {
+            int value = (Boolean) objValue? 1 : 0;
+            try {
+                Settings.System.putInt(getContentResolver(), Settings.System.STATUSBAR_CARRIER_CUSTOM, value);
+            } catch (NumberFormatException e) {
+                Log.e(TAG, "could not save CARRIER_CUSTOM value", e);
+            }
+        } else if (CARRIER_CUSTOM_TEXT.equals(key)) {
+            try {
+                Settings.System.putString(getContentResolver(), Settings.System.STATUSBAR_CARRIER_CUSTOM_TEXT, (String) objValue);
+            } catch (NumberFormatException e) {
+                Log.e(TAG, "could not save CARRIER_CUSTOM_TEXT value", e);
+            }   
+        	
+        }
  
     
 
