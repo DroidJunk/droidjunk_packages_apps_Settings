@@ -33,22 +33,7 @@ import android.util.Log;
 
 public class CustomSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
-    
-	private static final String TAG = "CustomSettings";
-    
-	private static final String SHOW_CARRIER = "show_carrier";
-	private static final String CARRIER_COLOR = "carrier_color";
-	private static final String CARRIER_CUSTOM = "carrier_custom";
-	private static final String CARRIER_CUSTOM_TEXT = "carrier_custom_text";
-    
-    private CheckBoxPreference mShowCarrier;
-    private Preference mCarrierColor;
-    private CheckBoxPreference mCarrierCustom;
-    private Preference mCarrierCustomText;
-
-
-	
-	
+ 
 	
 	
     /** If there is no setting in the provider, use this. */
@@ -56,10 +41,7 @@ public class CustomSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         addPreferencesFromResource(R.xml.custom_settings);
-        
- 
     }
 
     
@@ -85,11 +67,7 @@ public class CustomSettings extends SettingsPreferenceFragment implements
     
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-  
-
  
-    
-
         return true;
     }
     

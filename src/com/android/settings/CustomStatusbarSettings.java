@@ -34,57 +34,57 @@ import android.util.Log;
 
 
 
-
-public class CustomPulldownSettings extends SettingsPreferenceFragment implements
+public class CustomStatusbarSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
 	private final String Tranq_Settings = "TRANQ_SETTINGS";
-	private final String SHOW_CARRIER = "show_carrier";
-	private final String CARRIER_COLOR = "carrier_color";
-	private final String CARRIER_CUSTOM = "carrier_custom";
-	private final String CARRIER_CUSTOM_TEXT = "carrier_custom_text";
-	private final String CARRIER_SIZE = "carrier_size";
-	private final String DATE_COLOR = "date_color";
+	private final String SHOW_CLOCK = "show_clock";
+	private final String CLOCK_AMPM = "clock_ampm";
+	private final String CLOCK_COLOR = "clock_color";
+	private final String CLOCK_SIZE = "clock_size";
+	
+	private final String TICKER_COLOR = "ticker_color";
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
-	private CheckBoxPreference mShowCarrier;
-    private Preference mCarrierColor;
-    private CheckBoxPreference mCarrierCustom;
-    private Preference mCarrierCustomText;
-    private Preference mCarrierSize;
-    public int mSize = 15;
-    private Preference mDateColor;
+	private CheckBoxPreference mShowClock;
+	private CheckBoxPreference mClockAmPm;
+    private Preference mClockColor;
+    private Preference mClockSize;
+    public int mSize = 17;
     
-    
+    private Preference mTickerColor;
+
+	
+	
+	
+	
     /** If there is no setting in the provider, use this. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        
         prefMgr = getPreferenceManager();
         prefMgr.setSharedPreferencesName("Tranquility_Settings");
         prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         prefMgr.getSharedPreferences();
-       
-        addPreferencesFromResource(R.xml.custom_pulldown_settings);
-        
-        mShowCarrier = (CheckBoxPreference) findPreference(SHOW_CARRIER);
-		mShowCarrier.setOnPreferenceChangeListener(this);
-        mCarrierColor = (Preference) findPreference(CARRIER_COLOR);
-		mCarrierColor.setOnPreferenceChangeListener(this);
-        mCarrierCustom = (CheckBoxPreference) findPreference(CARRIER_CUSTOM);
-		mCarrierCustom.setOnPreferenceChangeListener(this);
-        mCarrierCustomText = (Preference) findPreference(CARRIER_CUSTOM_TEXT);
-		mCarrierCustomText.setOnPreferenceChangeListener(this);
-	    mCarrierSize = (Preference) findPreference(CARRIER_SIZE);
-		mCarrierSize.setOnPreferenceChangeListener(this);
-		mSize = prefMgr.getSharedPreferences().getInt(CARRIER_SIZE, 15);  
-        mDateColor = (Preference) findPreference(DATE_COLOR);
-		mDateColor.setOnPreferenceChangeListener(this);
-		
 
-    
+        addPreferencesFromResource(R.xml.custom_statusbar_settings);
+        
+        mShowClock = (CheckBoxPreference) findPreference(SHOW_CLOCK);
+		mShowClock.setOnPreferenceChangeListener(this);
+        mClockAmPm = (CheckBoxPreference) findPreference(CLOCK_AMPM);
+		mClockAmPm.setOnPreferenceChangeListener(this);
+        mClockColor = (Preference) findPreference(CLOCK_COLOR);
+		mClockColor.setOnPreferenceChangeListener(this);
+	    mClockSize = (Preference) findPreference(CLOCK_SIZE);
+		mClockSize.setOnPreferenceChangeListener(this);
+		mSize = prefMgr.getSharedPreferences().getInt(CLOCK_SIZE, 17);  
+
+        mTickerColor = (Preference) findPreference(TICKER_COLOR);
+		mTickerColor.setOnPreferenceChangeListener(this);
+        
+ 
     }
 
     
@@ -105,17 +105,14 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
 
-    	if (preference == mCarrierSize) {
+    	if (preference == mClockSize) {
 			new NumberPickerDialog(preferenceScreen.getContext(),
-                    carrierSizeListener,
+                    clockSizeListener,
             		(int) mSize,
                     5,
                     30,
-                    R.string.carrier_size).show();
+                    R.string.clock_size).show();
         }
-    	
-    	
-    	
     	
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -124,69 +121,61 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
     public boolean onPreferenceChange(Preference preference, Object objValue) {
   
      	final String key = preference.getKey();
-        if (SHOW_CARRIER.equals(key)) {
+        if (SHOW_CLOCK.equals(key)) {
         	Intent i = new Intent();
         	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ShowCarrier", (Boolean) objValue);
+       	   	i.putExtra("ShowClock", (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        
-        } else if (CARRIER_COLOR.equals(key)) {
+        } else if (CLOCK_AMPM.equals(key)) {
         	Intent i = new Intent();
             i.setAction(Tranq_Settings );
-            i.putExtra("CarrierColor", (Integer) objValue);
+            i.putExtra("ClockAmPm", (Boolean) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+        
+        } else if (CLOCK_COLOR.equals(key)) {
+        	Intent i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("ClockColor", (Integer) objValue);
             getActivity().sendBroadcast(i);
             i = null;
             
-        } else if (CARRIER_CUSTOM.equals(key)) {
-        	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
-            i.putExtra("CustomCarrier", (Boolean) objValue);
-            getActivity().sendBroadcast(i);
-            i = null;
-              
-        } else if (CARRIER_CUSTOM_TEXT.equals(key)) {
-        	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
-            i.putExtra("CustomCarrierText", (String) objValue);
-            getActivity().sendBroadcast(i);
-            i = null;
-        	
-        } else if (CARRIER_SIZE.equals(key)) {
+        } else if (CLOCK_SIZE.equals(key)) {
         	sharedPref = prefMgr.getSharedPreferences();
         	SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt(CARRIER_SIZE, mSize);
+            editor.putInt(CLOCK_SIZE, mSize);
             editor.commit();
 
         	Intent i = new Intent();
             i.setAction(Tranq_Settings );
-            i.putExtra("CarrierSize", (Integer) mSize);
+            i.putExtra("ClockSize", (Integer) mSize);
             getActivity().sendBroadcast(i);
             i = null;
-        	
-        } else if (DATE_COLOR.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
-        	i.putExtra("DateColor", (Integer) objValue);
-        	getActivity().sendBroadcast(i);
-        	i = null;        
 
+        } else if (TICKER_COLOR.equals(key)) {
+        	Intent i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("TickerColor", (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;            
+            
         }
-        
+
+ 
+    
+
         return true;
     }
     
     
-    NumberPickerDialog.OnNumberSetListener carrierSizeListener =
+    NumberPickerDialog.OnNumberSetListener clockSizeListener =
             new NumberPickerDialog.OnNumberSetListener() {
     	public void onNumberSet(int limit) {
     		mSize = (int) limit;
-    		mCarrierSize.getOnPreferenceChangeListener().onPreferenceChange(mCarrierSize, (int) limit);
+    		mClockSize.getOnPreferenceChangeListener().onPreferenceChange(mClockSize, (int) limit);
     	}
-    	};    
-
-    
-    
-    
+    	};      
     
 }

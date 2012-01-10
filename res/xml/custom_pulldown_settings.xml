@@ -20,38 +20,51 @@
 
 
 
-   		<CheckBoxPreference 
-			android:key="show_carrier"
-			android:summaryOn="Show the carrier in the pulldown"
-			android:summaryOff="Do not show the carrier in the pulldown"
-			android:title="Show Carrier" 
-			android:defaultValue="false"	/>
+	<CheckBoxPreference 
+		android:key="show_carrier"
+		android:summaryOn="Show the carrier in the pulldown"
+		android:summaryOff="Do not show the carrier in the pulldown"
+		android:title="Show Carrier" 
+		android:defaultValue="false"	/>
    				
 	<com.android.settings.ColorPickerPreference 
-		    android:dependency="show_carrier"
-			android:key="carrier_color"
-			android:title="Carrier Text Color"
-			android:summary="Color for the carrier text"
-			android:defaultValue="#ffffffff" 
-			alphaSlider="false" /> 
+	    android:dependency="show_carrier"
+		android:key="carrier_color"
+		android:title="Carrier Text Color"
+		android:summary="Color for the carrier text"
+		android:defaultValue="#ffffffff" 
+		alphaSlider="false" /> 
    				
-   		<CheckBoxPreference 
-   		    android:dependency="show_carrier"
-			android:key="carrier_custom"
-			android:summaryOn="Show custom carrier name"
-			android:summaryOff="Show default carrier name"
-			android:title="Custom Carrier" 
-			android:defaultValue="false"	/>
+	<Preference 
+    	android:dependency="show_carrier"
+		android:key="carrier_size"
+		android:title="Carrier Text Size"
+		android:summary="Size of the carrier text"
+		android:defaultValue="15" />		 
+  
+   	<CheckBoxPreference 
+   	    android:dependency="show_carrier"
+		android:key="carrier_custom"
+		android:summaryOn="Show custom carrier name"
+		android:summaryOff="Show default carrier name"
+		android:title="Custom Carrier" 
+		android:defaultValue="false"	/>
 	    
-		<EditTextPreference
-		    android:dependency="carrier_custom"
-			android:key="carrier_custom_text"
-			android:title="Custom Carrier Name" 
-			android:summary="Change the text for the carrier"
-			android:dialogTitle="Carrier Text"
-			android:dialogMessage="Enter text"	
-			android:defaultValue="T r a n q u i l   I c e" />
+	<EditTextPreference
+	    android:dependency="carrier_custom"
+		android:key="carrier_custom_text"
+		android:title="Custom Carrier Name" 
+		android:summary="Change the text for the carrier"
+		android:dialogTitle="Carrier Text"
+		android:dialogMessage="Enter text"	
+		android:defaultValue="T r a n q u i l   I c e" />
 
+	<com.android.settings.ColorPickerPreference 
+		android:key="date_color"
+		android:title="Date Color"
+		android:summary="Color for statusbar date"
+		android:defaultValue="#ff3F9BBF" 
+		alphaSlider="false" /> 			
 
 
 </PreferenceScreen>

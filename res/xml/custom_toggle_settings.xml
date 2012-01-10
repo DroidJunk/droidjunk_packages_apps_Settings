@@ -24,7 +24,7 @@
 		android:title="Toggle Color"
 		android:summary="Color for toggles"
 		android:defaultValue="#ff000000" 
-		alphaSlider="false" /> 
+		alphaSlider="true" /> 
 
 	<CheckBoxPreference 
 		android:key="toggle_show_indicator"
@@ -35,16 +35,16 @@
 		
 	<com.android.settings.ColorPickerPreference 
 		android:dependency="toggle_show_indicator"
-		android:key="toggle_on_color"
-		android:title="Toggle On Idicator Color"
+		android:key="toggle_ind_on_color"
+		android:title="Toggle On Indicator Color"
 		android:summary="Color for toggles indicator (on)"
 		android:defaultValue="#ffffbb33" 
 		alphaSlider="false" /> 
 		
 	<com.android.settings.ColorPickerPreference 
 		android:dependency="toggle_show_indicator"
-		android:key="toggle_off_color"
-		android:title="Toggle Off Idicator Color"
+		android:key="toggle_ind_off_color"
+		android:title="Toggle Off Indicator Color"
 		android:summary="Color for toggles indicator (off)"
 		android:defaultValue="#ff757575" 
 		alphaSlider="false" /> 		

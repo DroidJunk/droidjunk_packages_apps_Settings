@@ -20,7 +20,7 @@
 
 
     <PreferenceScreen
-        android:fragment="com.android.settings.CustomPulldownSettings"
+        android:fragment="com.android.settings.CustomStatusbarSettings"
         android:key="custom_statusbar_settings"
         android:title="Statusbar Settings" />
 		

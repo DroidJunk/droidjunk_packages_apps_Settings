@@ -42,6 +42,13 @@
 		android:summary="Color for statusbar clock"
 		android:defaultValue="#ff3F9BBF" 
 		alphaSlider="false" /> 
+		
+	<Preference 
+    	android:dependency="show_clock"
+		android:key="clock_size"
+		android:title="Clock Size"
+		android:summary="Size of the clock"
+		android:defaultValue="17" />		
    				
 	<com.android.settings.ColorPickerPreference 
 		android:key="ticker_color"
@@ -50,12 +57,7 @@
 		android:defaultValue="#ff3F9BBF" 
 		alphaSlider="false" /> 
 				
-	<com.android.settings.ColorPickerPreference 
-		android:key="date_color"
-		android:title="Date Color"
-		android:summary="Color for statusbar date"
-		android:defaultValue="#ff3F9BBF" 
-		alphaSlider="false" /> 				
+	
 	    
 
 
