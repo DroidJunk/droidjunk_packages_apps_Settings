@@ -65,22 +65,30 @@
 
 
 
+	<!-- ***************************************************************************************** -->
+	<!-- *****************************  NEW TRANQUILITY SETTINGS   ******************************* -->
+	<!-- ***************************************************************************************** -->
+
     <!-- CUSTOMIZE -->
-    <header android:title="@string/header_category_customize" />
-  
-    <!-- STATUSBAR -->
+    <header android:title="Customize" />
+
+    <!-- Most Tranquility Custom Settings -->
     <header
-        android:id="@+id/statusbar_settings"
+        android:id="@+id/custom_settings"
         android:icon="@drawable/ic_settings_tranquility"
         android:fragment="com.android.settings.CustomSettings"
-        android:title="@string/statusbar_settings" />
-	
+        android:title="Statusbar Settings" />
+
+    <!-- Toolbox -->
+    <header
+        android:id="@+id/toolbox_settings"
+        android:icon="@drawable/ic_settings_tophat"
+        android:fragment="com.android.settings.SoundSettings"
+        android:title="@string/toolbox_settings" />
 
 
-
-
-
-
+	<!-- ***************************************************************************************** -->
+	<!-- ***************************************************************************************** -->
 
 
 

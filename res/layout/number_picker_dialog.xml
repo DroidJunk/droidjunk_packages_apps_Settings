@@ -32,7 +32,6 @@ This layout file is used by the AlertDialog when displaying a list of items.
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/numpicker_ok"
         android:textSize="12sp"
         android:padding="1dip" />
 

@@ -1592,6 +1592,8 @@
     <string name="search_settings">Search</string>
     <!-- Main Settings screen, setting option summary to go into search settings -->
     <string name="search_settings_summary">Manage search settings and history</string>
+    
+
 
     <!-- Display settings --><skip/>
     <!-- Sound & display settings screen, section header for settings related to display -->
@@ -1645,30 +1647,6 @@
     <string name="summary_font_size" translatable="false">%1$s</string>
     <!-- [CHAR LIMIT=40] Sound & display settings screen, title of dialog for picking font size -->
     <string name="dialog_title_font_size">Font size</string>
-
-
-	<!-- ***************************************************************************************** -->
-	<!-- *****************************  NEW TRANQUILITY SETTINGS   ******************************* -->
-	<!-- ***************************************************************************************** -->
-    <!-- Main Settings screen setting option name to go into the display settings screen -->
-    <string name="header_category_customize">Customize</string>
-
-    <!-- Statusbar Settings --><skip/>
-    <!-- Statusbar & toggles color and other options -->
-    <string name="statusbar_settings">Statusbar Settings</string>
-    
-    <string name="dialog_color_picker">Color Picker</string>
-    <string name="press_color_to_apply">Press on Color to apply</string>    
-    
-    <string name="numpicker_set">Set</string>
-    <string name="numpicker_ok">OK</string>
-
-
-
-	<!-- ***************************************************************************************** -->
-	<!-- ***************************************************************************************** -->
-
-
 
     <!-- SIM lock settings title -->
     <string name="sim_lock_settings">SIM card lock settings</string>
@@ -1736,6 +1714,9 @@
     <string name="kernel_version">Kernel version</string>
     <!-- About phone screen,  setting option name-->
     <string name="build_number">Build number</string>
+    <!-- About phone screen,  setting option name-->
+    <string name="tranq_version">Rom version</string>
+    <string name="tranq_version_default">Tranquility</string>
 
     <!-- About phone screen, show when a value of some status item is unavailable. -->
     <string name="device_info_not_available">Not available</string>
@@ -3803,5 +3784,41 @@ found in the list of installed apps.</string>
     from their cell phone carrier. The use of the string is similar to the string
     "system_update_settings_list_item_title" in this project. [CHAR LIMIT=25] -->
     <string name="additional_system_update_settings_list_item_title">Additional system updates</string>
+
+
+
+	<!-- ***************************************************************************************** -->
+	<!-- *****************************  NEW TRANQUILITY SETTINGS   ******************************* -->
+	<!-- ***************************************************************************************** -->
+    <!-- Main Settings screen setting option name to go into the display settings screen -->
+    <string name="header_category_customize">Customize</string>
+
+    <!-- Statusbar Settings --><skip/>
+    <!-- Statusbar & toggles color and other options -->
+    <string name="statusbar_settings">Statusbar Settings</string>
+    <string name="custom_pulldown_settings_title">Statusbar Pulldown Settings</string>
+    <string name="custom_toggle_settings_title">Statusbar Toggles Settings</string>
+    
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on Color to apply</string>    
+    
+    <string name="numpicker_set">Save</string>
+    <string name="numpicker_cancel">Cancel</string>
+    <string name="numpicker_ok">OK</string>
+    <string name="carrier_size">Size of the Carrier text</string>
+    <string name="clock_size">Size of the Clock text</string>
+
+    <!-- Tranquility Toolbox -->
+    <string name="toolbox_settings">Tranquility Toolbox</string>
+
+
+	<!-- ***************************************************************************************** -->
+	<!-- ***************************************************************************************** -->
+
+
+
+
+
+
 
 </resources>
