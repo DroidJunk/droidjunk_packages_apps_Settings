@@ -43,7 +43,6 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
 	private final String CLOCK_COLOR = "clock_color";
 	private final String CLOCK_SIZE = "clock_size";
 	
-	private final String TICKER_COLOR = "ticker_color";
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
@@ -53,7 +52,7 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
     private Preference mClockSize;
     public int mSize = 17;
     
-    private Preference mTickerColor;
+
 
 	
 	
@@ -81,9 +80,7 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
 		mClockSize.setOnPreferenceChangeListener(this);
 		mSize = prefMgr.getSharedPreferences().getInt(CLOCK_SIZE, 17);  
 
-        mTickerColor = (Preference) findPreference(TICKER_COLOR);
-		mTickerColor.setOnPreferenceChangeListener(this);
-        
+
  
     }
 
@@ -154,12 +151,7 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
             getActivity().sendBroadcast(i);
             i = null;
 
-        } else if (TICKER_COLOR.equals(key)) {
-        	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
-            i.putExtra("TickerColor", (Integer) objValue);
-            getActivity().sendBroadcast(i);
-            i = null;            
+
             
         }
 
