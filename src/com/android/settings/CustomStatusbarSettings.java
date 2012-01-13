@@ -103,19 +103,21 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
 
+ 
     	if (preference == mClockSize) {
 			new NumberPickerDialog(preferenceScreen.getContext(),
                     clockSizeListener,
-            		(int) mSize,
+            		mSize,
                     5,
                     30,
                     R.string.clock_size).show();
-        }
-    	
+        }    	
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
     
-
+ 
+    
+    
     public boolean onPreferenceChange(Preference preference, Object objValue) {
   
      	final String key = preference.getKey();

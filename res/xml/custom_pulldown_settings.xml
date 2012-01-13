@@ -28,6 +28,7 @@
 		android:defaultValue="false"	/>
    				
 	<com.android.settings.ColorPickerPreference 
+		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="show_carrier"
 		android:key="carrier_color"
 		android:title="Carrier Text Color"
@@ -36,6 +37,7 @@
 		alphaSlider="false" /> 
    				
 	<Preference 
+		android:layout="?android:attr/preferenceLayoutChild"
     	android:dependency="show_carrier"
 		android:key="carrier_size"
 		android:title="Carrier Text Size"
@@ -51,6 +53,7 @@
 		android:defaultValue="false"	/>
 	    
 	<EditTextPreference
+		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="carrier_custom"
 		android:key="carrier_custom_text"
 		android:title="Custom Carrier Name" 
