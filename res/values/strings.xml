@@ -18,7 +18,7 @@
     <string name="yes">"Yes"</string>
 
     <!-- Strings for Dialog no button -->
-    <string name="no">"No"</string>
+    <string name="no">"Cancel"</string>
 
     <!-- Device Info --> <skip />
     <!-- Device Info screen. Used for a status item's value when the proper value is not known -->
@@ -3802,9 +3802,7 @@ found in the list of installed apps.</string>
     <string name="dialog_color_picker">Color Picker</string>
     <string name="press_color_to_apply">Press on Color to apply</string>    
     
-    <string name="numpicker_set">Save</string>
-    <string name="numpicker_cancel">Cancel</string>
-    <string name="numpicker_ok">OK</string>
+    <string name="set">Set</string>
     <string name="carrier_size">Size of the Carrier text</string>
     <string name="clock_size">Size of the Clock text</string>
 

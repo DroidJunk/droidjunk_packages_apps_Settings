@@ -28,6 +28,7 @@
 		android:defaultValue="true"	/>
 			
  	<CheckBoxPreference 
+ 		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="show_clock"
 		android:key="clock_ampm"
 		android:summaryOn="Show am/pm"
@@ -36,6 +37,7 @@
 		android:defaultValue="false"	/>
    				
 	<com.android.settings.ColorPickerPreference 
+		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="show_clock"
 		android:key="clock_color"
 		android:title="Clock Color"
@@ -44,6 +46,7 @@
 		alphaSlider="false" /> 
 		
 	<Preference 
+		android:layout="?android:attr/preferenceLayoutChild"
     	android:dependency="show_clock"
 		android:key="clock_size"
 		android:title="Clock Size"

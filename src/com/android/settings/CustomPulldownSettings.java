@@ -188,5 +188,4 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
     
     
     
-    
 }
