@@ -18,7 +18,7 @@
     <string name="yes">"Yes"</string>
 
     <!-- Strings for Dialog no button -->
-    <string name="no">"No"</string>
+    <string name="no">"Cancel"</string>
 
     <!-- Device Info --> <skip />
     <!-- Device Info screen. Used for a status item's value when the proper value is not known -->
@@ -1592,6 +1592,8 @@
     <string name="search_settings">Search</string>
     <!-- Main Settings screen, setting option summary to go into search settings -->
     <string name="search_settings_summary">Manage search settings and history</string>
+    
+
 
     <!-- Display settings --><skip/>
     <!-- Sound & display settings screen, section header for settings related to display -->
@@ -1712,6 +1714,9 @@
     <string name="kernel_version">Kernel version</string>
     <!-- About phone screen,  setting option name-->
     <string name="build_number">Build number</string>
+    <!-- About phone screen,  setting option name-->
+    <string name="tranq_version">Rom version</string>
+    <string name="tranq_version_default">Tranquility</string>
 
     <!-- About phone screen, show when a value of some status item is unavailable. -->
     <string name="device_info_not_available">Not available</string>
@@ -3779,5 +3784,39 @@ found in the list of installed apps.</string>
     from their cell phone carrier. The use of the string is similar to the string
     "system_update_settings_list_item_title" in this project. [CHAR LIMIT=25] -->
     <string name="additional_system_update_settings_list_item_title">Additional system updates</string>
+
+
+
+	<!-- ***************************************************************************************** -->
+	<!-- *****************************  NEW TRANQUILITY SETTINGS   ******************************* -->
+	<!-- ***************************************************************************************** -->
+    <!-- Main Settings screen setting option name to go into the display settings screen -->
+    <string name="header_category_customize">Customize</string>
+
+    <!-- Statusbar Settings --><skip/>
+    <!-- Statusbar & toggles color and other options -->
+    <string name="statusbar_settings">Statusbar Settings</string>
+    <string name="custom_pulldown_settings_title">Statusbar Pulldown Settings</string>
+    <string name="custom_toggle_settings_title">Statusbar Toggles Settings</string>
+    
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on Color to apply</string>    
+    
+    <string name="set">Set</string>
+    <string name="carrier_size">Size of the Carrier text</string>
+    <string name="clock_size">Size of the Clock text</string>
+
+    <!-- Tranquility Toolbox -->
+    <string name="toolbox_settings">Tranquility Toolbox</string>
+
+
+	<!-- ***************************************************************************************** -->
+	<!-- ***************************************************************************************** -->
+
+
+
+
+
+
 
 </resources>
