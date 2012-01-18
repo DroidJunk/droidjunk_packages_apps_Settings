@@ -39,6 +39,8 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
     
 
 	private final String Tranq_Settings = "TRANQ_SETTINGS";
+	private final String TOGGLES_ON = "toggles_show_toggles";
+	private final String TOGGLES_TOP = "toggle_top";
 	private final String TOGGLE_COLOR = "toggle_color";
 	private final String TOGGLE_SHOW_INDICATOR = "toggle_show_indicator";
 	private final String TOGGLE_IND_ON_COLOR = "toggle_ind_on_color";
@@ -51,6 +53,8 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
 	
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
+	private CheckBoxPreference mShowToggles;
+	private CheckBoxPreference mTogglesTop;
 	private Preference mToggleColor;
 	private CheckBoxPreference mShowIndicator;
     private Preference mToggleIndOnColor;
@@ -74,6 +78,10 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.custom_toggle_settings);
       
+    	mShowToggles = (CheckBoxPreference) findPreference(TOGGLES_ON);
+    	mShowToggles.setOnPreferenceChangeListener(this);
+    	mTogglesTop = (CheckBoxPreference) findPreference(TOGGLES_TOP);
+    	mTogglesTop.setOnPreferenceChangeListener(this);
     	mToggleColor = (Preference) findPreference(TOGGLE_COLOR);
     	mToggleColor.setOnPreferenceChangeListener(this);
     	mShowIndicator = (CheckBoxPreference) findPreference(TOGGLE_SHOW_INDICATOR);
@@ -118,7 +126,33 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
   
      	final String key = preference.getKey();
      	
-        if (TOGGLE_COLOR.equals(key)) {
+     	if (TOGGLES_ON.equals(key)) {
+        	Intent i = new Intent();
+        	i.setAction(Tranq_Settings );
+       	   	i.putExtra("TogglesOn", (Boolean) objValue);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+       	   	
+        	i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("UpdateToggles", true);
+            getActivity().sendBroadcast(i);
+            i = null;
+       	   	
+     	} else if (TOGGLES_TOP.equals(key)) {
+        	Intent i = new Intent();
+        	i.setAction(Tranq_Settings );
+       	   	i.putExtra("TogglesTop", (Boolean) objValue);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+       	   	
+        	i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("UpdateToggles", true);
+            getActivity().sendBroadcast(i);
+            i = null;
+       	   	
+    	} else if (TOGGLE_COLOR.equals(key)) {
         	Intent i = new Intent();
         	i.setAction(Tranq_Settings );
        	   	i.putExtra("ToggleColor", (Integer) objValue);

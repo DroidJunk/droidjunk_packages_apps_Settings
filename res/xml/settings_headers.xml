@@ -72,11 +72,7 @@
     <!-- CUSTOMIZE -->
     <header android:title="Customize" />
 
-<<<<<<< HEAD
-    <!-- Most Tranquility Custom Settings -->
-=======
     <!-- Most of Tranquility Custom Settings -->
->>>>>>> dj
     <header
         android:id="@+id/custom_settings"
         android:icon="@drawable/ic_settings_tranquility"
