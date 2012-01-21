@@ -15,7 +15,7 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="@string/statusbar_settings"
+        android:title="@string/tranq_settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
 
@@ -36,6 +36,11 @@
         android:key="custom_toggle_settings"
         android:title="Statusbar Toggles Settings" />
 
+
+    <PreferenceScreen
+        android:fragment="com.android.settings.CustomQuietSettings"
+        android:key="custom_quiet_time_settings"
+        android:title="Quiet Time" />
 
 
  

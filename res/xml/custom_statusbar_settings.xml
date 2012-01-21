@@ -53,19 +53,7 @@
 		android:summary="Size of the clock"
 		android:defaultValue="17" />		
    				
-<<<<<<< HEAD
-	<com.android.settings.ColorPickerPreference 
-		android:key="ticker_color"
-		android:title="Ticker Color"
-		android:summary="Color for statusbar ticker"
-		android:defaultValue="#ff3F9BBF" 
-		alphaSlider="false" /> 
-=======
-
->>>>>>> dj
-				
-	
-	    
+    
 
 
 </PreferenceScreen>
