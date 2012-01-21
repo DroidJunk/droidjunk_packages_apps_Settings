@@ -26,6 +26,8 @@ import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.widget.TimePicker;
+import com.android.settings.R;
+
 
 
 
@@ -35,8 +37,10 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
     
 	private final String Tranq_Settings = "TRANQ_SETTINGS";
 	private final String QUIET_TIME = "quiet_time_on";
-	private final String START_TIME = "qt_start_time";
-	private final String STOP_TIME = "qt_stop_time";
+	private final String START_HOUR = "qt_start_hour";
+	private final String START_MIN = "qt_start_min";
+	private final String STOP_HOUR = "qt_stop_hour";
+	private final String STOP_MIN = "qt_stop_min";
 	private final String NOTIF_LED_ON = "qt_led_on";
 	private final String NOTIF_SOUND_ON = "qt_sound_on";
 	private final String NOTIF_VIBRATE_ON = "qt_vibrate_on";
@@ -44,8 +48,10 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
 	private CheckBoxPreference mQuietTimeOn;
-    private Preference mQtStartTime;
-    private Preference mQtStopTime;
+    private Preference mQtStartHour;
+    private Preference mQtStartMin;
+    private Preference mQtStopHour;
+    private Preference mQtStopMin;
     private CheckBoxPreference mQtNotifLedOn;
     private CheckBoxPreference mQtNotifSoundOn;
     private CheckBoxPreference mQtNotifVibrateOn;
@@ -69,26 +75,33 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
         prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         prefMgr.getSharedPreferences();
        
-        addPreferencesFromResource(R.xml.custom_pulldown_settings);
+        addPreferencesFromResource(R.xml.custom_quiet_time_settings);
         
         mQuietTimeOn = (CheckBoxPreference) findPreference(QUIET_TIME);
         mQuietTimeOn.setOnPreferenceChangeListener(this);
-        mQtStartTime = (Preference) findPreference(START_TIME);
-        mQtStartTime.setOnPreferenceChangeListener(this);
-        mQtStopTime = (Preference) findPreference(STOP_TIME);
-        mQtStopTime.setOnPreferenceChangeListener(this);
-		mQtNotifLedOn = (CheckBoxPreference) findPreference(NOTIF_LED_ON);
+        mQtStartHour = (Preference) findPreference(START_HOUR);
+        //mQtStartTime.setOnPreferenceChangeListener(this);
+        mQtStartMin = (Preference) findPreference(START_MIN);
+
+        mQtStopHour = (Preference) findPreference(STOP_HOUR);
+        //mQtStopTime.setOnPreferenceChangeListener(this);
+        mQtStopMin = (Preference) findPreference(STOP_MIN);
+		
+        
+        mQtNotifLedOn = (CheckBoxPreference) findPreference(NOTIF_LED_ON);
 		mQtNotifLedOn.setOnPreferenceChangeListener(this);
 		mQtNotifSoundOn = (CheckBoxPreference) findPreference(NOTIF_SOUND_ON);
 		mQtNotifSoundOn.setOnPreferenceChangeListener(this);
 		mQtNotifVibrateOn = (CheckBoxPreference) findPreference(NOTIF_VIBRATE_ON);
 		mQtNotifVibrateOn.setOnPreferenceChangeListener(this);
-		QtStartTime = prefMgr.getSharedPreferences().getInt(START_TIME, 21);
-		QtStartHour = QtStartTime / 100;
-		QtStartMin = QtStartTime - ((QtStartTime / 100) * 100);
-		QtStopTime = prefMgr.getSharedPreferences().getInt(STOP_TIME, 7);
-		QtStopHour = QtStopTime / 100;
-		QtStopMin = QtStopMin = QtStopTime - ((QtStopTime / 100) * 100);
+		QtStartHour = prefMgr.getSharedPreferences().getInt(START_HOUR, 21);
+		QtStartMin = prefMgr.getSharedPreferences().getInt(START_MIN, 0);
+		//QtStartHour = QtStartTime / 100;
+		//QtStartMin = QtStartTime - ((QtStartTime / 100) * 100);
+		QtStopHour = prefMgr.getSharedPreferences().getInt(STOP_HOUR, 7);
+		QtStopMin = prefMgr.getSharedPreferences().getInt(STOP_HOUR, 0);
+		//QtStopHour = QtStopTime / 100;
+		//QtStopMin = QtStopMin = QtStopTime - ((QtStopTime / 100) * 100);
 		
 
 
@@ -113,11 +126,17 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
 
-    	if (preference == mQtStartTime) {
+    	if (preference == mQtStartHour) {
 			new TimePickerDialog(preferenceScreen.getContext(),
                     startTimeListener,
             		QtStartHour,
                     QtStartMin,
+                    false).show();
+        } else if (preference == mQtStopHour) {
+        	new TimePickerDialog(preferenceScreen.getContext(),
+                    stopTimeListener,
+            		QtStopHour,
+                    QtStopMin,
                     false).show();
         }
     	
@@ -144,14 +163,38 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
 				
 				@Override
 				public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-					// TODO Auto-generated method stub
+				
+					QtStartHour = hourOfDay;
+					QtStartMin = minute;
 					QtStartTime = hourOfDay + minute;
-		    		mQtStartTime.getOnPreferenceChangeListener().onPreferenceChange(mQtStartTime, (int) hourOfDay + minute);
-					
+		    		mQtStartHour.getOnPreferenceChangeListener().onPreferenceChange(mQtStartHour, hourOfDay);
+		    		mQtStartMin.getOnPreferenceChangeListener().onPreferenceChange(mQtStartMin, minute);
+		    		
+                    //SharedPreferences.Editor editor =
+                    //		prefMgr.getDefaultSharedPreferences(getActivity().getBaseContext()).edit();
+                    //editor.putInt(START_TIME, QtStartTime);
+                    //editor.apply();
+		    		
 				}
 			}; 
    
-
+		    TimePickerDialog.OnTimeSetListener stopTimeListener =
+		            new TimePickerDialog.OnTimeSetListener() {
+						
+						@Override
+						public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+							
+							QtStopHour = hourOfDay;
+							QtStopMin = minute;
+							QtStopTime = hourOfDay + minute;
+				    		mQtStopHour.getOnPreferenceChangeListener().onPreferenceChange(mQtStopHour, hourOfDay);
+				    		mQtStopMin.getOnPreferenceChangeListener().onPreferenceChange(mQtStopMin, minute);
+		                    //SharedPreferences.Editor editor =
+		                    //        prefMgr.getDefaultSharedPreferences(getActivity().getBaseContext()).edit();
+		                    //editor.putInt(STOP_TIME, QtStopTime);
+		                    //editor.apply();
+						}
+					}; 
     
     
     
