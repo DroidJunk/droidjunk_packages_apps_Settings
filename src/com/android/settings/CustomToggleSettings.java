@@ -40,7 +40,7 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
 
 	private final String Tranq_Settings = "TRANQ_SETTINGS";
 	private final String TOGGLES_ON = "toggles_show_toggles";
-	private final String TOGGLES_TOP = "toggle_top";
+	private final String TOGGLES_TOP = "toggles_top";
 	private final String TOGGLE_COLOR = "toggle_color";
 	private final String TOGGLE_SHOW_INDICATOR = "toggle_show_indicator";
 	private final String TOGGLE_IND_ON_COLOR = "toggle_ind_on_color";

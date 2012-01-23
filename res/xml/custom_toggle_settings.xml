@@ -28,7 +28,7 @@
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
-		android:key="toggle_top"
+		android:key="toggles_top"
 		android:summaryOn="Toggles are on the top"
 		android:summaryOff="Toggles are on the bottom"
 		android:title="Toggle Location Top" 
