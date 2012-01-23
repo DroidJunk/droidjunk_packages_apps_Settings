@@ -18,8 +18,25 @@
         android:title="@string/toggle_settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+	<CheckBoxPreference 
+		android:key="toggles_show_toggles"
+		android:summaryOn="Toggles are on"
+		android:summaryOff="Toggles are off"
+		android:title="Show Toggles" 
+		android:defaultValue="true"	/>
+
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:dependency="toggles_show_toggles"
+		android:key="toggles_top"
+		android:summaryOn="Toggles are on the top"
+		android:summaryOff="Toggles are on the bottom"
+		android:title="Toggle Location Top" 
+		android:defaultValue="true"	/>
 
 	<com.android.settings.ColorPickerPreference 
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:dependency="toggles_show_toggles"
 		android:key="toggle_color"
 		android:title="Toggle Color"
 		android:summary="Color for toggles"
@@ -27,6 +44,8 @@
 		alphaSlider="true" /> 
 
 	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:dependency="toggles_show_toggles"
 		android:key="toggle_show_indicator"
 		android:summaryOn="Toggle indicators are on"
 		android:summaryOff="Toggle indicators are off"
@@ -53,7 +72,9 @@
 
 		
 	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="toggle_show_text"
+		android:dependency="toggles_show_toggles"
 		android:summaryOn="Toggles text is on"
 		android:summaryOff="Toggles text is off"
 		android:title="Toggle Text" 
@@ -77,7 +98,9 @@
 		android:defaultValue="#ff757575" 
 		alphaSlider="false" />
 		
-	<CheckBoxPreference 
+	<CheckBoxPreference
+		android:layout="?android:attr/preferenceLayoutChild"  
+		android:dependency="toggles_show_toggles"
 		android:key="toggle_show_divider"
 		android:summaryOn="Toggle dividers are on"
 		android:summaryOff="Toggles dividers are off"

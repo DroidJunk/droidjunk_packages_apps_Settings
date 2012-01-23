@@ -53,7 +53,12 @@
 		android:summary="Size of the clock"
 		android:defaultValue="17" />		
    				
+<<<<<<< HEAD
     
+=======
+	
+	    
+>>>>>>> dj
 
 
 </PreferenceScreen>
