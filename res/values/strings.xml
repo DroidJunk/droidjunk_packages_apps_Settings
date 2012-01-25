@@ -3802,6 +3802,7 @@ found in the list of installed apps.</string>
     
     <string name="custom_pulldown_settings_title">Statusbar Pulldown Settings</string>
     <string name="custom_toggle_settings_title">Statusbar Toggles Settings</string>
+    <string name="custom_system_settings">System Settings</string>
     
     <string name="dialog_color_picker">Color Picker</string>
     <string name="press_color_to_apply">Press on Color to apply</string>    

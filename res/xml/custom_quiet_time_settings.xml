@@ -30,14 +30,14 @@
  	<Preference 
  		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="quiet_time_on"
-		android:key="qt_start_time"
+		android:key="qt_start_hour"
 		android:title="Quiet Time Start Hour" 
 		android:defaultValue="21"	/>
 		
-	 	<Preference 
+ 	<Preference 
  		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="quiet_time_on"
-		android:key="qt_stop_time"
+		android:key="qt_stop_hour"
 		android:title="Quiet Time Stop Hour" 
 		android:defaultValue="7"	/>
 
