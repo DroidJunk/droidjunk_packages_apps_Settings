@@ -15,33 +15,21 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="@string/tranq_settings"
+        android:title="@string/custom_system_settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-
     <PreferenceScreen
-        android:fragment="com.android.settings.CustomStatusbarSettings"
-        android:key="custom_statusbar_settings"
-        android:title="Statusbar Settings" />
-		
-		
-    <PreferenceScreen
-        android:fragment="com.android.settings.CustomPulldownSettings"
-        android:key="custom_pulldown_settings"
-        android:title="Statusbar Pulldown Settings" />
+        android:fragment="com.android.settings.CustomQuietSettings"
+        android:key="custom_quiet_time_settings"
+        android:title="Quiet Time" />
 
-
-    <PreferenceScreen
-        android:fragment="com.android.settings.CustomToggleSettings"
-        android:key="custom_toggle_settings"
-        android:title="Statusbar Toggles Settings" />
-
-
-    <PreferenceScreen
-        android:fragment="com.android.settings.CustomSystemSettings"
-        android:key="custom_system_settings"
-        android:title="Custom System Settings" />
- 
+	<com.android.settings.ColorPickerPreference 
+		android:key="custom_default_led"
+		android:title="Default Led Color"
+		android:summary="Color for the default led"
+		android:defaultValue="#ffffffff" 
+		alphaSlider="false" /> 
 
 
 </PreferenceScreen>
+

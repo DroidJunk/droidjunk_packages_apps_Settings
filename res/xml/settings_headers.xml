@@ -72,12 +72,13 @@
     <!-- CUSTOMIZE -->
     <header android:title="Customize" />
 
+
     <!-- Most of Tranquility Custom Settings -->
     <header
         android:id="@+id/custom_settings"
         android:icon="@drawable/ic_settings_tranquility"
         android:fragment="com.android.settings.CustomSettings"
-        android:title="Statusbar Settings" />
+        android:title="TranquilIce Settings" />
 
     <!-- Toolbox -->
     <header

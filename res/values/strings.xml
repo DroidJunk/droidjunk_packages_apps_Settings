@@ -3795,9 +3795,14 @@ found in the list of installed apps.</string>
 
     <!-- Statusbar Settings --><skip/>
     <!-- Statusbar & toggles color and other options -->
-    <string name="statusbar_settings">Statusbar Settings</string>
+    <string name="tranq_settings">TranquilIce Settings</string>
+     <string name="statusbar_settings">Statusbar Settings</string>
+     <string name="statusbar_pulldown_settings">Statusbar Pulldown Settings</string>
+      <string name="toggle_settings">Toggle Settings</string>
+    
     <string name="custom_pulldown_settings_title">Statusbar Pulldown Settings</string>
     <string name="custom_toggle_settings_title">Statusbar Toggles Settings</string>
+    <string name="custom_system_settings">System Settings</string>
     
     <string name="dialog_color_picker">Color Picker</string>
     <string name="press_color_to_apply">Press on Color to apply</string>    
@@ -3805,6 +3810,9 @@ found in the list of installed apps.</string>
     <string name="set">Set</string>
     <string name="carrier_size">Size of the Carrier text</string>
     <string name="clock_size">Size of the Clock text</string>
+    
+    <string name="start_time">Quit Time Start</string>
+    <string name="stop_time">Quit Time Stopt</string>
 
     <!-- Tranquility Toolbox -->
     <string name="toolbox_settings">Tranquility Toolbox</string>
