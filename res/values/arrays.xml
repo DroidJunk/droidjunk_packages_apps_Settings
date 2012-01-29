@@ -704,4 +704,15 @@
         <!-- Status message when VPN is failed. -->
         <item>Unsuccessful</item>
     </string-array>
+    <string-array name="pref_alt_lockscreen_values">
+		<item>0</item>
+		<item>1</item>
+        	<item>2</item>
+    </string-array>
+
+    <string-array name="pref_alt_lockscreen_entries">
+		<item>Stock Lockscreen</item>
+		<item>Talk Lockscreen</item>
+        	<item>Sms Lockscreen</item>
+    </string-array>
 </resources>

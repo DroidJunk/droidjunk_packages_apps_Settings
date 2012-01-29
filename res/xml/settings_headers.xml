@@ -57,14 +57,6 @@
         android:fragment="com.android.settings.WirelessSettings"
         android:icon="@drawable/empty_icon" />
 
-
-
-
-
-
-
-
-
 	<!-- ***************************************************************************************** -->
 	<!-- *****************************  NEW TRANQUILITY SETTINGS   ******************************* -->
 	<!-- ***************************************************************************************** -->
@@ -72,19 +64,44 @@
     <!-- CUSTOMIZE -->
     <header android:title="Customize" />
 
-    <!-- Most of Tranquility Custom Settings -->
+    <!-- Most Tranquility Custom Settings -->
     <header
         android:id="@+id/custom_settings"
         android:icon="@drawable/ic_settings_tranquility"
         android:fragment="com.android.settings.CustomSettings"
         android:title="Statusbar Settings" />
 
-    <!-- Toolbox -->
-    <header
-        android:id="@+id/toolbox_settings"
-        android:icon="@drawable/ic_settings_tophat"
-        android:fragment="com.android.settings.SoundSettings"
-        android:title="@string/toolbox_settings" />
+    <header android:icon="@drawable/ic_settings_tophat"
+            android:title="Tranquil Ice Toolbox">
+        <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="com.tranquilice.toolbox.MainMenu"
+                android:targetPackage="com.tranquilice.toolbox" />
+    </header>
+
+    <header android:icon="@drawable/ic_settings_alt_lockscreen"
+            android:title="Lockscreen Options">
+        <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="com.tranquilice.helper.Lockscreen"
+                android:targetPackage="com.tranquilice.helper" />
+    </header>
+
+    <header android:icon="@drawable/ic_settings_battery"
+            android:title="Battery Meter Options">
+        <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="com.tranquilice.helper.Meters"
+                android:targetPackage="com.tranquilice.helper" />
+    </header>
+
+    <header android:icon="@drawable/empty_icon" 
+            android:title="Change Log">
+        <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="com.tranquilice.toolbox.About"
+                android:targetPackage="com.tranquilice.toolbox" />
+    </header>
 
 
 	<!-- ***************************************************************************************** -->

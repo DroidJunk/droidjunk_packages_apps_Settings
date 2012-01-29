@@ -50,7 +50,7 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
 	private final String TOGGLE_TEXT_OFF_COLOR = "toggle_text_off_color";
 	private final String TOGGLE_SHOW_DIVIDER = "toggle_show_divider";
 	private final String TOGGLE_DIVIDER_COLOR = "toggle_divider_color";
-	
+
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
 	private CheckBoxPreference mShowToggles;
@@ -64,9 +64,9 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
     private Preference mToggleTextOffColor;
     private CheckBoxPreference mToggleShowDivider;
     private Preference mToggleDividerColor;
-	
+
     public int mSize = 17;	
-	
+
     /** If there is no setting in the provider, use this. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -286,8 +286,5 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
         }
         
         return true;
-    }
-    
-    
-    
+	}
 }

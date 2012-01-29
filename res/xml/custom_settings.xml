@@ -23,8 +23,8 @@
         android:fragment="com.android.settings.CustomStatusbarSettings"
         android:key="custom_statusbar_settings"
         android:title="Statusbar Settings" />
-		
-		
+
+
     <PreferenceScreen
         android:fragment="com.android.settings.CustomPulldownSettings"
         android:key="custom_pulldown_settings"
@@ -35,10 +35,5 @@
         android:fragment="com.android.settings.CustomToggleSettings"
         android:key="custom_toggle_settings"
         android:title="Statusbar Toggles Settings" />
-
-
-
- 
-
 
 </PreferenceScreen>

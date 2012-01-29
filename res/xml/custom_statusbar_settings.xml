@@ -26,7 +26,7 @@
 		android:summaryOff="Clock is off"
 		android:title="Clock" 
 		android:defaultValue="true"	/>
-			
+
  	<CheckBoxPreference 
  		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="show_clock"
@@ -44,7 +44,7 @@
 		android:summary="Color for statusbar clock"
 		android:defaultValue="#ff3F9BBF" 
 		alphaSlider="false" /> 
-		
+
 	<Preference 
 		android:layout="?android:attr/preferenceLayoutChild"
     	android:dependency="show_clock"
@@ -52,10 +52,5 @@
 		android:title="Clock Size"
 		android:summary="Size of the clock"
 		android:defaultValue="17" />		
-   				
-	
-	    
-
-
+   			
 </PreferenceScreen>
-

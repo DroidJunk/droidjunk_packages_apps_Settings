@@ -19,6 +19,13 @@
 
     <!-- Strings for Dialog no button -->
     <string name="no">"Cancel"</string>
+    <string name="set">"Set"</string>
+
+	<string name="title_alt_lockscreen_targets">Lockscreen Settings</string>
+	<string name="summary_alt_lockscreen_targets">Checked = Talk, Blank = SMS </string>	
+
+	<string name="title_alt_meter">Battery Meter Settings</string>
+	<string name="summary_alt_meters">Checked = Stock, Blank = Percentage </string>	
 
     <!-- Device Info --> <skip />
     <!-- Device Info screen. Used for a status item's value when the proper value is not known -->
@@ -3801,13 +3808,16 @@ found in the list of installed apps.</string>
     
     <string name="dialog_color_picker">Color Picker</string>
     <string name="press_color_to_apply">Press on Color to apply</string>    
-    
-    <string name="set">Set</string>
+
+    <string name="numpicker_ok">Set</string>
     <string name="carrier_size">Size of the Carrier text</string>
     <string name="clock_size">Size of the Clock text</string>
 
+    <string name="title_pref_lockscreen_alt_targets">Switch Lockscreen Layout</string>
+    <string name="summary_pref_lockscreen_alt_targets">Switch between SMS and Talk on Lockscreen</string>
+
     <!-- Tranquility Toolbox -->
-    <string name="toolbox_settings">Tranquility Toolbox</string>
+    <string name="toolbox_settings">Tranquility IceBox</string>		
 
 
 	<!-- ***************************************************************************************** -->

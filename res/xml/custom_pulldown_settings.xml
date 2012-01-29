@@ -51,7 +51,7 @@
 		android:summaryOff="Show default carrier name"
 		android:title="Custom Carrier" 
 		android:defaultValue="false"	/>
-	    
+
 	<EditTextPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="carrier_custom"
@@ -60,7 +60,7 @@
 		android:summary="Change the text for the carrier"
 		android:dialogTitle="Carrier Text"
 		android:dialogMessage="Enter text"	
-		android:defaultValue="T r a n q u i l   I c e" />
+		android:defaultValue="T r a n Q u i l   I c e" />
 
 	<com.android.settings.ColorPickerPreference 
 		android:key="date_color"

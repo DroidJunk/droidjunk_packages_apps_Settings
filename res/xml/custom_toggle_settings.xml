@@ -51,7 +51,7 @@
 		android:summaryOff="Toggle indicators are off"
 		android:title="Toggle Indicators" 
 		android:defaultValue="false"	/>
-		
+
 	<com.android.settings.ColorPickerPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggle_show_indicator"
@@ -60,7 +60,7 @@
 		android:summary="Color for toggles indicator (on)"
 		android:defaultValue="#ffffbb33" 
 		alphaSlider="false" /> 
-		
+
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:dependency="toggle_show_indicator"
@@ -70,7 +70,7 @@
 		android:defaultValue="#ff757575" 
 		alphaSlider="false" /> 		
 
-		
+
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="toggle_show_text"
@@ -97,7 +97,7 @@
 		android:summary="Color for toggle off text"
 		android:defaultValue="#ff757575" 
 		alphaSlider="false" />
-		
+
 	<CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild"  
 		android:dependency="toggles_show_toggles"
@@ -115,9 +115,6 @@
 		android:summary="Color for toggle dividers"
 		android:defaultValue="#ff757575" 
 		alphaSlider="false" />
-
-
-
 
 </PreferenceScreen>
 
