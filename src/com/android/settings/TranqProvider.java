@@ -96,28 +96,7 @@ public class TranqProvider extends ContentProvider {
         }
     }
 
-    @Override
-    public int update(Uri url, ContentValues values, String where, String[] whereArgs) {
-        int count;
-        long rowId = 0;
-        int match = sURLMatcher.match(url);
-        SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        switch (match) {
-            case QUIET_TIME_ID: {
-                String segment = url.getPathSegments().get(1);
-                rowId = Long.parseLong(segment);
-                count = db.update("quiettime", values, "_id=0", null);
-                break;
-            }
-            default: {
-                throw new UnsupportedOperationException(
-                        "Cannot update URL: " + url);
-            }
-        }
-        Log.v("*** notifyChange() rowId: " + rowId + " url " + url,"");
-        getContext().getContentResolver().notifyChange(url, null);
-        return count;
-    }
+
 
 
 /*    @Override
@@ -141,8 +120,22 @@ public class TranqProvider extends ContentProvider {
         Log.v("*** notifyChange() rowId: " + rowId + " url " + url,"");
         getContext().getContentResolver().notifyChange(url, null);
         return count;
-    }   */
+    }*/
 
+  
+    @Override
+    public int update(Uri url, ContentValues values, String where, String[] whereArgs) {
+        int count;
+        long rowId = 0;
+        int match = sURLMatcher.match(url);
+        SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+        count = db.update("quiettime", values, "_id=1", null);
+        Log.v("*** notifyChange() rowId: " + rowId + " url " + url,"");
+        getContext().getContentResolver().notifyChange(url, null);
+        return count;
+    }    
+    
+    
     
     
     @Override

@@ -171,13 +171,12 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
          values.put(QuietTime.Columns.SOUND_ON, prefMgr.getSharedPreferences().getBoolean(NOTIF_SOUND_ON, true));
          values.put(QuietTime.Columns.VIBRATE_ON, prefMgr.getSharedPreferences().getBoolean(NOTIF_VIBRATE_ON, true));
          
-         
-         
-         int update = getActivity().getBaseContext().getContentResolver().update(
-                 QuietTime.Columns.CONTENT_URI, values, null, null);
-       }
 
          
+         int uri = getActivity().getBaseContext().getContentResolver().update(
+                 QuietTime.Columns.CONTENT_URI, values, null, null);
+
+    }
          
          
        
@@ -232,9 +231,6 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
             editor.putInt(START_HOUR, QtStartHour);
             editor.putInt(START_MIN, QtStartMin);
             editor.commit();
-            updateDb();
-            
-            
 
         } else if 
         	(STOP_HOUR.equals(key)) {
@@ -243,9 +239,8 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
                 editor.putInt(STOP_HOUR, QtStopHour);
                 editor.putInt(STOP_MIN, QtStopMin);
                 editor.commit();
-        	
         }
-        
+        updateDb();        
         return true;
     }
     
