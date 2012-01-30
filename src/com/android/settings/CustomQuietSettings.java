@@ -18,9 +18,18 @@ package com.android.settings;
 
 
 
+import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
@@ -32,9 +41,14 @@ import com.android.settings.R;
 
 
 
+
 public class CustomQuietSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
+	private QuietTime mQuietTime;
+	private TranqDatabaseHelper tq;
+	private static final String DATABASE_NAME = "tranquilice.db";
+	
 	private final String Tranq_Settings = "TRANQ_SETTINGS";
 	private final String QUIET_TIME = "quiet_time_on";
 	private final String START_HOUR = "qt_start_hour";
@@ -63,24 +77,50 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
     public int QtStopHour = 0;
     public int QtStopMin = 0;
     
-    
+
     
     /** If there is no setting in the provider, use this. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        
+        
+        tq = new TranqDatabaseHelper(getActivity().getBaseContext());
+        tq.getWritableDatabase();
+        tq.close();
+        
+        
+        
+        mQuietTime = new QuietTime();
+            
+/*         
+  			 ContentValues values = new ContentValues(8);
+            // Set the quiet time initial values            
+            values.put(QuietTime.Columns.ENABLED, false);
+            values.put(QuietTime.Columns.START_HOUR, 21);
+            values.put(QuietTime.Columns.START_MIN, 0);
+            values.put(QuietTime.Columns.STOP_HOUR, 7);
+            values.put(QuietTime.Columns.STOP_MIN, 0);
+            values.put(QuietTime.Columns.LED_ON, true);
+            values.put(QuietTime.Columns.SOUND_ON, true);
+            values.put(QuietTime.Columns.VIBRATE_ON, true);
+            
+            Uri uri = getActivity().getBaseContext().getContentResolver().insert(
+                    QuietTime.Columns.CONTENT_URI, values);
+*/
+            
+        
+        
         prefMgr = getPreferenceManager();
         prefMgr.setSharedPreferencesName("Tranquility_Settings");
         prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         prefMgr.getSharedPreferences();
         
-       
-        
         addPreferencesFromResource(R.xml.custom_quiet_time_settings);
         
         mQuietTimeOn = (CheckBoxPreference) findPreference(QUIET_TIME);
         mQuietTimeOn.setOnPreferenceChangeListener(this);
+        
         mQtStartHour = (Preference) findPreference(START_HOUR);
         mQtStartHour.setOnPreferenceChangeListener(this);
         mQtStartMin = (Preference) findPreference(START_MIN);
@@ -100,9 +140,50 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
 		QtStartMin = prefMgr.getSharedPreferences().getInt(START_MIN, 0);
 		QtStopHour = prefMgr.getSharedPreferences().getInt(STOP_HOUR, 7);
 		QtStopMin = prefMgr.getSharedPreferences().getInt(STOP_HOUR, 0);
+		
+		
+		sharedPref = prefMgr.getSharedPreferences();
+    	SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean(QUIET_TIME, mQuietTime.enabled);
+        editor.putInt(START_HOUR, mQuietTime.starthour);
+        editor.putInt(START_MIN, mQuietTime.startmin);
+        editor.putInt(STOP_HOUR, mQuietTime.stophour);
+        editor.putInt(STOP_MIN, mQuietTime.stopmin);
+        editor.putBoolean(NOTIF_LED_ON, mQuietTime.ledon);
+        editor.putBoolean(NOTIF_SOUND_ON, mQuietTime.soundon);
+        editor.putBoolean(NOTIF_VIBRATE_ON, mQuietTime.vibrateon);
+        editor.commit();
+
     
     }
 
+    
+
+    private void updateDb(){
+		 ContentValues values = new ContentValues(8);
+         // Set the quiet time initial values            
+         values.put(QuietTime.Columns.ENABLED, prefMgr.getSharedPreferences().getBoolean(QUIET_TIME, false));
+         values.put(QuietTime.Columns.START_HOUR, prefMgr.getSharedPreferences().getInt(START_HOUR, 21));
+         values.put(QuietTime.Columns.START_MIN, prefMgr.getSharedPreferences().getInt(START_MIN, 0));
+         values.put(QuietTime.Columns.STOP_HOUR, prefMgr.getSharedPreferences().getInt(STOP_HOUR, 7));
+         values.put(QuietTime.Columns.STOP_MIN, prefMgr.getSharedPreferences().getInt(STOP_MIN, 0));
+         values.put(QuietTime.Columns.LED_ON, prefMgr.getSharedPreferences().getBoolean(NOTIF_LED_ON, true));
+         values.put(QuietTime.Columns.SOUND_ON, prefMgr.getSharedPreferences().getBoolean(NOTIF_SOUND_ON, true));
+         values.put(QuietTime.Columns.VIBRATE_ON, prefMgr.getSharedPreferences().getBoolean(NOTIF_VIBRATE_ON, true));
+         
+         
+         
+         int update = getActivity().getBaseContext().getContentResolver().update(
+                 QuietTime.Columns.CONTENT_URI, values, null, null);
+       }
+
+         
+         
+         
+       
+    
+    
+    
     
     @Override
     public void onResume() {
@@ -151,6 +232,9 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
             editor.putInt(START_HOUR, QtStartHour);
             editor.putInt(START_MIN, QtStartMin);
             editor.commit();
+            updateDb();
+            
+            
 
         } else if 
         	(STOP_HOUR.equals(key)) {
@@ -192,5 +276,8 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
 		}; 
     
     
+		
+		
+		
     
 }
