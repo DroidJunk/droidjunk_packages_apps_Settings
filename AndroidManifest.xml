@@ -1305,6 +1305,9 @@
                 android:resource="@id/sync_settings" />
         </activity>
 
+        
+        
+        
         <activity android:name="Settings$CustomSettingsActivity"
             android:label="Custom Settings">
             <intent-filter>
@@ -1318,7 +1321,14 @@
                 android:resource="@id/custom_settings" />
         </activity>
 
-
+		<provider
+       		android:authorities="com.android.settings"
+       		android:name="TranqProvider" >
+		</provider>
+        
+        
+        
+        
 
         <activity android:name="com.android.settings.accounts.AddAccountSettings"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
