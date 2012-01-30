@@ -50,7 +50,7 @@ public class TranqProvider extends ContentProvider {
         return true;
     }
 
-    @Override
+ /*   @Override
     public Cursor query(Uri url, String[] projectionIn, String selection,
             String[] selectionArgs, String sort) {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
@@ -74,6 +74,25 @@ public class TranqProvider extends ContentProvider {
         Cursor ret = qb.query(db, projectionIn, selection, selectionArgs,
                               null, null, sort);
 
+        if (ret == null) {
+            Log.v("Query: failed","");
+        } else {
+            ret.setNotificationUri(getContext().getContentResolver(), url);
+        }
+
+        return ret;
+    }*/
+    
+    
+    @Override
+    public Cursor query(Uri url, String[] projectionIn, String selection,
+            String[] selectionArgs, String sort) {
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        qb.setTables("quiettime");
+        SQLiteDatabase db = mOpenHelper.getReadableDatabase();
+        Cursor ret = qb.query(db, null, "_id=1", null,
+                              null, null, null);
+        ret.moveToFirst();
         if (ret == null) {
             Log.v("Query: failed","");
         } else {

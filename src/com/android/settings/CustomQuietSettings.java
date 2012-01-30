@@ -92,7 +92,21 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
         
         
         mQuietTime = new QuietTime();
-            
+        Cursor c = getActivity().getBaseContext().getContentResolver().query(
+                QuietTime.Columns.CONTENT_URI, null, null, null, null);
+        
+        mQuietTime.enabled = c.getInt(1) == 1;
+        mQuietTime.starthour  = c.getInt(2);
+        mQuietTime.startmin = c.getInt(3);
+        mQuietTime.stophour = c.getInt(4);
+        mQuietTime.stopmin = c.getInt(5);
+        mQuietTime.ledon = c.getInt(6) == 1;
+        mQuietTime.soundon = c.getInt(7) == 1;
+        mQuietTime.vibrateon = c.getInt(8) == 1;
+        
+        
+        
+        
 /*         
   			 ContentValues values = new ContentValues(8);
             // Set the quiet time initial values            
