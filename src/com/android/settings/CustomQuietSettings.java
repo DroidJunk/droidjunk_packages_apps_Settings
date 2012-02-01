@@ -45,7 +45,6 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
 
-	private final String Tranq_Settings = "TRANQ_SETTINGS";
 	private final String QUIET_TIME = "quiet_time_on";
 	private final String START_HOUR = "qt_start_hour";
 	private final String START_MIN = "qt_start_min";
@@ -80,20 +79,6 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        
-/*   
-        
-
-        
-        mQuietTime.enabled = c.getInt(1) == 1;
-        mQuietTime.starthour  = c.getInt(2);
-        mQuietTime.startmin = c.getInt(3);
-        mQuietTime.stophour = c.getInt(4);
-        mQuietTime.stopmin = c.getInt(5);
-        mQuietTime.ledon = c.getInt(6) == 1;
-        mQuietTime.soundon = c.getInt(7) == 1;
-        mQuietTime.vibrateon = c.getInt(8) == 1;*/
-        
         prefMgr = getPreferenceManager();
         prefMgr.setSharedPreferencesName("Tranquility_Settings");
         prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
@@ -115,13 +100,9 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
 		mQtNotifSoundOn.setOnPreferenceChangeListener(this);
 		mQtNotifVibrateOn = (CheckBoxPreference) findPreference(NOTIF_VIBRATE_ON);
 		mQtNotifVibrateOn.setOnPreferenceChangeListener(this);
-		QtStartHour = prefMgr.getSharedPreferences().getInt(START_HOUR, 21);
-		QtStartMin = prefMgr.getSharedPreferences().getInt(START_MIN, 0);
-		QtStopHour = prefMgr.getSharedPreferences().getInt(STOP_HOUR, 7);
-		QtStopMin = prefMgr.getSharedPreferences().getInt(STOP_HOUR, 0);
 		
 		
-		Cursor cur = Settings.QuietTime.getCurosr(getActivity().getBaseContext().getContentResolver());
+		Cursor cur = Settings.QuietTime.getCursor(getActivity().getBaseContext().getContentResolver());
 		sharedPref = prefMgr.getSharedPreferences();
     	SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean(QUIET_TIME, cur.getInt(1) == 1);
@@ -133,21 +114,12 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
         editor.putBoolean(NOTIF_SOUND_ON, cur.getInt(7) == 1);
         editor.putBoolean(NOTIF_VIBRATE_ON, cur.getInt(8) == 1);
         editor.commit();
-		
-		
-/*		sharedPref = prefMgr.getSharedPreferences();
-    	SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean(QUIET_TIME, mQuietTime.enabled);
-        editor.putInt(START_HOUR, mQuietTime.starthour);
-        editor.putInt(START_MIN, mQuietTime.startmin);
-        editor.putInt(STOP_HOUR, mQuietTime.stophour);
-        editor.putInt(STOP_MIN, mQuietTime.stopmin);
-        editor.putBoolean(NOTIF_LED_ON, mQuietTime.ledon);
-        editor.putBoolean(NOTIF_SOUND_ON, mQuietTime.soundon);
-        editor.putBoolean(NOTIF_VIBRATE_ON, mQuietTime.vibrateon);
-        editor.commit();*/
 
-    
+		QtStartHour = prefMgr.getSharedPreferences().getInt(START_HOUR, 21);
+		QtStartMin = prefMgr.getSharedPreferences().getInt(START_MIN, 0);
+		QtStopHour = prefMgr.getSharedPreferences().getInt(STOP_HOUR, 7);
+		QtStopMin = prefMgr.getSharedPreferences().getInt(STOP_HOUR, 0);
+		
     }
 
     
@@ -164,7 +136,7 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
          values.put(Settings.QuietTime.QT_SOUND_ON, prefMgr.getSharedPreferences().getBoolean(NOTIF_SOUND_ON, true));
          values.put(Settings.QuietTime.QT_VIBRATE_ON, prefMgr.getSharedPreferences().getBoolean(NOTIF_VIBRATE_ON, true));
 
-         Settings.QuietTime.update(getActivity().getBaseContext().getContentResolver(), values);
+         Settings.QuietTime.updateQT(getActivity().getBaseContext().getContentResolver(), values);
          
     }
          
