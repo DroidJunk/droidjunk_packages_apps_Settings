@@ -1308,6 +1308,14 @@
         
         
         
+        
+        
+        
+        
+        
+        
+        <!-- TranquilIce Custom Settings -->
+        
         <activity android:name="Settings$CustomSettingsActivity"
             android:label="Custom Settings">
             <intent-filter>
@@ -1321,10 +1329,9 @@
                 android:resource="@id/custom_settings" />
         </activity>
 
-		<provider
-       		android:authorities="com.android.settings"
-       		android:name="TranqProvider" >
-		</provider>
+
+        
+        
         
         
         
