@@ -118,7 +118,7 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
 		QtStartHour = prefMgr.getSharedPreferences().getInt(START_HOUR, 21);
 		QtStartMin = prefMgr.getSharedPreferences().getInt(START_MIN, 0);
 		QtStopHour = prefMgr.getSharedPreferences().getInt(STOP_HOUR, 7);
-		QtStopMin = prefMgr.getSharedPreferences().getInt(STOP_HOUR, 0);
+		QtStopMin = prefMgr.getSharedPreferences().getInt(STOP_MIN, 0);
 		
     }
 
