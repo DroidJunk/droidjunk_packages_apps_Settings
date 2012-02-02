@@ -22,7 +22,17 @@
     <PreferenceScreen
         android:fragment="com.android.settings.CustomStatusbarSettings"
         android:key="custom_statusbar_settings"
-        android:title="Statusbar Settings" />
+        android:title="Statusbar Clock Settings" />
+
+
+    <PreferenceScreen
+        android:key="custom_meters"
+        android:title="Statusbar Battery Settings">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.tranquilice.helper"
+            android:targetClass="com.tranquilice.helper.Meters" />
+    </PreferenceScreen>
 
 
     <PreferenceScreen
@@ -35,5 +45,6 @@
         android:fragment="com.android.settings.CustomToggleSettings"
         android:key="custom_toggle_settings"
         android:title="Statusbar Toggles Settings" />
+
 
 </PreferenceScreen>
