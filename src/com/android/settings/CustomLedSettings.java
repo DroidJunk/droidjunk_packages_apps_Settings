@@ -37,7 +37,7 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
  
 	private final String Tranq_Settings = "TRANQ_SETTINGS";
-	private final String DEFAULT_LED = "custom_default_led";	
+	private final String DEFAULT_LED_COLOR = "default_led_color";	
 	
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
@@ -56,7 +56,7 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         
         addPreferencesFromResource(R.xml.custom_led_settings);
         
-        mCustomDefaultLed = (Preference) findPreference(DEFAULT_LED);
+        mCustomDefaultLed = (Preference) findPreference(DEFAULT_LED_COLOR);
         mCustomDefaultLed.setOnPreferenceChangeListener(this);
     }
 

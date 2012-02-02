@@ -75,7 +75,7 @@
         android:id="@+id/custom_system_settings"
         android:icon="@drawable/ic_settings_tranquility"
         android:fragment="com.android.settings.CustomSystemSettings"
-        android:title="System Settings" />        
+        android:title="Notification Settings" />        
         
 
     <header android:icon="@drawable/ic_settings_tophat"
