@@ -36,12 +36,6 @@ import android.util.Log;
 public class CustomSystemSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
  
-	//private final String Tranq_Settings = "TRANQ_SETTINGS";
-	//private final String DEFAULT_LED = "custom_default_led";	
-	
-	//private PreferenceManager prefMgr;
-	//private SharedPreferences sharedPref;
-	//private Preference mCustomDefaultLed;
 	
 	
     /** If there is no setting in the provider, use this. */
@@ -49,29 +43,19 @@ public class CustomSystemSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //prefMgr = getPreferenceManager();
-        //prefMgr.setSharedPreferencesName("Tranquility_Settings");
-        //prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
-        //prefMgr.getSharedPreferences();
-        
         addPreferencesFromResource(R.xml.custom_system_settings);
-        
-        //mCustomDefaultLed = (Preference) findPreference(DEFAULT_LED);
-        //mCustomDefaultLed.setOnPreferenceChangeListener(this);
     }
 
     
     @Override
     public void onResume() {
         super.onResume();
-          
     }
 
     
     @Override
     public void onPause() {
         super.onPause();
-
     }
 
  

@@ -3820,6 +3820,9 @@ found in the list of installed apps.</string>
     <string name="toolbox_settings">Tranquility IceBox</string>		
 
 
+    <string name="led_on_ms">Led On Seconds (10ths)</string>
+    <string name="led_off_ms">Led Off Seconds (10ths)</string>
+    
 	<!-- ***************************************************************************************** -->
 	<!-- ***************************************************************************************** -->
 

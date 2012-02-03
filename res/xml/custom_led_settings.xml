@@ -26,6 +26,17 @@
 		android:defaultValue="#ff3F9BBF" 
 		alphaSlider="false" /> 
 
+	<Preference	android:layout="?android:attr/preferenceLayoutChild"
+   		android:key="default_led_on_ms"
+		android:title="Led On Seconds (in 10ths)"
+		android:summary="Number of seconds led is on"
+		android:defaultValue="10" />	
+		
+	<Preference	android:layout="?android:attr/preferenceLayoutChild"
+   		android:key="default_led_off_ms"
+		android:title="Led Off Seconds (in 10ths)"
+		android:summary="Number of seconds led is off"
+		android:defaultValue="10" />	
 
 
 </PreferenceScreen>
