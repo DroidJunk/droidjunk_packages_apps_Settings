@@ -45,14 +45,17 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 	private final String DEFAULT_LED_COLOR = "default_led_color";	
 	private final String DEFAULT_LED_ON_MS = "default_led_on_ms";
 	private final String DEFAULT_LED_OFF_MS = "default_led_off_ms";
+	private final String PULSE_LED_SCREEN_ON = "pulse_led_screen_on";
 	
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
 	private Preference mDefaultLedColor;
 	private Preference mDefaultLedOnMs;
 	private Preference mDefaultLedOffMs;
-    private static int DefaultLedOnMs;
-    private static int DefaultLedOffMs;
+	private CheckBoxPreference mPulseLedScreenOn;
+    private int DefaultLedOnMs;
+    private int DefaultLedOffMs;
+    private Boolean PulseLedScreenOn;
 	
 	
     /** If there is no setting in the provider, use this. */
@@ -73,10 +76,13 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         mDefaultLedOnMs.setOnPreferenceChangeListener(this);
         mDefaultLedOffMs = (Preference) findPreference(DEFAULT_LED_OFF_MS);
         mDefaultLedOffMs.setOnPreferenceChangeListener(this);
+        mPulseLedScreenOn = (CheckBoxPreference) findPreference(PULSE_LED_SCREEN_ON);
+        mPulseLedScreenOn.setOnPreferenceChangeListener(this);
         
 		Cursor cur = Settings.NotifOptions.getDefaultLed(getActivity().getBaseContext().getContentResolver());
 		sharedPref = prefMgr.getSharedPreferences();
     	SharedPreferences.Editor editor = sharedPref.edit();
+    	editor.putBoolean(PULSE_LED_SCREEN_ON, cur.getString(2).equals("PulseScreenOn=True"));
         editor.putInt(DEFAULT_LED_COLOR, cur.getInt(3));
         editor.putInt(DEFAULT_LED_ON_MS, cur.getInt(4));
         editor.putInt(DEFAULT_LED_OFF_MS, cur.getInt(5));
@@ -84,18 +90,20 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 
         DefaultLedOnMs = prefMgr.getSharedPreferences().getInt(DEFAULT_LED_ON_MS, 3);
         DefaultLedOffMs = prefMgr.getSharedPreferences().getInt(DEFAULT_LED_OFF_MS, 3);
+        PulseLedScreenOn = prefMgr.getSharedPreferences().getBoolean(PULSE_LED_SCREEN_ON, false);
 		
         
     }
 
     private void updateDb(){
- 		 ContentValues values = new ContentValues(3);
-          // Write the default led option values to the database           
-          values.put(Settings.NotifOptions.LED_COLOR, prefMgr.getSharedPreferences().getInt(DEFAULT_LED_COLOR, -1));
-          values.put(Settings.NotifOptions.LED_ON_MS, DefaultLedOnMs);
-          values.put(Settings.NotifOptions.LED_OFF_MS, DefaultLedOffMs);
+ 		 ContentValues values = new ContentValues(4);
+         // Write the default led option values to the database     
+ 		 values.put(Settings.NotifOptions.PKG_NAME, "PulseScreenOn=" + PulseLedScreenOn.toString());
+ 		 values.put(Settings.NotifOptions.LED_COLOR, prefMgr.getSharedPreferences().getInt(DEFAULT_LED_COLOR, -1));
+         values.put(Settings.NotifOptions.LED_ON_MS, DefaultLedOnMs);
+         values.put(Settings.NotifOptions.LED_OFF_MS, DefaultLedOffMs);
           
-          Settings.NotifOptions.updateDefaultLed(getActivity().getBaseContext().getContentResolver(), values);
+         Settings.NotifOptions.updateDefaultLed(getActivity().getBaseContext().getContentResolver(), values);
      }
     
     
@@ -155,6 +163,13 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
           	sharedPref = prefMgr.getSharedPreferences();
            	SharedPreferences.Editor editor = sharedPref.edit();
            	editor.putInt(DEFAULT_LED_OFF_MS, DefaultLedOffMs);
+            editor.commit();
+            
+        } else if (PULSE_LED_SCREEN_ON.equals(key)) {
+          	sharedPref = prefMgr.getSharedPreferences();
+           	SharedPreferences.Editor editor = sharedPref.edit();
+           	editor.putBoolean(DEFAULT_LED_OFF_MS, (Boolean) objValue);
+           	PulseLedScreenOn = (Boolean) objValue;
             editor.commit();
         }
      	

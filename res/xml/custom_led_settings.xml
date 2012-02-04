@@ -18,6 +18,12 @@
         android:title="Led Settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+	<CheckBoxPreference 
+		android:key="pulse_led_screen_on"
+		android:summaryOn="Pulse led with screen on"
+		android:summaryOff="Do not pulse led with screen on"
+		android:title="Pulse Led with screen on" 
+		android:defaultValue="false"	/>
 
 	<com.android.settings.ColorPickerPreference 
 		android:key="default_led_color"
