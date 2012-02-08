@@ -25,6 +25,13 @@
 		android:title="Show Toggles" 
 		android:defaultValue="true"	/>
 
+    <PreferenceScreen
+    	android:layout="?android:attr/preferenceLayoutChild"
+		android:dependency="toggles_show_toggles"
+        android:fragment="com.android.settings.CustomToggleShowHideSettings"
+        android:key="custom_toggle_show_hide_settings"
+        android:title="Show or Hide Toggles" />
+
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
