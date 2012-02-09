@@ -73,7 +73,7 @@
         
     <header
         android:id="@+id/custom_system_settings"
-        android:icon="@drawable/ic_settings_tranquility"
+        android:icon="@drawable/ic_settings_notification"
         android:fragment="com.android.settings.CustomSystemSettings"
         android:title="Notification Settings" />        
         
@@ -91,6 +91,14 @@
         <intent
                 android:action="android.intent.action.MAIN"
                 android:targetClass="com.tranquilice.helper.Lockscreen"
+                android:targetPackage="com.tranquilice.helper" />
+    </header>
+
+    <header android:icon="@drawable/ic_settings_navbar"
+            android:title="Nav Button Option">
+        <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="com.tranquilice.helper.NavBar"
                 android:targetPackage="com.tranquilice.helper" />
     </header>
 
