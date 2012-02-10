@@ -94,14 +94,6 @@
                 android:targetPackage="com.tranquilice.helper" />
     </header>
 
-    <header android:icon="@drawable/ic_settings_battery"
-            android:title="Battery Meter Options">
-        <intent
-                android:action="android.intent.action.MAIN"
-                android:targetClass="com.tranquilice.helper.Meters"
-                android:targetPackage="com.tranquilice.helper" />
-    </header>
-
     <header android:icon="@drawable/empty_icon" 
             android:title="Change Log">
         <intent
