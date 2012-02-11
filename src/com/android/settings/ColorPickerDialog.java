@@ -18,6 +18,7 @@ package com.android.settings;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -39,6 +40,7 @@ public class ColorPickerDialog
     private ColorPickerPanelView mOldColor;
     private ColorPickerPanelView mNewColor;
 
+    private String oldText;
     private EditText mHex;
     private Button mSetButton;
     private Button mIcsColor;
@@ -98,8 +100,15 @@ public class ColorPickerDialog
 			
 			@Override
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
-				int c = Integer.parseInt(mHex.getText().toString());
-		        mNewColor.setColor(c);
+		        try {
+		        	int c = Color.parseColor(mHex.getText().toString()); 
+		        	
+		        	mNewColor.setColor(c);
+		        } catch (Exception e) {
+		        	return false;
+		        }
+				
+		        
 				return false;
 			}
 		});
