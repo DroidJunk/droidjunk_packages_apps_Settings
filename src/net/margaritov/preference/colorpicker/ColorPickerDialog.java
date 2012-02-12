@@ -18,8 +18,10 @@ package net.margaritov.preference.colorpicker;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -95,6 +97,22 @@ public class ColorPickerDialog
         mOldColor.setColor(color);
         mColorPicker.setColor(color, true);
         mHex.setText(ColorPickerPreference.convertToARGB(color));
+        mHex.setOnKeyListener(new View.OnKeyListener() {
+
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+		        try {
+		        	int c = Color.parseColor(mHex.getText().toString()); 
+
+		        	mNewColor.setColor(c);
+		        } catch (Exception e) {
+		        	return false;
+		        }
+
+
+				return false;
+			}
+		});
         mSetButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
