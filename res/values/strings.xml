@@ -3806,8 +3806,14 @@ found in the list of installed apps.</string>
     <string name="custom_pulldown_settings_title">Statusbar Pulldown Settings</string>
     <string name="custom_toggle_settings_title">Statusbar Toggles Settings</string>
     
+   <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
-    <string name="press_color_to_apply">Press on Color to apply</string>    
+    <string name="press_color_to_apply">Press on Color to apply</string>   
+    <string name="arrow_right">→</string> 
+    <string name="arrow_down">↓</string>
+    <string name="hex">Hex:</string>
+    <string name="hex_hint">#FF000000</string>
+    <string name="ics_color">Stock</string>
 
     <string name="numpicker_ok">Set</string>
     <string name="carrier_size">Size of the Carrier text</string>

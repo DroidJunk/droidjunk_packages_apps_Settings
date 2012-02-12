@@ -41,7 +41,8 @@
 		android:title="Toggle Location Top" 
 		android:defaultValue="true"	/>
 
-	<com.android.settings.ColorPickerPreference 
+
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
 		android:key="toggle_color"
@@ -59,7 +60,7 @@
 		android:title="Toggle Indicators" 
 		android:defaultValue="false"	/>
 
-	<com.android.settings.ColorPickerPreference 
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggle_show_indicator"
 		android:key="toggle_ind_on_color"
@@ -68,7 +69,7 @@
 		android:defaultValue="#ffffbb33" 
 		alphaSlider="false" /> 
 
-	<com.android.settings.ColorPickerPreference
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:dependency="toggle_show_indicator"
 		android:key="toggle_ind_off_color"
@@ -87,7 +88,7 @@
 		android:title="Toggle Text" 
 		android:defaultValue="false" />
 
-	<com.android.settings.ColorPickerPreference 
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggle_show_text"
 		android:key="toggle_text_on_color"
@@ -96,7 +97,7 @@
 		android:defaultValue="#ffffbb33" 
 		alphaSlider="false" />
 
-	<com.android.settings.ColorPickerPreference 
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggle_show_text"
 		android:key="toggle_text_off_color"
@@ -114,7 +115,7 @@
 		android:title="Toggle Dividers" 
 		android:defaultValue="true"	/>
 
-	<com.android.settings.ColorPickerPreference 
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggle_show_divider"
 		android:key="toggle_divider_color"
