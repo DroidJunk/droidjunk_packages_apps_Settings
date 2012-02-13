@@ -54,12 +54,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     private static final String KEY_SYSTEM_UPDATE_SETTINGS = "system_update_settings";
     private static final String PROPERTY_URL_SAFETYLEGAL = "ro.url.safetylegal";
     private static final String KEY_KERNEL_VERSION = "kernel_version";
-    private static final String KEY_BUILD_NUMBER = "build_number";
+//    private static final String KEY_BUILD_NUMBER = "build_number";
     private static final String KEY_DEVICE_MODEL = "device_model";
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
     private static final String KEY_TRANQ_VERSION = "tranq_version";
+    private static final String KEY_ROM_DATE = "build_date";
+
 
     long[] mHits = new long[3];
 
@@ -73,9 +75,10 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         findPreference(KEY_FIRMWARE_VERSION).setEnabled(true);
         setValueSummary(KEY_BASEBAND_VERSION, "gsm.version.baseband");
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL + getMsvSuffix());
-        setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
+//        setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_KERNEL_VERSION).setSummary(getFormattedKernelVersion());
 	setValueSummary(KEY_TRANQ_VERSION, "ro.tranqversion");
+        setValueSummary(KEY_ROM_DATE, "ro.build.date");
 
 
         // Remove Safety information preference if PROPERTY_URL_SAFETYLEGAL is not set
