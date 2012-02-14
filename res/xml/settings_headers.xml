@@ -102,15 +102,6 @@
                 android:targetPackage="com.tranquilice.helper" />
     </header>
 
-    <header android:icon="@drawable/empty_icon" 
-            android:title="Change Log">
-        <intent
-                android:action="android.intent.action.MAIN"
-                android:targetClass="com.tranquilice.toolbox.About"
-                android:targetPackage="com.tranquilice.toolbox" />
-    </header>
-
-
 	<!-- ***************************************************************************************** -->
 	<!-- ***************************************************************************************** -->
 
