@@ -28,6 +28,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+
 public class ColorPickerDialog
         extends
         Dialog
@@ -40,7 +41,6 @@ public class ColorPickerDialog
     private ColorPickerPanelView mOldColor;
     private ColorPickerPanelView mNewColor;
 
-    private String oldText;
     private EditText mHex;
     private Button mSetButton;
     private Button mIcsColor;
@@ -112,9 +112,6 @@ public class ColorPickerDialog
 				return false;
 			}
 		});
-		
-		
-		
         mSetButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -124,7 +121,7 @@ public class ColorPickerDialog
                     if (mListener != null) {
                         mListener.onColorChanged(mNewColor.getColor());
                     }
-               } catch (Exception e) {
+                } catch (Exception e) {
                 }
                 dismiss(); 
             }
