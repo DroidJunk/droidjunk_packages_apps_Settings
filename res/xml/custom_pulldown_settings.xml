@@ -27,9 +27,9 @@
 		android:title="Show Carrier" 
 		android:defaultValue="true"	/>
    				
-	<com.android.settings.ColorPickerPreference 
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
-	    android:dependency="show_carrier"
+	        android:dependency="show_carrier"
 		android:key="carrier_color"
 		android:title="Carrier Text Color"
 		android:summary="Color for the carrier text"
@@ -54,15 +54,15 @@
 
 	<EditTextPreference
 		android:layout="?android:attr/preferenceLayoutChild"
-	    android:dependency="carrier_custom"
+	        android:dependency="carrier_custom"
 		android:key="carrier_custom_text"
 		android:title="Custom Carrier Name" 
 		android:summary="Change the text for the carrier"
 		android:dialogTitle="Carrier Text"
 		android:dialogMessage="Enter text"	
-		android:defaultValue="Tranquil Ice" />
+		android:defaultValue="T r a n Q u i l    I c e" />
 
-	<com.android.settings.ColorPickerPreference 
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
 		android:key="date_color"
 		android:title="Date Color"
 		android:summary="Color for statusbar date"
