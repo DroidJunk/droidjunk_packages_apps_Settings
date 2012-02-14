@@ -21,6 +21,18 @@
     <string name="no">"Cancel"</string>
     <string name="set">"Set"</string>
 
+    <!--  *** Changelog *** -->
+    <string name="changelog_full_title">Change Log</string>
+    <string name="changelog_title">What\'s New</string>
+    <string name="changelog_ok_button">OK</string>
+    <string name="last">0</string>
+
+    <!--  *** About *** -->
+    <string name="rom_title_version">TranQuil Ice v 7</string>
+    <string name="rom_about_description">This AOSP Rom is created by P3droid and Droidjunk to be our ideal firmware for our Nexus.</string>
+    <string name="rom_about_location">This Rom is released only on MyDroidWorld.com</string>
+    <string name="rom_about_feedback">Please visit the thread to post feedback</string> 
+
 	<string name="title_alt_lockscreen_targets">Lockscreen Settings</string>
 	<string name="summary_alt_lockscreen_targets">Checked = Talk, Blank = SMS </string>	
 
@@ -1710,6 +1722,10 @@
     <string name="system_update_settings_list_item_title">System updates</string>
     <!-- About phone screen, list item summary.  Takes the user to the screen for seeing and installing system updates. -->
     <string name="system_update_settings_list_item_summary">""</string>
+
+    <!-- About phone screen, build date of ROM -->
+    <string name="build_date">Build date</string>
+    <string name="build_date_default">Sun Jan 1 00:00:00 MST 2012</string>
 
     <!-- About phone screen, status item label -->
     <string name="firmware_version">Android version</string>

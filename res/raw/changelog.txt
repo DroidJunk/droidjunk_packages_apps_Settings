@@ -1,0 +1,177 @@
+<html>
+  <head>
+    <style type='text/css'>
+      a            { color:#a0a0e0 }
+      div.title    { 
+          color:#0099cc; 
+          font-size:1.2em; 
+          font-weight:bold; 
+          margin-top:1em; 
+          margin-bottom:0.5em; 
+          text-align:center }
+      div.subtitle { 
+          color:#000000; 
+          font-size:0.8em; 
+          margin-bottom:1em; 
+          text-align:center }
+      div.freetext { color:#0099cc }
+      div.list     { color:#000000 }
+    </style>
+  </head>
+  <body>
+$ 7.0n
+  % Version 7.0n
+  _ 02-12-2012
+	! Lockscreen
+	* Lockscreen follows phone orientation settings (Turn of rotation to turn off lockscreen rotation)
+	! Battery Meters
+	* Added additional meter options.
+	! About Screen
+	* Revamped layout.
+	! Changelog
+	* Moved to the About Phone menu.	
+$ 7.0m
+  % Version 7.0m
+  _ 02-10-2012
+	! Lockscreen
+	* Redesigned layout of lockscreens
+$ 7.0l
+  % Version 7.0l
+  _ 02-09-2012
+	! Rotation
+	* Screen now rotates 360 Degrees
+	! Lockscreen
+	* Lockscreen Landscape mode enabled 
+$ 7.0k
+  % Version 7.0k
+  _ 02-08-2012
+	! Custom Toggles
+	* Now allow individual on/off of toggles. 
+	! Color Overlay Nav Buttons
+	* Color overlay for navigation buttons.
+$ 7.0j
+  % Version 7.0j
+  _ 02-06-2012
+	! Multiple Problems
+	* Fixed SetupWizard, Email, and a few other problems.  
+	! Clock
+	* Clock now stays off when set to off when unlocking.  
+$ 7.0i
+  % Version 7.0i
+  _ 02-04-2012
+	! Notification settings
+	* Quiet Time (Turn on/off notification led, sounds and vibration for a time period)
+    * Pulse Led with screen on
+
+    !  Default Led 
+    * (Set default led color and pulse rate)
+    * This setting is used if the flag DEFAULT_LIGHTS is set.  Some apps don't use it and instead set the color and pulse rates.
+
+	! Window and Transition animations
+	* .25x to Window and Transition animations (Developer Options)
+
+	! New Colorpicker
+	* All colorpickers now have hex values
+
+	! Pulldown Bar
+	* Increase the size of the "Closehandle" on the pulldown (possible fix for pulldown hanging)
+
+	! Carrier label
+	* Decreased the size of the "Carrier" bottom padding for looks 
+
+	! Fixes:
+	* Number picker dialog matches other dialog option dialogs (Dark)
+	* Make settings match defaults
+	* Colorpicker "Set" button applies color and closes dialog
+	* Battery bar shows/hides when set
+$ 7.0h
+  % Version 7.0h
+  _ 02-03-2012
+       	! Facebook
+	    * Fixed Facebook contact sync
+$ 7.0g
+  % Version 7.0g
+  _ 01-29-2012
+       	! Email
+	    * Added "Mark all read" button
+       	! Battery Meters Menu
+	    * Added additional meter "Animated"
+$ 7.0f
+  % Version 7.0f
+  _ 01-28-2012
+       	! Battery Meters Menu
+	    * Easier selection of meters
+	    * Turn off meters
+$ 7.0e
+  % Version 7.0e
+  _ 01-27-2012
+       	! Battery Meters Menu
+	    * Select between ICS and Tranquility Meters
+   	    * Added Miui battery bar
+$ 7.0d
+  % Version 7.0d
+  _ 01-24-2012
+       	! Pulldown Toggles
+		    * Fixed 4G toggle showing on bottom
+		    * Fixed settings persisting after reboot
+      	! Email
+		    * Fixed Email sound/pulse notification
+		! Custom Settings
+   			 * Added Change log to settings menu
+   			 * Added about
+ 		! Toolbox
+			* <b>Added themes from BignDad</b>
+			* Updated Nova Launcher beta13 (must redownload launchers)
+			* Update Trebechet Launcher (must redownload launchers)
+			* Fixed blue plasma boot animation (must redownload animations)
+$ 7.0
+  % Version 7.0c
+  _ 01-21-2012   			 
+   		! Mms.apk
+			* Customize led color and blink rate
+		! Email.apk
+			* Customize led & blink rate for each email account 			 
+$ 7.0
+  % Version 7.0
+  _ 01-21-2012
+    	! Pulldown Toggles
+		    * settings 
+		    * 4g/3g 
+		    * wifi
+		    * gps
+		    * bluetooth
+		    * sound
+		    * airplane
+		    * brightness
+		    * rotate
+		    * sync
+		    * data.			
+		! Toggle options 
+			* Colors
+			* Show/Hide - text, indicators and dividers
+			* Turn toggles on/off
+			* Locate toggles on top or bottom			
+		! Statusbar
+			* Show/Hide clock
+			* Show/Hide am pm
+			* Clock color
+			* Clock size
+		! Statusbar Pulldown
+			* Show/Hide carrier
+			* Carrier color
+			* Carrier size
+			* Define custom carrier name
+			* Date color
+			* Press date to go to settings
+		! Lockscreen
+			* Select from stock, talk, sms on lockscreen
+		! Toolbox
+			* Switch launcher
+			* Switch boot animation
+			* Create fastboot or odin backups
+			* Create recovery flashable zip file
+
+
+$ END_OF_CHANGE_LOG
+  </body>
+</html>

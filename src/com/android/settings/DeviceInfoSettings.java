@@ -29,6 +29,7 @@ import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import com.android.settings.ChangeLog;
 import android.util.Log;
 
 import java.io.BufferedReader;

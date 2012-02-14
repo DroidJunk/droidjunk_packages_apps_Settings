@@ -1405,5 +1405,8 @@
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/appwidget_info" />
         </receiver>
 
+   		<activity android:name=".About" android:label="Change Log"
+		    android:screenOrientation="portrait" />	  
+
     </application>
 </manifest>
