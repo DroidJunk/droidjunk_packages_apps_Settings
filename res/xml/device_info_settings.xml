@@ -82,7 +82,7 @@
 
 
         <PreferenceScreen android:key="changelog"
-                android:title="@string/changelog_full_title">
+                android:title="@string/changelog_about_title">
             <intent android:action="android.intent.action.MAIN"
                     android:targetPackage="com.android.settings"
                     android:targetClass="com.android.settings.About" />

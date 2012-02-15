@@ -23,6 +23,7 @@
 
     <!--  *** Changelog *** -->
     <string name="changelog_full_title">Change Log</string>
+    <string name="changelog_about_title">Change log</string>
     <string name="changelog_title">What\'s New</string>
     <string name="changelog_ok_button">OK</string>
     <string name="last">0</string>
