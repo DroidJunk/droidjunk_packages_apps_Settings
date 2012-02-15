@@ -50,10 +50,20 @@
 		android:summary="Color for toggles"
 		android:defaultValue="#ff000000" 
 		alphaSlider="false" /> 
+		
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:dependency="toggles_show_toggles"
+		android:key="toggles_custom_icon_colors"
+		android:summaryOn="Toggle icons use custom colors"
+		android:summaryOff="Toggle icons do not use custom colors"
+		android:title="Custom Icon Colors" 
+		android:defaultValue="false"	/>		
+		
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
-		android:dependency="toggles_show_toggles"
+		android:dependency="toggles_custom_icon_colors"
 		android:key="toggles_icon_on_color"
 		android:title="Toggle Icon On Color"
 		android:summary="Color for toggle icons when on"
@@ -62,7 +72,7 @@
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
-		android:dependency="toggles_show_toggles"
+		android:dependency="toggles_custom_icon_colors"
 		android:key="toggles_icon_inter_color"
 		android:title="Toggle Icon Intermediate Color"
 		android:summary="Color for toggle icons intermediate"
@@ -71,7 +81,7 @@
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
-		android:dependency="toggles_show_toggles"
+		android:dependency="toggles_custom_icon_colors"
 		android:key="toggles_icon_off_color"
 		android:title="Toggle Icon Off Color"
 		android:summary="Color for toggle icons when off"

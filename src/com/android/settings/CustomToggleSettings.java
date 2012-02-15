@@ -42,6 +42,7 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
 	private final String TOGGLES_ON = "toggles_show_toggles";
 	private final String TOGGLES_TOP = "toggles_top";
 	private final String TOGGLE_COLOR = "toggle_color";
+	private final String TOGGLE_CUSTOM_ICON_COLORS = "toggles_custom_icon_colors";
 	private final String TOGGLE_ICON_ON_COLOR = "toggles_icon_on_color";
 	private final String TOGGLE_ICON_INTER_COLOR = "toggles_icon_inter_color";
 	private final String TOGGLE_ICON_OFF_COLOR = "toggles_icon_off_color";
@@ -59,6 +60,7 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
 	private CheckBoxPreference mShowToggles;
 	private CheckBoxPreference mTogglesTop;
 	private Preference mToggleColor;
+	private CheckBoxPreference mToggleCustomIconColors;
 	private Preference mToggleIconOnColor;
 	private Preference mToggleIconInterColor;
 	private Preference mToggleIconOffColor;
@@ -90,6 +92,8 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
     	mTogglesTop.setOnPreferenceChangeListener(this);
     	mToggleColor = (Preference) findPreference(TOGGLE_COLOR);
     	mToggleColor.setOnPreferenceChangeListener(this);
+    	mToggleCustomIconColors = (CheckBoxPreference) findPreference(TOGGLE_CUSTOM_ICON_COLORS);
+    	mToggleCustomIconColors.setOnPreferenceChangeListener(this);
     	mToggleIconOnColor = (Preference) findPreference(TOGGLE_ICON_ON_COLOR);
     	mToggleIconOnColor.setOnPreferenceChangeListener(this);
     	mToggleIconInterColor = (Preference) findPreference(TOGGLE_ICON_INTER_COLOR);
@@ -168,6 +172,13 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
         	Intent i = new Intent();
         	i.setAction(Tranq_Settings );
        	   	i.putExtra("ToggleColor", (Integer) objValue);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+
+    	} else if (TOGGLE_CUSTOM_ICON_COLORS.equals(key)) {
+        	Intent i = new Intent();
+        	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ToggleCustomIconColors", (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        
