@@ -27,7 +27,7 @@
 		android:title="Show Carrier" 
 		android:defaultValue="true"	/>
    				
-	<net.margaritov.preference.colorpicker.ColorPickerPreference
+	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 	        android:dependency="show_carrier"
 		android:key="carrier_color"
@@ -62,7 +62,7 @@
 		android:dialogMessage="Enter text"	
 		android:defaultValue="T r a n Q u i l    I c e" />
 
-	<net.margaritov.preference.colorpicker.ColorPickerPreference
+	<com.android.settings.ColorPickerPreference
 		android:key="date_color"
 		android:title="Date Color"
 		android:summary="Color for statusbar date"

@@ -25,7 +25,7 @@
 		android:title="Pulse Led with screen on" 
 		android:defaultValue="false"	/>
 
-	<net.margaritov.preference.colorpicker.ColorPickerPreference
+	<com.android.settings.ColorPickerPreference
 		android:key="default_led_color"
 		android:title="Default Led Color"
 		android:summary="Color for default led"

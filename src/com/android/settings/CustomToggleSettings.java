@@ -42,6 +42,9 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
 	private final String TOGGLES_ON = "toggles_show_toggles";
 	private final String TOGGLES_TOP = "toggles_top";
 	private final String TOGGLE_COLOR = "toggle_color";
+	private final String TOGGLE_ICON_ON_COLOR = "toggles_icon_on_color";
+	private final String TOGGLE_ICON_INTER_COLOR = "toggles_icon_inter_color";
+	private final String TOGGLE_ICON_OFF_COLOR = "toggles_icon_off_color";
 	private final String TOGGLE_SHOW_INDICATOR = "toggle_show_indicator";
 	private final String TOGGLE_IND_ON_COLOR = "toggle_ind_on_color";
 	private final String TOGGLE_IND_OFF_COLOR = "toggle_ind_off_color";
@@ -56,6 +59,9 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
 	private CheckBoxPreference mShowToggles;
 	private CheckBoxPreference mTogglesTop;
 	private Preference mToggleColor;
+	private Preference mToggleIconOnColor;
+	private Preference mToggleIconInterColor;
+	private Preference mToggleIconOffColor;
 	private CheckBoxPreference mShowIndicator;
     private Preference mToggleIndOnColor;
     private Preference mToggleIndOffColor;
@@ -84,6 +90,12 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
     	mTogglesTop.setOnPreferenceChangeListener(this);
     	mToggleColor = (Preference) findPreference(TOGGLE_COLOR);
     	mToggleColor.setOnPreferenceChangeListener(this);
+    	mToggleIconOnColor = (Preference) findPreference(TOGGLE_ICON_ON_COLOR);
+    	mToggleIconOnColor.setOnPreferenceChangeListener(this);
+    	mToggleIconInterColor = (Preference) findPreference(TOGGLE_ICON_INTER_COLOR);
+    	mToggleIconInterColor.setOnPreferenceChangeListener(this);
+    	mToggleIconOffColor = (Preference) findPreference(TOGGLE_ICON_OFF_COLOR);
+    	mToggleIconOffColor.setOnPreferenceChangeListener(this);
     	mShowIndicator = (CheckBoxPreference) findPreference(TOGGLE_SHOW_INDICATOR);
     	mShowIndicator.setOnPreferenceChangeListener(this);
         mToggleIndOnColor = (Preference) findPreference(TOGGLE_IND_ON_COLOR);
@@ -159,6 +171,27 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        
+    	} else if (TOGGLE_ICON_ON_COLOR.equals(key)) {
+        	Intent i = new Intent();
+        	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ToggleIconOnColor", (Integer) objValue);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+
+    	} else if (TOGGLE_ICON_INTER_COLOR.equals(key)) {
+        	Intent i = new Intent();
+        	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ToggleIconInterColor", (Integer) objValue);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+       	   	
+    	} else if (TOGGLE_ICON_OFF_COLOR.equals(key)) {
+        	Intent i = new Intent();
+        	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ToggleIconOffColor", (Integer) objValue);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;       	   	
+       	   	
         } else if (TOGGLE_SHOW_INDICATOR.equals(key)) {
         	Intent i = new Intent();
             i.setAction(Tranq_Settings );
