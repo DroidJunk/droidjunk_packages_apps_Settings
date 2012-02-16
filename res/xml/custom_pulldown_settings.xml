@@ -18,14 +18,22 @@
         android:title="@string/statusbar_settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <PreferenceCategory
+		android:title="@string/pref_carrier_on"
+		android:key="carrier_on">
 
-
-	<CheckBoxPreference 
+	<CheckBoxPreference
+		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="show_carrier"
 		android:summaryOn="Show the carrier in the pulldown"
 		android:summaryOff="Do not show the carrier in the pulldown"
 		android:title="Show Carrier" 
 		android:defaultValue="true"	/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+		android:title="@string/pref_carrier_settings"
+		android:key="carrier_settings">
    				
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
@@ -43,7 +51,12 @@
 		android:title="Carrier Text Size"
 		android:summary="Size of the carrier text"
 		android:defaultValue="15" />		 
+    </PreferenceCategory>
   
+    <PreferenceCategory
+		android:title="@string/pref_carrier_custom"
+		android:key="carrier_settings_custom">
+
    	<CheckBoxPreference 
    	    android:dependency="show_carrier"
 		android:key="carrier_custom"
@@ -61,6 +74,11 @@
 		android:dialogTitle="Carrier Text"
 		android:dialogMessage="Enter text"	
 		android:defaultValue="T r a n Q u i l    I c e" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+		android:title="@string/pref_date_settings"
+		android:key="date_settings">
 
 	<com.android.settings.ColorPickerPreference
 		android:key="date_color"
@@ -69,6 +87,7 @@
 		android:defaultValue="#ff3F9BBF" 
 		alphaSlider="false" /> 			
 
+    </PreferenceCategory>
 
 </PreferenceScreen>
 
