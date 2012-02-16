@@ -52,5 +52,5 @@
 		android:title="Clock Size"
 		android:summary="Size of the clock"
 		android:defaultValue="17" />		
-   			
+
 </PreferenceScreen>

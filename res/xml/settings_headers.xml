@@ -64,7 +64,9 @@
     <!-- CUSTOMIZE -->
     <header android:title="Customize" />
 
+
     <!-- Most Tranquility Custom Settings -->
+
     <header
         android:id="@+id/custom_settings"
         android:icon="@drawable/ic_settings_tranquility"
@@ -85,7 +87,6 @@
                 android:targetClass="com.tranquilice.toolbox.MainMenu"
                 android:targetPackage="com.tranquilice.toolbox" />
     </header>
-
     <header android:icon="@drawable/ic_settings_alt_lockscreen"
             android:title="Lockscreen Options">
         <intent
