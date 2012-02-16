@@ -23,6 +23,7 @@
 
     <!--  *** Changelog *** -->
     <string name="changelog_full_title">Change Log</string>
+    <string name="changelog_about_title">Change log</string>
     <string name="changelog_title">What\'s New</string>
     <string name="changelog_ok_button">OK</string>
     <string name="last">0</string>
@@ -3853,14 +3854,19 @@ found in the list of installed apps.</string>
 
     <string name="led_on_ms">Led On Seconds (10ths)</string>
     <string name="led_off_ms">Led Off Seconds (10ths)</string>
+
+    <string name="pref_toggle_div">Toggle Divider Settings</string>
+    <string name="pref_toggle_ind">Toggle Indicator Settings</string>
+    <string name="pref_toggle_txt">Toggle Text Settings</string>
+    <string name="pref_toggle_color">Toggle Color Settings</string>
+    <string name="pref_toggles_on">Toggles On/Off</string>
+
+    <string name="pref_carrier_on">Carrier Text On/Off</string>
+    <string name="pref_carrier_settings">Carrier Settings</string>
+    <string name="pref_carrier_custom">Custom Carrier Settings</string>
+    <string name="pref_date_settings">Pulldown Date Settings</string>
     
 	<!-- ***************************************************************************************** -->
 	<!-- ***************************************************************************************** -->
-
-
-
-
-
-
 
 </resources>

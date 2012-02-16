@@ -19,6 +19,25 @@
     </style>
   </head>
   <body>
+$ 7.0p
+  % Version 7.0p
+  _ 02-15-2012
+	! Lockscreen
+	* Changed lockscreen for TXT/Talk
+	! Tether
+	* Moved tether to the main Settings menu
+	! Custom Settings
+	* Redesigned layout of custom menus
+	! Toggle Tinting (coloring)
+	* Added option to customize color of toggle icons
+	* Added setting to turn on/off toggle tinting
+$ 7.0o
+  % Version 7.0o
+  _ 02-14-2012
+	! Lockscreen
+	* Added 5 target lockscreen with Phone.
+	! Changelog
+	* Moved to the About Phone menu.
 $ 7.0n
   % Version 7.0n
   _ 02-12-2012
@@ -27,9 +46,7 @@ $ 7.0n
 	! Battery Meters
 	* Added additional meter options.
 	! About Screen
-	* Revamped layout.
-	! Changelog
-	* Moved to the About Phone menu.	
+	* Revamped layout.	
 $ 7.0m
   % Version 7.0m
   _ 02-10-2012

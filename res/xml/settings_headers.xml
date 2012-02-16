@@ -35,6 +35,13 @@
         android:title="@string/bluetooth_settings_title"
         android:icon="@drawable/ic_settings_bluetooth2" />
 
+    <!-- Tether -->
+    <header
+        android:id="@+id/tether_settings"
+        android:fragment="com.android.settings.TetherSettings"
+        android:icon="@drawable/ic_settings_tether"
+        android:title="@string/tether_settings_title_all" />
+
     <!-- Data Usage -->
     <header
         android:id="@+id/data_usage_settings"
