@@ -165,13 +165,8 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 		cur = Settings.NotifOptions.getIncomingCallLed(getActivity().getBaseContext().getContentResolver());
     	IncomingCallPulse = cur.getString(2).equals("true");
 		editor.putBoolean(INCOMING_CALL_LED_PULSE, IncomingCallPulse);
-		if (!IncomingCallPulse) {
-			IncomingCallLedOnMs = -1;
-			IncomingCallLedOffMs = -1;
-		} else {
-			IncomingCallLedOnMs = cur.getInt(4);
-			IncomingCallLedOffMs = cur.getInt(5);
-		}
+		IncomingCallLedOnMs = cur.getInt(4);
+		IncomingCallLedOffMs = cur.getInt(5);
         editor.putInt(INCOMING_CALL_LED_COLOR, cur.getInt(3));
         editor.putInt(INCOMING_CALL_LED_ON_MS, IncomingCallLedOnMs);
         editor.putInt(INCOMING_CALL_LED_OFF_MS, IncomingCallLedOffMs);
@@ -181,13 +176,8 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 		cur = Settings.NotifOptions.getMissedCallLed(getActivity().getBaseContext().getContentResolver());
     	MissedCallPulse = cur.getString(2).equals("true");
 		editor.putBoolean(MISSED_CALL_LED_PULSE, MissedCallPulse);
-		if (!MissedCallPulse) {
-			MissedCallLedOnMs = -1;
-			MissedCallLedOffMs = -1;
-		} else {
-			MissedCallLedOnMs = cur.getInt(4);
-			MissedCallLedOffMs = cur.getInt(5);
-		}
+		MissedCallLedOnMs = cur.getInt(4);
+		MissedCallLedOffMs = cur.getInt(5);
         editor.putInt(MISSED_CALL_LED_COLOR, cur.getInt(3));
         editor.putInt(MISSED_CALL_LED_ON_MS, MissedCallLedOnMs);
         editor.putInt(MISSED_CALL_LED_OFF_MS, MissedCallLedOffMs);
@@ -196,13 +186,8 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 		cur = Settings.NotifOptions.getVoiceMailLed(getActivity().getBaseContext().getContentResolver());
     	VoiceMailPulse = cur.getString(2).equals("true");
 		editor.putBoolean(VOICE_MAIL_LED_PULSE, VoiceMailPulse);
-		if (!VoiceMailPulse) {
-			VoiceMailLedOnMs = -1;
-			VoiceMailLedOffMs = -1;
-		} else {
-			VoiceMailLedOnMs = cur.getInt(4);
-			VoiceMailLedOffMs = cur.getInt(5);
-		}
+		VoiceMailLedOnMs = cur.getInt(4);
+		VoiceMailLedOffMs = cur.getInt(5);
         editor.putInt(VOICE_MAIL_LED_COLOR, cur.getInt(3));
         editor.putInt(VOICE_MAIL_LED_ON_MS, VoiceMailLedOnMs);
         editor.putInt(VOICE_MAIL_LED_OFF_MS, VoiceMailLedOffMs);
