@@ -56,7 +56,7 @@
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
 		android:key="toggle_color"
-		android:title="Toggle Color"
+		android:title="Toggle Background Color"
 		android:summary="Color for toggles"
 		android:defaultValue="#ff000000" 
 		alphaSlider="false" /> 
