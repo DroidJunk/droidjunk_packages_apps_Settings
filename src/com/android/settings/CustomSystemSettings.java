@@ -18,24 +18,16 @@ package com.android.settings;
 
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-import android.util.Log;
 
 
 
 public class CustomSystemSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
  
+
 	
 	
     /** If there is no setting in the provider, use this. */
@@ -43,19 +35,23 @@ public class CustomSystemSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         addPreferencesFromResource(R.xml.custom_system_settings);
+
     }
 
     
     @Override
     public void onResume() {
         super.onResume();
+
     }
 
     
     @Override
     public void onPause() {
         super.onPause();
+
     }
 
  
