@@ -45,6 +45,7 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
 	private final String CARRIER_CUSTOM_TEXT = "carrier_custom_text";
 	private final String CARRIER_SIZE = "carrier_size";
 	private final String DATE_COLOR = "date_color";
+	private final String DATE_SIZE = "date_size";
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
@@ -53,8 +54,10 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
     private CheckBoxPreference mCarrierCustom;
     private Preference mCarrierCustomText;
     private Preference mCarrierSize;
-    public int mSize = 15;
+    public int carrierSize = 15;
     private Preference mDateColor;
+    private Preference mDateSize;
+    public int dateSize = 17;
     
     
     /** If there is no setting in the provider, use this. */
@@ -79,7 +82,7 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
 		mCarrierCustomText.setOnPreferenceChangeListener(this);
 	    mCarrierSize = (Preference) findPreference(CARRIER_SIZE);
 		mCarrierSize.setOnPreferenceChangeListener(this);
-		mSize = prefMgr.getSharedPreferences().getInt(CARRIER_SIZE, 15);  
+		carrierSize = prefMgr.getSharedPreferences().getInt(CARRIER_SIZE, 15);  
         mDateColor = (Preference) findPreference(DATE_COLOR);
 		mDateColor.setOnPreferenceChangeListener(this);
 		
@@ -108,10 +111,19 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
     	if (preference == mCarrierSize) {
 			new NumberPickerDialog(preferenceScreen.getContext(),
                     carrierSizeListener,
-            		(int) mSize,
+            		(int) carrierSize,
                     5,
                     30,
                     R.string.carrier_size).show();
+			
+        } else if (preference == mDateSize) {
+			new NumberPickerDialog(preferenceScreen.getContext(),
+                    dateSizeListener,
+            		(int) dateSize,
+                    5,
+                    30,
+                    R.string.carrier_size).show();
+        	
         }
     	
     	
@@ -155,12 +167,12 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
         } else if (CARRIER_SIZE.equals(key)) {
         	sharedPref = prefMgr.getSharedPreferences();
         	SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt(CARRIER_SIZE, mSize);
+            editor.putInt(CARRIER_SIZE, carrierSize);
             editor.commit();
 
         	Intent i = new Intent();
             i.setAction(Tranq_Settings );
-            i.putExtra("CarrierSize", (Integer) mSize);
+            i.putExtra("CarrierSize", (Integer) carrierSize);
             getActivity().sendBroadcast(i);
             i = null;
         	
@@ -171,6 +183,19 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
         	getActivity().sendBroadcast(i);
         	i = null;        
 
+        } else if (DATE_SIZE.equals(key)) {
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(DATE_SIZE, dateSize);
+            editor.commit();
+
+        	Intent i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("DateSize", (Integer) dateSize);
+            getActivity().sendBroadcast(i);
+            i = null;
+        	
+        	
         }
         
         return true;
@@ -180,11 +205,18 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
     NumberPickerDialog.OnNumberSetListener carrierSizeListener =
             new NumberPickerDialog.OnNumberSetListener() {
     	public void onNumberSet(int limit) {
-    		mSize = (int) limit;
+    		carrierSize = (int) limit;
     		mCarrierSize.getOnPreferenceChangeListener().onPreferenceChange(mCarrierSize, (int) limit);
     	}
     	};    
 
+        NumberPickerDialog.OnNumberSetListener dateSizeListener =
+            new NumberPickerDialog.OnNumberSetListener() {
+    	public void onNumberSet(int limit) {
+    		dateSize = (int) limit;
+    		mDateSize.getOnPreferenceChangeListener().onPreferenceChange(mDateSize, (int) limit);
+    	}
+    	};    
     
     
     

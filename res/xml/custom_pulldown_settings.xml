@@ -85,7 +85,15 @@
 		android:title="Date Color"
 		android:summary="Color for statusbar date"
 		android:defaultValue="#ff3F9BBF" 
-		alphaSlider="false" /> 			
+		alphaSlider="false" /> 		
+		
+		
+	<Preference 
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="date_size"
+		android:title="Date Text Size"
+		android:summary="Size of the date text"
+		android:defaultValue="17" />		 	
 
     </PreferenceCategory>
 
