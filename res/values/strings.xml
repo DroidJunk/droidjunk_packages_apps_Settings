@@ -3841,6 +3841,7 @@ found in the list of installed apps.</string>
     <string name="numpicker_ok">Set</string>
     <string name="carrier_size">Size of the Carrier text</string>
     <string name="clock_size">Size of the Clock text</string>
+    <string name="date_size">Size of the Date text</string>
     
     <string name="start_time">Quit Time Start</string>
     <string name="stop_time">Quit Time Stopt</string>

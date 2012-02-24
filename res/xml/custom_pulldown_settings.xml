@@ -58,6 +58,7 @@
 		android:key="carrier_settings_custom">
 
    	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild"
    	    android:dependency="show_carrier"
 		android:key="carrier_custom"
 		android:summaryOn="Show custom carrier name"
@@ -67,7 +68,7 @@
 
 	<EditTextPreference
 		android:layout="?android:attr/preferenceLayoutChild"
-	        android:dependency="carrier_custom"
+        android:dependency="carrier_custom"
 		android:key="carrier_custom_text"
 		android:title="Custom Carrier Name" 
 		android:summary="Change the text for the carrier"
@@ -81,6 +82,7 @@
 		android:key="date_settings">
 
 	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="date_color"
 		android:title="Date Color"
 		android:summary="Color for statusbar date"

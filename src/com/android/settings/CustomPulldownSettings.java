@@ -85,7 +85,10 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
 		carrierSize = prefMgr.getSharedPreferences().getInt(CARRIER_SIZE, 15);  
         mDateColor = (Preference) findPreference(DATE_COLOR);
 		mDateColor.setOnPreferenceChangeListener(this);
-		
+		mDateSize = (Preference) findPreference(DATE_SIZE);
+		mDateSize.setOnPreferenceChangeListener(this);
+		dateSize = prefMgr.getSharedPreferences().getInt(DATE_SIZE, 17);  
+        
 
     
     }
@@ -122,7 +125,7 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
             		(int) dateSize,
                     5,
                     30,
-                    R.string.carrier_size).show();
+                    R.string.date_size).show();
         	
         }
     	
