@@ -76,10 +76,10 @@
 
     <header
         android:id="@+id/custom_settings"
-        android:icon="@drawable/ic_settings_tranquility"
-        android:fragment="com.android.settings.CustomSettings"
-        android:title="Statusbar Settings" />
-        
+        android:icon="@drawable/ic_settings_tophat"
+        android:fragment="com.android.settings.Tranquility"
+        android:title="Tranquility Settings" />
+<!--        
     <header
         android:id="@+id/custom_system_settings"
         android:icon="@drawable/ic_settings_notification"
@@ -98,9 +98,9 @@
             android:title="Lockscreen Options">
         <intent
                 android:action="android.intent.action.MAIN"
-                android:targetClass="com.tranquilice.helper.Lockscreen"
-                android:targetPackage="com.tranquilice.helper" />
-    </header>
+                android:targetClass="com.tranquilice.toolbox.Lockscreen"
+                android:targetPackage="com.tranquilice.toolbox" />
+    </header> 
 
     <header android:icon="@drawable/ic_settings_navbar"
             android:title="Nav Button Option">
@@ -110,8 +110,7 @@
                 android:targetPackage="com.tranquilice.helper" />
     </header>
 
-	<!-- ***************************************************************************************** -->
-	<!-- ***************************************************************************************** -->
+ ***************************************************************************************** -->
 
 
 

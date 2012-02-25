@@ -34,12 +34,6 @@
     <string name="rom_about_location">This Rom is released only on MyDroidWorld.com</string>
     <string name="rom_about_feedback">Please visit the thread to post feedback</string> 
 
-	<string name="title_alt_lockscreen_targets">Lockscreen Settings</string>
-	<string name="summary_alt_lockscreen_targets">Checked = Talk, Blank = SMS </string>	
-
-	<string name="title_alt_meter">Battery Meter Settings</string>
-	<string name="summary_alt_meters">Checked = Stock, Blank = Percentage </string>	
-
     <!-- Device Info --> <skip />
     <!-- Device Info screen. Used for a status item's value when the proper value is not known -->
     <string name="device_info_default">Unknown</string>
@@ -3865,6 +3859,43 @@ found in the list of installed apps.</string>
     <string name="pref_carrier_settings">Carrier Settings</string>
     <string name="pref_carrier_custom">Custom Carrier Settings</string>
     <string name="pref_date_settings">Pulldown Date Settings</string>
+
+		<!-- *** LockScreen *** -->
+	<string name="title_alt_lockscreen_targets">Lockscreen Settings</string>
+	<string name="summary_alt_lockscreen_targets">Checked = Talk, Blank = SMS </string>
+
+	<string name="title_lockscreen_landscape">Lockscreen Landscape Setting</string>
+	<string name="summary_lockscreen_landscape">Check to enable </string>
+
+	<string name="title_statusbar_brightness">Status Bar Brightness Option</string>
+	<string name="summary_statusbar_brightness">When enabled, swipe finger across status bar to increase/decrease brightness</string>
+
+	<string name="title_torch">Torch in Power Menu</string>
+	<string name="summary_torch">Check to enable </string>
+
+	<string name="title_show_search_button">Show Search Button</string>
+
+		<!-- *** Battery Meters *** -->
+	<string name="title_alt_meter">Battery Meter Settings</string>
+	<string name="summary_alt_meters">Checked = Stock, Blank = Percentage </string>
+
+	<string name="title_meters_off">Show/Hide Battery Meter</string>
+	<string name="summary_meters_off">Turn off battery meter </string>
+
+	<string name="title_bar_meter">Battery Bar Meter</string>
+	<string name="summary_bar_meters">Checked = on, Blank = off </string>
+
+	<string name="battery_bar">Battery bar</string>
+	<string name="battery_bar_color">Battery bar color</string>
+
+    <!-- Statusbar | Battery -->
+    <string name="battery_icon">Battery icon style</string>
+    <string name="battery_summary_text_widget">@null</string>
+    <string name="battery_bar_cat">Battery bar options</string>
+    <string name="battery_bar_style_title">Battery bar style</string>
+    <string name="battery_bar_thickness_title">Battery bar thickness</string>
+    <string name="battery_bar_animate_title">Charging animation</string>
+    <string name="battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
     
 	<!-- ***************************************************************************************** -->
 	<!-- ***************************************************************************************** -->

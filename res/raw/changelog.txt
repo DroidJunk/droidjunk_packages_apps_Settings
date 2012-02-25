@@ -19,6 +19,21 @@
     </style>
   </head>
   <body>
+$ 7.0r
+  % Version 7.0s
+  _ 02-19-2012
+	! Notifications
+	* Added new LED options
+$ 7.0r
+  % Version 7.0r
+  _ 02-19-2012
+	! Navigation Bar
+	* Added search button (hide/show)
+$ 7.0q
+  % Version 7.0q
+  _ 02-17-2012
+	! Power Menu
+	* Added flashlight to power off menu
 $ 7.0p
   % Version 7.0p
   _ 02-15-2012
