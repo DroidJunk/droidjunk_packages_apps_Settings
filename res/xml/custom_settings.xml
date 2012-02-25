@@ -26,13 +26,9 @@
 
 
     <PreferenceScreen
+        android:fragment="com.android.settings.Meters"
         android:key="custom_meters"
-        android:title="Statusbar Battery Settings">
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="com.tranquilice.helper"
-            android:targetClass="com.tranquilice.helper.Meters" />
-    </PreferenceScreen>
+        android:title="Statusbar Battery Settings" />
 
 
     <PreferenceScreen

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Tranquility Settings"
+    android:key="tranquility_settings"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+    <PreferenceScreen
+            android:key="statusbar_settings"
+            android:title="Statusbar Settings"
+            android:summary="Settings to customize your statusbar"
+            android:fragment="com.android.settings.CustomSettings" />
+
+    <PreferenceScreen
+            android:key="notification_settings"
+            android:title="Notification Settings"
+	    android:summary="Settings to customize the led and notifications"
+            android:fragment="com.android.settings.CustomSystemSettings" />
+
+    <PreferenceScreen
+            android:key="navigation_settings"
+            android:title="Navigation Settings"
+	    android:summary="Settings to customize the navigation bar"
+            android:fragment="com.android.settings.NavBar" />
+
+    <PreferenceScreen
+            android:key="lockscreen_settings"
+            android:title="Lockscreen Settings"
+	    android:summary="Settings to customize the lockscreen style"
+            android:fragment="com.android.settings.Lockscreen" />
+
+    <PreferenceScreen
+            android:key="toolbox_settings"
+            android:title="Tranquility Toolbox"
+	    android:summary="Optional toolbox settings">
+       <intent  android:action="android.intent.action.MAIN"
+                android:targetClass="com.tranquilice.toolbox.MainMenu"
+                android:targetPackage="com.tranquilice.toolbox" />
+    </PreferenceScreen>
+</PreferenceScreen>
