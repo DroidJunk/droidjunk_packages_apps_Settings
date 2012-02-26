@@ -37,7 +37,7 @@
    				
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
-	        android:dependency="show_carrier"
+	    android:dependency="show_carrier"
 		android:key="carrier_color"
 		android:title="Carrier Text Color"
 		android:summary="Color for the carrier text"

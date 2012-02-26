@@ -8,11 +8,11 @@
 	    android:key="pref_alt_meters"
 	    android:title="Battery Icon Settings" />
 
-<CheckBoxPreference
+	<CheckBoxPreference
 		android:key="battery_bar"
 		android:title="@string/battery_bar" />
 
-     <net.margaritov.preference.colorpicker.ColorPickerPreference
+     <com.android.settings.ColorPickerPreference
 		android:key="battery_bar_color"
 		android:title="@string/battery_bar_color"
 		android:defaultValue="#FFFFFF" />

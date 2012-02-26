@@ -1,16 +1,11 @@
 package com.android.settings;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
-import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.preference.ListPreference;
-import android.preference.Preference.OnPreferenceChangeListener;
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
-
 import com.android.settings.R;
 
     public class Meters extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {

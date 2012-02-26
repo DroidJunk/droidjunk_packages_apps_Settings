@@ -2,15 +2,70 @@
 <PreferenceScreen
 	xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <CheckBoxPreference
-		android:key="search_button"
-		android:title="@string/title_show_search_button" />
+  	<PreferenceCategory
+		android:title="COLOR">
 
-
-		<net.margaritov.preference.colorpicker.ColorPickerPreference
+		<com.android.settings.ColorPickerPreference
 			android:key="nav_button_color"
 			android:title="Navigation Button Color"
 			android:defaultValue="#FFFFFF" />
+
+    </PreferenceCategory>
+
+   	
+   	<PreferenceCategory
+		android:title="PORTRAIT MODE">
+	
+        <CheckBoxPreference
+        	android:layout="?android:attr/preferenceLayoutChild"
+			android:key="search_button"
+			android:title="@string/title_show_search_button"
+			 />
+			
+       <CheckBoxPreference
+       		android:layout="?android:attr/preferenceLayoutChild"
+			android:key="left_menu_button"
+			android:title="Left Menu Button"
+			android:defaultValue="true"	
+			/>
+		
+       <CheckBoxPreference
+       		android:layout="?android:attr/preferenceLayoutChild"
+			android:key="right_menu_button"
+			android:title="Right Menu Button"
+			android:defaultValue="true"			
+			/>	
+	
+	</PreferenceCategory>
+
+
+   	<PreferenceCategory
+		android:title="LANDSCAPE MODE">
+	
+        <CheckBoxPreference
+        	android:layout="?android:attr/preferenceLayoutChild"
+			android:key="search_button_land"
+			android:title="@string/title_show_search_button"
+			 />
+			
+       <CheckBoxPreference
+       		android:layout="?android:attr/preferenceLayoutChild"
+			android:key="top_menu_button_land"
+			android:title="Top Menu Button"
+			android:defaultValue="true"	
+			/>
+		
+       <CheckBoxPreference
+       		android:layout="?android:attr/preferenceLayoutChild"
+			android:key="bottom_menu_button_land"
+			android:title="Bottom Menu Button"
+			android:defaultValue="true"			
+			/>	
+	
+	</PreferenceCategory>
+
+
+
 
 
 </PreferenceScreen>

@@ -1,25 +1,31 @@
 package com.android.settings;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
-import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
-import android.preference.ListPreference;
-import android.preference.Preference.OnPreferenceChangeListener;
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
-
 import com.android.settings.R;
 
     public class NavBar extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
-        private static final String PREF_NAV_COLOR = "nav_button_color";
-	private static final String SHOW_SEARCH_BUTTON = "search_button";
+    private static final String PREF_NAV_COLOR = "nav_button_color";
+	
+    private static final String SHOW_SEARCH_BUTTON = "search_button";
+	private static final String SHOW_LEFT_MENU_BUTTON = "left_menu_button";
+	private static final String SHOW_RIGHT_MENU_BUTTON = "right_menu_button";
+    private static final String SHOW_SEARCH_BUTTON_LAND = "search_button_land";
+	private static final String SHOW_TOP_MENU_BUTTON_LAND = "top_menu_button_land";
+	private static final String SHOW_BOT_MENU_BUTTON_LAND = "bottom_menu_button_land";
 
-        CheckBoxPreference mShowSearchButton;
 	ColorPickerPreference mNavigationBarColor;
+    CheckBoxPreference mShowSearchButton;
+    CheckBoxPreference mShowLeftMenuButton;
+    CheckBoxPreference mShowRightMenuButton;
+    CheckBoxPreference mShowSearchButtonLand;
+    CheckBoxPreference mShowTopMenuButtonLand;
+    CheckBoxPreference mShowBotMenuButtonLand;
+	
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -28,14 +34,42 @@ import com.android.settings.R;
             // Load the preferences from an XML resource
             addPreferencesFromResource(R.xml.navbar);
 
- 	    mShowSearchButton = (CheckBoxPreference) findPreference(SHOW_SEARCH_BUTTON);
-	    mShowSearchButton.setChecked(Settings.System.getInt(getActivity()
+            mShowSearchButton = (CheckBoxPreference) findPreference(SHOW_SEARCH_BUTTON);
+            mShowSearchButton.setChecked(Settings.System.getInt(getActivity()
                     .getContentResolver(), Settings.System.SHOW_SEARCH_BUTTON,
                     0) == 1);
+            
+            mShowLeftMenuButton = (CheckBoxPreference) findPreference(SHOW_LEFT_MENU_BUTTON);
+            mShowLeftMenuButton.setChecked(Settings.System.getInt(getActivity()
+                    .getContentResolver(), Settings.System.SHOW_LEFT_MENU_BUTTON,
+                    0) == 1);            
+            
+            mShowRightMenuButton = (CheckBoxPreference) findPreference(SHOW_RIGHT_MENU_BUTTON);
+            mShowRightMenuButton.setChecked(Settings.System.getInt(getActivity()
+                    .getContentResolver(), Settings.System.SHOW_RIGHT_MENU_BUTTON,
+                    1) == 1);            
+            
+            mShowSearchButtonLand = (CheckBoxPreference) findPreference(SHOW_SEARCH_BUTTON_LAND);
+            mShowSearchButtonLand.setChecked(Settings.System.getInt(getActivity()
+                    .getContentResolver(), Settings.System.SHOW_SEARCH_BUTTON_LAND,
+                    0) == 1);
+            
+            mShowTopMenuButtonLand = (CheckBoxPreference) findPreference(SHOW_TOP_MENU_BUTTON_LAND);
+            mShowTopMenuButtonLand.setChecked(Settings.System.getInt(getActivity()
+                    .getContentResolver(), Settings.System.SHOW_TOP_MENU_BUTTON_LAND,
+                    0) == 1);            
+            
+            mShowBotMenuButtonLand = (CheckBoxPreference) findPreference(SHOW_BOT_MENU_BUTTON_LAND);
+            mShowBotMenuButtonLand.setChecked(Settings.System.getInt(getActivity()
+                    .getContentResolver(), Settings.System.SHOW_BOT_MENU_BUTTON_LAND,
+                    1) == 1);                        
+            
+            
+            
 
             mNavigationBarColor = (ColorPickerPreference) findPreference(PREF_NAV_COLOR);
             mNavigationBarColor.setOnPreferenceChangeListener(this);
-	}
+        }
 
 
        public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
@@ -45,10 +79,37 @@ import com.android.settings.R;
                         Settings.System.SHOW_SEARCH_BUTTON,
                         ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
                 return true;
-          }
+
+           } else if (preference == mShowLeftMenuButton) {
+              Settings.System.putInt(getActivity().getContentResolver(),
+                      Settings.System.SHOW_LEFT_MENU_BUTTON,
+                      ((CheckBoxPreference) preference).isChecked() ? 1 : 0);        	  
+
+           } else if (preference == mShowRightMenuButton) {
+               Settings.System.putInt(getActivity().getContentResolver(),
+                       Settings.System.SHOW_RIGHT_MENU_BUTTON,
+                       ((CheckBoxPreference) preference).isChecked() ? 1 : 0);        	  
+
+           } else if (preference == mShowSearchButtonLand) {
+               Settings.System.putInt(getActivity().getContentResolver(),
+                       Settings.System.SHOW_SEARCH_BUTTON_LAND,
+                       ((CheckBoxPreference) preference).isChecked() ? 1 : 0);        	  
+
+           } else if (preference == mShowTopMenuButtonLand) {
+               Settings.System.putInt(getActivity().getContentResolver(),
+                       Settings.System.SHOW_TOP_MENU_BUTTON_LAND,
+                       ((CheckBoxPreference) preference).isChecked() ? 1 : 0);                  
+               
+           } else if (preference == mShowBotMenuButtonLand) {
+               Settings.System.putInt(getActivity().getContentResolver(),
+                       Settings.System.SHOW_BOT_MENU_BUTTON_LAND,
+                       ((CheckBoxPreference) preference).isChecked() ? 1 : 0);                  
+           } 
 
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
+       
+       
 
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -63,6 +124,11 @@ import com.android.settings.R;
                 return true;
 
             }
+           
+           
+           
+           
+           
             return false;
         }
 
