@@ -120,7 +120,8 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
     public boolean onPreferenceChange(Preference preference, Object objValue) {
   
      	final String key = preference.getKey();
-        if (SHOW_CLOCK.equals(key)) {
+       
+     	if (SHOW_CLOCK.equals(key)) {
         	Intent i = new Intent();
         	i.setAction(Tranq_Settings );
        	   	i.putExtra("ShowClock", (Boolean) objValue);
