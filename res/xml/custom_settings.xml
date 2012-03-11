@@ -18,41 +18,15 @@
         android:title="@string/tranq_settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-
-		
-	<SeekBarPreference 
-		android:key="icon_color_hue"
-		android:title="Change Icons Color HUE"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:max="1080" />
-		
-	<SeekBarPreference 
-		android:key="icon_color_hue_intens"
-		android:title="Intensity of Icons Color HUE"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:max="100" />	
-
-	<com.android.settings.ColorPickerPreference
-		android:key="icon_color_shade"
-		android:title="Statusbar Icons Color (Shading)"
-		android:summary="Color for statusbar icons"
-		android:defaultValue="#ff3F9BBF" 
-		alphaSlider="false" /> 		
-
-
-	<SeekBarPreference 
-		android:key="icon_color_shade_intens"
-		android:title="Intensity of Icon Shading"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:max="100" />
-
     <PreferenceScreen
         android:fragment="com.android.settings.CustomStatusbarSettings"
         android:key="custom_statusbar_settings"
         android:title="Statusbar Clock Settings" />
+
+    <PreferenceScreen
+        android:fragment="com.android.settings.CustomIconSettings"
+        android:key="custom_icon_settings"
+        android:title="Statusbar Icon Settings" />
 
 
     <PreferenceScreen

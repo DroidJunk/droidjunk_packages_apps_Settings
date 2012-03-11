@@ -28,6 +28,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.preference.SeekBarPreference;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
@@ -120,7 +121,7 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
     public boolean onPreferenceChange(Preference preference, Object objValue) {
   
      	final String key = preference.getKey();
-       
+
      	if (SHOW_CLOCK.equals(key)) {
         	Intent i = new Intent();
         	i.setAction(Tranq_Settings );

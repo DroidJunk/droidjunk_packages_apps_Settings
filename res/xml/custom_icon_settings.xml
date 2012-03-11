@@ -18,45 +18,39 @@
         android:title="@string/statusbar_settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-
     <PreferenceCategory
-		android:title="CLOCK"
-		android:key="clock">
+		android:title="ICONS"
+		android:key="icons">
 
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="show_clock"
-		android:summaryOn="Clock is on"
-		android:summaryOff="Clock is off"
-		android:title="Clock" 
-		android:defaultValue="true"	/>
-
- 	<CheckBoxPreference 
- 		android:layout="?android:attr/preferenceLayoutChild"
-	    android:dependency="show_clock"
-		android:key="clock_ampm"
-		android:summaryOn="Show am/pm"
-		android:summaryOff="Do not show am/pm"
-		android:title="Clock am/pm" 
+		android:key="color_icons"
+		android:summaryOn="Coloring of icons is on"
+		android:summaryOff="Coloring of icons is off"
+		android:title="Color Icons" 
 		android:defaultValue="false"	/>
-   				
-	<com.android.settings.ColorPickerPreference
-		android:layout="?android:attr/preferenceLayoutChild"
-	    android:dependency="show_clock"
-		android:key="clock_color"
-		android:title="Clock Color"
-		android:summary="Color for statusbar clock"
-		android:defaultValue="#ff3F9BBF" 
-		alphaSlider="false" /> 
 
-	<Preference 
-		android:layout="?android:attr/preferenceLayoutChild"
-    	android:dependency="show_clock"
-		android:key="clock_size"
-		android:title="Clock Size"
-		android:summary="Size of the clock"
-		android:defaultValue="17" />	
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:dependency="color_icons"
+		android:key="icon_color"
+		android:title="Statusbar Icons Color"
+		android:summary="Color for statusbar icons"
+		android:defaultValue="#ff3F9BBF" 
+		alphaSlider="false" /> 		
+
+
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:dependency="color_icons"
+		android:key="color_icons_apply"
+		android:summaryOn="Apply color to clock and navigation bar"
+		android:summaryOff="Do not apply color to clock and navigation bar"
+		android:title="Theme It!" 
+		android:defaultValue="false"	/>
 		
-	</PreferenceCategory>		
+
+    </PreferenceCategory>
+
 
 </PreferenceScreen>
