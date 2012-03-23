@@ -604,4 +604,13 @@ public class Settings extends PreferenceActivity implements ButtonBarHandler {
     public static class TextToSpeechSettingsActivity extends Settings { /* empty */ }
     public static class AndroidBeamSettingsActivity extends Settings { /* empty */ }
     public static class CustomSettingsActivity extends Settings { /* empty */ }
+    public static class LockscreenActivity extends Settings { /* empty */ }
+    public static class MeterActivity extends Settings { /* empty */ }
+    public static class NavigationActivity extends Settings { /* empty */ }
+    public static class PulldownActivity extends Settings { /* empty */ }
+    public static class ToggleActivity extends Settings { /* empty */ }
+    public static class ClockActivity extends Settings { /* empty */ }
+    public static class IconColorActivity extends Settings { /* empty */ }
+    public static class LedActivity extends Settings { /* empty */ }
+    public static class QuietTimeActivity extends Settings { /* empty */ }
 }
