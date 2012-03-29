@@ -17,8 +17,10 @@
 package com.android.settings;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
@@ -129,6 +131,7 @@ public class RadioInfo extends Activity {
     private Button refreshSmscButton;
     private Button oemInfoButton;
     private Spinner preferredNetworkType;
+    private BroadcastReceiver mBroadcastReceiver;
 
     private TelephonyManager mTelephonyManager;
     private Phone phone = null;
@@ -320,6 +323,22 @@ public class RadioInfo extends Activity {
                 mHandler.obtainMessage(EVENT_QUERY_NEIGHBORING_CIDS_DONE));
 
         CellLocation.requestLocationUpdate();
+        
+        
+	    final IntentFilter mFilter = new IntentFilter();
+	    mFilter.addAction("TRANQ_SETTINGS");
+	    mBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+            	
+            	updateNetwork(intent.getIntExtra("NetworkMode", 7));
+            	Log.e("----------------------------------RECIVED","HERE");
+            }
+        };
+
+        registerReceiver(mBroadcastReceiver, mFilter);
+        
+        
     }
 
     @Override
@@ -1018,6 +1037,15 @@ public class RadioInfo extends Activity {
         }
     };
 
+    
+    
+    private void updateNetwork(int mode){
+    	Message msg = mHandler.obtainMessage(EVENT_SET_PREFERRED_TYPE_DONE);
+        phone.setPreferredNetworkType(mode, msg);
+        Log.e("----------------------------------RAN","HERE");
+    }
+    
+    
     private String[] mPreferredNetworkLabels = {
             "WCDMA preferred",
             "GSM only",
