@@ -5,6 +5,14 @@
     android:key="tranquility_settings"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    
+    <PreferenceScreen
+        android:fragment="com.android.settings.CustomThemeSettings"
+        android:key="custom_theme_settings"
+        android:title="Theme Settings"
+        android:summary="Color icons, save and apply color themes" />        
+    
+    
     <PreferenceScreen
             android:key="statusbar_settings"
             android:title="Statusbar Settings"

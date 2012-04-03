@@ -10,7 +10,6 @@ import com.android.settings.R;
     public class NavBar extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
     private static final String PREF_NAV_COLOR = "nav_button_color";
-	
     private static final String SHOW_SEARCH_BUTTON = "search_button";
 	private static final String SHOW_LEFT_MENU_BUTTON = "left_menu_button";
 	private static final String SHOW_RIGHT_MENU_BUTTON = "right_menu_button";
@@ -47,7 +46,7 @@ import com.android.settings.R;
             mShowRightMenuButton = (CheckBoxPreference) findPreference(SHOW_RIGHT_MENU_BUTTON);
             mShowRightMenuButton.setChecked(Settings.System.getInt(getActivity()
                     .getContentResolver(), Settings.System.SHOW_RIGHT_MENU_BUTTON,
-                    1) == 1);            
+                    0) == 1);            
             
             mShowSearchButtonLand = (CheckBoxPreference) findPreference(SHOW_SEARCH_BUTTON_LAND);
             mShowSearchButtonLand.setChecked(Settings.System.getInt(getActivity()
@@ -62,7 +61,7 @@ import com.android.settings.R;
             mShowBotMenuButtonLand = (CheckBoxPreference) findPreference(SHOW_BOT_MENU_BUTTON_LAND);
             mShowBotMenuButtonLand.setChecked(Settings.System.getInt(getActivity()
                     .getContentResolver(), Settings.System.SHOW_BOT_MENU_BUTTON_LAND,
-                    1) == 1);                        
+                    0) == 1);                        
             
             
             

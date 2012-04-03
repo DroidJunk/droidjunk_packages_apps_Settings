@@ -10,7 +10,7 @@ import com.android.settings.R;
 
     public class Meters extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
-        private static final String ALT_METERS = "pref_alt_meters";
+    private static final String ALT_METERS = "pref_alt_meters";
 	private static final String BATTERY_BAR = "battery_bar";
 	private static final String BATTERY_BAR_COLOR = "battery_bar_color";
 
