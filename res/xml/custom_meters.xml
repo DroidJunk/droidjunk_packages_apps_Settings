@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<ListPreference
+	    android:entryValues="@array/pref_alt_meters_values"
+	    android:entries="@array/pref_alt_meters_entries"
+	    android:key="pref_alt_meters"
+	    android:title="Battery Icon Settings" />
+
+	<CheckBoxPreference
+		android:key="battery_bar"
+		android:title="@string/battery_bar" />
+
+     <com.android.settings.ColorPickerPreference
+		android:key="battery_bar_color"
+		android:title="@string/battery_bar_color"
+		android:defaultValue="#FFFFFF" />
+
+
+</PreferenceScreen>
