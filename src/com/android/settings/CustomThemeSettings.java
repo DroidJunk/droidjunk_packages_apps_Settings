@@ -43,7 +43,7 @@ import android.widget.Toast;
 public class CustomThemeSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
-	private final String Tranq_Icon_Color = "TRANQ_SETTINGS";
+	private final String Tranq_Settings = "TRANQ_SETTINGS";
 	private final String THEME_ONE = "theme_one";
 	private final String THEME_TWO = "theme_two";
 	private final String THEME_THREE = "theme_three";
@@ -94,18 +94,18 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 	private final String TOGGLES_ROTATE_ON = "toggles_show_rotate";
 	private final String TOGGLES_SYNC_ON = "toggles_show_sync";
 	private final String TOGGLES_DATA_ON = "toggles_show_data";
-    private static final String PREF_NAV_COLOR = "nav_button_color";
-    private static final String SHOW_SEARCH_BUTTON = "search_button";
-	private static final String SHOW_LEFT_MENU_BUTTON = "left_menu_button";
-	private static final String SHOW_RIGHT_MENU_BUTTON = "right_menu_button";
-    private static final String SHOW_SEARCH_BUTTON_LAND = "search_button_land";
-	private static final String SHOW_TOP_MENU_BUTTON_LAND = "top_menu_button_land";
-	private static final String SHOW_BOT_MENU_BUTTON_LAND = "bottom_menu_button_land";
-    private static final String ALT_METERS = "pref_alt_meters";
-	private static final String BATTERY_BAR = "battery_bar";
-	private static final String BATTERY_BAR_COLOR = "battery_bar_color";
+    private final String SHOW_SEARCH_BUTTON = "search_button";
+	private final String SHOW_LEFT_MENU_BUTTON = "left_menu_button";
+	private final String SHOW_RIGHT_MENU_BUTTON = "right_menu_button";
+    private final String SHOW_SEARCH_BUTTON_LAND = "search_button_land";
+	private final String SHOW_TOP_MENU_BUTTON_LAND = "top_menu_button_land";
+	private final String SHOW_BOT_MENU_BUTTON_LAND = "bottom_menu_button_land";
 	private final String ICON_COLOR_ON = "color_icons";
 	private final String ICON_COLOR = "icon_color";
+	private final String NAVIGATION_BAR_TINT = "nav_bar_tint";
+	private final String BATTERY_ICON = "battery_icon";
+	private final String BATTERY_BAR = "battery_bar";
+	private final String BATTERY_BAR_COLOR = "battery_bar_color";
 	
     
 	private PreferenceManager prefMgr;
@@ -135,7 +135,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
     private boolean showTopMenuButtonLand, showBotMenuButtonLand;
     private int carrierColor, iconColor, clockColor, clockSize, toggleColor, toggleIconOnColor;
     private int toggleIconInterColor, toggleIconOffColor, toggleIndOnColor, toggleIndOffColor;
-    private int toggleTextOnColor, toggleTextOffColor, toggleDividerColor, NavigationBarColor;
+    private int toggleTextOnColor, toggleTextOffColor, toggleDividerColor, navigationBarColor;
     private int carrierSize, dateColor, dateSize, meterOptions, batteryBar, batteryBarColor;
 	private String carrierCustomText;
     
@@ -263,6 +263,56 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
     private void SaveTheme() {
     	editor = themeEditor.edit();
         editor.putBoolean(SHOW_CARRIER, showCarrier);  
+        editor.putBoolean(CARRIER_CUSTOM, carrierCustom);
+        editor.putInt(CARRIER_SIZE, carrierSize);
+        editor.putInt(DATE_COLOR, dateColor);
+        editor.putInt(DATE_SIZE, dateSize);
+        editor.putBoolean(ICON_COLOR_ON, iconColorOn);
+        editor.putBoolean(SHOW_CLOCK, showClock);
+        editor.putBoolean(CLOCK_AMPM, clockAmPm);
+        editor.putBoolean(TOGGLES_ON, showToggles);
+        editor.putBoolean(TOGGLES_TOP, togglesTop);
+        editor.putBoolean(TOGGLE_CUSTOM_ICON_COLORS, toggleCustomIconColors);
+        editor.putBoolean(TOGGLE_SHOW_INDICATOR, showIndicator);
+        editor.putBoolean(TOGGLE_SHOW_TEXT, toggleShowText);
+        editor.putBoolean(TOGGLE_SHOW_DIVIDER, toggleShowDivider);
+        editor.putBoolean(TOGGLES_4G_ON, showFourg);
+        editor.putBoolean(TOGGLES_WIFI_ON, showWifi);
+        editor.putBoolean(TOGGLES_GPS_ON, showGps);
+        editor.putBoolean(TOGGLES_BLUETOOTH_ON, showBluetooth);
+        editor.putBoolean(TOGGLES_SOUND_ON, showSound);
+        editor.putBoolean(TOGGLES_AIRPLANE_ON, showAirplane);
+        editor.putBoolean(TOGGLES_BRIGHTNESS_ON, showBrightness);
+        editor.putBoolean(TOGGLES_ROTATE_ON, showRotate);
+        editor.putBoolean(TOGGLES_SYNC_ON, showSync);
+        editor.putBoolean(TOGGLES_DATA_ON, showData);
+        editor.putBoolean(SHOW_SEARCH_BUTTON, showSearchButton);
+        editor.putBoolean(SHOW_LEFT_MENU_BUTTON, showLeftMenuButton);
+        editor.putBoolean(SHOW_RIGHT_MENU_BUTTON, showRightMenuButton);
+        editor.putBoolean(SHOW_SEARCH_BUTTON_LAND, showSearchButtonLand);
+        editor.putBoolean(SHOW_TOP_MENU_BUTTON_LAND, showTopMenuButtonLand);
+        editor.putBoolean(SHOW_BOT_MENU_BUTTON_LAND, showBotMenuButtonLand);
+        editor.putInt(CARRIER_COLOR, carrierColor);
+        editor.putInt(ICON_COLOR, iconColor);
+        editor.putInt(CLOCK_COLOR, clockColor);
+        editor.putInt(CLOCK_SIZE, clockSize);
+        editor.putInt(TOGGLE_COLOR, toggleColor);
+        editor.putInt(TOGGLE_ICON_ON_COLOR, toggleIconOnColor);
+        editor.putInt(TOGGLE_ICON_INTER_COLOR, toggleIconInterColor);
+        editor.putInt(TOGGLE_ICON_OFF_COLOR, toggleIconOffColor);
+        editor.putInt(TOGGLE_IND_ON_COLOR, toggleIndOnColor);
+        editor.putInt(TOGGLE_IND_OFF_COLOR, toggleIndOffColor);
+        editor.putInt(TOGGLE_TEXT_ON_COLOR, toggleTextOnColor);
+        editor.putInt(TOGGLE_TEXT_OFF_COLOR, toggleTextOffColor);
+        editor.putInt(TOGGLE_DIVIDER_COLOR, toggleDividerColor);
+        editor.putString(CARRIER_CUSTOM_TEXT, carrierCustomText);
+        editor.putInt(CARRIER_SIZE, carrierSize);
+        editor.putInt(DATE_COLOR, dateColor);
+        editor.putInt(DATE_SIZE, dateSize);
+        editor.putInt(NAVIGATION_BAR_TINT, navigationBarColor);
+        editor.putInt(BATTERY_ICON, meterOptions);
+        editor.putInt(BATTERY_BAR, batteryBar);
+        editor.putInt(BATTERY_BAR_COLOR, batteryBarColor);
         editor.commit();
         
     }
@@ -271,17 +321,302 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
     private void ApplyTheme() {
     	editor = themeEditor.edit();
         editor.putBoolean(SHOW_CARRIER, showCarrier);  
+        editor.putBoolean(CARRIER_CUSTOM, carrierCustom);
+        editor.putInt(CARRIER_SIZE, carrierSize);
+        editor.putInt(DATE_COLOR, dateColor);
+        editor.putInt(DATE_SIZE, dateSize);
+        editor.putBoolean(ICON_COLOR_ON, iconColorOn);
+        editor.putBoolean(SHOW_CLOCK, showClock);
+        editor.putBoolean(CLOCK_AMPM, clockAmPm);
+        editor.putBoolean(TOGGLES_ON, showToggles);
+        editor.putBoolean(TOGGLES_TOP, togglesTop);
+        editor.putBoolean(TOGGLE_CUSTOM_ICON_COLORS, toggleCustomIconColors);
+        editor.putBoolean(TOGGLE_SHOW_INDICATOR, showIndicator);
+        editor.putBoolean(TOGGLE_SHOW_TEXT, toggleShowText);
+        editor.putBoolean(TOGGLE_SHOW_DIVIDER, toggleShowDivider);
+        editor.putBoolean(TOGGLES_4G_ON, showFourg);
+        editor.putBoolean(TOGGLES_WIFI_ON, showWifi);
+        editor.putBoolean(TOGGLES_GPS_ON, showGps);
+        editor.putBoolean(TOGGLES_BLUETOOTH_ON, showBluetooth);
+        editor.putBoolean(TOGGLES_SOUND_ON, showSound);
+        editor.putBoolean(TOGGLES_AIRPLANE_ON, showAirplane);
+        editor.putBoolean(TOGGLES_BRIGHTNESS_ON, showBrightness);
+        editor.putBoolean(TOGGLES_ROTATE_ON, showRotate);
+        editor.putBoolean(TOGGLES_SYNC_ON, showSync);
+        editor.putBoolean(TOGGLES_DATA_ON, showData);
+        editor.putBoolean(SHOW_SEARCH_BUTTON, showSearchButton);
+        editor.putBoolean(SHOW_LEFT_MENU_BUTTON, showLeftMenuButton);
+        editor.putBoolean(SHOW_RIGHT_MENU_BUTTON, showRightMenuButton);
+        editor.putBoolean(SHOW_SEARCH_BUTTON_LAND, showSearchButtonLand);
+        editor.putBoolean(SHOW_TOP_MENU_BUTTON_LAND, showTopMenuButtonLand);
+        editor.putBoolean(SHOW_BOT_MENU_BUTTON_LAND, showBotMenuButtonLand);
+        editor.putInt(CARRIER_COLOR, carrierColor);
+        editor.putInt(ICON_COLOR, iconColor);
+        editor.putInt(CLOCK_COLOR, clockColor);
+        editor.putInt(CLOCK_SIZE, clockSize);
+        editor.putInt(TOGGLE_COLOR, toggleColor);
+        editor.putInt(TOGGLE_ICON_ON_COLOR, toggleIconOnColor);
+        editor.putInt(TOGGLE_ICON_INTER_COLOR, toggleIconInterColor);
+        editor.putInt(TOGGLE_ICON_OFF_COLOR, toggleIconOffColor);
+        editor.putInt(TOGGLE_IND_ON_COLOR, toggleIndOnColor);
+        editor.putInt(TOGGLE_IND_OFF_COLOR, toggleIndOffColor);
+        editor.putInt(TOGGLE_TEXT_ON_COLOR, toggleTextOnColor);
+        editor.putInt(TOGGLE_TEXT_OFF_COLOR, toggleTextOffColor);
+        editor.putInt(TOGGLE_DIVIDER_COLOR, toggleDividerColor);
+        editor.putString(CARRIER_CUSTOM_TEXT, carrierCustomText);
+        editor.putInt(CARRIER_SIZE, carrierSize);
+        editor.putInt(DATE_COLOR, dateColor);
+        editor.putInt(DATE_SIZE, dateSize);
         editor.commit();
+       
+        Settings.System.putInt(getActivity().getContentResolver(),Settings.System.NAVIGATION_BAR_TINT, navigationBarColor);        
+        Settings.System.putInt(getActivity().getContentResolver(), Settings.System.BATTERY_ICON, meterOptions);
+        Settings.System.putInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_BATTERY_BAR, batteryBar);
+        Settings.System.putInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_BATTERY_BAR_COLOR, batteryBarColor);
+        
+        
+        SendIntents();
+
         
     }    
+    
+    
+    private void SendIntents() {
+        	Intent i = new Intent();
+        	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ShowClock", showClock);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+       
+         	i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("ClockAmPm", (Boolean) clockAmPm);
+            getActivity().sendBroadcast(i);
+            i = null;
+        
+        	i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("ClockColor", (Integer) clockColor);
+            getActivity().sendBroadcast(i);
+            i = null;
 
-    private void GetSettings() {
+        	i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("ClockSize", (Integer) clockSize);
+            getActivity().sendBroadcast(i);
+            i = null;
+            
+            i = new Intent();
+            i.setAction("tranq_icon_color");
+           	i.putExtra("IconColorOn", (Boolean) iconColorOn);
+           	getActivity().sendBroadcast(i);
+           	i = null;
+
+            i = new Intent();
+            i.setAction("tranq_icon_color");
+           	i.putExtra("IconColor", (Integer) iconColor);
+           	getActivity().sendBroadcast(i);
+           	i = null;
+            
+           	i = new Intent();
+           	i.setAction(Tranq_Settings );
+       	   	i.putExtra("TogglesOn", (Boolean) showToggles);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+           	   	
+           	i = new Intent();
+            i.setAction(Tranq_Settings );
+           	i.putExtra("TogglesTop", (Boolean) togglesTop);
+           	getActivity().sendBroadcast(i);
+           	i = null;
+           	   	
+           	i = new Intent();
+           	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ToggleColor", (Integer) toggleColor);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+
+           	i = new Intent();
+            i.setAction(Tranq_Settings );
+           	i.putExtra("ToggleCustomIconColors", (Boolean) toggleCustomIconColors);
+           	getActivity().sendBroadcast(i);
+           	i = null;
+           
+           	i = new Intent();
+           	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ToggleIconOnColor", (Integer) toggleIconOnColor);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+
+           	i = new Intent();
+           	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ToggleIconInterColor", (Integer) toggleIconInterColor);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+           	   	
+           	i = new Intent();
+          	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ToggleIconOffColor", (Integer) toggleIconOffColor);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;       	   	
+           	   	
+           	i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("ToggleShowIndicator", (Boolean) showIndicator);
+            	if ((Boolean) showIndicator) {
+            		i.putExtra("ToggleIndOnColor", toggleIndOnColor);
+                	i.putExtra("ToggleIndOffColor", toggleIndOffColor);
+                	} else {
+                		i.putExtra("ToggleIndOnColor",0);
+                		i.putExtra("ToggleIndOffColor",0);
+                }
+            getActivity().sendBroadcast(i);
+            i = null;
+
+           	i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("ToggleShowText", (Boolean) toggleShowText);
+            	if ((Boolean) toggleShowText) {
+            		i.putExtra("ToggleTextOnColor", (Integer) toggleTextOnColor);
+                	i.putExtra("ToggleTextOffColor", (Integer) toggleTextOffColor);
+                	} else {
+                		i.putExtra("ToggleTextOnColor",0);
+                		i.putExtra("ToggleTextOffColor",0);
+                }
+            getActivity().sendBroadcast(i);
+            i = null;
+    
+           	i = new Intent();
+           	i.setAction(Tranq_Settings );
+           	i.putExtra("ToggleShowDivider", (Boolean) toggleShowDivider);
+            if ((Boolean) toggleShowDivider) {
+               	i.putExtra("ToggleDividerColor", (Integer) toggleDividerColor);
+               	} else {
+               		i.putExtra("ToggleDividerColor",0);
+                }
+           	getActivity().sendBroadcast(i);
+           	i = null;      
+            
+           	i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("UpdateToggles", true);
+            getActivity().sendBroadcast(i);
+            i = null;
+
+          	i = new Intent();
+          	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ShowFourg", (Boolean) showFourg);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+            	   	
+           	i = new Intent();
+           	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ShowWifi", (Boolean) showWifi);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+            	   	
+           	i = new Intent();
+          	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ShowGps", (Boolean) showGps);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+           
+           	i = new Intent();
+           	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ShowBluetooth", (Boolean) showBluetooth);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+                
+           	i = new Intent();
+           	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ShowSound", (Boolean) showSound);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+               
+           	i = new Intent();
+          	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ShowAirplane", (Boolean) showAirplane);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+
+           	i = new Intent();
+           	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ShowBrightness", (Boolean) showBrightness);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+
+           	i = new Intent();
+          	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ShowRotate", (Boolean) showRotate);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+     
+           	i = new Intent();
+          	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ShowSync", (Boolean) showSync);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+
+           	i = new Intent();
+           	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ShowData", (Boolean) showData);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;            
+       	   	
+          	i = new Intent();
+           	i.setAction(Tranq_Settings );
+       	   	i.putExtra("ShowCarrier", (Boolean) showCarrier);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+           
+          	i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("CarrierColor", (Integer) carrierColor);
+            getActivity().sendBroadcast(i);
+            i = null;
+                
+           	i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("CustomCarrier", (Boolean) carrierCustom);
+            getActivity().sendBroadcast(i);
+            i = null;
+                  
+           	i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("CustomCarrierText", (String) carrierCustomText);
+            getActivity().sendBroadcast(i);
+            i = null;
+            	
+           	i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("CarrierSize", (Integer) carrierSize);
+            getActivity().sendBroadcast(i);
+            i = null;
+            	
+          	i = new Intent();
+          	i.setAction(Tranq_Settings );
+           	i.putExtra("DateColor", (Integer) dateColor);
+           	getActivity().sendBroadcast(i);
+           	i = null;        
+
+           	i = new Intent();
+            i.setAction(Tranq_Settings );
+            i.putExtra("DateSize", (Integer) dateSize);
+            getActivity().sendBroadcast(i);
+            i = null;       	   		
+       	   	
+       	   	
+       	   	
+            
+    }
+
+    private void GetSettings(boolean readSystem) {
     	showCarrier = prefMgr.getSharedPreferences().getBoolean(SHOW_CARRIER, false);
     	carrierCustom = prefMgr.getSharedPreferences().getBoolean(CARRIER_CUSTOM, false);
     	carrierSize = prefMgr.getSharedPreferences().getInt(CARRIER_SIZE, 15);
     	dateColor = prefMgr.getSharedPreferences().getInt(DATE_COLOR, 0xff3F9BBF);
     	dateSize = prefMgr.getSharedPreferences().getInt(DATE_SIZE, 17);
-    	iconColorOn = prefMgr.getSharedPreferences().getBoolean(TOGGLE_ICON_ON_COLOR, true);
+    	iconColorOn = prefMgr.getSharedPreferences().getBoolean(ICON_COLOR_ON, true);
     	showClock = prefMgr.getSharedPreferences().getBoolean(SHOW_CLOCK, true);
     	clockAmPm = prefMgr.getSharedPreferences().getBoolean(CLOCK_AMPM, true);
     	showToggles = prefMgr.getSharedPreferences().getBoolean(TOGGLES_ON, true);
@@ -323,33 +658,38 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         carrierSize = prefMgr.getSharedPreferences().getInt(CARRIER_SIZE, 15);
         dateColor = prefMgr.getSharedPreferences().getInt(DATE_COLOR, 15);
         dateSize = prefMgr.getSharedPreferences().getInt(DATE_SIZE, 15);
-        try {
-			NavigationBarColor = Settings.System.getInt(getActivity().getContentResolver(),Settings.System.NAVIGATION_BAR_TINT);
-		} catch (SettingNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-        try {
-			meterOptions = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.BATTERY_ICON);
-		} catch (SettingNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        try {
-			batteryBar = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_BATTERY_BAR);
-		} catch (SettingNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        try {
-			batteryBarColor = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_BATTERY_BAR_COLOR);
-		} catch (SettingNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	
+        if (!readSystem) {
+        navigationBarColor = prefMgr.getSharedPreferences().getInt(NAVIGATION_BAR_TINT, 1);
+        meterOptions = prefMgr.getSharedPreferences().getInt(BATTERY_ICON, 15);
+        batteryBar = prefMgr.getSharedPreferences().getInt(BATTERY_BAR, 15);
+        batteryBarColor = prefMgr.getSharedPreferences().getInt(BATTERY_BAR_COLOR, 15);
         
+        } else {
+        	try {
+        		navigationBarColor = Settings.System.getInt(getActivity().getContentResolver(),Settings.System.NAVIGATION_BAR_TINT);
+        	} catch (SettingNotFoundException e) {
+        		e.printStackTrace();
+        	}
+
+        	try {
+        		meterOptions = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.BATTERY_ICON);
+        	} catch (SettingNotFoundException e) {
+        		e.printStackTrace();
+        	}
+
+        	try {
+        		batteryBar = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_BATTERY_BAR);
+        	} catch (SettingNotFoundException e) {
+        		e.printStackTrace();
+        	}
+
+        	try {
+        		batteryBarColor = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_BATTERY_BAR_COLOR);
+        	} catch (SettingNotFoundException e) {
+        		e.printStackTrace();
+        	}
+        }
     }    
     
     
@@ -363,9 +703,8 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
-
 				        
-				        GetSettings();
+				        GetSettings(true);
 				        
 				        themeMgr = getPreferenceManager();
 				        themeMgr.setSharedPreferencesName("Tranquility_Theme_One");
@@ -375,23 +714,60 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				      
 				        SaveTheme();
 				        
+				        prefMgr = getPreferenceManager();
+				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        prefMgr.getSharedPreferences();
+				        prefMgr.getSharedPreferencesName();
+						
+				        Toast.makeText(getActivity().getBaseContext(), themeOneName + " has been saved", Toast.LENGTH_SHORT).show();
+					
+					} else if (whichTheme == 2 ) {
+				        prefMgr = getPreferenceManager();
+				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        prefMgr.getSharedPreferences();
 				        
+				        GetSettings(true);
+				        
+				        themeMgr = getPreferenceManager();
+				        themeMgr.setSharedPreferencesName("Tranquility_Theme_Two");
+				        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        themeMgr.getSharedPreferences();
+				        themeEditor = themeMgr.getSharedPreferences();
+				      
+				        SaveTheme();
 				        
 				        prefMgr = getPreferenceManager();
 				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 				        prefMgr.getSharedPreferencesName();
-						Toast.makeText(getActivity().getBaseContext(), themeOneName + " has been saved", Toast.LENGTH_SHORT).show();
-					
-					} else if (whichTheme == 2 ) {
-				        themeEditor = themeMgr.getSharedPreferences();
-				        SaveTheme();
+				        
 						Toast.makeText(getActivity().getBaseContext(), themeTwoName + " has been saved", Toast.LENGTH_SHORT).show();
 						
 					} else if (whichTheme == 3 ) {
+				        prefMgr = getPreferenceManager();
+				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        prefMgr.getSharedPreferences();
+				        
+				        GetSettings(true);
+				        
+				        themeMgr = getPreferenceManager();
+				        themeMgr.setSharedPreferencesName("Tranquility_Theme_Three");
+				        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        themeMgr.getSharedPreferences();
 				        themeEditor = themeMgr.getSharedPreferences();
+				      
 				        SaveTheme();
+				        
+				        prefMgr = getPreferenceManager();
+				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        prefMgr.getSharedPreferences();
+				        prefMgr.getSharedPreferencesName();
+				        
 						Toast.makeText(getActivity().getBaseContext(), themeThreeName + " has been saved", Toast.LENGTH_SHORT).show();
 					}
 				}
@@ -403,18 +779,76 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					if (whichTheme == 1 ) {
-				        themeEditor = prefMgr.getSharedPreferences();
+				        prefMgr = getPreferenceManager();
+				        prefMgr.setSharedPreferencesName("Tranquility_Theme_One");
+				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        prefMgr.getSharedPreferences();
+						
+				        GetSettings(false);
+				        
+				        themeMgr = getPreferenceManager();
+				        themeMgr.setSharedPreferencesName("Tranquility_Settings");
+				        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        themeMgr.getSharedPreferences();
+				        themeEditor = themeMgr.getSharedPreferences();
+				        
 				        ApplyTheme();
+				        
+				        prefMgr = getPreferenceManager();
+				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        prefMgr.getSharedPreferences();
+				        prefMgr.getSharedPreferencesName();
+				        
 						Toast.makeText(getActivity().getBaseContext(), themeOneName + " has been applied", Toast.LENGTH_SHORT).show();
 						
 					} else if (whichTheme == 2 ) {
-				        themeEditor = prefMgr.getSharedPreferences();
+				        prefMgr = getPreferenceManager();
+				        prefMgr.setSharedPreferencesName("Tranquility_Theme_Two");
+				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        prefMgr.getSharedPreferences();
+						
+				        GetSettings(false);
+				        
+				        themeMgr = getPreferenceManager();
+				        themeMgr.setSharedPreferencesName("Tranquility_Settings");
+				        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        themeMgr.getSharedPreferences();
+				        themeEditor = themeMgr.getSharedPreferences();
+				        
 				        ApplyTheme();
+				        
+				        prefMgr = getPreferenceManager();
+				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        prefMgr.getSharedPreferences();
+				        prefMgr.getSharedPreferencesName();
+				        
+	
 						Toast.makeText(getActivity().getBaseContext(), themeTwoName + " has been applied", Toast.LENGTH_SHORT).show();
 						
 					} else if (whichTheme == 3 ) {
-				        themeEditor = prefMgr.getSharedPreferences();
+				        prefMgr = getPreferenceManager();
+				        prefMgr.setSharedPreferencesName("Tranquility_Theme_Three");
+				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        prefMgr.getSharedPreferences();
+						
+				        GetSettings(false);
+				        
+				        themeMgr = getPreferenceManager();
+				        themeMgr.setSharedPreferencesName("Tranquility_Settings");
+				        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        themeMgr.getSharedPreferences();
+				        themeEditor = themeMgr.getSharedPreferences();
+				        
 				        ApplyTheme();
+				        
+				        prefMgr = getPreferenceManager();
+				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+				        prefMgr.getSharedPreferences();
+				        prefMgr.getSharedPreferencesName();
+				        
 						Toast.makeText(getActivity().getBaseContext(), themeThreeName + " has been applied", Toast.LENGTH_SHORT).show();
 					}
 				}
