@@ -1156,9 +1156,6 @@
             </intent-filter>
         </activity>
 
-
-
-
         <!-- Development settings -->
 
         <activity android:name="DebugIntentSender" android:label="@string/debug_intent_sender_label">
@@ -1321,6 +1318,7 @@
 	<!-- Quick Setting Items-->   
         <activity android:name="Settings$LockscreenActivity"
             android:label="Custom Lockscreen">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.settings.LOCKSCREEN" />

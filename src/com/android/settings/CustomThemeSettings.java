@@ -106,6 +106,18 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 	private final String BATTERY_ICON = "battery_icon";
 	private final String BATTERY_BAR = "battery_bar";
 	private final String BATTERY_BAR_COLOR = "battery_bar_color";
+	private final String QUICK_SETTINGS_ON = "toggles_show_quicksettings";
+	private final String QUICK_SETTINGS_BOTTOM = "quicksettings_bottom";
+	private final String SETTINGS_CLOCK = "quick_setting_clock";
+	private final String SETTINGS_METER = "quick_setting_meter";
+	private final String SETTINGS_NAV = "quick_setting_nav";
+	private final String SETTINGS_LOCKSCREEN = "quick_setting_lockscreen";
+	private final String SETTINGS_PULLDOWN = "quick_setting_pulldown";
+	private final String SETTINGS_TOGGLE = "quick_setting_toggle";
+	private final String SETTINGS_QUIETTIME = "quick_setting_quiet";
+	private final String SETTINGS_LED = "quick_setting_led";
+	private final String SETTINGS_ICON = "quick_setting_iconcolor";
+	
 	
     
 	private PreferenceManager prefMgr;
@@ -132,7 +144,8 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
     private boolean showFourg, showWifi, showGps, showBluetooth, showSound, showAirplane;
     private boolean showBrightness, showRotate, showSync, showData;
     private boolean showSearchButton, showLeftMenuButton, showRightMenuButton, showSearchButtonLand;
-    private boolean showTopMenuButtonLand, showBotMenuButtonLand;
+    private boolean showTopMenuButtonLand, showBotMenuButtonLand, quickSettingsOn, quickSettingsBottom;
+    private boolean quickClock, quickMeter, quickNav, quickLock, quickPullDown, quickToggle, quickQuiet, quickLed, quickIcon;
     private int carrierColor, iconColor, clockColor, clockSize, toggleColor, toggleIconOnColor;
     private int toggleIconInterColor, toggleIconOffColor, toggleIndOnColor, toggleIndOffColor;
     private int toggleTextOnColor, toggleTextOffColor, toggleDividerColor, navigationBarColor;
@@ -313,6 +326,17 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         editor.putInt(BATTERY_ICON, meterOptions);
         editor.putInt(BATTERY_BAR, batteryBar);
         editor.putInt(BATTERY_BAR_COLOR, batteryBarColor);
+        editor.putBoolean(QUICK_SETTINGS_ON, quickSettingsOn);
+        editor.putBoolean(QUICK_SETTINGS_BOTTOM, quickSettingsBottom);
+        editor.putBoolean(SETTINGS_CLOCK, quickClock);
+        editor.putBoolean(SETTINGS_METER, quickMeter);
+        editor.putBoolean(SETTINGS_NAV, quickNav);
+        editor.putBoolean(SETTINGS_LOCKSCREEN, quickLock);
+        editor.putBoolean(SETTINGS_PULLDOWN, quickPullDown);
+        editor.putBoolean(SETTINGS_TOGGLE, quickToggle);
+        editor.putBoolean(SETTINGS_QUIETTIME, quickQuiet);
+        editor.putBoolean(SETTINGS_LED, quickLed);
+        editor.putBoolean(SETTINGS_ICON, quickIcon);
         editor.commit();
         
     }
@@ -367,6 +391,18 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         editor.putInt(CARRIER_SIZE, carrierSize);
         editor.putInt(DATE_COLOR, dateColor);
         editor.putInt(DATE_SIZE, dateSize);
+        editor.putBoolean(QUICK_SETTINGS_ON, quickSettingsOn);
+        editor.putBoolean(QUICK_SETTINGS_BOTTOM, quickSettingsBottom);
+        editor.putBoolean(SETTINGS_CLOCK, quickClock);
+        editor.putBoolean(SETTINGS_METER, quickMeter);
+        editor.putBoolean(SETTINGS_NAV, quickNav);
+        editor.putBoolean(SETTINGS_LOCKSCREEN, quickLock);
+        editor.putBoolean(SETTINGS_PULLDOWN, quickPullDown);
+        editor.putBoolean(SETTINGS_TOGGLE, quickToggle);
+        editor.putBoolean(SETTINGS_QUIETTIME, quickQuiet);
+        editor.putBoolean(SETTINGS_LED, quickLed);
+        editor.putBoolean(SETTINGS_ICON, quickIcon);
+ 
         editor.commit();
        
         Settings.System.putInt(getActivity().getContentResolver(),Settings.System.NAVIGATION_BAR_TINT, navigationBarColor);        
@@ -381,234 +417,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
     }    
     
     
-    private void SendIntents() {
-        	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ShowClock", showClock);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-       
-         	i = new Intent();
-            i.setAction(Tranq_Settings );
-            i.putExtra("ClockAmPm", (Boolean) clockAmPm);
-            getActivity().sendBroadcast(i);
-            i = null;
-        
-        	i = new Intent();
-            i.setAction(Tranq_Settings );
-            i.putExtra("ClockColor", (Integer) clockColor);
-            getActivity().sendBroadcast(i);
-            i = null;
 
-        	i = new Intent();
-            i.setAction(Tranq_Settings );
-            i.putExtra("ClockSize", (Integer) clockSize);
-            getActivity().sendBroadcast(i);
-            i = null;
-            
-            i = new Intent();
-            i.setAction("tranq_icon_color");
-           	i.putExtra("IconColorOn", (Boolean) iconColorOn);
-           	getActivity().sendBroadcast(i);
-           	i = null;
-
-            i = new Intent();
-            i.setAction("tranq_icon_color");
-           	i.putExtra("IconColor", (Integer) iconColor);
-           	getActivity().sendBroadcast(i);
-           	i = null;
-            
-           	i = new Intent();
-           	i.setAction(Tranq_Settings );
-       	   	i.putExtra("TogglesOn", (Boolean) showToggles);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-           	   	
-           	i = new Intent();
-            i.setAction(Tranq_Settings );
-           	i.putExtra("TogglesTop", (Boolean) togglesTop);
-           	getActivity().sendBroadcast(i);
-           	i = null;
-           	   	
-           	i = new Intent();
-           	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ToggleColor", (Integer) toggleColor);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-
-           	i = new Intent();
-            i.setAction(Tranq_Settings );
-           	i.putExtra("ToggleCustomIconColors", (Boolean) toggleCustomIconColors);
-           	getActivity().sendBroadcast(i);
-           	i = null;
-           
-           	i = new Intent();
-           	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ToggleIconOnColor", (Integer) toggleIconOnColor);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-
-           	i = new Intent();
-           	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ToggleIconInterColor", (Integer) toggleIconInterColor);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-           	   	
-           	i = new Intent();
-          	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ToggleIconOffColor", (Integer) toggleIconOffColor);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;       	   	
-           	   	
-           	i = new Intent();
-            i.setAction(Tranq_Settings );
-            i.putExtra("ToggleShowIndicator", (Boolean) showIndicator);
-            	if ((Boolean) showIndicator) {
-            		i.putExtra("ToggleIndOnColor", toggleIndOnColor);
-                	i.putExtra("ToggleIndOffColor", toggleIndOffColor);
-                	} else {
-                		i.putExtra("ToggleIndOnColor",0);
-                		i.putExtra("ToggleIndOffColor",0);
-                }
-            getActivity().sendBroadcast(i);
-            i = null;
-
-           	i = new Intent();
-            i.setAction(Tranq_Settings );
-            i.putExtra("ToggleShowText", (Boolean) toggleShowText);
-            	if ((Boolean) toggleShowText) {
-            		i.putExtra("ToggleTextOnColor", (Integer) toggleTextOnColor);
-                	i.putExtra("ToggleTextOffColor", (Integer) toggleTextOffColor);
-                	} else {
-                		i.putExtra("ToggleTextOnColor",0);
-                		i.putExtra("ToggleTextOffColor",0);
-                }
-            getActivity().sendBroadcast(i);
-            i = null;
-    
-           	i = new Intent();
-           	i.setAction(Tranq_Settings );
-           	i.putExtra("ToggleShowDivider", (Boolean) toggleShowDivider);
-            if ((Boolean) toggleShowDivider) {
-               	i.putExtra("ToggleDividerColor", (Integer) toggleDividerColor);
-               	} else {
-               		i.putExtra("ToggleDividerColor",0);
-                }
-           	getActivity().sendBroadcast(i);
-           	i = null;      
-            
-           	i = new Intent();
-            i.setAction(Tranq_Settings );
-            i.putExtra("UpdateToggles", true);
-            getActivity().sendBroadcast(i);
-            i = null;
-
-          	i = new Intent();
-          	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ShowFourg", (Boolean) showFourg);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-            	   	
-           	i = new Intent();
-           	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ShowWifi", (Boolean) showWifi);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-            	   	
-           	i = new Intent();
-          	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ShowGps", (Boolean) showGps);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-           
-           	i = new Intent();
-           	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ShowBluetooth", (Boolean) showBluetooth);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-                
-           	i = new Intent();
-           	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ShowSound", (Boolean) showSound);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-               
-           	i = new Intent();
-          	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ShowAirplane", (Boolean) showAirplane);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-
-           	i = new Intent();
-           	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ShowBrightness", (Boolean) showBrightness);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-
-           	i = new Intent();
-          	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ShowRotate", (Boolean) showRotate);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-     
-           	i = new Intent();
-          	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ShowSync", (Boolean) showSync);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-
-           	i = new Intent();
-           	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ShowData", (Boolean) showData);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;            
-       	   	
-          	i = new Intent();
-           	i.setAction(Tranq_Settings );
-       	   	i.putExtra("ShowCarrier", (Boolean) showCarrier);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-           
-          	i = new Intent();
-            i.setAction(Tranq_Settings );
-            i.putExtra("CarrierColor", (Integer) carrierColor);
-            getActivity().sendBroadcast(i);
-            i = null;
-                
-           	i = new Intent();
-            i.setAction(Tranq_Settings );
-            i.putExtra("CustomCarrier", (Boolean) carrierCustom);
-            getActivity().sendBroadcast(i);
-            i = null;
-                  
-           	i = new Intent();
-            i.setAction(Tranq_Settings );
-            i.putExtra("CustomCarrierText", (String) carrierCustomText);
-            getActivity().sendBroadcast(i);
-            i = null;
-            	
-           	i = new Intent();
-            i.setAction(Tranq_Settings );
-            i.putExtra("CarrierSize", (Integer) carrierSize);
-            getActivity().sendBroadcast(i);
-            i = null;
-            	
-          	i = new Intent();
-          	i.setAction(Tranq_Settings );
-           	i.putExtra("DateColor", (Integer) dateColor);
-           	getActivity().sendBroadcast(i);
-           	i = null;        
-
-           	i = new Intent();
-            i.setAction(Tranq_Settings );
-            i.putExtra("DateSize", (Integer) dateSize);
-            getActivity().sendBroadcast(i);
-            i = null;       	   		
-       	   	
-       	   	
-       	   	
-            
-    }
 
     private void GetSettings(boolean readSystem) {
     	showCarrier = prefMgr.getSharedPreferences().getBoolean(SHOW_CARRIER, false);
@@ -658,7 +467,18 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         carrierSize = prefMgr.getSharedPreferences().getInt(CARRIER_SIZE, 15);
         dateColor = prefMgr.getSharedPreferences().getInt(DATE_COLOR, 15);
         dateSize = prefMgr.getSharedPreferences().getInt(DATE_SIZE, 15);
-
+        quickSettingsOn = prefMgr.getSharedPreferences().getBoolean(QUICK_SETTINGS_ON, false);
+        quickSettingsBottom = prefMgr.getSharedPreferences().getBoolean(QUICK_SETTINGS_BOTTOM, true);
+        quickClock = prefMgr.getSharedPreferences().getBoolean(SETTINGS_CLOCK, true);
+        quickMeter = prefMgr.getSharedPreferences().getBoolean(SETTINGS_METER, true);
+        quickNav = prefMgr.getSharedPreferences().getBoolean(SETTINGS_NAV, true);
+        quickLock = prefMgr.getSharedPreferences().getBoolean(SETTINGS_LOCKSCREEN, true);
+        quickPullDown = prefMgr.getSharedPreferences().getBoolean(SETTINGS_PULLDOWN, true);
+        quickToggle = prefMgr.getSharedPreferences().getBoolean(SETTINGS_TOGGLE, true);
+        quickQuiet = prefMgr.getSharedPreferences().getBoolean(SETTINGS_QUIETTIME, true);
+        quickLed = prefMgr.getSharedPreferences().getBoolean(SETTINGS_LED, true);
+        quickIcon = prefMgr.getSharedPreferences().getBoolean(SETTINGS_ICON, true);
+        
         if (!readSystem) {
         navigationBarColor = prefMgr.getSharedPreferences().getInt(NAVIGATION_BAR_TINT, 1);
         meterOptions = prefMgr.getSharedPreferences().getInt(BATTERY_ICON, 15);
@@ -692,6 +512,305 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         }
     }    
     
+
+    private void SendIntents() {
+    	Intent i = new Intent();
+    	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowClock", showClock);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+   
+     	i = new Intent();
+        i.setAction(Tranq_Settings );
+        i.putExtra("ClockAmPm", (Boolean) clockAmPm);
+        getActivity().sendBroadcast(i);
+        i = null;
+    
+    	i = new Intent();
+        i.setAction(Tranq_Settings );
+        i.putExtra("ClockColor", (Integer) clockColor);
+        getActivity().sendBroadcast(i);
+        i = null;
+
+    	i = new Intent();
+        i.setAction(Tranq_Settings );
+        i.putExtra("ClockSize", (Integer) clockSize);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+        i = new Intent();
+        i.setAction("tranq_icon_color");
+       	i.putExtra("IconColorOn", (Boolean) iconColorOn);
+       	getActivity().sendBroadcast(i);
+       	i = null;
+
+        i = new Intent();
+        i.setAction("tranq_icon_color");
+       	i.putExtra("IconColor", (Integer) iconColor);
+       	getActivity().sendBroadcast(i);
+       	i = null;
+        
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("TogglesOn", (Boolean) showToggles);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+       	   	
+       	i = new Intent();
+        i.setAction(Tranq_Settings );
+       	i.putExtra("TogglesTop", (Boolean) togglesTop);
+       	getActivity().sendBroadcast(i);
+       	i = null;
+       	   	
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ToggleColor", (Integer) toggleColor);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+
+       	i = new Intent();
+        i.setAction(Tranq_Settings );
+       	i.putExtra("ToggleCustomIconColors", (Boolean) toggleCustomIconColors);
+       	getActivity().sendBroadcast(i);
+       	i = null;
+       
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ToggleIconOnColor", (Integer) toggleIconOnColor);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ToggleIconInterColor", (Integer) toggleIconInterColor);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+       	   	
+       	i = new Intent();
+      	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ToggleIconOffColor", (Integer) toggleIconOffColor);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;       	   	
+       	   	
+       	i = new Intent();
+        i.setAction(Tranq_Settings );
+        i.putExtra("ToggleShowIndicator", (Boolean) showIndicator);
+        	if ((Boolean) showIndicator) {
+        		i.putExtra("ToggleIndOnColor", toggleIndOnColor);
+            	i.putExtra("ToggleIndOffColor", toggleIndOffColor);
+            	} else {
+            		i.putExtra("ToggleIndOnColor",0);
+            		i.putExtra("ToggleIndOffColor",0);
+            }
+        getActivity().sendBroadcast(i);
+        i = null;
+
+       	i = new Intent();
+        i.setAction(Tranq_Settings );
+        i.putExtra("ToggleShowText", (Boolean) toggleShowText);
+        	if ((Boolean) toggleShowText) {
+        		i.putExtra("ToggleTextOnColor", (Integer) toggleTextOnColor);
+            	i.putExtra("ToggleTextOffColor", (Integer) toggleTextOffColor);
+            	} else {
+            		i.putExtra("ToggleTextOnColor",0);
+            		i.putExtra("ToggleTextOffColor",0);
+            }
+        getActivity().sendBroadcast(i);
+        i = null;
+
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+       	i.putExtra("ToggleShowDivider", (Boolean) toggleShowDivider);
+        if ((Boolean) toggleShowDivider) {
+           	i.putExtra("ToggleDividerColor", (Integer) toggleDividerColor);
+           	} else {
+           		i.putExtra("ToggleDividerColor",0);
+            }
+       	getActivity().sendBroadcast(i);
+       	i = null;      
+        
+       	i = new Intent();
+        i.setAction(Tranq_Settings );
+        i.putExtra("UpdateToggles", true);
+        getActivity().sendBroadcast(i);
+        i = null;
+
+      	i = new Intent();
+      	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowFourg", (Boolean) showFourg);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+        	   	
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowWifi", (Boolean) showWifi);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+        	   	
+       	i = new Intent();
+      	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowGps", (Boolean) showGps);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+       
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowBluetooth", (Boolean) showBluetooth);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+            
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowSound", (Boolean) showSound);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+           
+       	i = new Intent();
+      	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowAirplane", (Boolean) showAirplane);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowBrightness", (Boolean) showBrightness);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+
+       	i = new Intent();
+      	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowRotate", (Boolean) showRotate);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+ 
+       	i = new Intent();
+      	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowSync", (Boolean) showSync);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowData", (Boolean) showData);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;            
+   	   	
+      	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowCarrier", (Boolean) showCarrier);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+       
+      	i = new Intent();
+        i.setAction(Tranq_Settings );
+        i.putExtra("CarrierColor", (Integer) carrierColor);
+        getActivity().sendBroadcast(i);
+        i = null;
+            
+       	i = new Intent();
+        i.setAction(Tranq_Settings );
+        i.putExtra("CustomCarrier", (Boolean) carrierCustom);
+        getActivity().sendBroadcast(i);
+        i = null;
+              
+       	i = new Intent();
+        i.setAction(Tranq_Settings );
+        i.putExtra("CustomCarrierText", (String) carrierCustomText);
+        getActivity().sendBroadcast(i);
+        i = null;
+        	
+       	i = new Intent();
+        i.setAction(Tranq_Settings );
+        i.putExtra("CarrierSize", (Integer) carrierSize);
+        getActivity().sendBroadcast(i);
+        i = null;
+        	
+      	i = new Intent();
+      	i.setAction(Tranq_Settings );
+       	i.putExtra("DateColor", (Integer) dateColor);
+       	getActivity().sendBroadcast(i);
+       	i = null;        
+
+       	i = new Intent();
+        i.setAction(Tranq_Settings );
+        i.putExtra("DateSize", (Integer) dateSize);
+        getActivity().sendBroadcast(i);
+        i = null;       	   		
+   	   	
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowClockButton", (Boolean) quickClock);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+        	   	
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowMeterButton", (Boolean) quickMeter);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+        	   	
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowNavButton", (Boolean) quickNav);
+  	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+       
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowLockscreenButton", (Boolean) quickLock);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+            
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowPulldownButton", (Boolean) quickPullDown);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+           
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowToggleButton", (Boolean) quickToggle);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowQuietButton", (Boolean) quickQuiet);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+            
+       	i = new Intent();
+      	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowLedButton", (Boolean) quickLed);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+           
+       	i = new Intent();
+       	i.setAction(Tranq_Settings );
+   	   	i.putExtra("ShowIconButton", (Boolean) quickIcon);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;   
+        
+    	i = new Intent();
+    	i.setAction(Tranq_Settings );
+   	   	i.putExtra("SettingsOn", (Boolean) quickSettingsOn);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+
+    	i = new Intent();
+    	i.setAction(Tranq_Settings );
+   	   	i.putExtra("SettingsBottom", (Boolean) quickSettingsBottom);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+   	   	
+    	i = new Intent();
+        i.setAction(Tranq_Settings );
+        i.putExtra("UpdateSettings", true);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+        
+}    
     
     DialogInterface.OnClickListener saveDialogPositiveListener =
             new DialogInterface.OnClickListener() {

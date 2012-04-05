@@ -19,6 +19,17 @@
     </style>
   </head>
   <body>
+
+$ 8.0
+  % Version 8.0
+  _ 03-30-2012
+	!Android Version Change
+	*Build fully moved from 4.0.3 to 4.0.4
+	!Theme it
+	*All current meters now able to be themed.
+	!Meters
+	*Removed ball meter.
+
 $ 7.0w
   % Version 7.0w
   _ 03-16-2012

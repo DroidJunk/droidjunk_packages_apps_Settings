@@ -726,16 +726,14 @@
 		<item>1</item>
         	<item>2</item>
 		<item>3</item>
-		<item>4</item>
+        	<item>4</item>
         	<item>5</item>
-        	<item>6</item>
     </string-array>
 
     <string-array name="pref_alt_meters_entries">
 		<item>Tranquility Meter</item>
 		<item>Stock ICS Meter</item>
         	<item>UOT Vertical Meter</item>
-		<item>UOT Ball Meter</item>
 		<item>UOT Broken Circle Meter</item>
 		<item>Animated TranQ Meter</item>
         	<item>Hide Meter</item>
