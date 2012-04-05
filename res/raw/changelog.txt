@@ -19,7 +19,31 @@
     </style>
   </head>
   <body>
-$ 7.0r
+$ 7.0w
+  % Version 7.0w
+  _ 03-16-2012
+	!Pulldown
+	*Added quick setting buttons to pulldown (not fully optionable yet).
+	!Theme it
+	*Added option to recolor clock, navbar, and pulldown 
+$ 7.0v
+  % Version 7.0v
+  _ 03-12-2012
+	!Status Bar
+	*Added option to recolor icons
+$ 7.0u
+  % Version 7.0u
+  _ 02-26-2012
+	!Navigation Bar
+	*New choices for menu button
+$ 7.0t
+  % Version 7.0t
+  _ 02-22-2012
+	!New Battery
+	*Battery meters change on selection
+	!Customizer (Toolbox)
+	*Re-organized and improved coding
+$ 7.0s
   % Version 7.0s
   _ 02-19-2012
 	! Notifications

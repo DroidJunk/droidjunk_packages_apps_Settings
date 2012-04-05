@@ -1318,6 +1318,108 @@
                 android:resource="@id/custom_settings" />
         </activity>
 
+	<!-- Quick Setting Items-->   
+        <activity android:name="Settings$LockscreenActivity"
+            android:label="Custom Lockscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.LOCKSCREEN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.Lockscreen" />
+        </activity>
+	
+        <activity android:name="Settings$ClockActivity"
+            android:label="Custom Clock">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.CLOCK" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomStatusbarSettings" />
+        </activity>
+
+        <activity android:name="Settings$MeterActivity"
+            android:label="Custom Meter">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.METERS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.Meters" />
+        </activity>
+
+        <activity android:name="Settings$NavigationActivity"
+            android:label="Custom Navigation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.NAVBAR" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.NavBar" />
+        </activity>
+
+        <activity android:name="Settings$ToggleActivity"
+            android:label="Custom Toggles">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.TOGGLES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomToggleSettings" />
+        </activity>
+
+        <activity android:name="Settings$PulldownActivity"
+            android:label="Custom Pulldown">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.PULLDOWN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomPulldownSettings" />
+        </activity>
+
+        <activity android:name="Settings$IconColorActivity"
+            android:label="Custom Icon Coloring">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.ICONCOLOR" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomIconSettings" />
+        </activity>
+
+        <activity android:name="Settings$LedActivity"
+            android:label="Custom Led">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.LED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomLedSettings" />
+        </activity>
+
+        <activity android:name="Settings$QuietTimeActivity"
+            android:label="Custom Quiet Time">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.QUIETTIME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomQuietSettings" />
+        </activity>
+
+<!-- End Quick Settings -->
+
         <activity android:name="com.android.settings.accounts.AddAccountSettings"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -1329,6 +1431,7 @@
             </intent-filter>
         </activity>
 
+
 	<activity android:name="Tranquility"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -1338,38 +1441,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-	<activity android:name="NavBar"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="Navigation Bar Settings">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name="Lockscreen"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="Lockscreen Settings">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name="Meters"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="Battery  Settings">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-
 
         <activity android:name="com.android.settings.accounts.ChooseAccountActivity"
             android:label="@string/header_add_an_account"
@@ -1448,9 +1519,6 @@
         </receiver>
 	
    		<activity android:name=".About" android:label="Change Log"
-		    android:screenOrientation="portrait" />
-
-   		<activity android:name=".Lockscreen" android:label="Lockscreen Settings"
 		    android:screenOrientation="portrait" />
 
     </application>
