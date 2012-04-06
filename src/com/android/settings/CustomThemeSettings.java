@@ -533,85 +533,85 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 
     private void SendIntents() {
     	Intent i = new Intent();
-    	i.setAction(Junk_Settings );
+    	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowClock", showClock);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
    
      	i = new Intent();
-        i.setAction(Junk_Settings );
+        i.setAction(Junk_Settings);
         i.putExtra("ClockAmPm", (Boolean) clockAmPm);
         getActivity().sendBroadcast(i);
         i = null;
     
     	i = new Intent();
-        i.setAction(Junk_Settings );
+        i.setAction(Junk_Settings);
         i.putExtra("ClockColor", (Integer) clockColor);
         getActivity().sendBroadcast(i);
         i = null;
 
     	i = new Intent();
-        i.setAction(Junk_Settings );
+        i.setAction(Junk_Settings);
         i.putExtra("ClockSize", (Integer) clockSize);
         getActivity().sendBroadcast(i);
         i = null;
         
         i = new Intent();
-        i.setAction("tranq_icon_color");
+        i.setAction(Junk_Settings);
        	i.putExtra("IconColorOn", (Boolean) iconColorOn);
        	getActivity().sendBroadcast(i);
        	i = null;
 
         i = new Intent();
-        i.setAction("tranq_icon_color");
+        i.setAction(Junk_Settings);
        	i.putExtra("IconColor", (Integer) iconColor);
        	getActivity().sendBroadcast(i);
        	i = null;
         
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("TogglesOn", (Boolean) togglesShowToggles);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        	   	
        	i = new Intent();
-        i.setAction(Junk_Settings );
+        i.setAction(Junk_Settings);
        	i.putExtra("TogglesTop", (Boolean) togglesTop);
        	getActivity().sendBroadcast(i);
        	i = null;
        	   	
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ToggleColor", (Integer) toggleColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-        i.setAction(Junk_Settings );
+        i.setAction(Junk_Settings);
        	i.putExtra("ToggleCustomIconColors", (Boolean) toggleCustomIconColors);
        	getActivity().sendBroadcast(i);
        	i = null;
        
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ToggleIconOnColor", (Integer) toggleIconOnColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ToggleIconInterColor", (Integer) toggleIconInterColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        	   	
        	i = new Intent();
-      	i.setAction(Junk_Settings );
+      	i.setAction(Junk_Settings);
    	   	i.putExtra("ToggleIconOffColor", (Integer) toggleIconOffColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;       	   	
        	   	
        	i = new Intent();
-        i.setAction(Junk_Settings );
+        i.setAction(Junk_Settings);
         i.putExtra("ToggleShowIndicator", (Boolean) togglesShowIndicator);
         	if ((Boolean) togglesShowIndicator) {
         		i.putExtra("ToggleIndOnColor", toggleIndOnColor);
@@ -624,7 +624,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         i = null;
 
        	i = new Intent();
-        i.setAction(Junk_Settings );
+        i.setAction(Junk_Settings);
         i.putExtra("ToggleShowText", (Boolean) toggleShowText);
         	if ((Boolean) toggleShowText) {
         		i.putExtra("ToggleTextOnColor", (Integer) toggleTextOnColor);
@@ -637,7 +637,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         i = null;
 
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
        	i.putExtra("ToggleShowDivider", (Boolean) toggleShowDivider);
         if ((Boolean) toggleShowDivider) {
            	i.putExtra("ToggleDividerColor", (Integer) toggleDividerColor);
@@ -648,55 +648,55 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
        	i = null;      
         
        	i = new Intent();
-        i.setAction(Junk_Settings );
+        i.setAction(Junk_Settings);
         i.putExtra("UpdateToggles", true);
         getActivity().sendBroadcast(i);
         i = null;
 
       	i = new Intent();
-      	i.setAction(Junk_Settings );
+      	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowFourg", (Boolean) showFourg);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
         	   	
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowWifi", (Boolean) showWifi);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
         	   	
        	i = new Intent();
-      	i.setAction(Junk_Settings );
+      	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowGps", (Boolean) showGps);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowBluetooth", (Boolean) showBluetooth);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
             
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowSound", (Boolean) showSound);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
            
        	i = new Intent();
-      	i.setAction(Junk_Settings );
+      	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowAirplane", (Boolean) showAirplane);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowBrightness", (Boolean) showBrightness);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-      	i.setAction(Junk_Settings );
+      	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowRotate", (Boolean) showRotate);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
@@ -708,121 +708,121 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
    	   	i = null;
 
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowData", (Boolean) showData);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;            
    	   	
       	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowCarrier", (Boolean) showCarrier);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        
       	i = new Intent();
-        i.setAction(Junk_Settings );
+        i.setAction(Junk_Settings);
         i.putExtra("CarrierColor", (Integer) carrierColor);
         getActivity().sendBroadcast(i);
         i = null;
             
        	i = new Intent();
-        i.setAction(Junk_Settings );
+        i.setAction(Junk_Settings);
         i.putExtra("CustomCarrier", (Boolean) carrierCustom);
         getActivity().sendBroadcast(i);
         i = null;
               
        	i = new Intent();
-        i.setAction(Junk_Settings );
+        i.setAction(Junk_Settings);
         i.putExtra("CustomCarrierText", (String) carrierCustomText);
         getActivity().sendBroadcast(i);
         i = null;
         	
        	i = new Intent();
-        i.setAction(Junk_Settings );
+        i.setAction(Junk_Settings);
         i.putExtra("CarrierSize", (Integer) carrierSize);
         getActivity().sendBroadcast(i);
         i = null;
         	
       	i = new Intent();
-      	i.setAction(Junk_Settings );
+      	i.setAction(Junk_Settings);
        	i.putExtra("DateColor", (Integer) dateColor);
        	getActivity().sendBroadcast(i);
        	i = null;        
 
        	i = new Intent();
-        i.setAction(Junk_Settings );
+        i.setAction(Junk_Settings);
         i.putExtra("DateSize", (Integer) dateSize);
         getActivity().sendBroadcast(i);
         i = null;       	   		
    	   	
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowClockButton", (Boolean) quickClock);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
         	   	
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowMeterButton", (Boolean) quickMeter);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
         	   	
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowNavButton", (Boolean) quickNav);
   	   	getActivity().sendBroadcast(i);
    	   	i = null;
        
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowLockscreenButton", (Boolean) quickLock);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
             
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowPulldownButton", (Boolean) quickPullDown);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
            
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowToggleButton", (Boolean) quickToggle);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowQuietButton", (Boolean) quickQuiet);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
             
        	i = new Intent();
-      	i.setAction(Junk_Settings );
+      	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowLedButton", (Boolean) quickLed);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
            
        	i = new Intent();
-       	i.setAction(Junk_Settings );
+       	i.setAction(Junk_Settings) ;
    	   	i.putExtra("ShowIconButton", (Boolean) quickIcon);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;   
         
     	i = new Intent();
-    	i.setAction(Junk_Settings );
+    	i.setAction(Junk_Settings);
    	   	i.putExtra("SettingsOn", (Boolean) quickSettingsOn);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
     	i = new Intent();
-    	i.setAction(Junk_Settings );
+    	i.setAction(Junk_Settings);
    	   	i.putExtra("SettingsBottom", (Boolean) quickSettingsBottom);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
    	   	
     	i = new Intent();
-        i.setAction(Junk_Settings );
+        i.setAction(Junk_Settings);
         i.putExtra("UpdateSettings", true);
         getActivity().sendBroadcast(i);
         i = null;
