@@ -26,14 +26,14 @@
        		android:layout="?android:attr/preferenceLayoutChild"
 			android:key="left_menu_button"
 			android:title="Left Menu Button"
-			android:defaultValue="false"	
+			android:defaultValue="true"	
 			/>
 		
        <CheckBoxPreference
        		android:layout="?android:attr/preferenceLayoutChild"
 			android:key="right_menu_button"
 			android:title="Right Menu Button"
-			android:defaultValue="false"			
+			android:defaultValue="true"			
 			/>	
 	
 	</PreferenceCategory>
@@ -52,14 +52,14 @@
        		android:layout="?android:attr/preferenceLayoutChild"
 			android:key="top_menu_button_land"
 			android:title="Top Menu Button"
-			android:defaultValue="false"	
+			android:defaultValue="true"	
 			/>
 		
        <CheckBoxPreference
        		android:layout="?android:attr/preferenceLayoutChild"
 			android:key="bottom_menu_button_land"
 			android:title="Bottom Menu Button"
-			android:defaultValue="false"			
+			android:defaultValue="true"			
 			/>	
 	
 	</PreferenceCategory>

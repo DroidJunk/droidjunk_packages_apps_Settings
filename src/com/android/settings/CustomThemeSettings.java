@@ -56,6 +56,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 	private final String THEME_APPLY_TWO = "apply_theme_two";
 	private final String THEME_SAVE_THREE = "save_theme_three";
 	private final String THEME_APPLY_THREE = "apply_theme_three";
+	private final String SAVED_THEME = "saved_theme";
 	
 
 	private final String SHOW_CARRIER = "show_carrier";
@@ -139,8 +140,8 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 	private String themeOneName, themeTwoName, themeThreeName;
     private int whichTheme;
     private boolean showCarrier, carrierCustom;
-    private boolean iconColorOn, showClock, clockAmPm, showToggles, togglesTop, toggleCustomIconColors ; 
-    private boolean showIndicator, toggleShowText, toggleShowDivider;
+    private boolean iconColorOn, showClock, clockAmPm, togglesShowToggles, togglesTop, toggleCustomIconColors ; 
+    private boolean togglesShowIndicator, toggleShowText, toggleShowDivider;
     private boolean showFourg, showWifi, showGps, showBluetooth, showSound, showAirplane;
     private boolean showBrightness, showRotate, showSync, showData;
     private boolean showSearchButton, showLeftMenuButton, showRightMenuButton, showSearchButtonLand;
@@ -184,6 +185,25 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 		mThemeOne.setTitle(prefMgr.getSharedPreferences().getString(THEME_ONE_NAME,"Theme One"));
 		mThemeTwo.setTitle(prefMgr.getSharedPreferences().getString(THEME_TWO_NAME,"Theme Two"));
 		mThemeThree.setTitle(prefMgr.getSharedPreferences().getString(THEME_THREE_NAME,"Theme Three"));
+		
+		
+        themeMgr = getPreferenceManager();
+        themeMgr.setSharedPreferencesName("Tranquility_Theme_One");
+        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+        themeMgr.getSharedPreferences();
+		mApplyThemeOne.setEnabled(themeMgr.getSharedPreferences().getBoolean(SAVED_THEME,false));
+
+        themeMgr = getPreferenceManager();
+        themeMgr.setSharedPreferencesName("Tranquility_Theme_Two");
+        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+        themeMgr.getSharedPreferences();
+		mApplyThemeTwo.setEnabled(prefMgr.getSharedPreferences().getBoolean(SAVED_THEME,false));
+
+        themeMgr = getPreferenceManager();
+        themeMgr.setSharedPreferencesName("Tranquility_Theme_Three");
+        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+        themeMgr.getSharedPreferences();
+		mApplyThemeThree.setEnabled(prefMgr.getSharedPreferences().getBoolean(SAVED_THEME,false));
 
         
     }
@@ -275,6 +295,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 
     private void SaveTheme() {
     	editor = themeEditor.edit();
+    	editor.putBoolean(SAVED_THEME, true);
         editor.putBoolean(SHOW_CARRIER, showCarrier);  
         editor.putBoolean(CARRIER_CUSTOM, carrierCustom);
         editor.putInt(CARRIER_SIZE, carrierSize);
@@ -283,10 +304,10 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         editor.putBoolean(ICON_COLOR_ON, iconColorOn);
         editor.putBoolean(SHOW_CLOCK, showClock);
         editor.putBoolean(CLOCK_AMPM, clockAmPm);
-        editor.putBoolean(TOGGLES_ON, showToggles);
+        editor.putBoolean(TOGGLES_ON, togglesShowToggles);
         editor.putBoolean(TOGGLES_TOP, togglesTop);
         editor.putBoolean(TOGGLE_CUSTOM_ICON_COLORS, toggleCustomIconColors);
-        editor.putBoolean(TOGGLE_SHOW_INDICATOR, showIndicator);
+        editor.putBoolean(TOGGLE_SHOW_INDICATOR, togglesShowIndicator);
         editor.putBoolean(TOGGLE_SHOW_TEXT, toggleShowText);
         editor.putBoolean(TOGGLE_SHOW_DIVIDER, toggleShowDivider);
         editor.putBoolean(TOGGLES_4G_ON, showFourg);
@@ -352,10 +373,10 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         editor.putBoolean(ICON_COLOR_ON, iconColorOn);
         editor.putBoolean(SHOW_CLOCK, showClock);
         editor.putBoolean(CLOCK_AMPM, clockAmPm);
-        editor.putBoolean(TOGGLES_ON, showToggles);
+        editor.putBoolean(TOGGLES_ON, togglesShowToggles);
         editor.putBoolean(TOGGLES_TOP, togglesTop);
         editor.putBoolean(TOGGLE_CUSTOM_ICON_COLORS, toggleCustomIconColors);
-        editor.putBoolean(TOGGLE_SHOW_INDICATOR, showIndicator);
+        editor.putBoolean(TOGGLE_SHOW_INDICATOR, togglesShowIndicator);
         editor.putBoolean(TOGGLE_SHOW_TEXT, toggleShowText);
         editor.putBoolean(TOGGLE_SHOW_DIVIDER, toggleShowDivider);
         editor.putBoolean(TOGGLES_4G_ON, showFourg);
@@ -420,20 +441,25 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 
 
     private void GetSettings(boolean readSystem) {
-    	showCarrier = prefMgr.getSharedPreferences().getBoolean(SHOW_CARRIER, false);
-    	carrierCustom = prefMgr.getSharedPreferences().getBoolean(CARRIER_CUSTOM, false);
-    	carrierSize = prefMgr.getSharedPreferences().getInt(CARRIER_SIZE, 15);
-    	dateColor = prefMgr.getSharedPreferences().getInt(DATE_COLOR, 0xff3F9BBF);
-    	dateSize = prefMgr.getSharedPreferences().getInt(DATE_SIZE, 17);
-    	iconColorOn = prefMgr.getSharedPreferences().getBoolean(ICON_COLOR_ON, true);
     	showClock = prefMgr.getSharedPreferences().getBoolean(SHOW_CLOCK, true);
-    	clockAmPm = prefMgr.getSharedPreferences().getBoolean(CLOCK_AMPM, true);
-    	showToggles = prefMgr.getSharedPreferences().getBoolean(TOGGLES_ON, true);
+    	clockAmPm = prefMgr.getSharedPreferences().getBoolean(CLOCK_AMPM, false);
+    	clockColor = prefMgr.getSharedPreferences().getInt(CLOCK_COLOR, 0xff3F9BBF);
+    	clockSize = prefMgr.getSharedPreferences().getInt(CLOCK_SIZE, 17);
+    	togglesShowToggles = prefMgr.getSharedPreferences().getBoolean(TOGGLES_ON, true);
     	togglesTop = prefMgr.getSharedPreferences().getBoolean(TOGGLES_TOP, true);
-    	toggleCustomIconColors = prefMgr.getSharedPreferences().getBoolean(TOGGLE_CUSTOM_ICON_COLORS, true);
-    	showIndicator = prefMgr.getSharedPreferences().getBoolean(TOGGLE_SHOW_INDICATOR, true);
-    	toggleShowText = prefMgr.getSharedPreferences().getBoolean(TOGGLE_SHOW_TEXT, true);
-    	toggleShowDivider = prefMgr.getSharedPreferences().getBoolean(TOGGLE_SHOW_DIVIDER, true);
+    	toggleCustomIconColors = prefMgr.getSharedPreferences().getBoolean(TOGGLE_CUSTOM_ICON_COLORS, false);
+    	toggleColor = prefMgr.getSharedPreferences().getInt(TOGGLE_COLOR, 0xff000000);
+    	toggleIconOnColor = prefMgr.getSharedPreferences().getInt(TOGGLE_ICON_ON_COLOR, 0xff33b5e5);
+        toggleIconInterColor = prefMgr.getSharedPreferences().getInt(TOGGLE_ICON_INTER_COLOR, 0xffff0000);
+        toggleIconOffColor = prefMgr.getSharedPreferences().getInt(TOGGLE_ICON_OFF_COLOR, 0xff5d5d5d);
+        togglesShowIndicator = prefMgr.getSharedPreferences().getBoolean(TOGGLE_SHOW_INDICATOR, false);
+        toggleIndOnColor = prefMgr.getSharedPreferences().getInt(TOGGLE_IND_ON_COLOR, 0xfffbb33);
+        toggleIndOffColor = prefMgr.getSharedPreferences().getInt(TOGGLE_IND_OFF_COLOR, 0xff757575);
+        toggleShowText = prefMgr.getSharedPreferences().getBoolean(TOGGLE_SHOW_TEXT, false);
+        toggleTextOnColor = prefMgr.getSharedPreferences().getInt(TOGGLE_TEXT_ON_COLOR, 0xffffbb33);
+        toggleTextOffColor = prefMgr.getSharedPreferences().getInt(TOGGLE_TEXT_OFF_COLOR, 0xff757575);
+        toggleShowDivider = prefMgr.getSharedPreferences().getBoolean(TOGGLE_SHOW_DIVIDER, true);
+        toggleDividerColor = prefMgr.getSharedPreferences().getInt(TOGGLE_DIVIDER_COLOR, 0xff757575);
     	showFourg = prefMgr.getSharedPreferences().getBoolean(TOGGLES_4G_ON, true);
     	showWifi = prefMgr.getSharedPreferences().getBoolean(TOGGLES_WIFI_ON, true);
     	showGps = prefMgr.getSharedPreferences().getBoolean(TOGGLES_GPS_ON, true);
@@ -443,31 +469,8 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
     	showBrightness = prefMgr.getSharedPreferences().getBoolean(TOGGLES_BRIGHTNESS_ON, true);
     	showRotate = prefMgr.getSharedPreferences().getBoolean(TOGGLES_ROTATE_ON, true);
     	showSync = prefMgr.getSharedPreferences().getBoolean(TOGGLES_SYNC_ON, true);
-    	showData = prefMgr.getSharedPreferences().getBoolean(TOGGLES_DATA_ON, true);
-    	showSearchButton = prefMgr.getSharedPreferences().getBoolean(SHOW_SEARCH_BUTTON, true);
-    	showLeftMenuButton = prefMgr.getSharedPreferences().getBoolean(SHOW_LEFT_MENU_BUTTON, true);
-    	showRightMenuButton = prefMgr.getSharedPreferences().getBoolean(SHOW_RIGHT_MENU_BUTTON, true);
-    	showSearchButtonLand = prefMgr.getSharedPreferences().getBoolean(SHOW_SEARCH_BUTTON_LAND, true);
-    	showTopMenuButtonLand = prefMgr.getSharedPreferences().getBoolean(SHOW_TOP_MENU_BUTTON_LAND, true);
-    	showBotMenuButtonLand = prefMgr.getSharedPreferences().getBoolean(SHOW_BOT_MENU_BUTTON_LAND, true);
-        carrierColor = prefMgr.getSharedPreferences().getInt(CARRIER_COLOR, 0xff3F9BBF);
-        iconColor = prefMgr.getSharedPreferences().getInt(ICON_COLOR, 0xff3F9BBF);
-        clockColor = prefMgr.getSharedPreferences().getInt(CLOCK_COLOR, 0xff3F9BBF);
-        clockSize = prefMgr.getSharedPreferences().getInt(CLOCK_SIZE, 15);
-        toggleColor = prefMgr.getSharedPreferences().getInt(TOGGLE_COLOR, 15);
-        toggleIconOnColor = prefMgr.getSharedPreferences().getInt(TOGGLE_ICON_ON_COLOR, 15);
-        toggleIconInterColor = prefMgr.getSharedPreferences().getInt(TOGGLE_ICON_INTER_COLOR, 15);
-        toggleIconOffColor = prefMgr.getSharedPreferences().getInt(TOGGLE_ICON_OFF_COLOR, 15);
-        toggleIndOnColor = prefMgr.getSharedPreferences().getInt(TOGGLE_IND_ON_COLOR, 15);
-        toggleIndOffColor = prefMgr.getSharedPreferences().getInt(TOGGLE_IND_OFF_COLOR, 15);
-        toggleTextOnColor = prefMgr.getSharedPreferences().getInt(TOGGLE_TEXT_ON_COLOR, 15);
-        toggleTextOffColor = prefMgr.getSharedPreferences().getInt(TOGGLE_TEXT_OFF_COLOR, 15);
-        toggleDividerColor = prefMgr.getSharedPreferences().getInt(TOGGLE_DIVIDER_COLOR, 15);
-        carrierCustomText = prefMgr.getSharedPreferences().getString(CARRIER_CUSTOM_TEXT, "T r a n Q u i l    I c e");
-        carrierSize = prefMgr.getSharedPreferences().getInt(CARRIER_SIZE, 15);
-        dateColor = prefMgr.getSharedPreferences().getInt(DATE_COLOR, 15);
-        dateSize = prefMgr.getSharedPreferences().getInt(DATE_SIZE, 15);
-        quickSettingsOn = prefMgr.getSharedPreferences().getBoolean(QUICK_SETTINGS_ON, false);
+    	showData = prefMgr.getSharedPreferences().getBoolean(TOGGLES_DATA_ON, true);    	
+        quickSettingsOn = prefMgr.getSharedPreferences().getBoolean(QUICK_SETTINGS_ON, true);
         quickSettingsBottom = prefMgr.getSharedPreferences().getBoolean(QUICK_SETTINGS_BOTTOM, true);
         quickClock = prefMgr.getSharedPreferences().getBoolean(SETTINGS_CLOCK, true);
         quickMeter = prefMgr.getSharedPreferences().getBoolean(SETTINGS_METER, true);
@@ -477,10 +480,25 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         quickToggle = prefMgr.getSharedPreferences().getBoolean(SETTINGS_TOGGLE, true);
         quickQuiet = prefMgr.getSharedPreferences().getBoolean(SETTINGS_QUIETTIME, true);
         quickLed = prefMgr.getSharedPreferences().getBoolean(SETTINGS_LED, true);
-        quickIcon = prefMgr.getSharedPreferences().getBoolean(SETTINGS_ICON, true);
+        quickIcon = prefMgr.getSharedPreferences().getBoolean(SETTINGS_ICON, true); 
+    	showSearchButton = prefMgr.getSharedPreferences().getBoolean(SHOW_SEARCH_BUTTON, false);
+    	showLeftMenuButton = prefMgr.getSharedPreferences().getBoolean(SHOW_LEFT_MENU_BUTTON, true);
+    	showRightMenuButton = prefMgr.getSharedPreferences().getBoolean(SHOW_RIGHT_MENU_BUTTON, true);
+    	showSearchButtonLand = prefMgr.getSharedPreferences().getBoolean(SHOW_SEARCH_BUTTON_LAND, false);
+    	showTopMenuButtonLand = prefMgr.getSharedPreferences().getBoolean(SHOW_TOP_MENU_BUTTON_LAND, true);
+    	showBotMenuButtonLand = prefMgr.getSharedPreferences().getBoolean(SHOW_BOT_MENU_BUTTON_LAND, true);
+    	showCarrier = prefMgr.getSharedPreferences().getBoolean(SHOW_CARRIER, true);
+    	carrierColor = prefMgr.getSharedPreferences().getInt(CARRIER_COLOR, 0xff3F9BBF);
+    	carrierSize = prefMgr.getSharedPreferences().getInt(CARRIER_SIZE, 15);
+    	carrierCustom = prefMgr.getSharedPreferences().getBoolean(CARRIER_CUSTOM, false);
+        carrierCustomText = prefMgr.getSharedPreferences().getString(CARRIER_CUSTOM_TEXT, "T r a n Q u i l    I c e");
+    	dateColor = prefMgr.getSharedPreferences().getInt(DATE_COLOR, 0xff3F9BBF);
+    	dateSize = prefMgr.getSharedPreferences().getInt(DATE_SIZE, 17);
+    	iconColorOn = prefMgr.getSharedPreferences().getBoolean(ICON_COLOR_ON, false);
+    	iconColor = prefMgr.getSharedPreferences().getInt(ICON_COLOR, 0xff3F9BBF);
         
         if (!readSystem) {
-        navigationBarColor = prefMgr.getSharedPreferences().getInt(NAVIGATION_BAR_TINT, 1);
+        navigationBarColor = prefMgr.getSharedPreferences().getInt(NAVIGATION_BAR_TINT, 0xffffffff);
         meterOptions = prefMgr.getSharedPreferences().getInt(BATTERY_ICON, 15);
         batteryBar = prefMgr.getSharedPreferences().getInt(BATTERY_BAR, 15);
         batteryBarColor = prefMgr.getSharedPreferences().getInt(BATTERY_BAR_COLOR, 15);
@@ -552,7 +570,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         
        	i = new Intent();
        	i.setAction(Tranq_Settings );
-   	   	i.putExtra("TogglesOn", (Boolean) showToggles);
+   	   	i.putExtra("TogglesOn", (Boolean) togglesShowToggles);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        	   	
@@ -594,8 +612,8 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
        	   	
        	i = new Intent();
         i.setAction(Tranq_Settings );
-        i.putExtra("ToggleShowIndicator", (Boolean) showIndicator);
-        	if ((Boolean) showIndicator) {
+        i.putExtra("ToggleShowIndicator", (Boolean) togglesShowIndicator);
+        	if ((Boolean) togglesShowIndicator) {
         		i.putExtra("ToggleIndOnColor", toggleIndOnColor);
             	i.putExtra("ToggleIndOffColor", toggleIndOffColor);
             	} else {
@@ -840,7 +858,8 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        prefMgr.getSharedPreferencesName();
 						
 				        Toast.makeText(getActivity().getBaseContext(), themeOneName + " has been saved", Toast.LENGTH_SHORT).show();
-					
+				        mApplyThemeOne.setEnabled(true);
+				        
 					} else if (whichTheme == 2 ) {
 				        prefMgr = getPreferenceManager();
 				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
@@ -864,6 +883,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        prefMgr.getSharedPreferencesName();
 				        
 						Toast.makeText(getActivity().getBaseContext(), themeTwoName + " has been saved", Toast.LENGTH_SHORT).show();
+						mApplyThemeTwo.setEnabled(true);
 						
 					} else if (whichTheme == 3 ) {
 				        prefMgr = getPreferenceManager();
@@ -888,6 +908,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        prefMgr.getSharedPreferencesName();
 				        
 						Toast.makeText(getActivity().getBaseContext(), themeThreeName + " has been saved", Toast.LENGTH_SHORT).show();
+						mApplyThemeThree.setEnabled(true);
 					}
 				}
 			};

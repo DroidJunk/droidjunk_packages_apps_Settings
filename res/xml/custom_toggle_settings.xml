@@ -39,12 +39,12 @@
 		android:title="Toggle Location Top" 
 		android:defaultValue="true"	/>
 
-    	<PreferenceScreen
-    		android:layout="?android:attr/preferenceLayoutChild"
+   	<PreferenceScreen
+   		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
-        	android:fragment="com.android.settings.CustomToggleShowHideSettings"
-        	android:key="custom_toggle_show_hide_settings"
-        	android:title="Pick Toggles To Show" />
+       	android:fragment="com.android.settings.CustomToggleShowHideSettings"
+       	android:key="custom_toggle_show_hide_settings"
+       	android:title="Pick Toggles To Show" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -68,12 +68,12 @@
 		android:title="Quick Settings Bottom" 
 		android:defaultValue="true"	/>
 
-    	<PreferenceScreen
-    		android:layout="?android:attr/preferenceLayoutChild"
+   	<PreferenceScreen
+   		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_quicksettings"
-        	android:fragment="com.android.settings.CustomQuickSettingsShowHideSettings"
-        	android:key="custom_quick_settings_show_hide_settings"
-        	android:title="Pick Settings To Show" />
+       	android:fragment="com.android.settings.CustomQuickSettingsShowHideSettings"
+       	android:key="custom_quick_settings_show_hide_settings"
+       	android:title="Pick Settings To Show" />
 
     </PreferenceCategory>
 
