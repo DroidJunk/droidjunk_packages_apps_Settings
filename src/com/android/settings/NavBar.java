@@ -79,32 +79,32 @@ import com.android.settings.R;
            if (preference == mShowSearchButton) {
                 Settings.System.putInt(getActivity().getContentResolver(),
                         Settings.System.SHOW_SEARCH_BUTTON,
-                        ((CheckBoxPreference) preference).isChecked() ? 0 : 1);
+                        ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
 
            } else if (preference == mShowLeftMenuButton) {
               Settings.System.putInt(getActivity().getContentResolver(),
                       Settings.System.SHOW_LEFT_MENU_BUTTON,
-                      ((CheckBoxPreference) preference).isChecked() ? 0 : 1);        	  
+                      ((CheckBoxPreference) preference).isChecked() ? 1 : 0);        	  
 
            } else if (preference == mShowRightMenuButton) {
                Settings.System.putInt(getActivity().getContentResolver(),
                        Settings.System.SHOW_RIGHT_MENU_BUTTON,
-                       ((CheckBoxPreference) preference).isChecked() ? 0 : 1);        	  
+                       ((CheckBoxPreference) preference).isChecked() ? 1 : 0);        	  
 
            } else if (preference == mShowSearchButtonLand) {
                Settings.System.putInt(getActivity().getContentResolver(),
                        Settings.System.SHOW_SEARCH_BUTTON_LAND,
-                       ((CheckBoxPreference) preference).isChecked() ? 0 : 1);        	  
+                       ((CheckBoxPreference) preference).isChecked() ? 1 : 0);        	  
 
            } else if (preference == mShowTopMenuButtonLand) {
                Settings.System.putInt(getActivity().getContentResolver(),
                        Settings.System.SHOW_TOP_MENU_BUTTON_LAND,
-                       ((CheckBoxPreference) preference).isChecked() ? 0 : 1);                  
+                       ((CheckBoxPreference) preference).isChecked() ? 1 : 0);                  
                
            } else if (preference == mShowBotMenuButtonLand) {
                Settings.System.putInt(getActivity().getContentResolver(),
                        Settings.System.SHOW_BOT_MENU_BUTTON_LAND,
-                       ((CheckBoxPreference) preference).isChecked() ? 0 : 1);                  
+                       ((CheckBoxPreference) preference).isChecked() ? 1 : 0);                  
            } 
 
             return super.onPreferenceTreeClick(preferenceScreen, preference);
