@@ -15,11 +15,11 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="@string/toggle_settings"
+        android:title="TOGGLE OPTIONS"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceCategory
-		android:title="@string/pref_toggles_on"
+		android:title="TOGGLE OPTIONS"
 		android:key="toggles">
 
 	<CheckBoxPreference
@@ -49,7 +49,7 @@
 
 
     <PreferenceCategory
-		android:title="@string/pref_toggle_color"
+		android:title="TOGGLE COLORS"
 		android:key="toggle_colors">
 
 	<com.android.settings.ColorPickerPreference
@@ -99,7 +99,7 @@
     </PreferenceCategory> 
 
     <PreferenceCategory
-		android:title="@string/pref_toggle_ind"
+		android:title="TOGGLE INDICATORS"
 		android:key="toggle_ind">
 
 	<CheckBoxPreference 
@@ -131,7 +131,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-		android:title="@string/pref_toggle_txt"
+		android:title="TOGGLE TEXT"
 		android:key="toggle_txt">
 
 	<CheckBoxPreference 
@@ -163,7 +163,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-		android:title="@string/pref_toggle_div"
+		android:title="TOGGLE DIVIDERS"
 		android:key="toggle_div">
 
 	<CheckBoxPreference

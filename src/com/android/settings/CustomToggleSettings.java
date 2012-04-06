@@ -41,8 +41,6 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
 	private final String Junk_Settings = "JUNK_SETTINGS";
 	private final String TOGGLES_ON = "toggles_show_toggles";
 	private final String TOGGLES_TOP = "toggles_top";
-	private final String QUICK_SETTINGS_ON = "toggles_show_quicksettings";
-	private final String QUICK_SETTINGS_BOTTOM = "quicksettings_bottom";
 	private final String TOGGLE_COLOR = "toggle_color";
 	private final String TOGGLE_CUSTOM_ICON_COLORS = "toggles_custom_icon_colors";
 	private final String TOGGLE_ICON_ON_COLOR = "toggles_icon_on_color";
@@ -60,9 +58,7 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
 	private CheckBoxPreference mShowToggles;
-	private CheckBoxPreference mShowQuickSettings;
 	private CheckBoxPreference mTogglesTop;
-	private CheckBoxPreference mQuickSettingsBottom;
 	private Preference mToggleColor;
 	private CheckBoxPreference mToggleCustomIconColors;
 	private Preference mToggleIconOnColor;
@@ -94,10 +90,6 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
     	mShowToggles.setOnPreferenceChangeListener(this);
     	mTogglesTop = (CheckBoxPreference) findPreference(TOGGLES_TOP);
     	mTogglesTop.setOnPreferenceChangeListener(this);
-    	mShowQuickSettings = (CheckBoxPreference) findPreference(QUICK_SETTINGS_ON);
-    	mShowQuickSettings.setOnPreferenceChangeListener(this);
-    	mQuickSettingsBottom = (CheckBoxPreference) findPreference(QUICK_SETTINGS_BOTTOM);
-    	mQuickSettingsBottom.setOnPreferenceChangeListener(this);
     	mToggleColor = (Preference) findPreference(TOGGLE_COLOR);
     	mToggleColor.setOnPreferenceChangeListener(this);
     	mToggleCustomIconColors = (CheckBoxPreference) findPreference(TOGGLE_CUSTOM_ICON_COLORS);
@@ -163,33 +155,6 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
             getActivity().sendBroadcast(i);
             i = null;
 
-     	} else if (QUICK_SETTINGS_ON.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
-       	   	i.putExtra("SettingsOn", (Boolean) objValue);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-       	   	
-        	i = new Intent();
-            i.setAction(Junk_Settings );
-            i.putExtra("UpdateSettings", true);
-            getActivity().sendBroadcast(i);
-            i = null;
-
-     	} else if (QUICK_SETTINGS_BOTTOM.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
-       	   	i.putExtra("SettingsBottom", (Boolean) objValue);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-       	   	
-        	i = new Intent();
-            i.setAction(Junk_Settings );
-            i.putExtra("UpdateSettings", true);
-            getActivity().sendBroadcast(i);
-            i = null;
-             
-            
      	} else if (TOGGLES_TOP.equals(key)) {
         	Intent i = new Intent();
         	i.setAction(Junk_Settings );

@@ -29,12 +29,12 @@ import android.util.Log;
  * Helper class for opening the database from multiple providers.  Also provides
  * some common functionality.
  */
-class TranqDatabaseHelper extends SQLiteOpenHelper {
+class JunkDatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "tranquilice.db";
+    private static final String DATABASE_NAME = "junk.db";
     private static final int DATABASE_VERSION = 1;
 
-    public TranqDatabaseHelper(Context context) {
+    public JunkDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

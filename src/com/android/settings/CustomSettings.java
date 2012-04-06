@@ -13,71 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.android.settings;
 
-
-
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceManager;
-import android.preference.PreferenceScreen;
-import android.preference.SeekBarPreference;
-import android.util.Log;
-import android.widget.SeekBar;
 
 
-
-public class CustomSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+public class CustomSettings extends SettingsPreferenceFragment {
  
-	
-    /** If there is no setting in the provider, use this. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
         addPreferencesFromResource(R.xml.custom_settings);
-		
+        
+        
+        
     }
-
-    
-    @Override
-    public void onResume() {
-        super.onResume();
-          
-    }
-
-    
-    @Override
-    public void onPause() {
-        super.onPause();
-
-    }
-
-    
-
-    
- 
-    @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-    
-    	return super.onPreferenceTreeClick(preferenceScreen, preference);
-    }
-    
-
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
- 
-        return true;
-    }
-    
-    
-    
-
-
-    
-    
-    
 }

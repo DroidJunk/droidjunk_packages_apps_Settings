@@ -18,6 +18,22 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+	<!-- ***************************************************************************************** -->
+	<!-- *****************************      NEW JUNK SETTINGS      ******************************* -->
+	<!-- ***************************************************************************************** -->
+
+    <!-- CUSTOMIZE -->
+    <header android:title="Customize Your Junk" />
+
+    <header
+        android:id="@+id/custom_settings"
+        android:icon="@drawable/ic_settings_tophat"
+        android:fragment="com.android.settings.CustomJunk"
+        android:title="Customize Your Junk" />
+
+	<!-- ***************************************************************************************** -->
+
+    
     <!-- WIRELESS and NETWORKS -->
     <header android:title="@string/header_category_wireless_networks" />
 
@@ -63,25 +79,6 @@
         android:breadCrumbTitle="@string/wireless_networks_settings_title"
         android:fragment="com.android.settings.WirelessSettings"
         android:icon="@drawable/empty_icon" />
-
-	<!-- ***************************************************************************************** -->
-	<!-- *****************************      NEW JUNK SETTINGS      ******************************* -->
-	<!-- ***************************************************************************************** -->
-
-    <!-- CUSTOMIZE -->
-    <header android:title="Customize" />
-
-
-    <header
-        android:id="@+id/custom_settings"
-        android:icon="@drawable/ic_settings_tophat"
-        android:fragment="com.android.settings.custom_junk"
-        android:title="Junked Customization" />
-
-	<!-- ***************************************************************************************** -->
-
-
-
 
 
     <!-- DEVICE -->

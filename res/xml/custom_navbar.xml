@@ -3,7 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android">
 
   	<PreferenceCategory
-		android:title="COLOR">
+		android:title="NAVIGATION BAR COLOR">
 
 		<com.android.settings.ColorPickerPreference
 			android:key="nav_button_color"
@@ -19,7 +19,7 @@
         <CheckBoxPreference
         	android:layout="?android:attr/preferenceLayoutChild"
 			android:key="search_button"
-			android:title="@string/title_show_search_button"
+			android:title="Show search button"
 			 />
 			
        <CheckBoxPreference
@@ -45,7 +45,7 @@
         <CheckBoxPreference
         	android:layout="?android:attr/preferenceLayoutChild"
 			android:key="search_button_land"
-			android:title="@string/title_show_search_button"
+			android:title="Show search button"
 			 />
 			
        <CheckBoxPreference

@@ -15,11 +15,11 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="@string/statusbar_pulldown_settings"
+        android:title="STATUSBAR PULLDOWN OPTIONS"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceCategory
-		android:title="@string/pref_carrier_on"
+		android:title="PULLDOWN OPTIONS"
 		android:key="carrier_on">
 
 	<CheckBoxPreference
@@ -32,7 +32,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-		android:title="@string/pref_carrier_settings"
+		android:title="CARRIER OPTIONS"
 		android:key="carrier_settings">
    				
 	<com.android.settings.ColorPickerPreference
@@ -54,7 +54,7 @@
     </PreferenceCategory>
   
     <PreferenceCategory
-		android:title="@string/pref_carrier_custom"
+		android:title="CUSTOM CARRIER OPTIONS"
 		android:key="carrier_settings_custom">
 
    	<CheckBoxPreference 
@@ -78,7 +78,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-		android:title="@string/pref_date_settings"
+		android:title="DATE OPTIONS"
 		android:key="date_settings">
 
 	<com.android.settings.ColorPickerPreference

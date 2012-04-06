@@ -3808,23 +3808,10 @@ found in the list of installed apps.</string>
 
 
 	<!-- ***************************************************************************************** -->
-	<!-- *****************************  NEW TRANQUILITY SETTINGS   ******************************* -->
+	<!-- *****************************      NEW JUNK SETTINGS      ******************************* -->
 	<!-- ***************************************************************************************** -->
-    <!-- Main Settings screen setting option name to go into the display settings screen -->
-    <string name="header_category_customize">Customize</string>
-
-    <!-- Statusbar Settings --><skip/>
-    <!-- Statusbar & toggles color and other options -->
-    <string name="tranq_settings">TranquilIce Settings</string>
-     <string name="statusbar_settings">Statusbar Settings</string>
-     <string name="statusbar_pulldown_settings">Statusbar Pulldown Settings</string>
-      <string name="toggle_settings">Toggle Settings</string>
     
-    <string name="custom_pulldown_settings_title">Statusbar Pulldown Settings</string>
-    <string name="custom_toggle_settings_title">Statusbar Toggles Settings</string>
-    <string name="custom_system_settings">System Settings</string>
-    
-   <!-- Color Picker -->
+    <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
     <string name="press_color_to_apply">Press on Color to apply</string>    
     <string name="arrow_right">→</string> 
@@ -3839,67 +3826,12 @@ found in the list of installed apps.</string>
     <string name="clock_size">Size of the Clock text</string>
     <string name="date_size">Size of the Date text</string>
     
-    <string name="start_time">Quit Time Start</string>
-    <string name="stop_time">Quit Time Stopt</string>
-
-    <string name="title_pref_lockscreen_alt_targets">Switch Lockscreen Layout</string>
-    <string name="summary_pref_lockscreen_alt_targets">Switch between SMS and Talk on Lockscreen</string>
-
-    <!-- Tranquility Toolbox -->
-    <string name="toolbox_settings">Tranquility IceBox</string>		
-
-
-    <string name="led_on_ms">Led On Seconds (10ths)</string>
-    <string name="led_off_ms">Led Off Seconds (10ths)</string>
-
-    <string name="pref_toggle_div">Toggle Divider Settings</string>
-    <string name="pref_toggle_ind">Toggle Indicator Settings</string>
-    <string name="pref_toggle_txt">Toggle Text Settings</string>
-    <string name="pref_toggle_color">Toggle Color Settings</string>
-    <string name="pref_toggles_on">Toggles On/Off</string>
-
-    <string name="pref_carrier_on">Carrier Text On/Off</string>
-    <string name="pref_carrier_settings">Carrier Settings</string>
-    <string name="pref_carrier_custom">Custom Carrier Settings</string>
-    <string name="pref_date_settings">Pulldown Date Settings</string>
-
-		<!-- *** LockScreen *** -->
-	<string name="title_alt_lockscreen_targets">Lockscreen Settings</string>
-	<string name="summary_alt_lockscreen_targets">Checked = Talk, Blank = SMS </string>
-
-	<string name="title_lockscreen_landscape">Lockscreen Landscape Setting</string>
-	<string name="summary_lockscreen_landscape">Check to enable </string>
-
-	<string name="title_statusbar_brightness">Status Bar Brightness Option</string>
-	<string name="summary_statusbar_brightness">When enabled, swipe finger across status bar to increase/decrease brightness</string>
-
-	<string name="title_torch">Torch in Power Menu</string>
-	<string name="summary_torch">Check to enable </string>
-
-	<string name="title_show_search_button">Show Search Button</string>
-
-		<!-- *** Battery Meters *** -->
-	<string name="title_alt_meter">Battery Meter Settings</string>
-	<string name="summary_alt_meters">Checked = Stock, Blank = Percentage </string>
-
-	<string name="title_meters_off">Show/Hide Battery Meter</string>
-	<string name="summary_meters_off">Turn off battery meter </string>
-
-	<string name="title_bar_meter">Battery Bar Meter</string>
-	<string name="summary_bar_meters">Checked = on, Blank = off </string>
-
-	<string name="battery_bar">Battery bar</string>
-	<string name="battery_bar_color">Battery bar color</string>
-
-    <!-- Statusbar | Battery -->
-    <string name="battery_icon">Battery icon style</string>
-    <string name="battery_summary_text_widget">@null</string>
-    <string name="battery_bar_cat">Battery bar options</string>
-    <string name="battery_bar_style_title">Battery bar style</string>
-    <string name="battery_bar_thickness_title">Battery bar thickness</string>
-    <string name="battery_bar_animate_title">Charging animation</string>
-    <string name="battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
+    <string name="start_time">Quiet Time Start</string>
+    <string name="stop_time">Quiet Time Stop</string>
     
+    <string name="led_on_ms">10ths of a second on</string>
+	<string name="led_off_ms">10ths of a second off</string>
+
 	<!-- ***************************************************************************************** -->
 	<!-- ***************************************************************************************** -->
 

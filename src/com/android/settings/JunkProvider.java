@@ -28,8 +28,8 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
-public class TranqProvider extends ContentProvider {
-    private TranqDatabaseHelper mOpenHelper;
+public class JunkProvider extends ContentProvider {
+    private JunkDatabaseHelper mOpenHelper;
 
     private static final int QUIET_TIME = 1;
     private static final int QUIET_TIME_ID = 2;
@@ -41,12 +41,12 @@ public class TranqProvider extends ContentProvider {
         sURLMatcher.addURI("com.android.settings", "quiettime/#", QUIET_TIME_ID);
     }
 
-    public TranqProvider() {
+    public JunkProvider() {
     }
 
     @Override
     public boolean onCreate() {
-        mOpenHelper = new TranqDatabaseHelper(getContext());
+        mOpenHelper = new JunkDatabaseHelper(getContext());
         return true;
     }
 

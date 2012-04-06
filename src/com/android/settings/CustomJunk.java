@@ -7,18 +7,16 @@ import android.preference.PreferenceScreen;
 
 import java.util.List;
 
-public class Custom_Junk extends SettingsPreferenceFragment {
+public class CustomJunk extends SettingsPreferenceFragment {
 
     private static final String STATUSBAR = "statusbar_settings";
     private static final String NOTIFICATION = "notification_settings";
     private static final String NAVIGATION = "navigation_settings";
 
     PreferenceScreen mStatusbar;
-    PreferenceScreen mLockscreen;
     PreferenceScreen mNotification;
     PreferenceScreen mNavigation;
-    PreferenceScreen mToolbox;
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

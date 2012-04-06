@@ -3,33 +3,32 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="Junk Settings"
     android:key="junk_settings"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+	 >
 
     
     <PreferenceScreen
-        android:fragment="com.android.settings.CustomThemeSettings"
         android:key="custom_theme_settings"
         android:title="Theme Settings"
-        android:summary="Color icons, save and apply color themes" />        
-    
-    
+        android:summary="Color icons, save and apply color themes"
+        android:fragment="com.android.settings.CustomThemeSettings" />        
+   
     <PreferenceScreen
-            android:key="statusbar_settings"
-            android:title="Statusbar Settings"
-            android:summary="Settings to customize your statusbar"
-            android:fragment="com.android.settings.CustomSettings" />
+		android:key="statusbar_settings"
+        android:title="Statusbar Settings"
+        android:summary="Settings to customize your statusbar"
+        android:fragment="com.android.settings.CustomSettings" />
 
     <PreferenceScreen
-            android:key="notification_settings"
-            android:title="Notification Settings"
+        android:key="notification_settings"
+        android:title="Notification Settings"
 	    android:summary="Settings to customize the led and notifications"
-            android:fragment="com.android.settings.CustomSystemSettings" />
+        android:fragment="com.android.settings.CustomSystemSettings" />
 
     <PreferenceScreen
-            android:key="navigation_settings"
-            android:title="Navigation Settings"
+        android:key="navigation_settings"
+        android:title="Navigation Settings"
 	    android:summary="Settings to customize the navigation bar"
-            android:fragment="com.android.settings.NavBar" />
+        android:fragment="com.android.settings.CustomNavBar" />
 
 
 </PreferenceScreen>
