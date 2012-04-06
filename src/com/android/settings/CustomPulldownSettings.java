@@ -38,7 +38,7 @@ import android.util.Log;
 public class CustomPulldownSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
-	private final String Tranq_Settings = "TRANQ_SETTINGS";
+	private final String Junk_Settings = "JUNK_SETTINGS";
 	private final String SHOW_CARRIER = "show_carrier";
 	private final String CARRIER_COLOR = "carrier_color";
 	private final String CARRIER_CUSTOM = "carrier_custom";
@@ -66,7 +66,7 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
         super.onCreate(savedInstanceState);
 
         prefMgr = getPreferenceManager();
-        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+        prefMgr.setSharedPreferencesName("Junk_Settings");
         prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         prefMgr.getSharedPreferences();
        
@@ -141,28 +141,28 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
      	final String key = preference.getKey();
         if (SHOW_CARRIER.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
+        	i.setAction(Junk_Settings );
        	   	i.putExtra("ShowCarrier", (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        
         } else if (CARRIER_COLOR.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("CarrierColor", (Integer) objValue);
             getActivity().sendBroadcast(i);
             i = null;
             
         } else if (CARRIER_CUSTOM.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("CustomCarrier", (Boolean) objValue);
             getActivity().sendBroadcast(i);
             i = null;
               
         } else if (CARRIER_CUSTOM_TEXT.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("CustomCarrierText", (String) objValue);
             getActivity().sendBroadcast(i);
             i = null;
@@ -174,14 +174,14 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
             editor.commit();
 
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("CarrierSize", (Integer) carrierSize);
             getActivity().sendBroadcast(i);
             i = null;
         	
         } else if (DATE_COLOR.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
+        	i.setAction(Junk_Settings );
         	i.putExtra("DateColor", (Integer) objValue);
         	getActivity().sendBroadcast(i);
         	i = null;        
@@ -193,7 +193,7 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
             editor.commit();
 
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("DateSize", (Integer) dateSize);
             getActivity().sendBroadcast(i);
             i = null;

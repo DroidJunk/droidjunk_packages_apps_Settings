@@ -38,7 +38,7 @@ import android.util.Log;
 public class CustomIconSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
-	private final String Tranq_Icon_Color = "tranq_icon_color";
+	private final String Junk_Settings = "JUNK_SETTINGS";
 	private final String ICON_COLOR_ON = "color_icons";
 	private final String ICON_COLOR = "icon_color";
 	private final String ICON_COLOR_APPLY = "color_icons_apply";
@@ -61,7 +61,7 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         
         prefMgr = getPreferenceManager();
-        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+        prefMgr.setSharedPreferencesName("Junk_Settings");
         prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         prefMgr.getSharedPreferences();
         sharedPref = prefMgr.getSharedPreferences();
@@ -107,7 +107,7 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
 
      	if (ICON_COLOR_ON.equals(key)) {
          	Intent i = new Intent();
-         	i.setAction(Tranq_Icon_Color);
+         	i.setAction(Junk_Settings);
        	   	i.putExtra("IconColorOn", (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
@@ -115,7 +115,7 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
      	} else if (ICON_COLOR.equals(key)) {
      		iconColor = (Integer) objValue;
          	Intent i = new Intent();
-         	i.setAction(Tranq_Icon_Color);
+         	i.setAction(Junk_Settings);
        	   	i.putExtra("IconColor", (Integer) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
@@ -128,7 +128,7 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
        			editor.commit();
 
        			i = new Intent();
-         		i.setAction("TRANQ_SETTINGS");
+         		i.setAction(Junk_Settings);
        	   		i.putExtra("IconColorApply", true);
        	   		i.putExtra("IconColor", iconColor);
        	   		getActivity().sendBroadcast(i);
@@ -145,7 +145,7 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
 
        	   	iconColorApply = (Boolean) objValue;
      		Intent i = new Intent();
-     		i.setAction("TRANQ_SETTINGS");
+     		i.setAction(Junk_Settings);
    	   		i.putExtra("IconColorApply", (Boolean) objValue);
    	   		i.putExtra("IconColor", iconColor);
    	   		getActivity().sendBroadcast(i);

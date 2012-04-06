@@ -38,7 +38,7 @@ import android.util.Log;
 public class CustomStatusbarSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
-	private final String Tranq_Settings = "TRANQ_SETTINGS";
+	private final String Junk_Settings = "JUNK_SETTINGS";
 	private final String SHOW_CLOCK = "show_clock";
 	private final String CLOCK_AMPM = "clock_ampm";
 	private final String CLOCK_COLOR = "clock_color";
@@ -65,7 +65,7 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
         super.onCreate(savedInstanceState);
         
         prefMgr = getPreferenceManager();
-        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+        prefMgr.setSharedPreferencesName("Junk_Settings");
         prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         prefMgr.getSharedPreferences();
 
@@ -124,21 +124,21 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
 
      	if (SHOW_CLOCK.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
+        	i.setAction(Junk_Settings );
        	   	i.putExtra("ShowClock", (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        
         } else if (CLOCK_AMPM.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("ClockAmPm", (Boolean) objValue);
             getActivity().sendBroadcast(i);
             i = null;
         
         } else if (CLOCK_COLOR.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("ClockColor", (Integer) objValue);
             getActivity().sendBroadcast(i);
             i = null;
@@ -150,7 +150,7 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
             editor.commit();
 
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("ClockSize", (Integer) mSize);
             getActivity().sendBroadcast(i);
             i = null;

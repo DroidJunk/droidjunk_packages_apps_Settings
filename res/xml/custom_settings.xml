@@ -25,11 +25,6 @@
         android:key="custom_statusbar_settings"
         android:title="Statusbar Clock Settings" />
 
-    <PreferenceScreen
-        android:fragment="com.android.settings.Meters"
-        android:key="custom_meters"
-        android:title="Statusbar Battery Settings" />
-
 
     <PreferenceScreen
         android:fragment="com.android.settings.CustomPulldownSettings"

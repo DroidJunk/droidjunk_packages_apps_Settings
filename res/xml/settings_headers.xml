@@ -65,52 +65,20 @@
         android:icon="@drawable/empty_icon" />
 
 	<!-- ***************************************************************************************** -->
-	<!-- *****************************  NEW TRANQUILITY SETTINGS   ******************************* -->
+	<!-- *****************************      NEW JUNK SETTINGS      ******************************* -->
 	<!-- ***************************************************************************************** -->
 
     <!-- CUSTOMIZE -->
     <header android:title="Customize" />
 
 
-    <!-- Most Tranquility Custom Settings -->
-
     <header
         android:id="@+id/custom_settings"
         android:icon="@drawable/ic_settings_tophat"
-        android:fragment="com.android.settings.Tranquility"
-        android:title="Tranquility Settings" />
-<!--        
-    <header
-        android:id="@+id/custom_system_settings"
-        android:icon="@drawable/ic_settings_notification"
-        android:fragment="com.android.settings.CustomSystemSettings"
-        android:title="Notification Settings" />        
-        
+        android:fragment="com.android.settings.custom_junk"
+        android:title="Junked Customization" />
 
-    <header android:icon="@drawable/ic_settings_tophat"
-            android:title="Tranquil Ice Toolbox">
-        <intent
-                android:action="android.intent.action.MAIN"
-                android:targetClass="com.tranquilice.toolbox.MainMenu"
-                android:targetPackage="com.tranquilice.toolbox" />
-    </header>
-    <header android:icon="@drawable/ic_settings_alt_lockscreen"
-            android:title="Lockscreen Options">
-        <intent
-                android:action="android.intent.action.MAIN"
-                android:targetClass="com.tranquilice.toolbox.Lockscreen"
-                android:targetPackage="com.tranquilice.toolbox" />
-    </header> 
-
-    <header android:icon="@drawable/ic_settings_navbar"
-            android:title="Nav Button Option">
-        <intent
-                android:action="android.intent.action.MAIN"
-                android:targetClass="com.tranquilice.helper.NavBar"
-                android:targetPackage="com.tranquilice.helper" />
-    </header>
-
- ***************************************************************************************** -->
+	<!-- ***************************************************************************************** -->
 
 
 

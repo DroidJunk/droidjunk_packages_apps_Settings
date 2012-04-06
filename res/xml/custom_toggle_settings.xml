@@ -47,35 +47,6 @@
        	android:title="Pick Toggles To Show" />
     </PreferenceCategory>
 
-    <PreferenceCategory
-		android:title="Quick Settings Buttons"
-		android:key="quicksettings">
-
-	<CheckBoxPreference
-		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="toggles_show_quicksettings"
-		android:summaryOn="Quick settings are on"
-		android:summaryOff="Quick settings are off"
-		android:title="Quick Settings" 
-		android:defaultValue="true"	/>
-
-	<CheckBoxPreference 
-		android:layout="?android:attr/preferenceLayoutChild"
-		android:dependency="toggles_show_quicksettings"
-		android:key="quicksettings_bottom"
-		android:summaryOff="Quick settings are on the top"
-		android:summaryOn="Quick settings are on the bottom"
-		android:title="Quick Settings Bottom" 
-		android:defaultValue="true"	/>
-
-   	<PreferenceScreen
-   		android:layout="?android:attr/preferenceLayoutChild"
-		android:dependency="toggles_show_quicksettings"
-       	android:fragment="com.android.settings.CustomQuickSettingsShowHideSettings"
-       	android:key="custom_quick_settings_show_hide_settings"
-       	android:title="Pick Settings To Show" />
-
-    </PreferenceCategory>
 
     <PreferenceCategory
 		android:title="@string/pref_toggle_color"

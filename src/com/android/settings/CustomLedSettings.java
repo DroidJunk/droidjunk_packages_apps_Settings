@@ -41,7 +41,7 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
  
 
-	private final String Tranq_Settings = "TRANQ_SETTINGS";
+	private final String Junk_Settings = "JUNK_SETTINGS";
 	private final String DEFAULT_LED_COLOR = "default_led_color";	
 	private final String DEFAULT_LED_ON_MS = "default_led_on_ms";
 	private final String DEFAULT_LED_OFF_MS = "default_led_off_ms";
@@ -105,7 +105,7 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
 
         prefMgr = getPreferenceManager();
-        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+        prefMgr.setSharedPreferencesName("Junk_Settings");
         prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         prefMgr.getSharedPreferences();
         

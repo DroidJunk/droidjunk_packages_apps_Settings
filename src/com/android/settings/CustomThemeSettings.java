@@ -43,7 +43,7 @@ import android.widget.Toast;
 public class CustomThemeSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
-	private final String Tranq_Settings = "TRANQ_SETTINGS";
+	private final String Junk_Settings = "JUNK_SETTINGS";
 	private final String THEME_ONE = "theme_one";
 	private final String THEME_TWO = "theme_two";
 	private final String THEME_THREE = "theme_three";
@@ -160,7 +160,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         
         prefMgr = getPreferenceManager();
-        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+        prefMgr.setSharedPreferencesName("Junk_Settings");
         prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         prefMgr.getSharedPreferences();
  
@@ -188,19 +188,19 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 		
 		
         themeMgr = getPreferenceManager();
-        themeMgr.setSharedPreferencesName("Tranquility_Theme_One");
+        themeMgr.setSharedPreferencesName("Junk_Theme_One");
         themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         themeMgr.getSharedPreferences();
 		mApplyThemeOne.setEnabled(themeMgr.getSharedPreferences().getBoolean(SAVED_THEME,false));
 
         themeMgr = getPreferenceManager();
-        themeMgr.setSharedPreferencesName("Tranquility_Theme_Two");
+        themeMgr.setSharedPreferencesName("Junk_Theme_Two");
         themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         themeMgr.getSharedPreferences();
 		mApplyThemeTwo.setEnabled(prefMgr.getSharedPreferences().getBoolean(SAVED_THEME,false));
 
         themeMgr = getPreferenceManager();
-        themeMgr.setSharedPreferencesName("Tranquility_Theme_Three");
+        themeMgr.setSharedPreferencesName("Junk_Theme_Three");
         themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         themeMgr.getSharedPreferences();
 		mApplyThemeThree.setEnabled(prefMgr.getSharedPreferences().getBoolean(SAVED_THEME,false));
@@ -491,7 +491,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
     	carrierColor = prefMgr.getSharedPreferences().getInt(CARRIER_COLOR, 0xff3F9BBF);
     	carrierSize = prefMgr.getSharedPreferences().getInt(CARRIER_SIZE, 15);
     	carrierCustom = prefMgr.getSharedPreferences().getBoolean(CARRIER_CUSTOM, false);
-        carrierCustomText = prefMgr.getSharedPreferences().getString(CARRIER_CUSTOM_TEXT, "T r a n Q u i l    I c e");
+        carrierCustomText = prefMgr.getSharedPreferences().getString(CARRIER_CUSTOM_TEXT, "J u n k   R O M");
     	dateColor = prefMgr.getSharedPreferences().getInt(DATE_COLOR, 0xff3F9BBF);
     	dateSize = prefMgr.getSharedPreferences().getInt(DATE_SIZE, 17);
     	iconColorOn = prefMgr.getSharedPreferences().getBoolean(ICON_COLOR_ON, false);
@@ -533,25 +533,25 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 
     private void SendIntents() {
     	Intent i = new Intent();
-    	i.setAction(Tranq_Settings );
+    	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowClock", showClock);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
    
      	i = new Intent();
-        i.setAction(Tranq_Settings );
+        i.setAction(Junk_Settings );
         i.putExtra("ClockAmPm", (Boolean) clockAmPm);
         getActivity().sendBroadcast(i);
         i = null;
     
     	i = new Intent();
-        i.setAction(Tranq_Settings );
+        i.setAction(Junk_Settings );
         i.putExtra("ClockColor", (Integer) clockColor);
         getActivity().sendBroadcast(i);
         i = null;
 
     	i = new Intent();
-        i.setAction(Tranq_Settings );
+        i.setAction(Junk_Settings );
         i.putExtra("ClockSize", (Integer) clockSize);
         getActivity().sendBroadcast(i);
         i = null;
@@ -569,49 +569,49 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
        	i = null;
         
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("TogglesOn", (Boolean) togglesShowToggles);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        	   	
        	i = new Intent();
-        i.setAction(Tranq_Settings );
+        i.setAction(Junk_Settings );
        	i.putExtra("TogglesTop", (Boolean) togglesTop);
        	getActivity().sendBroadcast(i);
        	i = null;
        	   	
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ToggleColor", (Integer) toggleColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-        i.setAction(Tranq_Settings );
+        i.setAction(Junk_Settings );
        	i.putExtra("ToggleCustomIconColors", (Boolean) toggleCustomIconColors);
        	getActivity().sendBroadcast(i);
        	i = null;
        
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ToggleIconOnColor", (Integer) toggleIconOnColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ToggleIconInterColor", (Integer) toggleIconInterColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        	   	
        	i = new Intent();
-      	i.setAction(Tranq_Settings );
+      	i.setAction(Junk_Settings );
    	   	i.putExtra("ToggleIconOffColor", (Integer) toggleIconOffColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;       	   	
        	   	
        	i = new Intent();
-        i.setAction(Tranq_Settings );
+        i.setAction(Junk_Settings );
         i.putExtra("ToggleShowIndicator", (Boolean) togglesShowIndicator);
         	if ((Boolean) togglesShowIndicator) {
         		i.putExtra("ToggleIndOnColor", toggleIndOnColor);
@@ -624,7 +624,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         i = null;
 
        	i = new Intent();
-        i.setAction(Tranq_Settings );
+        i.setAction(Junk_Settings );
         i.putExtra("ToggleShowText", (Boolean) toggleShowText);
         	if ((Boolean) toggleShowText) {
         		i.putExtra("ToggleTextOnColor", (Integer) toggleTextOnColor);
@@ -637,7 +637,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         i = null;
 
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
        	i.putExtra("ToggleShowDivider", (Boolean) toggleShowDivider);
         if ((Boolean) toggleShowDivider) {
            	i.putExtra("ToggleDividerColor", (Integer) toggleDividerColor);
@@ -648,181 +648,181 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
        	i = null;      
         
        	i = new Intent();
-        i.setAction(Tranq_Settings );
+        i.setAction(Junk_Settings );
         i.putExtra("UpdateToggles", true);
         getActivity().sendBroadcast(i);
         i = null;
 
       	i = new Intent();
-      	i.setAction(Tranq_Settings );
+      	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowFourg", (Boolean) showFourg);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
         	   	
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowWifi", (Boolean) showWifi);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
         	   	
        	i = new Intent();
-      	i.setAction(Tranq_Settings );
+      	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowGps", (Boolean) showGps);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowBluetooth", (Boolean) showBluetooth);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
             
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowSound", (Boolean) showSound);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
            
        	i = new Intent();
-      	i.setAction(Tranq_Settings );
+      	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowAirplane", (Boolean) showAirplane);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowBrightness", (Boolean) showBrightness);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-      	i.setAction(Tranq_Settings );
+      	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowRotate", (Boolean) showRotate);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
  
        	i = new Intent();
-      	i.setAction(Tranq_Settings );
+      	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowSync", (Boolean) showSync);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowData", (Boolean) showData);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;            
    	   	
       	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowCarrier", (Boolean) showCarrier);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        
       	i = new Intent();
-        i.setAction(Tranq_Settings );
+        i.setAction(Junk_Settings );
         i.putExtra("CarrierColor", (Integer) carrierColor);
         getActivity().sendBroadcast(i);
         i = null;
             
        	i = new Intent();
-        i.setAction(Tranq_Settings );
+        i.setAction(Junk_Settings );
         i.putExtra("CustomCarrier", (Boolean) carrierCustom);
         getActivity().sendBroadcast(i);
         i = null;
               
        	i = new Intent();
-        i.setAction(Tranq_Settings );
+        i.setAction(Junk_Settings );
         i.putExtra("CustomCarrierText", (String) carrierCustomText);
         getActivity().sendBroadcast(i);
         i = null;
         	
        	i = new Intent();
-        i.setAction(Tranq_Settings );
+        i.setAction(Junk_Settings );
         i.putExtra("CarrierSize", (Integer) carrierSize);
         getActivity().sendBroadcast(i);
         i = null;
         	
       	i = new Intent();
-      	i.setAction(Tranq_Settings );
+      	i.setAction(Junk_Settings );
        	i.putExtra("DateColor", (Integer) dateColor);
        	getActivity().sendBroadcast(i);
        	i = null;        
 
        	i = new Intent();
-        i.setAction(Tranq_Settings );
+        i.setAction(Junk_Settings );
         i.putExtra("DateSize", (Integer) dateSize);
         getActivity().sendBroadcast(i);
         i = null;       	   		
    	   	
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowClockButton", (Boolean) quickClock);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
         	   	
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowMeterButton", (Boolean) quickMeter);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
         	   	
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowNavButton", (Boolean) quickNav);
   	   	getActivity().sendBroadcast(i);
    	   	i = null;
        
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowLockscreenButton", (Boolean) quickLock);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
             
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowPulldownButton", (Boolean) quickPullDown);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
            
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowToggleButton", (Boolean) quickToggle);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowQuietButton", (Boolean) quickQuiet);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
             
        	i = new Intent();
-      	i.setAction(Tranq_Settings );
+      	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowLedButton", (Boolean) quickLed);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
            
        	i = new Intent();
-       	i.setAction(Tranq_Settings );
+       	i.setAction(Junk_Settings );
    	   	i.putExtra("ShowIconButton", (Boolean) quickIcon);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;   
         
     	i = new Intent();
-    	i.setAction(Tranq_Settings );
+    	i.setAction(Junk_Settings );
    	   	i.putExtra("SettingsOn", (Boolean) quickSettingsOn);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
     	i = new Intent();
-    	i.setAction(Tranq_Settings );
+    	i.setAction(Junk_Settings );
    	   	i.putExtra("SettingsBottom", (Boolean) quickSettingsBottom);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
    	   	
     	i = new Intent();
-        i.setAction(Tranq_Settings );
+        i.setAction(Junk_Settings );
         i.putExtra("UpdateSettings", true);
         getActivity().sendBroadcast(i);
         i = null;
@@ -837,14 +837,14 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				public void onClick(DialogInterface dialog, int which) {
 					if (whichTheme == 1 ) {
 				        prefMgr = getPreferenceManager();
-				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesName("Junk_Settings");
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 				        
 				        GetSettings(true);
 				        
 				        themeMgr = getPreferenceManager();
-				        themeMgr.setSharedPreferencesName("Tranquility_Theme_One");
+				        themeMgr.setSharedPreferencesName("Junk_Theme_One");
 				        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        themeMgr.getSharedPreferences();
 				        themeEditor = themeMgr.getSharedPreferences();
@@ -852,7 +852,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        SaveTheme();
 				        
 				        prefMgr = getPreferenceManager();
-				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesName("Junk_Settings");
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 				        prefMgr.getSharedPreferencesName();
@@ -862,14 +862,14 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        
 					} else if (whichTheme == 2 ) {
 				        prefMgr = getPreferenceManager();
-				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesName("Junk_Settings");
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 				        
 				        GetSettings(true);
 				        
 				        themeMgr = getPreferenceManager();
-				        themeMgr.setSharedPreferencesName("Tranquility_Theme_Two");
+				        themeMgr.setSharedPreferencesName("Junk_Theme_Two");
 				        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        themeMgr.getSharedPreferences();
 				        themeEditor = themeMgr.getSharedPreferences();
@@ -877,7 +877,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        SaveTheme();
 				        
 				        prefMgr = getPreferenceManager();
-				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesName("Junk_Settings");
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 				        prefMgr.getSharedPreferencesName();
@@ -887,14 +887,14 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 						
 					} else if (whichTheme == 3 ) {
 				        prefMgr = getPreferenceManager();
-				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesName("Junk_Settings");
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 				        
 				        GetSettings(true);
 				        
 				        themeMgr = getPreferenceManager();
-				        themeMgr.setSharedPreferencesName("Tranquility_Theme_Three");
+				        themeMgr.setSharedPreferencesName("Junk_Theme_Three");
 				        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        themeMgr.getSharedPreferences();
 				        themeEditor = themeMgr.getSharedPreferences();
@@ -902,7 +902,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        SaveTheme();
 				        
 				        prefMgr = getPreferenceManager();
-				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesName("Junk_Settings");
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 				        prefMgr.getSharedPreferencesName();
@@ -920,14 +920,14 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				public void onClick(DialogInterface dialog, int which) {
 					if (whichTheme == 1 ) {
 				        prefMgr = getPreferenceManager();
-				        prefMgr.setSharedPreferencesName("Tranquility_Theme_One");
+				        prefMgr.setSharedPreferencesName("Junk_Theme_One");
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 						
 				        GetSettings(false);
 				        
 				        themeMgr = getPreferenceManager();
-				        themeMgr.setSharedPreferencesName("Tranquility_Settings");
+				        themeMgr.setSharedPreferencesName("Junk_Settings");
 				        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        themeMgr.getSharedPreferences();
 				        themeEditor = themeMgr.getSharedPreferences();
@@ -935,7 +935,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        ApplyTheme();
 				        
 				        prefMgr = getPreferenceManager();
-				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesName("Junk_Settings");
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 				        prefMgr.getSharedPreferencesName();
@@ -944,14 +944,14 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 						
 					} else if (whichTheme == 2 ) {
 				        prefMgr = getPreferenceManager();
-				        prefMgr.setSharedPreferencesName("Tranquility_Theme_Two");
+				        prefMgr.setSharedPreferencesName("Junk_Theme_Two");
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 						
 				        GetSettings(false);
 				        
 				        themeMgr = getPreferenceManager();
-				        themeMgr.setSharedPreferencesName("Tranquility_Settings");
+				        themeMgr.setSharedPreferencesName("Junk_Settings");
 				        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        themeMgr.getSharedPreferences();
 				        themeEditor = themeMgr.getSharedPreferences();
@@ -959,7 +959,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        ApplyTheme();
 				        
 				        prefMgr = getPreferenceManager();
-				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesName("Junk_Settings");
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 				        prefMgr.getSharedPreferencesName();
@@ -969,14 +969,14 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 						
 					} else if (whichTheme == 3 ) {
 				        prefMgr = getPreferenceManager();
-				        prefMgr.setSharedPreferencesName("Tranquility_Theme_Three");
+				        prefMgr.setSharedPreferencesName("Junk_Theme_Three");
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 						
 				        GetSettings(false);
 				        
 				        themeMgr = getPreferenceManager();
-				        themeMgr.setSharedPreferencesName("Tranquility_Settings");
+				        themeMgr.setSharedPreferencesName("Junk_Settings");
 				        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        themeMgr.getSharedPreferences();
 				        themeEditor = themeMgr.getSharedPreferences();
@@ -984,7 +984,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        ApplyTheme();
 				        
 				        prefMgr = getPreferenceManager();
-				        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+				        prefMgr.setSharedPreferencesName("Junk_Settings");
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 				        prefMgr.getSharedPreferencesName();

@@ -38,7 +38,7 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
 
-	private final String Tranq_Settings = "TRANQ_SETTINGS";
+	private final String Junk_Settings = "JUNK_SETTINGS";
 	private final String TOGGLES_ON = "toggles_show_toggles";
 	private final String TOGGLES_TOP = "toggles_top";
 	private final String QUICK_SETTINGS_ON = "toggles_show_quicksettings";
@@ -85,7 +85,7 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         
         prefMgr = getPreferenceManager();
-        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+        prefMgr.setSharedPreferencesName("Junk_Settings");
         prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 
         addPreferencesFromResource(R.xml.custom_toggle_settings);
@@ -152,39 +152,39 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
      	
      	if (TOGGLES_ON.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
+        	i.setAction(Junk_Settings );
        	   	i.putExtra("TogglesOn", (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        	   	
         	i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("UpdateToggles", true);
             getActivity().sendBroadcast(i);
             i = null;
 
      	} else if (QUICK_SETTINGS_ON.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
+        	i.setAction(Junk_Settings );
        	   	i.putExtra("SettingsOn", (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        	   	
         	i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("UpdateSettings", true);
             getActivity().sendBroadcast(i);
             i = null;
 
      	} else if (QUICK_SETTINGS_BOTTOM.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
+        	i.setAction(Junk_Settings );
        	   	i.putExtra("SettingsBottom", (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        	   	
         	i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("UpdateSettings", true);
             getActivity().sendBroadcast(i);
             i = null;
@@ -192,55 +192,55 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
             
      	} else if (TOGGLES_TOP.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
+        	i.setAction(Junk_Settings );
        	   	i.putExtra("TogglesTop", (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        	   	
         	i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("UpdateToggles", true);
             getActivity().sendBroadcast(i);
             i = null;
 
     	} else if (TOGGLE_COLOR.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
+        	i.setAction(Junk_Settings );
        	   	i.putExtra("ToggleColor", (Integer) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
 
     	} else if (TOGGLE_CUSTOM_ICON_COLORS.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
+        	i.setAction(Junk_Settings );
        	   	i.putExtra("ToggleCustomIconColors", (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        
     	} else if (TOGGLE_ICON_ON_COLOR.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
+        	i.setAction(Junk_Settings );
        	   	i.putExtra("ToggleIconOnColor", (Integer) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
 
     	} else if (TOGGLE_ICON_INTER_COLOR.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
+        	i.setAction(Junk_Settings );
        	   	i.putExtra("ToggleIconInterColor", (Integer) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        	   	
     	} else if (TOGGLE_ICON_OFF_COLOR.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
+        	i.setAction(Junk_Settings );
        	   	i.putExtra("ToggleIconOffColor", (Integer) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;       	   	
        	   	
         } else if (TOGGLE_SHOW_INDICATOR.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("ToggleShowIndicator", (Boolean) objValue);
             if ((Boolean) objValue) {
             	i.putExtra("ToggleIndOnColor", (Integer) prefMgr.getSharedPreferences().getInt("toggle_ind_on_color", 0xffffbb33));
@@ -253,7 +253,7 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
             i = null;
             
         	i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("UpdateToggles", true);
             getActivity().sendBroadcast(i);
             i = null;
@@ -261,33 +261,33 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
             
         } else if (TOGGLE_IND_ON_COLOR.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("ToggleIndOnColor", (Integer) objValue);
             getActivity().sendBroadcast(i);
             i = null;
             
         	i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("UpdateToggles", true);
             getActivity().sendBroadcast(i);
             i = null;
             
         } else if (TOGGLE_IND_OFF_COLOR.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("ToggleIndOffColor", (Integer) objValue);
              getActivity().sendBroadcast(i);
             i = null;
             
         	i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("UpdateToggles", true);
             getActivity().sendBroadcast(i);
             i = null;
 
         } else if (TOGGLE_SHOW_TEXT.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("ToggleShowText", (Boolean) objValue);
             if ((Boolean) objValue) {
             	i.putExtra("ToggleTextOnColor", (Integer) prefMgr.getSharedPreferences().getInt("toggle_text_on_color", 0xffffbb33));
@@ -300,33 +300,33 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
             i = null;
             
         	i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("UpdateToggles", true);
             getActivity().sendBroadcast(i);
             i = null;
 
         } else if (TOGGLE_TEXT_ON_COLOR.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("ToggleTextOnColor", (Integer) objValue);
             getActivity().sendBroadcast(i);
             i = null;        
             
         	i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("UpdateToggles", true);
             getActivity().sendBroadcast(i);
             i = null;
 
         } else if (TOGGLE_TEXT_OFF_COLOR.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("ToggleTextOffColor", (Integer) objValue);
             getActivity().sendBroadcast(i);
             i = null;     
             
         	i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("UpdateToggles", true);
             getActivity().sendBroadcast(i);
             i = null;
@@ -334,7 +334,7 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
  
         } else if (TOGGLE_SHOW_DIVIDER.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Tranq_Settings );
+        	i.setAction(Junk_Settings );
         	i.putExtra("ToggleShowDivider", (Boolean) objValue);
             if ((Boolean) objValue) {
             	i.putExtra("ToggleDividerColor", (Integer) prefMgr.getSharedPreferences().getInt("toggle_divider_color", 0xff535252));
@@ -345,20 +345,20 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
         	i = null;      
         	
         	i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("UpdateToggles", true);
             getActivity().sendBroadcast(i);
             i = null;
     
         } else if (TOGGLE_DIVIDER_COLOR.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("ToggleDividerColor", (Integer) objValue);
             getActivity().sendBroadcast(i);
             i = null;  
             
         	i = new Intent();
-            i.setAction(Tranq_Settings );
+            i.setAction(Junk_Settings );
             i.putExtra("UpdateToggles", true);
             getActivity().sendBroadcast(i);
             i = null;
