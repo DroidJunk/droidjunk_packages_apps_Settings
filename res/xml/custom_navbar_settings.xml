@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+  	<PreferenceCategory
+		android:title="N A V I G A T I O N   B A R   C O L O R">
+
+        <SwitchPreference
+        	android:layout="?android:attr/preferenceLayoutChild"
+			android:key="nav_button_color_on"
+			android:title="Navigation Bar Custom Color"
+			 />  	    
+  	    
+		<com.android.settings.ColorPickerPreference
+			android:key="nav_button_color"
+			android:title="Navigation Button Color"
+			android:defaultValue="#FFFFFF" />
+
+    </PreferenceCategory>
+
+   	
+   	<PreferenceCategory
+		android:title="P O R T R A I T   M O D E">
+	
+        <SwitchPreference
+        	android:layout="?android:attr/preferenceLayoutChild"
+			android:key="search_button"
+			android:title="Show search button"
+			 />
+			
+       <SwitchPreference
+       		android:layout="?android:attr/preferenceLayoutChild"
+			android:key="left_menu_button"
+			android:title="Left Menu Button"
+			android:defaultValue="true"	
+			/>
+		
+       <SwitchPreference
+       		android:layout="?android:attr/preferenceLayoutChild"
+			android:key="right_menu_button"
+			android:title="Right Menu Button"
+			android:defaultValue="true"			
+			/>	
+	
+	</PreferenceCategory>
+
+
+   	<PreferenceCategory
+		android:title="L A N D S C A P E   M O D E">
+	
+        <SwitchPreference
+        	android:layout="?android:attr/preferenceLayoutChild"
+			android:key="search_button_land"
+			android:title="Show search button"
+			 />
+			
+       <SwitchPreference
+       		android:layout="?android:attr/preferenceLayoutChild"
+			android:key="top_menu_button_land"
+			android:title="Top Menu Button"
+			android:defaultValue="true"	
+			/>
+		
+       <SwitchPreference
+       		android:layout="?android:attr/preferenceLayoutChild"
+			android:key="bottom_menu_button_land"
+			android:title="Bottom Menu Button"
+			android:defaultValue="true"			
+			/>	
+	
+	</PreferenceCategory>
+
+
+
+
+
+</PreferenceScreen>

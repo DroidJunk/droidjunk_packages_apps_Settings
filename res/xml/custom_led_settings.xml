@@ -15,63 +15,63 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="Led Settings"
+        android:title="LED Settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-	<CheckBoxPreference 
+	<SwitchPreference 
 		android:key="pulse_led_screen_on"
-		android:summaryOn="Pulse led with screen on"
-		android:summaryOff="Do not pulse led with screen on"
-		android:title="Pulse Led with screen on" 
-		android:defaultValue="false"	/>
+		android:summaryOn="Pulse LED with Screen On"
+		android:summaryOff="Do not pulse LED with screen on"
+		android:title="LED Screen On" 
+		android:defaultValue="false" />
 
     <PreferenceCategory
-		android:title="DEFAULT LED"
+		android:title="D E F A U L T   L E D"
 		android:key="default_led">
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="default_led_color"
-		android:title="Default Led Color"
-		android:summary="Color for default led"
+		android:title="Default LED Color"
+		android:summary="Color for default LED"
 		android:defaultValue="#ff3F9BBF" 
 		alphaSlider="false" /> 
 
 	<Preference	
 		android:layout="?android:attr/preferenceLayoutChild"
    		android:key="default_led_on_ms"
-		android:title="Led On Seconds (in 10ths)"
-		android:summary="Number of seconds led is on"
+		android:title="LED On Seconds (in 10ths)"
+		android:summary="Number of seconds LED is on"
 		android:defaultValue="3" />	
 		
 	<Preference	
 		android:layout="?android:attr/preferenceLayoutChild"
    		android:key="default_led_off_ms"
-		android:title="Led Off Seconds (in 10ths)"
-		android:summary="Number of seconds led is off"
+		android:title="LED Off Seconds (in 10ths)"
+		android:summary="Number of seconds LED is off"
 		android:defaultValue="3" />
 			
    	</PreferenceCategory>
 
 
     <PreferenceCategory
-		android:title="INCOMING CALL"
+		android:title="I N C O M I N G   C A L L"
 		android:key="phone_leds">
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="incoming_call_color"
-		android:title="Incoming Call Led Color"
-		android:summary="Led color for incoming call"
+		android:title="Incoming Call Color"
+		android:summary="LED color for incoming call"
 		android:defaultValue="#ff0000ff" 
 		alphaSlider="false" /> 
 		
-	<CheckBoxPreference
+	<SwitchPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="incoming_call_pulse"
-		android:summaryOn="Led will pulse"
-		android:summaryOff="Led will be steady on"
-		android:title="Incoming Call Led Pulse" 
+		android:summaryOn="LED will pulse"
+		android:summaryOff="LED will be steady on"
+		android:title="LED Pulse" 
 		android:defaultValue="true"	/>		
 		
 
@@ -79,38 +79,38 @@
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="incoming_call_pulse"
    		android:key="incoming_led_on_ms"
-		android:title="Led On Seconds (in 10ths)"
-		android:summary="Number of seconds led is on"
+		android:title="LED On Seconds (in 10ths)"
+		android:summary="Number of seconds LED is on"
 		android:defaultValue="3" />	
 		
 	<Preference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="incoming_call_pulse"
    		android:key="incoming_led_off_ms"
-		android:title="Led Off Seconds (in 10ths)"
-		android:summary="Number of seconds led is off"
+		android:title="LED Off Seconds (in 10ths)"
+		android:summary="Number of seconds LED is off"
 		android:defaultValue="3" />
 
 	</PreferenceCategory>
 
     <PreferenceCategory
-		android:title="MISSED CALLS"
+		android:title="M I S S E D   C A L L S"
 		android:key="missed_call_leds">
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="missed_call_color"
-		android:title="Missed Calls Led Color"
-		android:summary="Led color for missed calls"
+		android:title="LED Color"
+		android:summary="LED color for missed calls"
 		android:defaultValue="#ff0000ff" 
 		alphaSlider="false" /> 
 		
-	<CheckBoxPreference
+	<SwitchPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="missed_call_pulse"
-		android:summaryOn="Led will pulse"
-		android:summaryOff="Led will be steady on"
-		android:title="Missed Calls Led Pulse" 
+		android:summaryOn="LED will pulse"
+		android:summaryOff="LED will be steady on"
+		android:title="LED Pulse" 
 		android:defaultValue="true"	/>		
 		
 
@@ -118,38 +118,38 @@
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="missed_call_pulse"
    		android:key="missed_call_led_on_ms"
-		android:title="Led On Seconds (in 10ths)"
-		android:summary="Number of seconds led is on"
+		android:title="LED On Seconds (in 10ths)"
+		android:summary="Number of seconds LED is on"
 		android:defaultValue="3" />	
 		
 	<Preference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="missed_call_pulse"
    		android:key="missed_call_led_off_ms"
-		android:title="Led Off Seconds (in 10ths)"
-		android:summary="Number of seconds led is off"
+		android:title="LED Off Seconds (in 10ths)"
+		android:summary="Number of seconds LED is off"
 		android:defaultValue="3" />
 
   	</PreferenceCategory>
   	
     <PreferenceCategory
-		android:title="VOICE MAIL"
+		android:title="V O I C E   M A I L"
 		android:key="voice_mail_leds">
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="voice_mail_color"
-		android:title="Voice Mail Led Color"
-		android:summary="Led color for voice mail calls"
+		android:title="LED Color"
+		android:summary="LED color for voice mail calls"
 		android:defaultValue="#ff0000ff" 
 		alphaSlider="false" /> 
 		
-	<CheckBoxPreference
+	<SwitchPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="voice_mail_pulse"
-		android:summaryOn="Led will pulse"
-		android:summaryOff="Led will be steady on"
-		android:title="Voice Mail Led Pulse" 
+		android:summaryOn="LED will pulse"
+		android:summaryOff="LED will be steady on"
+		android:title="Pulse LED" 
 		android:defaultValue="true"	/>		
 		
 
@@ -157,16 +157,16 @@
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="voice_mail_pulse"
    		android:key="voice_mail_led_on_ms"
-		android:title="Led On Seconds (in 10ths)"
-		android:summary="Number of seconds led is on"
+		android:title="LED On Seconds (in 10ths)"
+		android:summary="Number of seconds LED is on"
 		android:defaultValue="3" />	
 		
 	<Preference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="voice_mail_pulse"
    		android:key="voice_mail_led_off_ms"
-		android:title="Led Off Seconds (in 10ths)"
-		android:summary="Number of seconds led is off"
+		android:title="LED Off Seconds (in 10ths)"
+		android:summary="Number of seconds LED is off"
 		android:defaultValue="3" />
 
 

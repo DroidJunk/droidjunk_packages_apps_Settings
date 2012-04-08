@@ -15,11 +15,11 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="THEME OPTIONS"
+        android:title="T H E M E   O P T I O N S"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceCategory
-		android:title="THEMES"
+		android:title="T H E M E S"
 		android:key="themes"
 		>
 
@@ -34,16 +34,8 @@
     </PreferenceCategory>
 
     
-    
-    
-    
-    
-    
-    
-    
-    
     <PreferenceCategory
-		android:title="THEME ONE"
+		android:title="T H E M E   O N E"
 		android:key="theme_one"
 		>
 
@@ -80,7 +72,7 @@
     
     
     <PreferenceCategory
-		android:title="THEME TWO"
+		android:title="T H E M E   T W O"
 		android:key="theme_two"
 		>    
 		
@@ -114,7 +106,7 @@
    	
    	
    	<PreferenceCategory
-		android:title="THEME THREE"
+		android:title="T H E M E   T H R E E"
 		android:key="theme_three">
 
     <Preference

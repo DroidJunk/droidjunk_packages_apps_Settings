@@ -19,10 +19,10 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceCategory
-		android:title="TOGGLE OPTIONS"
+		android:title="T O G G L E   O P T I O N S"
 		android:key="toggles">
 
-	<CheckBoxPreference
+	<SwitchPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="toggles_show_toggles"
 		android:summaryOn="Toggles are on"
@@ -30,13 +30,13 @@
 		android:title="Show Toggles" 
 		android:defaultValue="true"	/>
  
-	<CheckBoxPreference 
+	<SwitchPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
 		android:key="toggles_top"
 		android:summaryOn="Toggles are on the top"
 		android:summaryOff="Toggles are on the bottom"
-		android:title="Toggle Location Top" 
+		android:title="Toggles On Top" 
 		android:defaultValue="true"	/>
 
    	<PreferenceScreen
@@ -49,7 +49,7 @@
 
 
     <PreferenceCategory
-		android:title="TOGGLE COLORS"
+		android:title="T O G G L E   C O L O R S"
 		android:key="toggle_colors">
 
 	<com.android.settings.ColorPickerPreference
@@ -61,7 +61,7 @@
 		android:defaultValue="#ff000000" 
 		alphaSlider="false" /> 
 		
-	<CheckBoxPreference 
+	<SwitchPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
 		android:key="toggles_custom_icon_colors"
@@ -99,10 +99,10 @@
     </PreferenceCategory> 
 
     <PreferenceCategory
-		android:title="TOGGLE INDICATORS"
+		android:title="T O G G L E   I N D I C A T O R S"
 		android:key="toggle_ind">
 
-	<CheckBoxPreference 
+	<SwitchPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
 		android:key="toggle_show_indicator"
@@ -131,10 +131,10 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-		android:title="TOGGLE TEXT"
+		android:title="T O G G L E   T E X T"
 		android:key="toggle_txt">
 
-	<CheckBoxPreference 
+	<SwitchPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="toggle_show_text"
 		android:dependency="toggles_show_toggles"
@@ -163,10 +163,10 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-		android:title="TOGGLE DIVIDERS"
+		android:title="T O G G L E   D I V I D E R S"
 		android:key="toggle_div">
 
-	<CheckBoxPreference
+	<SwitchPreference
 		android:layout="?android:attr/preferenceLayoutChild"  
 		android:dependency="toggles_show_toggles"
 		android:key="toggle_show_divider"

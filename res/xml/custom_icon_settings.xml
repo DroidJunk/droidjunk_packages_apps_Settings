@@ -19,10 +19,10 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceCategory
-		android:title="ICONS AND COLORS"
+		android:title="I C O N S   A N D   C O L O R S"
 		android:key="icons">
 
-	<CheckBoxPreference 
+	<SwitchPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="color_icons"
 		android:summaryOn="Coloring of icons is on"
@@ -40,12 +40,12 @@
 		alphaSlider="false" /> 		
 
 
-	<CheckBoxPreference 
+	<SwitchPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:dependency="color_icons"
 		android:key="color_icons_apply"
-		android:summaryOn="Apply color to clock and navigation bar"
-		android:summaryOff="Do not apply color to clock and navigation bar"
+		android:summaryOn="Apply color to other items"
+		android:summaryOff="Do not apply color to other items"
 		android:title="Theme It!" 
 		android:defaultValue="false"	/>
 		

@@ -29,6 +29,7 @@ import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SeekBarPreference;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
@@ -47,9 +48,9 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
-	private CheckBoxPreference mIconColorOn;
+	private SwitchPreference mIconColorOn;
 	private Preference mIconColor;
-	private CheckBoxPreference mIconColorApply;
+	private SwitchPreference mIconColorApply;
 	private boolean iconColorApply = false;
 	private int iconColor = 0;
     private Preference mClockColor;
@@ -68,11 +69,11 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
         
         addPreferencesFromResource(R.xml.custom_icon_settings);
 
-		mIconColorOn = (CheckBoxPreference) findPreference(ICON_COLOR_ON);
+		mIconColorOn = (SwitchPreference) findPreference(ICON_COLOR_ON);
 		mIconColorOn.setOnPreferenceChangeListener(this);	
         mIconColor = (Preference) findPreference(ICON_COLOR);
 		mIconColor.setOnPreferenceChangeListener(this);	
-		mIconColorApply = (CheckBoxPreference) findPreference(ICON_COLOR_APPLY);
+		mIconColorApply = (SwitchPreference) findPreference(ICON_COLOR_APPLY);
 		mIconColorApply.setOnPreferenceChangeListener(this);	
 		iconColor = prefMgr.getSharedPreferences().getInt(ICON_COLOR, 0);
 		iconColorApply = prefMgr.getSharedPreferences().getBoolean(ICON_COLOR_APPLY, false);
@@ -142,13 +143,14 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
    			editor.commit();
 
        	   	iconColorApply = (Boolean) objValue;
-     		Intent i = new Intent();
-     		i.setAction(Junk_Settings);
-   	   		i.putExtra("IconColorApply", (Boolean) objValue);
-   	   		i.putExtra("IconColor", iconColor);
-   	   		getActivity().sendBroadcast(i);
-   	   		i = null;
-   	   		
+       	   	if (iconColorApply) {
+       	   		Intent i = new Intent();
+       	   		i.setAction(Junk_Settings);
+       	   		i.putExtra("IconColorApply", (Boolean) objValue);
+       	   		i.putExtra("IconColor", iconColor);
+       	   		getActivity().sendBroadcast(i);
+       	   		i = null;
+       	   	}
      	}
  
     

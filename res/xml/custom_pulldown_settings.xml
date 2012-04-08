@@ -19,10 +19,10 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceCategory
-		android:title="PULLDOWN OPTIONS"
+		android:title="P U L L D O W N   O P T I O N S"
 		android:key="carrier_on">
 
-	<CheckBoxPreference
+	<SwitchPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="show_carrier"
 		android:summaryOn="Show the carrier in the pulldown"
@@ -32,7 +32,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-		android:title="CARRIER OPTIONS"
+		android:title="C A R R I E R   O P T I O N S"
 		android:key="carrier_settings">
    				
 	<com.android.settings.ColorPickerPreference
@@ -54,10 +54,10 @@
     </PreferenceCategory>
   
     <PreferenceCategory
-		android:title="CUSTOM CARRIER OPTIONS"
+		android:title="C U S T O M   C A R R I E R   O P T I O N S"
 		android:key="carrier_settings_custom">
 
-   	<CheckBoxPreference 
+   	<SwitchPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
    	    android:dependency="show_carrier"
 		android:key="carrier_custom"
@@ -78,7 +78,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-		android:title="DATE OPTIONS"
+		android:title="D A T E   O P T I O N S"
 		android:key="date_settings">
 
 	<com.android.settings.ColorPickerPreference

@@ -85,6 +85,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 	private final String TOGGLE_TEXT_OFF_COLOR = "toggle_text_off_color";
 	private final String TOGGLE_SHOW_DIVIDER = "toggle_show_divider";
 	private final String TOGGLE_DIVIDER_COLOR = "toggle_divider_color";
+	private final String TOGGLES_TORCH_ON = "toggles_show_torch";
 	private final String TOGGLES_4G_ON = "toggles_show_fourg";
 	private final String TOGGLES_WIFI_ON = "toggles_show_wifi";
 	private final String TOGGLES_GPS_ON = "toggles_show_gps";
@@ -103,21 +104,9 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 	private final String SHOW_BOT_MENU_BUTTON_LAND = "bottom_menu_button_land";
 	private final String ICON_COLOR_ON = "color_icons";
 	private final String ICON_COLOR = "icon_color";
-	private final String NAVIGATION_BAR_TINT = "nav_bar_tint";
-	private final String BATTERY_ICON = "battery_icon";
-	private final String BATTERY_BAR = "battery_bar";
-	private final String BATTERY_BAR_COLOR = "battery_bar_color";
-	private final String QUICK_SETTINGS_ON = "toggles_show_quicksettings";
-	private final String QUICK_SETTINGS_BOTTOM = "quicksettings_bottom";
-	private final String SETTINGS_CLOCK = "quick_setting_clock";
-	private final String SETTINGS_METER = "quick_setting_meter";
-	private final String SETTINGS_NAV = "quick_setting_nav";
-	private final String SETTINGS_LOCKSCREEN = "quick_setting_lockscreen";
-	private final String SETTINGS_PULLDOWN = "quick_setting_pulldown";
-	private final String SETTINGS_TOGGLE = "quick_setting_toggle";
-	private final String SETTINGS_QUIETTIME = "quick_setting_quiet";
-	private final String SETTINGS_LED = "quick_setting_led";
-	private final String SETTINGS_ICON = "quick_setting_iconcolor";
+	private final String NAV_BAR_COLOR_ON = "nav_button_color_on";
+    private final String NAV_BAR_COLOR = "nav_button_color";
+
 	
 	
     
@@ -142,15 +131,14 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
     private boolean showCarrier, carrierCustom;
     private boolean iconColorOn, showClock, clockAmPm, togglesShowToggles, togglesTop, toggleCustomIconColors ; 
     private boolean togglesShowIndicator, toggleShowText, toggleShowDivider;
-    private boolean showFourg, showWifi, showGps, showBluetooth, showSound, showAirplane;
+    private boolean showTorch, showFourg, showWifi, showGps, showBluetooth, showSound, showAirplane;
     private boolean showBrightness, showRotate, showSync, showData;
     private boolean showSearchButton, showLeftMenuButton, showRightMenuButton, showSearchButtonLand;
-    private boolean showTopMenuButtonLand, showBotMenuButtonLand, quickSettingsOn, quickSettingsBottom;
-    private boolean quickClock, quickMeter, quickNav, quickLock, quickPullDown, quickToggle, quickQuiet, quickLed, quickIcon;
+    private boolean showTopMenuButtonLand, showBotMenuButtonLand, navBarColorOn;
     private int carrierColor, iconColor, clockColor, clockSize, toggleColor, toggleIconOnColor;
     private int toggleIconInterColor, toggleIconOffColor, toggleIndOnColor, toggleIndOffColor;
-    private int toggleTextOnColor, toggleTextOffColor, toggleDividerColor, navigationBarColor;
-    private int carrierSize, dateColor, dateSize, meterOptions, batteryBar, batteryBarColor;
+    private int toggleTextOnColor, toggleTextOffColor, toggleDividerColor, navBarColor;
+    private int carrierSize, dateColor, dateSize;
 	private String carrierCustomText;
     
     
@@ -310,6 +298,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         editor.putBoolean(TOGGLE_SHOW_INDICATOR, togglesShowIndicator);
         editor.putBoolean(TOGGLE_SHOW_TEXT, toggleShowText);
         editor.putBoolean(TOGGLE_SHOW_DIVIDER, toggleShowDivider);
+        editor.putBoolean(TOGGLES_TORCH_ON, showTorch);
         editor.putBoolean(TOGGLES_4G_ON, showFourg);
         editor.putBoolean(TOGGLES_WIFI_ON, showWifi);
         editor.putBoolean(TOGGLES_GPS_ON, showGps);
@@ -343,21 +332,9 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         editor.putInt(CARRIER_SIZE, carrierSize);
         editor.putInt(DATE_COLOR, dateColor);
         editor.putInt(DATE_SIZE, dateSize);
-        editor.putInt(NAVIGATION_BAR_TINT, navigationBarColor);
-        editor.putInt(BATTERY_ICON, meterOptions);
-        editor.putInt(BATTERY_BAR, batteryBar);
-        editor.putInt(BATTERY_BAR_COLOR, batteryBarColor);
-        editor.putBoolean(QUICK_SETTINGS_ON, quickSettingsOn);
-        editor.putBoolean(QUICK_SETTINGS_BOTTOM, quickSettingsBottom);
-        editor.putBoolean(SETTINGS_CLOCK, quickClock);
-        editor.putBoolean(SETTINGS_METER, quickMeter);
-        editor.putBoolean(SETTINGS_NAV, quickNav);
-        editor.putBoolean(SETTINGS_LOCKSCREEN, quickLock);
-        editor.putBoolean(SETTINGS_PULLDOWN, quickPullDown);
-        editor.putBoolean(SETTINGS_TOGGLE, quickToggle);
-        editor.putBoolean(SETTINGS_QUIETTIME, quickQuiet);
-        editor.putBoolean(SETTINGS_LED, quickLed);
-        editor.putBoolean(SETTINGS_ICON, quickIcon);
+        editor.putBoolean(NAV_BAR_COLOR_ON, navBarColorOn);
+        editor.putInt(NAV_BAR_COLOR, navBarColor);
+
         editor.commit();
         
     }
@@ -379,6 +356,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         editor.putBoolean(TOGGLE_SHOW_INDICATOR, togglesShowIndicator);
         editor.putBoolean(TOGGLE_SHOW_TEXT, toggleShowText);
         editor.putBoolean(TOGGLE_SHOW_DIVIDER, toggleShowDivider);
+        editor.putBoolean(TOGGLES_TORCH_ON, showTorch);
         editor.putBoolean(TOGGLES_4G_ON, showFourg);
         editor.putBoolean(TOGGLES_WIFI_ON, showWifi);
         editor.putBoolean(TOGGLES_GPS_ON, showGps);
@@ -412,25 +390,11 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         editor.putInt(CARRIER_SIZE, carrierSize);
         editor.putInt(DATE_COLOR, dateColor);
         editor.putInt(DATE_SIZE, dateSize);
-        editor.putBoolean(QUICK_SETTINGS_ON, quickSettingsOn);
-        editor.putBoolean(QUICK_SETTINGS_BOTTOM, quickSettingsBottom);
-        editor.putBoolean(SETTINGS_CLOCK, quickClock);
-        editor.putBoolean(SETTINGS_METER, quickMeter);
-        editor.putBoolean(SETTINGS_NAV, quickNav);
-        editor.putBoolean(SETTINGS_LOCKSCREEN, quickLock);
-        editor.putBoolean(SETTINGS_PULLDOWN, quickPullDown);
-        editor.putBoolean(SETTINGS_TOGGLE, quickToggle);
-        editor.putBoolean(SETTINGS_QUIETTIME, quickQuiet);
-        editor.putBoolean(SETTINGS_LED, quickLed);
-        editor.putBoolean(SETTINGS_ICON, quickIcon);
+
  
         editor.commit();
        
-        Settings.System.putInt(getActivity().getContentResolver(),Settings.System.NAVIGATION_BAR_TINT, navigationBarColor);        
-        Settings.System.putInt(getActivity().getContentResolver(), Settings.System.BATTERY_ICON, meterOptions);
-        Settings.System.putInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_BATTERY_BAR, batteryBar);
-        Settings.System.putInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_BATTERY_BAR_COLOR, batteryBarColor);
-        
+
         
         SendIntents();
 
@@ -460,7 +424,8 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         toggleTextOffColor = prefMgr.getSharedPreferences().getInt(TOGGLE_TEXT_OFF_COLOR, 0xff757575);
         toggleShowDivider = prefMgr.getSharedPreferences().getBoolean(TOGGLE_SHOW_DIVIDER, true);
         toggleDividerColor = prefMgr.getSharedPreferences().getInt(TOGGLE_DIVIDER_COLOR, 0xff757575);
-    	showFourg = prefMgr.getSharedPreferences().getBoolean(TOGGLES_4G_ON, true);
+    	showTorch = prefMgr.getSharedPreferences().getBoolean(TOGGLES_TORCH_ON, true);
+        showFourg = prefMgr.getSharedPreferences().getBoolean(TOGGLES_4G_ON, true);
     	showWifi = prefMgr.getSharedPreferences().getBoolean(TOGGLES_WIFI_ON, true);
     	showGps = prefMgr.getSharedPreferences().getBoolean(TOGGLES_GPS_ON, true);
     	showBluetooth = prefMgr.getSharedPreferences().getBoolean(TOGGLES_BLUETOOTH_ON, true);
@@ -470,17 +435,6 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
     	showRotate = prefMgr.getSharedPreferences().getBoolean(TOGGLES_ROTATE_ON, true);
     	showSync = prefMgr.getSharedPreferences().getBoolean(TOGGLES_SYNC_ON, true);
     	showData = prefMgr.getSharedPreferences().getBoolean(TOGGLES_DATA_ON, true);    	
-        quickSettingsOn = prefMgr.getSharedPreferences().getBoolean(QUICK_SETTINGS_ON, true);
-        quickSettingsBottom = prefMgr.getSharedPreferences().getBoolean(QUICK_SETTINGS_BOTTOM, true);
-        quickClock = prefMgr.getSharedPreferences().getBoolean(SETTINGS_CLOCK, true);
-        quickMeter = prefMgr.getSharedPreferences().getBoolean(SETTINGS_METER, true);
-        quickNav = prefMgr.getSharedPreferences().getBoolean(SETTINGS_NAV, true);
-        quickLock = prefMgr.getSharedPreferences().getBoolean(SETTINGS_LOCKSCREEN, true);
-        quickPullDown = prefMgr.getSharedPreferences().getBoolean(SETTINGS_PULLDOWN, true);
-        quickToggle = prefMgr.getSharedPreferences().getBoolean(SETTINGS_TOGGLE, true);
-        quickQuiet = prefMgr.getSharedPreferences().getBoolean(SETTINGS_QUIETTIME, true);
-        quickLed = prefMgr.getSharedPreferences().getBoolean(SETTINGS_LED, true);
-        quickIcon = prefMgr.getSharedPreferences().getBoolean(SETTINGS_ICON, true); 
     	showSearchButton = prefMgr.getSharedPreferences().getBoolean(SHOW_SEARCH_BUTTON, false);
     	showLeftMenuButton = prefMgr.getSharedPreferences().getBoolean(SHOW_LEFT_MENU_BUTTON, true);
     	showRightMenuButton = prefMgr.getSharedPreferences().getBoolean(SHOW_RIGHT_MENU_BUTTON, true);
@@ -496,38 +450,8 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
     	dateSize = prefMgr.getSharedPreferences().getInt(DATE_SIZE, 17);
     	iconColorOn = prefMgr.getSharedPreferences().getBoolean(ICON_COLOR_ON, false);
     	iconColor = prefMgr.getSharedPreferences().getInt(ICON_COLOR, 0xff3F9BBF);
-        
-        if (!readSystem) {
-        navigationBarColor = prefMgr.getSharedPreferences().getInt(NAVIGATION_BAR_TINT, 0xffffffff);
-        meterOptions = prefMgr.getSharedPreferences().getInt(BATTERY_ICON, 15);
-        batteryBar = prefMgr.getSharedPreferences().getInt(BATTERY_BAR, 15);
-        batteryBarColor = prefMgr.getSharedPreferences().getInt(BATTERY_BAR_COLOR, 15);
-        
-        } else {
-        	try {
-        		navigationBarColor = Settings.System.getInt(getActivity().getContentResolver(),Settings.System.NAVIGATION_BAR_TINT);
-        	} catch (SettingNotFoundException e) {
-        		e.printStackTrace();
-        	}
-
-        	try {
-        		meterOptions = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.BATTERY_ICON);
-        	} catch (SettingNotFoundException e) {
-        		e.printStackTrace();
-        	}
-
-        	try {
-        		batteryBar = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_BATTERY_BAR);
-        	} catch (SettingNotFoundException e) {
-        		e.printStackTrace();
-        	}
-
-        	try {
-        		batteryBarColor = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_BATTERY_BAR_COLOR);
-        	} catch (SettingNotFoundException e) {
-        		e.printStackTrace();
-        	}
-        }
+        navBarColor = prefMgr.getSharedPreferences().getInt(NAV_BAR_COLOR, 0xffffffff);
+        navBarColorOn = prefMgr.getSharedPreferences().getBoolean(NAV_BAR_COLOR_ON, true);
     }    
     
 
@@ -655,6 +579,12 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 
       	i = new Intent();
       	i.setAction(Junk_Settings);
+   	   	i.putExtra("ShowTorch", (Boolean) showTorch);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+        
+        i = new Intent();
+      	i.setAction(Junk_Settings);
    	   	i.putExtra("ShowFourg", (Boolean) showFourg);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
@@ -755,77 +685,6 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         getActivity().sendBroadcast(i);
         i = null;       	   		
    	   	
-       	i = new Intent();
-       	i.setAction(Junk_Settings);
-   	   	i.putExtra("ShowClockButton", (Boolean) quickClock);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;
-        	   	
-       	i = new Intent();
-       	i.setAction(Junk_Settings);
-   	   	i.putExtra("ShowMeterButton", (Boolean) quickMeter);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;
-        	   	
-       	i = new Intent();
-       	i.setAction(Junk_Settings);
-   	   	i.putExtra("ShowNavButton", (Boolean) quickNav);
-  	   	getActivity().sendBroadcast(i);
-   	   	i = null;
-       
-       	i = new Intent();
-       	i.setAction(Junk_Settings);
-   	   	i.putExtra("ShowLockscreenButton", (Boolean) quickLock);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;
-            
-       	i = new Intent();
-       	i.setAction(Junk_Settings);
-   	   	i.putExtra("ShowPulldownButton", (Boolean) quickPullDown);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;
-           
-       	i = new Intent();
-       	i.setAction(Junk_Settings);
-   	   	i.putExtra("ShowToggleButton", (Boolean) quickToggle);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;
-
-       	i = new Intent();
-       	i.setAction(Junk_Settings);
-   	   	i.putExtra("ShowQuietButton", (Boolean) quickQuiet);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;
-            
-       	i = new Intent();
-      	i.setAction(Junk_Settings);
-   	   	i.putExtra("ShowLedButton", (Boolean) quickLed);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;
-           
-       	i = new Intent();
-       	i.setAction(Junk_Settings) ;
-   	   	i.putExtra("ShowIconButton", (Boolean) quickIcon);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;   
-        
-    	i = new Intent();
-    	i.setAction(Junk_Settings);
-   	   	i.putExtra("SettingsOn", (Boolean) quickSettingsOn);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;
-
-    	i = new Intent();
-    	i.setAction(Junk_Settings);
-   	   	i.putExtra("SettingsBottom", (Boolean) quickSettingsBottom);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;
-   	   	
-    	i = new Intent();
-        i.setAction(Junk_Settings);
-        i.putExtra("UpdateSettings", true);
-        getActivity().sendBroadcast(i);
-        i = null;
         
         
 }    

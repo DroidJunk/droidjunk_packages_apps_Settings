@@ -22,15 +22,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-import android.util.Log;
+import android.preference.SwitchPreference;
 
 
 
@@ -56,21 +51,20 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
 	private final String TOGGLE_DIVIDER_COLOR = "toggle_divider_color";
 
 	private PreferenceManager prefMgr;
-	private SharedPreferences sharedPref;
-	private CheckBoxPreference mShowToggles;
-	private CheckBoxPreference mTogglesTop;
+	private SwitchPreference mShowToggles;
+	private SwitchPreference mTogglesTop;
 	private Preference mToggleColor;
-	private CheckBoxPreference mToggleCustomIconColors;
+	private SwitchPreference mToggleCustomIconColors;
 	private Preference mToggleIconOnColor;
 	private Preference mToggleIconInterColor;
 	private Preference mToggleIconOffColor;
-	private CheckBoxPreference mShowIndicator;
+	private SwitchPreference mShowIndicator;
     private Preference mToggleIndOnColor;
     private Preference mToggleIndOffColor;
-    private CheckBoxPreference mToggleShowText;
+    private SwitchPreference mToggleShowText;
     private Preference mToggleTextOnColor;
     private Preference mToggleTextOffColor;
-    private CheckBoxPreference mToggleShowDivider;
+    private SwitchPreference mToggleShowDivider;
     private Preference mToggleDividerColor;
 
     public int mSize = 17;	
@@ -86,13 +80,13 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.custom_toggle_settings);
       
-    	mShowToggles = (CheckBoxPreference) findPreference(TOGGLES_ON);
+    	mShowToggles = (SwitchPreference) findPreference(TOGGLES_ON);
     	mShowToggles.setOnPreferenceChangeListener(this);
-    	mTogglesTop = (CheckBoxPreference) findPreference(TOGGLES_TOP);
+    	mTogglesTop = (SwitchPreference) findPreference(TOGGLES_TOP);
     	mTogglesTop.setOnPreferenceChangeListener(this);
     	mToggleColor = (Preference) findPreference(TOGGLE_COLOR);
     	mToggleColor.setOnPreferenceChangeListener(this);
-    	mToggleCustomIconColors = (CheckBoxPreference) findPreference(TOGGLE_CUSTOM_ICON_COLORS);
+    	mToggleCustomIconColors = (SwitchPreference) findPreference(TOGGLE_CUSTOM_ICON_COLORS);
     	mToggleCustomIconColors.setOnPreferenceChangeListener(this);
     	mToggleIconOnColor = (Preference) findPreference(TOGGLE_ICON_ON_COLOR);
     	mToggleIconOnColor.setOnPreferenceChangeListener(this);
@@ -100,19 +94,19 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
     	mToggleIconInterColor.setOnPreferenceChangeListener(this);
     	mToggleIconOffColor = (Preference) findPreference(TOGGLE_ICON_OFF_COLOR);
     	mToggleIconOffColor.setOnPreferenceChangeListener(this);
-    	mShowIndicator = (CheckBoxPreference) findPreference(TOGGLE_SHOW_INDICATOR);
+    	mShowIndicator = (SwitchPreference) findPreference(TOGGLE_SHOW_INDICATOR);
     	mShowIndicator.setOnPreferenceChangeListener(this);
         mToggleIndOnColor = (Preference) findPreference(TOGGLE_IND_ON_COLOR);
         mToggleIndOnColor.setOnPreferenceChangeListener(this);
         mToggleIndOffColor = (Preference) findPreference(TOGGLE_IND_OFF_COLOR);
         mToggleIndOffColor.setOnPreferenceChangeListener(this);
-        mToggleShowText = (CheckBoxPreference) findPreference(TOGGLE_SHOW_TEXT);
+        mToggleShowText = (SwitchPreference) findPreference(TOGGLE_SHOW_TEXT);
         mToggleShowText.setOnPreferenceChangeListener(this);
         mToggleTextOnColor = (Preference) findPreference(TOGGLE_TEXT_ON_COLOR);
         mToggleTextOnColor.setOnPreferenceChangeListener(this);
         mToggleTextOffColor = (Preference) findPreference(TOGGLE_TEXT_OFF_COLOR);
         mToggleTextOffColor.setOnPreferenceChangeListener(this);
-        mToggleShowDivider = (CheckBoxPreference) findPreference(TOGGLE_SHOW_DIVIDER);
+        mToggleShowDivider = (SwitchPreference) findPreference(TOGGLE_SHOW_DIVIDER);
         mToggleShowDivider.setOnPreferenceChangeListener(this);
         mToggleDividerColor = (Preference) findPreference(TOGGLE_DIVIDER_COLOR);
         mToggleDividerColor.setOnPreferenceChangeListener(this);

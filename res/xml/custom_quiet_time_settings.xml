@@ -20,7 +20,7 @@
 
 
 
-	<CheckBoxPreference 
+	<SwitchPreference 
 		android:key="quiet_time_on"
 		android:summaryOn="Quiet Time is on"
 		android:summaryOff="Quiet Time is off"
@@ -41,7 +41,7 @@
 		android:title="Quiet Time Stop Hour" 
 		android:defaultValue="7"	/>
 
-	<CheckBoxPreference 
+	<SwitchPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="quiet_time_on"
 		android:key="qt_led_on"
@@ -50,7 +50,7 @@
 		android:title="Quiet Time Led" 
 		android:defaultValue="false"	/>   	
 	
-	<CheckBoxPreference 
+	<SwitchPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="quiet_time_on"
 		android:key="qt_sound_on"
@@ -59,7 +59,7 @@
 		android:title="Quiet Time Sound" 
 		android:defaultValue="false"	/>   					
    				
- 	<CheckBoxPreference 
+ 	<SwitchPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="quiet_time_on"
 		android:key="qt_vibrate_on"

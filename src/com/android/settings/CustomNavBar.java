@@ -16,7 +16,8 @@ import com.android.settings.R;
 public class CustomNavBar extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
 	private final String Junk_Settings = "JUNK_SETTINGS";
-    private final String PREF_NAV_COLOR = "nav_button_color";
+	private final String NAV_BAR_COLOR_ON = "nav_button_color_on";
+    private final String NAV_BAR_COLOR = "nav_button_color";
     private final String SHOW_SEARCH_BUTTON = "search_button";
 	private final String SHOW_LEFT_MENU_BUTTON = "left_menu_button";
 	private final String SHOW_RIGHT_MENU_BUTTON = "right_menu_button";
@@ -26,6 +27,7 @@ public class CustomNavBar extends SettingsPreferenceFragment implements Preferen
 
 	private PreferenceManager prefMgr;
 
+	SwitchPreference mNavBarColorOn;
 	ColorPickerPreference mNavigationBarColor;
     SwitchPreference mShowSearchButton;
     SwitchPreference mShowLeftMenuButton;
@@ -45,9 +47,11 @@ public class CustomNavBar extends SettingsPreferenceFragment implements Preferen
             prefMgr.getSharedPreferences();
             
             // Load the preferences from an XML resource
-            addPreferencesFromResource(R.xml.custom_navbar);
+            addPreferencesFromResource(R.xml.custom_navbar_settings);
 
-            mNavigationBarColor = (ColorPickerPreference) findPreference(PREF_NAV_COLOR);
+            mNavBarColorOn = (SwitchPreference) findPreference(NAV_BAR_COLOR_ON);
+            mNavBarColorOn.setOnPreferenceChangeListener(this);
+            mNavigationBarColor = (ColorPickerPreference) findPreference(NAV_BAR_COLOR);
             mNavigationBarColor.setOnPreferenceChangeListener(this);
             mShowSearchButton = (SwitchPreference) findPreference(SHOW_SEARCH_BUTTON);
             mShowSearchButton.setOnPreferenceChangeListener(this);
@@ -76,7 +80,15 @@ public class CustomNavBar extends SettingsPreferenceFragment implements Preferen
         public boolean onPreferenceChange(Preference preference, Object objValue) {
  
         	final String key = preference.getKey();
-            if (PREF_NAV_COLOR.equals(key)) {
+        	
+            if (NAV_BAR_COLOR_ON.equals(key)) {
+            	Intent i = new Intent();
+            	i.setAction(Junk_Settings );
+           	   	i.putExtra("NavColorOn", (Boolean) objValue);
+           	   	getActivity().sendBroadcast(i);
+           	   	i = null;
+
+            } else  if (NAV_BAR_COLOR.equals(key)) {
             	Intent i = new Intent();
             	i.setAction(Junk_Settings );
            	   	i.putExtra("GlowColor", (Integer) objValue);

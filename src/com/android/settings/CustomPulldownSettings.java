@@ -28,6 +28,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
@@ -49,9 +50,9 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
-	private CheckBoxPreference mShowCarrier;
+	private SwitchPreference mShowCarrier;
     private Preference mCarrierColor;
-    private CheckBoxPreference mCarrierCustom;
+    private SwitchPreference mCarrierCustom;
     private Preference mCarrierCustomText;
     private Preference mCarrierSize;
     public int carrierSize = 15;
@@ -72,11 +73,11 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
        
         addPreferencesFromResource(R.xml.custom_pulldown_settings);
         
-        mShowCarrier = (CheckBoxPreference) findPreference(SHOW_CARRIER);
+        mShowCarrier = (SwitchPreference) findPreference(SHOW_CARRIER);
 		mShowCarrier.setOnPreferenceChangeListener(this);
         mCarrierColor = (Preference) findPreference(CARRIER_COLOR);
 		mCarrierColor.setOnPreferenceChangeListener(this);
-        mCarrierCustom = (CheckBoxPreference) findPreference(CARRIER_CUSTOM);
+        mCarrierCustom = (SwitchPreference) findPreference(CARRIER_CUSTOM);
 		mCarrierCustom.setOnPreferenceChangeListener(this);
         mCarrierCustomText = (Preference) findPreference(CARRIER_CUSTOM_TEXT);
 		mCarrierCustomText.setOnPreferenceChangeListener(this);

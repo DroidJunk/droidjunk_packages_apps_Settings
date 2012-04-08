@@ -31,6 +31,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
@@ -67,14 +68,14 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 	private Preference mDefaultLedColor;
 	private Preference mDefaultLedOnMs;
 	private Preference mDefaultLedOffMs;
-	private CheckBoxPreference mPulseLedScreenOn;
+	private SwitchPreference mPulseLedScreenOn;
     private int DefaultLedOnMs;
     private int DefaultLedOffMs;
     private Boolean PulseLedScreenOn;
     
     
     private Preference mIncomingCallColor;
-	private CheckBoxPreference mIncomingCallPulse;
+	private SwitchPreference mIncomingCallPulse;
 	private Preference mIncomingCallLedOnMs;
 	private Preference mIncomingCallLedOffMs;
 	private Boolean IncomingCallPulse;
@@ -83,7 +84,7 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
     
 
     private Preference mMissedCallColor;
-	private CheckBoxPreference mMissedCallPulse;
+	private SwitchPreference mMissedCallPulse;
 	private Preference mMissedCallLedOnMs;
 	private Preference mMissedCallLedOffMs;
 	private Boolean MissedCallPulse;
@@ -91,7 +92,7 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
     private int MissedCallLedOffMs;
 	
     private Preference mVoiceMailColor;
-	private CheckBoxPreference mVoiceMailPulse;
+	private SwitchPreference mVoiceMailPulse;
 	private Preference mVoiceMailLedOnMs;
 	private Preference mVoiceMailLedOffMs;
 	private Boolean VoiceMailPulse;
@@ -117,13 +118,13 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         mDefaultLedOnMs.setOnPreferenceChangeListener(this);
         mDefaultLedOffMs = (Preference) findPreference(DEFAULT_LED_OFF_MS);
         mDefaultLedOffMs.setOnPreferenceChangeListener(this);
-        mPulseLedScreenOn = (CheckBoxPreference) findPreference(PULSE_LED_SCREEN_ON);
+        mPulseLedScreenOn = (SwitchPreference) findPreference(PULSE_LED_SCREEN_ON);
         mPulseLedScreenOn.setOnPreferenceChangeListener(this);
 
 
         mIncomingCallColor = (Preference) findPreference(INCOMING_CALL_LED_COLOR);
         mIncomingCallColor.setOnPreferenceChangeListener(this);
-        mIncomingCallPulse = (CheckBoxPreference) findPreference(INCOMING_CALL_LED_PULSE);
+        mIncomingCallPulse = (SwitchPreference) findPreference(INCOMING_CALL_LED_PULSE);
         mIncomingCallPulse.setOnPreferenceChangeListener(this);
         mIncomingCallLedOnMs = (Preference) findPreference(INCOMING_CALL_LED_ON_MS);
         mIncomingCallLedOnMs.setOnPreferenceChangeListener(this);
@@ -132,7 +133,7 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         
         mMissedCallColor = (Preference) findPreference(MISSED_CALL_LED_COLOR);
         mMissedCallColor.setOnPreferenceChangeListener(this);
-        mMissedCallPulse = (CheckBoxPreference) findPreference(MISSED_CALL_LED_PULSE);
+        mMissedCallPulse = (SwitchPreference) findPreference(MISSED_CALL_LED_PULSE);
         mMissedCallPulse.setOnPreferenceChangeListener(this);
         mMissedCallLedOnMs = (Preference) findPreference(MISSED_CALL_LED_ON_MS);
         mMissedCallLedOnMs.setOnPreferenceChangeListener(this);
@@ -142,7 +143,7 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
    
         mVoiceMailColor = (Preference) findPreference(VOICE_MAIL_LED_COLOR);
         mVoiceMailColor.setOnPreferenceChangeListener(this);
-        mVoiceMailPulse = (CheckBoxPreference) findPreference(VOICE_MAIL_LED_PULSE);
+        mVoiceMailPulse = (SwitchPreference) findPreference(VOICE_MAIL_LED_PULSE);
         mVoiceMailPulse.setOnPreferenceChangeListener(this);
         mVoiceMailLedOnMs = (Preference) findPreference(VOICE_MAIL_LED_ON_MS);
         mVoiceMailLedOnMs.setOnPreferenceChangeListener(this);
