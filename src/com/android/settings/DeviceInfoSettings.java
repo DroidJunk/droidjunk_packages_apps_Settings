@@ -1,18 +1,18 @@
 /*
- * Copyright (C) 2008 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+* Copyright (C) 2008 The Android Open Source Project
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 
 package com.android.settings;
 
@@ -59,8 +59,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
-    private static final String KEY_ROM_DATE = "build_date";
-
 
     long[] mHits = new long[3];
 
@@ -76,8 +74,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL + getMsvSuffix());
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_KERNEL_VERSION).setSummary(getFormattedKernelVersion());
-        setValueSummary(KEY_ROM_DATE, "ro.build.date");
-
 
         // Remove Safety information preference if PROPERTY_URL_SAFETYLEGAL is not set
         removePreferenceIfPropertyMissing(getPreferenceScreen(), "safetylegal",
@@ -89,9 +85,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         }
 
         /*
-         * Settings is a generic app and should not contain any device-specific
-         * info.
-         */
+* Settings is a generic app and should not contain any device-specific
+* info.
+*/
         final Activity act = getActivity();
         // These are contained in the "container" preference group
         PreferenceGroup parentPreference = (PreferenceGroup) findPreference(KEY_CONTAINER);
@@ -173,11 +169,11 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     }
 
     /**
-     * Reads a line from the specified file.
-     * @param filename the file to read from
-     * @return the first line, if any.
-     * @throws IOException if the file couldn't be read
-     */
+* Reads a line from the specified file.
+* @param filename the file to read from
+* @return the first line, if any.
+* @throws IOException if the file couldn't be read
+*/
     private String readLine(String filename) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(filename), 256);
         try {
@@ -228,9 +224,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     }
 
     /**
-     * Returns " (ENGINEERING)" if the msv file has a zero value, else returns "".
-     * @return a string to append to the model number description.
-     */
+* Returns " (ENGINEERING)" if the msv file has a zero value, else returns "".
+* @return a string to append to the model number description.
+*/
     private String getMsvSuffix() {
         // Production devices should have a non-zero value. If we can't read it, assume it's a
         // production device so that we don't accidentally show that it's an ENGINEERING device.

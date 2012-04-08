@@ -16,20 +16,20 @@
    	<PreferenceCategory
 		android:title="PORTRAIT MODE">
 	
-        <CheckBoxPreference
+        <SwitchPreference
         	android:layout="?android:attr/preferenceLayoutChild"
 			android:key="search_button"
 			android:title="Show search button"
 			 />
 			
-       <CheckBoxPreference
+       <SwitchPreference
        		android:layout="?android:attr/preferenceLayoutChild"
 			android:key="left_menu_button"
 			android:title="Left Menu Button"
 			android:defaultValue="true"	
 			/>
 		
-       <CheckBoxPreference
+       <SwitchPreference
        		android:layout="?android:attr/preferenceLayoutChild"
 			android:key="right_menu_button"
 			android:title="Right Menu Button"
@@ -42,20 +42,20 @@
    	<PreferenceCategory
 		android:title="LANDSCAPE MODE">
 	
-        <CheckBoxPreference
+        <SwitchPreference
         	android:layout="?android:attr/preferenceLayoutChild"
 			android:key="search_button_land"
 			android:title="Show search button"
 			 />
 			
-       <CheckBoxPreference
+       <SwitchPreference
        		android:layout="?android:attr/preferenceLayoutChild"
 			android:key="top_menu_button_land"
 			android:title="Top Menu Button"
 			android:defaultValue="true"	
 			/>
 		
-       <CheckBoxPreference
+       <SwitchPreference
        		android:layout="?android:attr/preferenceLayoutChild"
 			android:key="bottom_menu_button_land"
 			android:title="Bottom Menu Button"

@@ -21,18 +21,6 @@
     <string name="no">"Cancel"</string>
     <string name="set">"Set"</string>
 
-    <!--  *** Changelog *** -->
-    <string name="changelog_full_title">Change Log</string>
-    <string name="changelog_about_title">Change log</string>
-    <string name="changelog_title">What\'s New</string>
-    <string name="changelog_ok_button">OK</string>
-    <string name="last">0</string>
-
-    <!--  *** About *** -->
-    <string name="rom_title_version">TranQuil Ice v 7</string>
-    <string name="rom_about_description">This AOSP Rom is created by P3droid and Droidjunk to be our ideal firmware for our Nexus.</string>
-    <string name="rom_about_location">This Rom is released only on MyDroidWorld.com</string>
-    <string name="rom_about_feedback">Please visit the thread to post feedback</string> 
 
     <!-- Device Info --> <skip />
     <!-- Device Info screen. Used for a status item's value when the proper value is not known -->

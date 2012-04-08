@@ -43,7 +43,7 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
 	private final String ICON_COLOR = "icon_color";
 	private final String ICON_COLOR_APPLY = "color_icons_apply";
 	private final String CLOCK_COLOR = "clock_color";
-	
+    private final String PREF_NAV_COLOR = "nav_button_color";	
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
@@ -121,10 +121,9 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
        	   	i = null;
        	   	
        	   	if (iconColorApply) {
-       	   		Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_TINT, iconColor);
        	   		SharedPreferences.Editor editor = sharedPref.edit();
        			editor.putInt(CLOCK_COLOR, iconColor);
+       			editor.putInt(PREF_NAV_COLOR, iconColor);
        			editor.commit();
 
        			i = new Intent();
@@ -137,10 +136,9 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
        	   	
    	   		
      	} else if (ICON_COLOR_APPLY.equals(key)) {
-       	   	Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_TINT, iconColor);
    	   		SharedPreferences.Editor editor = sharedPref.edit();
    			editor.putInt(CLOCK_COLOR, iconColor);
+   			editor.putInt(PREF_NAV_COLOR, iconColor);
    			editor.commit();
 
        	   	iconColorApply = (Boolean) objValue;
