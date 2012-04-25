@@ -709,5 +709,49 @@
         <item>Unsuccessful</item>
     </string-array>
 
+	<!-- ***************************************************************************************** -->
+	<!-- *****************************      NEW JUNK SETTINGS      ******************************* -->
+	<!-- ***************************************************************************************** -->
 
+    <string-array name="battery_icons">
+		<item>Stock</item>
+		<item>Number</item>
+       	<item>Circle</item>
+       	<item>Pie</item>
+       	<item>None</item>
+    </string-array> 
+ 
+    <string-array name="battery_icons_values">
+		<item>0</item>
+		<item>1</item>
+       	<item>2</item>
+		<item>3</item>
+		<item>10</item>
+    </string-array>    
+    
+    <string-array name="battery_fonts">
+		<item>System</item>
+		<item>LCD</item>
+		<item>LCD Radio</item>
+		<item>LCD Radio Slim</item>
+       	<item>Dot</item>
+		<item>Dot Multi</item>
+		<item>Radio</item>
+       	<item>Varsity</item>
+    </string-array> 
+ 
+    <string-array name="battery_fonts_values">
+		<item>system</item>
+		<item>lcd</item>
+       	<item>lcdradio</item>
+		<item>lcdradioslim</item>
+       	<item>dot</item>
+       	<item>dotmulti</item>
+       	<item>radio</item>
+       	<item>varsity</item>
+    </string-array>        
+    
+	<!-- ***************************************************************************************** -->    
+    
+    
 </resources>

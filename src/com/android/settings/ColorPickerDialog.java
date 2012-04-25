@@ -132,7 +132,7 @@ public class ColorPickerDialog extends Dialog implements ColorPickerView.OnColor
             @Override
             public void onClick(View v) {
                 try {
-                    int newColor = 0xFF33B5E5;
+                    int newColor = 0xff3792b4;
                     mColorPicker.setColor(newColor, true);
                 } catch (Exception e) {
                 }

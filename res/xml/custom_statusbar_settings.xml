@@ -15,8 +15,8 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="S T A T U S B A R   O P T I O N S"
-        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+        android:title="Statusbard Settings"
+        >
 
 
     <PreferenceCategory
@@ -46,7 +46,7 @@
 		android:key="clock_color"
 		android:title="Clock Color"
 		android:summary="Color for statusbar clock"
-		android:defaultValue="#ff3F9BBF" 
+		android:defaultValue="#ff3792b4" 
 		alphaSlider="false" /> 
 
 	<Preference 

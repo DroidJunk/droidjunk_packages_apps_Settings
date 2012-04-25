@@ -44,7 +44,6 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
 	private final String CLOCK_AMPM = "clock_ampm";
 	private final String CLOCK_COLOR = "clock_color";
 	private final String CLOCK_SIZE = "clock_size";
-	
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
@@ -81,23 +80,18 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
 	    mClockSize = (Preference) findPreference(CLOCK_SIZE);
 		mClockSize.setOnPreferenceChangeListener(this);
 		mSize = prefMgr.getSharedPreferences().getInt(CLOCK_SIZE, 17);  
-
-
- 
     }
 
     
     @Override
     public void onResume() {
         super.onResume();
-          
     }
 
     
     @Override
     public void onPause() {
         super.onPause();
-
     }
 
  
@@ -109,8 +103,8 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
 			new NumberPickerDialog(preferenceScreen.getContext(),
                     clockSizeListener,
             		mSize,
-                    5,
-                    30,
+                    10,
+                    20,
                     R.string.clock_size).show();
         }    	
         return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -155,15 +149,8 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
             i.putExtra("ClockSize", (Integer) mSize);
             getActivity().sendBroadcast(i);
             i = null;
-
-
-            
         }
-
- 
-    
-
-        return true;
+       return true;
     }
     
     

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Number Battery Settings"
+    android:key="number_junk_settings"
+	 >
+
+ 
+    
+    <PreferenceCategory
+		android:title="B A T T E R Y   B A R S"
+		android:key="battery_bars">
+		    
+   	<SwitchPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_bar_bottom"
+		android:summaryOn="Show a battery bar"
+		android:summaryOff="Do not show a battery bar"
+		android:title="Bottom Battery Bar" 
+		android:layout_width="match_parent" 
+		android:defaultValue="false"	/>       
+		
+   	<SwitchPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_bar_right"
+		android:summaryOn="Show a battery bar"
+		android:summaryOff="Do not show a battery bar"
+		android:title="Right Battery Bar" 
+		android:defaultValue="false"	/>       
+ 
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_depleted_color"
+		android:title="Depleted Level Color"
+		android:summary="Color for the depleted areas"
+		android:defaultValue="#ffababab" 
+		alphaSlider="false" />   	
+   	
+   	
+	<Preference	
+		android:layout="?android:attr/preferenceLayoutChild"
+   		android:key="battery_bar_width"
+		android:title="Battery Bar Width"
+		android:summary="Width of the battery bar"
+		android:defaultValue="5" />	   			   	
+   	   	
+    </PreferenceCategory>
+    
+    
+    
+    <PreferenceCategory
+		android:title="B A T T E R Y   L E V E L   C O L O R S"
+		android:key="battery_color_ranges"
+		android:summary="Battery colors based on battery level"	>    
+ 
+    </PreferenceCategory>
+ 	
+    <PreferenceCategory
+		android:title="M A X   L E V E L   O N E"
+		android:key="max_level_one">     	
+ 	
+	<Preference
+	    android:layout="?android:attr/preferenceLayoutChild"
+		android:key="battery_levels_one"
+		android:title="Max Level"
+		android:summary="Maximimum level for the color"
+		android:defaultValue="10" />	
+   
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_levels_color_one"
+		android:title="Level Color"
+		android:summary="Color for Max Level One"
+		android:defaultValue="#ffff0000" 
+		alphaSlider="false" />
+
+	</PreferenceCategory>
+ 	
+    <PreferenceCategory
+		android:title="M A X   L E V E L   T W O"
+		android:key="max_level_two">
+    	
+	<Preference
+	    android:layout="?android:attr/preferenceLayoutChild"
+		android:key="battery_levels_two"
+		android:title="Max Level"
+		android:summary="Maximimum level for the color"
+		android:defaultValue="30" />	
+   
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_levels_color_two"
+		android:title="Level Color"
+		android:summary="Color for Max Level Two"
+		android:defaultValue="#ffff9000" 
+		alphaSlider="false" />	
+   </PreferenceCategory>
+
+    <PreferenceCategory
+		android:title="M I N   L E V E L   T H R E E"
+		android:key="max_level_three">    
+    	
+	<Preference
+	    android:layout="?android:attr/preferenceLayoutChild"
+		android:key="battery_levels_three"
+		android:title="Min Level"
+		android:summary="Minimum level for the color"
+		android:defaultValue="70" />	
+   
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_levels_color_three"
+		android:title="Level Color"
+		android:summary="Color for Min Level Three"
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="false" />		
+
+    </PreferenceCategory>	
+		
+	
+
+</PreferenceScreen>

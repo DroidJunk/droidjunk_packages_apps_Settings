@@ -15,8 +15,8 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="Statusbar Options"
-        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+        android:title="Statusbar Icon Settings"
+		>
 
     <PreferenceCategory
 		android:title="I C O N S   A N D   C O L O R S"
@@ -36,7 +36,7 @@
 		android:key="icon_color"
 		android:title="Statusbar Icons Color"
 		android:summary="Color for statusbar icons"
-		android:defaultValue="#ff3F9BBF" 
+		android:defaultValue="#ff3792b4" 
 		alphaSlider="false" /> 		
 
 

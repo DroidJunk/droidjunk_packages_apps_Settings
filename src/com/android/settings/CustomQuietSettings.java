@@ -18,24 +18,17 @@ package com.android.settings;
 
 
 
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.widget.TimePicker;
 import android.provider.Settings;
-
-
-
-
-import com.android.settings.R;
 
 
 
@@ -81,7 +74,7 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         
         prefMgr = getPreferenceManager();
-        prefMgr.setSharedPreferencesName("Tranquility_Settings");
+        prefMgr.setSharedPreferencesName("Junk_Settings");
         prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         prefMgr.getSharedPreferences();
         

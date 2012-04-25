@@ -16,7 +16,7 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="System Settings"
-        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+		>
         
     <PreferenceCategory
 		android:title="S Y S T E M   S E T T I N G S"

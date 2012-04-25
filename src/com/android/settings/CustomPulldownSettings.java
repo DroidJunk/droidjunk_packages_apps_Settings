@@ -39,7 +39,13 @@ import android.util.Log;
 public class CustomPulldownSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
-	private final String Junk_Settings = "JUNK_SETTINGS";
+	private final String Junk_Pulldown_Settings = "JUNK_PULLDOWN_SETTINGS";
+	private final String SHOW_BATTERY_LABEL = "show_battery_label";
+	private final String BATTERY_LABEL_COLOR = "battery_label_color";
+	private final String BATTERY_LABEL_SIZE = "battery_label_size";
+	private final String SHOW_TEMP_LABEL = "show_temp_label";
+	private final String TEMP_LABEL_COLOR = "temp_label_color";
+	private final String TEMP_LABEL_SIZE = "temp_label_size";
 	private final String SHOW_CARRIER = "show_carrier";
 	private final String CARRIER_COLOR = "carrier_color";
 	private final String CARRIER_CUSTOM = "carrier_custom";
@@ -51,11 +57,19 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
 	private SwitchPreference mShowCarrier;
+	private SwitchPreference mShowBattery;
+	private SwitchPreference mShowTemp;
     private Preference mCarrierColor;
+    private Preference mBatteryColor;
+    private Preference mTempColor;
     private SwitchPreference mCarrierCustom;
     private Preference mCarrierCustomText;
     private Preference mCarrierSize;
+    private Preference mBatterySize;
+    private Preference mTempSize;
     public int carrierSize = 15;
+    public int batterySize = 12;
+    public int tempSize = 12;
     private Preference mDateColor;
     private Preference mDateSize;
     public int dateSize = 17;
@@ -75,7 +89,21 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
         
         mShowCarrier = (SwitchPreference) findPreference(SHOW_CARRIER);
 		mShowCarrier.setOnPreferenceChangeListener(this);
-        mCarrierColor = (Preference) findPreference(CARRIER_COLOR);
+        mShowBattery = (SwitchPreference) findPreference(SHOW_BATTERY_LABEL);
+		mShowBattery.setOnPreferenceChangeListener(this);
+	    mBatteryColor = (Preference) findPreference(BATTERY_LABEL_COLOR);
+		mBatteryColor.setOnPreferenceChangeListener(this);
+	    mBatterySize = (Preference) findPreference(BATTERY_LABEL_SIZE);
+		mBatterySize.setOnPreferenceChangeListener(this);
+		batterySize = prefMgr.getSharedPreferences().getInt(BATTERY_LABEL_SIZE, 14);  
+        mShowTemp = (SwitchPreference) findPreference(SHOW_TEMP_LABEL);
+		mShowTemp.setOnPreferenceChangeListener(this);
+	    mTempColor = (Preference) findPreference(TEMP_LABEL_COLOR);
+		mTempColor.setOnPreferenceChangeListener(this);
+	    mTempSize = (Preference) findPreference(TEMP_LABEL_SIZE);
+		mTempSize.setOnPreferenceChangeListener(this);
+		tempSize = prefMgr.getSharedPreferences().getInt(TEMP_LABEL_SIZE, 14);
+		mCarrierColor = (Preference) findPreference(CARRIER_COLOR);
 		mCarrierColor.setOnPreferenceChangeListener(this);
         mCarrierCustom = (SwitchPreference) findPreference(CARRIER_CUSTOM);
 		mCarrierCustom.setOnPreferenceChangeListener(this);
@@ -127,7 +155,22 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
                     5,
                     30,
                     R.string.date_size).show();
-        	
+     
+        } else if (preference == mBatterySize) {
+			new NumberPickerDialog(preferenceScreen.getContext(),
+                    batterySizeListener,
+            		(int) batterySize,
+                    5,
+                    30,
+                    R.string.battery_size).show();
+			
+        } else if (preference == mTempSize) {
+			new NumberPickerDialog(preferenceScreen.getContext(),
+                    tempSizeListener,
+            		(int) tempSize,
+                    5,
+                    30,
+                    R.string.temp_size).show();
         }
     	
     	
@@ -142,28 +185,80 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
      	final String key = preference.getKey();
         if (SHOW_CARRIER.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
+        	i.setAction(Junk_Pulldown_Settings );
        	   	i.putExtra("ShowCarrier", (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
-       
+       	   	
+        } else if (SHOW_BATTERY_LABEL.equals(key)) {
+            	Intent i = new Intent();
+            	i.setAction(Junk_Pulldown_Settings );
+           	   	i.putExtra(SHOW_BATTERY_LABEL, (Boolean) objValue);
+           	   	getActivity().sendBroadcast(i);
+           	   	i = null;       	
+           	   	
+        } else if (BATTERY_LABEL_COLOR.equals(key)) {
+        	Intent i = new Intent();
+            i.setAction(Junk_Pulldown_Settings );
+            i.putExtra(BATTERY_LABEL_COLOR, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;           	  
+
+        } else if (BATTERY_LABEL_SIZE.equals(key)) {
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(BATTERY_LABEL_SIZE, batterySize);
+            editor.commit();
+
+        	Intent i = new Intent();
+            i.setAction(Junk_Pulldown_Settings );
+            i.putExtra(BATTERY_LABEL_SIZE, (Integer) batterySize);
+            getActivity().sendBroadcast(i);
+            i = null;            
+
+        } else if (TEMP_LABEL_COLOR.equals(key)) {
+        	Intent i = new Intent();
+            i.setAction(Junk_Pulldown_Settings );
+            i.putExtra(TEMP_LABEL_COLOR, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;           	  
+
+        } else if (TEMP_LABEL_SIZE.equals(key)) {
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(TEMP_LABEL_SIZE, tempSize);
+            editor.commit();
+
+        	Intent i = new Intent();
+            i.setAction(Junk_Pulldown_Settings );
+            i.putExtra(TEMP_LABEL_SIZE, (Integer) tempSize);
+            getActivity().sendBroadcast(i);
+            i = null;             
+            
+        } else if (SHOW_TEMP_LABEL.equals(key)) {
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+       	   	i.putExtra(SHOW_TEMP_LABEL, (Boolean) objValue);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;               	   	
+           	   	
         } else if (CARRIER_COLOR.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Junk_Settings );
+            i.setAction(Junk_Pulldown_Settings );
             i.putExtra("CarrierColor", (Integer) objValue);
             getActivity().sendBroadcast(i);
             i = null;
             
         } else if (CARRIER_CUSTOM.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Junk_Settings );
+            i.setAction(Junk_Pulldown_Settings );
             i.putExtra("CustomCarrier", (Boolean) objValue);
             getActivity().sendBroadcast(i);
             i = null;
               
         } else if (CARRIER_CUSTOM_TEXT.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Junk_Settings );
+            i.setAction(Junk_Pulldown_Settings );
             i.putExtra("CustomCarrierText", (String) objValue);
             getActivity().sendBroadcast(i);
             i = null;
@@ -175,14 +270,14 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
             editor.commit();
 
         	Intent i = new Intent();
-            i.setAction(Junk_Settings );
+            i.setAction(Junk_Pulldown_Settings );
             i.putExtra("CarrierSize", (Integer) carrierSize);
             getActivity().sendBroadcast(i);
             i = null;
         	
         } else if (DATE_COLOR.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
+        	i.setAction(Junk_Pulldown_Settings );
         	i.putExtra("DateColor", (Integer) objValue);
         	getActivity().sendBroadcast(i);
         	i = null;        
@@ -194,12 +289,10 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
             editor.commit();
 
         	Intent i = new Intent();
-            i.setAction(Junk_Settings );
+            i.setAction(Junk_Pulldown_Settings );
             i.putExtra("DateSize", (Integer) dateSize);
             getActivity().sendBroadcast(i);
             i = null;
-        	
-        	
         }
         
         return true;
@@ -214,15 +307,29 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
     	}
     	};    
 
-        NumberPickerDialog.OnNumberSetListener dateSizeListener =
-            new NumberPickerDialog.OnNumberSetListener() {
-    	public void onNumberSet(int limit) {
-    		dateSize = (int) limit;
-    		mDateSize.getOnPreferenceChangeListener().onPreferenceChange(mDateSize, (int) limit);
-    	}
+    NumberPickerDialog.OnNumberSetListener dateSizeListener =
+    	new NumberPickerDialog.OnNumberSetListener() {
+  			public void onNumberSet(int limit) {
+  				dateSize = (int) limit;
+  				mDateSize.getOnPreferenceChangeListener().onPreferenceChange(mDateSize, (int) limit);
+  			}
     	};    
     
-    
+    NumberPickerDialog.OnNumberSetListener batterySizeListener =
+    	new NumberPickerDialog.OnNumberSetListener() {
+        	public void onNumberSet(int limit) {
+        		batterySize = (int) limit;
+        		mBatterySize.getOnPreferenceChangeListener().onPreferenceChange(mBatterySize, (int) limit);
+        	}
+        };
+        	
+    NumberPickerDialog.OnNumberSetListener tempSizeListener =
+        new NumberPickerDialog.OnNumberSetListener() {
+        	public void onNumberSet(int limit) {
+          		tempSize = (int) limit;
+           		mTempSize.getOnPreferenceChangeListener().onPreferenceChange(mTempSize, (int) limit);
+          	}
+       	};        	
     
     
 }

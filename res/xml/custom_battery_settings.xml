@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Battery Icon Settings"
+    android:key="junk_settings"
+	 >
+
+    <PreferenceCategory
+		android:title="B A T T E R Y   I C O N S"
+		android:key="battery_icons">
+
+	<ListPreference
+	    android:key="battery_icon_num"
+	    android:title="Battery Icons"
+	    android:summary="Different battery icons"
+	    android:entryValues="@array/battery_icons_values"
+	    android:entries="@array/battery_icons"
+	   	
+	     />
+
+    <PreferenceScreen
+        android:fragment="com.android.settings.CustomBatteryOptions"
+        android:key="custom_battery_options"
+        android:title="Battery Options" />	
+	
+    </PreferenceCategory>
+    
+    
+
+		
+	
+
+</PreferenceScreen>

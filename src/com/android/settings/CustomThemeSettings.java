@@ -174,7 +174,6 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 		mThemeTwo.setTitle(prefMgr.getSharedPreferences().getString(THEME_TWO_NAME,"Theme Two"));
 		mThemeThree.setTitle(prefMgr.getSharedPreferences().getString(THEME_THREE_NAME,"Theme Three"));
 		
-		
         themeMgr = getPreferenceManager();
         themeMgr.setSharedPreferencesName("Junk_Theme_One");
         themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
@@ -192,8 +191,6 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         themeMgr.getSharedPreferences();
 		mApplyThemeThree.setEnabled(prefMgr.getSharedPreferences().getBoolean(SAVED_THEME,false));
-
-        
     }
 
     
@@ -334,9 +331,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         editor.putInt(DATE_SIZE, dateSize);
         editor.putBoolean(NAV_BAR_COLOR_ON, navBarColorOn);
         editor.putInt(NAV_BAR_COLOR, navBarColor);
-
         editor.commit();
-        
     }
     
     
@@ -390,15 +385,9 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         editor.putInt(CARRIER_SIZE, carrierSize);
         editor.putInt(DATE_COLOR, dateColor);
         editor.putInt(DATE_SIZE, dateSize);
-
- 
         editor.commit();
-       
-
         
         SendIntents();
-
-        
     }    
     
     
@@ -684,9 +673,6 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         i.putExtra("DateSize", (Integer) dateSize);
         getActivity().sendBroadcast(i);
         i = null;       	   		
-   	   	
-        
-        
 }    
     
     DialogInterface.OnClickListener saveDialogPositiveListener =

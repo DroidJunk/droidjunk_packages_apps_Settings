@@ -1721,8 +1721,7 @@
     <!-- About phone screen,  setting option name-->
     <string name="build_number">Build number</string>
     <!-- About phone screen,  setting option name-->
-    <string name="tranq_version">Rom version</string>
-    <string name="tranq_version_default">Tranquility</string>
+
 
     <!-- About phone screen, show when a value of some status item is unavailable. -->
     <string name="device_info_not_available">Not available</string>
@@ -3799,6 +3798,7 @@ found in the list of installed apps.</string>
 	<!-- *****************************      NEW JUNK SETTINGS      ******************************* -->
 	<!-- ***************************************************************************************** -->
     
+    
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
     <string name="press_color_to_apply">Press on Color to apply</string>    
@@ -3813,6 +3813,11 @@ found in the list of installed apps.</string>
     <string name="carrier_size">Size of the Carrier text</string>
     <string name="clock_size">Size of the Clock text</string>
     <string name="date_size">Size of the Date text</string>
+    <string name="battery_size">Battery Level Text Size</string>
+    <string name="temp_size">Battery Temperature Text Size</string>
+    <string name="battery_level_max">Max battery level</string>
+    <string name="battery_bar_width">Battery bar width</string>
+    <string name="battery_font_size">Font size</string>
     
     <string name="start_time">Quiet Time Start</string>
     <string name="stop_time">Quiet Time Stop</string>

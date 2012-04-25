@@ -15,13 +15,12 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="STATUSBAR PULLDOWN OPTIONS"
+        android:title="Statusbar Pulldown Settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceCategory
-		android:title="P U L L D O W N   O P T I O N S"
+		android:title="P U L L D O W N   S E T T I N G S"
 		android:key="carrier_on">
-
 	<SwitchPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="show_carrier"
@@ -29,10 +28,28 @@
 		android:summaryOff="Do not show the carrier in the pulldown"
 		android:title="Show Carrier" 
 		android:defaultValue="true"	/>
+
+	<SwitchPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="show_battery_label"
+		android:summaryOn="Show the battery level in the pulldown"
+		android:summaryOff="Do not show the battery level in the pulldown"
+		android:title="Show Battery Level" 
+		android:defaultValue="true"	/>		
+		
+	<SwitchPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="show_temp_label"
+		android:summaryOn="Show the battery temperature in the pulldown"
+		android:summaryOff="Do not show the battery temperature in the pulldown"
+		android:title="Show Battery Temperature" 
+		android:defaultValue="true"	/>
+	
+	
     </PreferenceCategory>
 
     <PreferenceCategory
-		android:title="C A R R I E R   O P T I O N S"
+		android:title="C A R R I E R"
 		android:key="carrier_settings">
    				
 	<com.android.settings.ColorPickerPreference
@@ -41,7 +58,7 @@
 		android:key="carrier_color"
 		android:title="Carrier Text Color"
 		android:summary="Color for the carrier text"
-		android:defaultValue="#ff33b5e5" 
+		android:defaultValue="#ff3792b4" 
 		alphaSlider="false" /> 
    				
 	<Preference 
@@ -54,7 +71,7 @@
     </PreferenceCategory>
   
     <PreferenceCategory
-		android:title="C U S T O M   C A R R I E R   O P T I O N S"
+		android:title="C U S T O M   C A R R I E R"
 		android:key="carrier_settings_custom">
 
    	<SwitchPreference 
@@ -74,11 +91,56 @@
 		android:summary="Change the text for the carrier"
 		android:dialogTitle="Carrier Text"
 		android:dialogMessage="Enter text"	
-		android:defaultValue="T r a n Q u i l    I c e" />
+		android:defaultValue="- J  U  N  K -" />
     </PreferenceCategory>
 
     <PreferenceCategory
-		android:title="D A T E   O P T I O N S"
+		android:title="B A T T E R Y   L E V E L"
+		android:key="battery_label_settings">
+   				
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+	    android:dependency="show_battery_label"
+		android:key="battery_label_color"
+		android:title="Battery Level Color"
+		android:summary="Color for the battery level"
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="false" /> 
+   				
+	<Preference 
+		android:layout="?android:attr/preferenceLayoutChild"
+    	android:dependency="show_battery_label"
+		android:key="battery_label_size"
+		android:title="Battery Level Text Size"
+		android:summary="Size of the battery level text"
+		android:defaultValue="12" />		 
+    </PreferenceCategory>    
+
+    
+    <PreferenceCategory
+		android:title="B A T T E R Y   T E M P E R A T U R E"
+		android:key="temp_label_settings">
+   				
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+	    android:dependency="show_temp_label"
+		android:key="temp_label_color"
+		android:title="Battery Temperature Color"
+		android:summary="Color for the battery temperature text"
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="false" /> 
+   				
+	<Preference 
+		android:layout="?android:attr/preferenceLayoutChild"
+    	android:dependency="show_temp_label"
+		android:key="temp_label_size"
+		android:title="Battery Temperature Text Size"
+		android:summary="Size of the battery temperature text"
+		android:defaultValue="12" />		 
+    </PreferenceCategory>        
+    
+    <PreferenceCategory
+		android:title="D A T E"
 		android:key="date_settings">
 
 	<com.android.settings.ColorPickerPreference
@@ -86,7 +148,7 @@
 		android:key="date_color"
 		android:title="Date Color"
 		android:summary="Color for statusbar date"
-		android:defaultValue="#ff3F9BBF" 
+		android:defaultValue="#ff3792b4" 
 		alphaSlider="false" /> 		
 		
 		

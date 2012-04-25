@@ -32,7 +32,7 @@ public class CustomToggleShowHideSettings extends SettingsPreferenceFragment imp
         Preference.OnPreferenceChangeListener {
     
 
-	private final String Junk_Settings = "JUNK_SETTINGS";
+	private final String Junk_Toggle_Settings = "JUNK_TOGGLE_SETTINGS";
 	private final String TOGGLES_TORCH_ON = "toggles_show_torch";
 	private final String TOGGLES_4G_ON = "toggles_show_fourg";
 	private final String TOGGLES_WIFI_ON = "toggles_show_wifi";
@@ -121,78 +121,78 @@ public class CustomToggleShowHideSettings extends SettingsPreferenceFragment imp
      	
      	if (TOGGLES_TORCH_ON.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
-       	   	i.putExtra("ShowTorch", (Boolean) objValue);
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLES_TORCH_ON, (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
         	   	
      	} else if (TOGGLES_4G_ON.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
-       	   	i.putExtra("ShowFourg", (Boolean) objValue);
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLES_4G_ON, (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
         	   	
      	} else if (TOGGLES_WIFI_ON.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
-       	   	i.putExtra("ShowWifi", (Boolean) objValue);
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLES_WIFI_ON, (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
         	   	
     	} else if (TOGGLES_GPS_ON.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
-       	   	i.putExtra("ShowGps", (Boolean) objValue);
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLES_GPS_ON, (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        
         } else if (TOGGLES_BLUETOOTH_ON.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
-       	   	i.putExtra("ShowBluetooth", (Boolean) objValue);
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLES_BLUETOOTH_ON, (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
             
         } else if (TOGGLES_SOUND_ON.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
-       	   	i.putExtra("ShowSound", (Boolean) objValue);
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLES_SOUND_ON, (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
            
         } else if (TOGGLES_AIRPLANE_ON.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
-       	   	i.putExtra("ShowAirplane", (Boolean) objValue);
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLES_AIRPLANE_ON, (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
 
         } else if (TOGGLES_BRIGHTNESS_ON.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
-       	   	i.putExtra("ShowBrightness", (Boolean) objValue);
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLES_BRIGHTNESS_ON, (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
 
         } else if (TOGGLES_ROTATE_ON.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
-       	   	i.putExtra("ShowRotate", (Boolean) objValue);
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLES_ROTATE_ON, (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
  
         } else if (TOGGLES_SYNC_ON.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
-       	   	i.putExtra("ShowSync", (Boolean) objValue);
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLES_SYNC_ON, (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
 
         } else if (TOGGLES_DATA_ON.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
-       	   	i.putExtra("ShowData", (Boolean) objValue);
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLES_DATA_ON, (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
         	

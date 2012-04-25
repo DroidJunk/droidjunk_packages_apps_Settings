@@ -8,26 +8,32 @@
     
     <PreferenceScreen
         android:key="custom_theme_settings"
-        android:title="Theme Settings"
+        android:title="Theme Options"
         android:summary="Color icons, save and apply color themes"
-        android:fragment="com.android.settings.CustomThemeSettings" />        
+        android:fragment="com.android.settings.CustomThemeSettings" />       
+        
+    <PreferenceScreen
+		android:key="battery_settings"
+        android:title="Battery Options"
+        android:summary="Settings to customize your statusbar"
+        android:fragment="com.android.settings.CustomBatterySettings" />
    
     <PreferenceScreen
 		android:key="statusbar_settings"
-        android:title="Statusbar Settings"
-        android:summary="Settings to customize your statusbar"
+        android:title="Statusbar Options"
+        android:summary="Customize your statusbar"
         android:fragment="com.android.settings.CustomSettings" />
 
     <PreferenceScreen
         android:key="notification_settings"
-        android:title="Notification Settings"
-	    android:summary="Settings to customize the led and notifications"
+        android:title="Notification Options"
+	    android:summary="Customize the LED and notifications"
         android:fragment="com.android.settings.CustomSystemSettings" />
 
     <PreferenceScreen
         android:key="navigation_settings"
-        android:title="Navigation Settings"
-	    android:summary="Settings to customize the navigation bar"
+        android:title="Navigation Options"
+	    android:summary="Customize the navigation bar"
         android:fragment="com.android.settings.CustomNavBar" />
 
 

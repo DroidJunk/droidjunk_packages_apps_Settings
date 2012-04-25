@@ -14,7 +14,7 @@
 		<com.android.settings.ColorPickerPreference
 			android:key="nav_button_color"
 			android:title="Navigation Button Color"
-			android:defaultValue="#FFFFFF" />
+			android:defaultValue="#ffffffff" />
 
     </PreferenceCategory>
 
@@ -26,6 +26,7 @@
         	android:layout="?android:attr/preferenceLayoutChild"
 			android:key="search_button"
 			android:title="Show search button"
+			android:defaultValue="false"	
 			 />
 			
        <SwitchPreference
@@ -52,6 +53,7 @@
         	android:layout="?android:attr/preferenceLayoutChild"
 			android:key="search_button_land"
 			android:title="Show search button"
+			android:defaultValue="false"
 			 />
 			
        <SwitchPreference

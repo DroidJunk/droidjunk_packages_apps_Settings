@@ -15,12 +15,14 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="TOGGLE OPTIONS"
-        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+    	xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+        android:title="Toggle Settings"
+        android:key="custom_toggle_settings"
+>
 
     <PreferenceCategory
-		android:title="T O G G L E   O P T I O N S"
-		android:key="toggles">
+		android:title="T O G G L E   S E T T I N G S"
+		android:key="toggle_settings">
 
 	<SwitchPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
@@ -49,7 +51,7 @@
 
 
     <PreferenceCategory
-		android:title="T O G G L E   C O L O R S"
+		android:title="I C O N S"
 		android:key="toggle_colors">
 
 	<com.android.settings.ColorPickerPreference
@@ -58,130 +60,122 @@
 		android:key="toggle_color"
 		android:title="Toggle Background Color"
 		android:summary="Color for toggles"
-		android:defaultValue="#ff000000" 
+		android:defaultValue="#ff272727" 
 		alphaSlider="false" /> 
 		
-	<SwitchPreference 
-		android:layout="?android:attr/preferenceLayoutChild"
-		android:dependency="toggles_show_toggles"
-		android:key="toggles_custom_icon_colors"
-		android:summaryOn="Toggle icons use custom colors"
-		android:summaryOff="Toggle icons do not use custom colors"
-		android:title="Custom Icon Colors" 
-		android:defaultValue="false"	/>		
 		
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
-		android:dependency="toggles_custom_icon_colors"
+		android:dependency="toggles_show_toggles"
 		android:key="toggles_icon_on_color"
-		android:title="Toggle Icon On Color"
+		android:title="Icon On Color"
 		android:summary="Color for toggle icons when on"
-		android:defaultValue="#ff33b5e5" 
+		android:defaultValue="#ffa6bf3f" 
 		alphaSlider="false" /> 
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
-		android:dependency="toggles_custom_icon_colors"
+		android:dependency="toggles_show_toggles"
 		android:key="toggles_icon_inter_color"
-		android:title="Toggle Icon Intermediate Color"
+		android:title="Icon Intermediate Color"
 		android:summary="Color for toggle icons intermediate"
 		android:defaultValue="#ffff0000" 
 		alphaSlider="false" /> 
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
-		android:dependency="toggles_custom_icon_colors"
+		android:dependency="toggles_show_toggles"
 		android:key="toggles_icon_off_color"
-		android:title="Toggle Icon Off Color"
+		android:title="Icon Off Color"
 		android:summary="Color for toggle icons when off"
-		android:defaultValue="#ff5d5d5d" 
+		android:defaultValue="#ff555555" 
 		alphaSlider="false" />
     </PreferenceCategory> 
 
     <PreferenceCategory
-		android:title="T O G G L E   I N D I C A T O R S"
+		android:title="I N D I C A T O R S"
 		android:key="toggle_ind">
 
 	<SwitchPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
 		android:key="toggle_show_indicator"
-		android:summaryOn="Toggle indicators are on"
-		android:summaryOff="Toggle indicators are off"
-		android:title="Toggle Indicators" 
+		android:summaryOn="Indicators are on"
+		android:summaryOff="Indicators are off"
+		android:title="Indicators" 
 		android:defaultValue="false"	/>
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggle_show_indicator"
 		android:key="toggle_ind_on_color"
-		android:title="Toggle On Indicator Color"
-		android:summary="Color for toggles indicator (on)"
-		android:defaultValue="#ffffbb33" 
+		android:title="Indicator On Color"
+		android:summary="Color for indicators (on)"
+		android:defaultValue="#ffffffff" 
 		alphaSlider="false" /> 
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:dependency="toggle_show_indicator"
 		android:key="toggle_ind_off_color"
-		android:title="Toggle Off Indicator Color"
-		android:summary="Color for toggles indicator (off)"
-		android:defaultValue="#ff757575" 
+		android:title="Indicator Off Color"
+		android:summary="Color for indicators (off)"
+		android:defaultValue="#ff555555" 
 		alphaSlider="false" /> 		
     </PreferenceCategory>
 
     <PreferenceCategory
-		android:title="T O G G L E   T E X T"
+		android:title="T E X T   L A B E L S"
 		android:key="toggle_txt">
 
 	<SwitchPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="toggle_show_text"
 		android:dependency="toggles_show_toggles"
-		android:summaryOn="Toggles text is on"
-		android:summaryOff="Toggles text is off"
-		android:title="Toggle Text" 
+		android:summaryOn="Text is on"
+		android:summaryOff="Text is off"
+		android:title="Text Label" 
 		android:defaultValue="false" />
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggle_show_text"
 		android:key="toggle_text_on_color"
-		android:title="Toggle Text On Color"
-		android:summary="Color for toggle on text"
-		android:defaultValue="#ffffbb33" 
+		android:title="Text Label On Color"
+		android:summary="Color for text label on"
+		android:defaultValue="#ffffffff" 
 		alphaSlider="false" />
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggle_show_text"
 		android:key="toggle_text_off_color"
-		android:title="Toggle Text Off Color"
-		android:summary="Color for toggle off text"
-		android:defaultValue="#ff757575" 
+		android:title="Text Label Off Color"
+		android:summary="Color for text label off"
+		android:defaultValue="#ff555555" 
 		alphaSlider="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
-		android:title="T O G G L E   D I V I D E R S"
+		android:title="D I V I D E R S"
 		android:key="toggle_div">
 
 	<SwitchPreference
 		android:layout="?android:attr/preferenceLayoutChild"  
 		android:dependency="toggles_show_toggles"
 		android:key="toggle_show_divider"
-		android:summaryOn="Toggle dividers are on"
-		android:summaryOff="Toggles dividers are off"
-		android:title="Toggle Dividers" 
+		android:summaryOn="Dividers are on"
+		android:summaryOff="Dividers are off"
+		android:title="Dividers" 
 		android:defaultValue="true"	/>
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggle_show_divider"
 		android:key="toggle_divider_color"
-		android:title="Toggle Divider Color"
-		android:summary="Color for toggle dividers"
-		android:defaultValue="#ff757575" 
+		android:title="Divider Color"
+		android:summary="Color for dividers"
+		android:defaultValue="#ff3b3b3b" 
 		alphaSlider="false" />
     </PreferenceCategory>
 </PreferenceScreen>
