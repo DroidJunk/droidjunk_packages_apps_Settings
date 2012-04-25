@@ -21,7 +21,7 @@
     <PreferenceCategory
 		android:title="P U L L D O W N   S E T T I N G S"
 		android:key="carrier_on">
-	<SwitchPreference
+	<CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="show_carrier"
 		android:summaryOn="Show the carrier in the pulldown"
@@ -29,7 +29,7 @@
 		android:title="Show Carrier" 
 		android:defaultValue="true"	/>
 
-	<SwitchPreference
+	<CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="show_battery_label"
 		android:summaryOn="Show the battery level in the pulldown"
@@ -37,7 +37,7 @@
 		android:title="Show Battery Level" 
 		android:defaultValue="true"	/>		
 		
-	<SwitchPreference
+	<CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="show_temp_label"
 		android:summaryOn="Show the battery temperature in the pulldown"
@@ -74,7 +74,7 @@
 		android:title="C U S T O M   C A R R I E R"
 		android:key="carrier_settings_custom">
 
-   	<SwitchPreference 
+   	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
    	    android:dependency="show_carrier"
 		android:key="carrier_custom"

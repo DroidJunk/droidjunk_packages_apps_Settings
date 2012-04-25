@@ -26,7 +26,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
+import android.preference.CheckBoxPreference;
 import android.util.Log;
 
 

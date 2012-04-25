@@ -24,7 +24,7 @@
 		android:title="T O G G L E   S E T T I N G S"
 		android:key="toggle_settings">
 
-	<SwitchPreference
+	<CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="toggles_show_toggles"
 		android:summaryOn="Toggles are on"
@@ -32,7 +32,7 @@
 		android:title="Show Toggles" 
 		android:defaultValue="true"	/>
  
-	<SwitchPreference 
+	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
 		android:key="toggles_top"
@@ -96,7 +96,7 @@
 		android:title="I N D I C A T O R S"
 		android:key="toggle_ind">
 
-	<SwitchPreference 
+	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
 		android:key="toggle_show_indicator"
@@ -128,7 +128,7 @@
 		android:title="T E X T   L A B E L S"
 		android:key="toggle_txt">
 
-	<SwitchPreference 
+	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="toggle_show_text"
 		android:dependency="toggles_show_toggles"
@@ -160,7 +160,7 @@
 		android:title="D I V I D E R S"
 		android:key="toggle_div">
 
-	<SwitchPreference
+	<CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild"  
 		android:dependency="toggles_show_toggles"
 		android:key="toggle_show_divider"

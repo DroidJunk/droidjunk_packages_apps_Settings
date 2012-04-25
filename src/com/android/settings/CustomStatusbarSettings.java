@@ -22,17 +22,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.preference.SeekBarPreference;
-import android.preference.SwitchPreference;
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-import android.util.Log;
 
 
 
@@ -47,8 +40,8 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
-	private SwitchPreference mShowClock;
-	private SwitchPreference mClockAmPm;
+	private CheckBoxPreference mShowClock;
+	private CheckBoxPreference mClockAmPm;
     private Preference mClockColor;
     private Preference mClockSize;
     public int mSize = 17;
@@ -71,9 +64,9 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
 
         addPreferencesFromResource(R.xml.custom_statusbar_settings);
         
-        mShowClock = (SwitchPreference) findPreference(SHOW_CLOCK);
+        mShowClock = (CheckBoxPreference) findPreference(SHOW_CLOCK);
 		mShowClock.setOnPreferenceChangeListener(this);
-        mClockAmPm = (SwitchPreference) findPreference(CLOCK_AMPM);
+        mClockAmPm = (CheckBoxPreference) findPreference(CLOCK_AMPM);
 		mClockAmPm.setOnPreferenceChangeListener(this);
         mClockColor = (Preference) findPreference(CLOCK_COLOR);
 		mClockColor.setOnPreferenceChangeListener(this);

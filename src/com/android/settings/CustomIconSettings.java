@@ -25,7 +25,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
+import android.preference.CheckBoxPreference;
 
 
 
@@ -41,9 +41,9 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
-	private SwitchPreference mIconColorOn;
+	private CheckBoxPreference mIconColorOn;
 	private Preference mIconColor;
-	private SwitchPreference mIconColorApply;
+	private CheckBoxPreference mIconColorApply;
 	private boolean iconColorApply = false;
 	private int iconColor = 0;
     private Preference mClockColor;
@@ -62,11 +62,11 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
         
         addPreferencesFromResource(R.xml.custom_icon_settings);
 
-		mIconColorOn = (SwitchPreference) findPreference(ICON_COLOR_ON);
+		mIconColorOn = (CheckBoxPreference) findPreference(ICON_COLOR_ON);
 		mIconColorOn.setOnPreferenceChangeListener(this);	
         mIconColor = (Preference) findPreference(ICON_COLOR);
 		mIconColor.setOnPreferenceChangeListener(this);	
-		mIconColorApply = (SwitchPreference) findPreference(ICON_COLOR_APPLY);
+		mIconColorApply = (CheckBoxPreference) findPreference(ICON_COLOR_APPLY);
 		mIconColorApply.setOnPreferenceChangeListener(this);	
 		iconColor = prefMgr.getSharedPreferences().getInt(ICON_COLOR, 0);
 		iconColorApply = prefMgr.getSharedPreferences().getBoolean(ICON_COLOR_APPLY, false);

@@ -26,7 +26,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
+import android.preference.CheckBoxPreference;
 import android.widget.TimePicker;
 import android.provider.Settings;
 
@@ -50,14 +50,14 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
-	private SwitchPreference mQuietTimeOn;
+	private CheckBoxPreference mQuietTimeOn;
     private Preference mQtStartHour;
     private Preference mQtStartMin;
     private Preference mQtStopHour;
     private Preference mQtStopMin;
-    private SwitchPreference mQtNotifLedOn;
-    private SwitchPreference mQtNotifSoundOn;
-    private SwitchPreference mQtNotifVibrateOn;
+    private CheckBoxPreference mQtNotifLedOn;
+    private CheckBoxPreference mQtNotifSoundOn;
+    private CheckBoxPreference mQtNotifVibrateOn;
   
     public int QtStartTime = 21;
     public int QtStartHour = 0;
@@ -80,7 +80,7 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
         
         addPreferencesFromResource(R.xml.custom_quiet_time_settings);
         
-        mQuietTimeOn = (SwitchPreference) findPreference(QUIET_TIME);
+        mQuietTimeOn = (CheckBoxPreference) findPreference(QUIET_TIME);
         mQuietTimeOn.setOnPreferenceChangeListener(this);
         mQtStartHour = (Preference) findPreference(START_HOUR);
         mQtStartHour.setOnPreferenceChangeListener(this);
@@ -88,11 +88,11 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
         mQtStopHour = (Preference) findPreference(STOP_HOUR);
         mQtStopHour.setOnPreferenceChangeListener(this);
         mQtStopMin = (Preference) findPreference(STOP_MIN);
-        mQtNotifLedOn = (SwitchPreference) findPreference(NOTIF_LED_ON);
+        mQtNotifLedOn = (CheckBoxPreference) findPreference(NOTIF_LED_ON);
 		mQtNotifLedOn.setOnPreferenceChangeListener(this);
-		mQtNotifSoundOn = (SwitchPreference) findPreference(NOTIF_SOUND_ON);
+		mQtNotifSoundOn = (CheckBoxPreference) findPreference(NOTIF_SOUND_ON);
 		mQtNotifSoundOn.setOnPreferenceChangeListener(this);
-		mQtNotifVibrateOn = (SwitchPreference) findPreference(NOTIF_VIBRATE_ON);
+		mQtNotifVibrateOn = (CheckBoxPreference) findPreference(NOTIF_VIBRATE_ON);
 		mQtNotifVibrateOn.setOnPreferenceChangeListener(this);
 		
 		

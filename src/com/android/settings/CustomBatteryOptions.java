@@ -28,7 +28,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
+import android.preference.CheckBoxPreference;
 import android.util.Log;
 
 
@@ -61,8 +61,8 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
 	private int mBatteryIconValue = 0;
-	private SwitchPreference mBatteryBarBottom;
-	private SwitchPreference mBatteryBarRight;
+	private CheckBoxPreference mBatteryBarBottom;
+	private CheckBoxPreference mBatteryBarRight;
 	private Preference mBatteryBarWidth;
 	private Preference mBatteryDepletedColor;
 	private Preference mBatteryLevelOne;
@@ -136,9 +136,9 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
     		batLevelTwo = sharedPref.getInt(BATTERY_LEVEL_TWO, 30);
     		batLevelThree = sharedPref.getInt(BATTERY_LEVEL_THREE, 70);
     		batBarWidth = sharedPref.getInt(BATTERY_BAR_WIDTH, 5);
-            mBatteryBarBottom = (SwitchPreference) findPreference(BATTERY_BAR_BOTTOM);
+            mBatteryBarBottom = (CheckBoxPreference) findPreference(BATTERY_BAR_BOTTOM);
     		mBatteryBarBottom.setOnPreferenceChangeListener(this);
-            mBatteryBarRight = (SwitchPreference) findPreference(BATTERY_BAR_RIGHT);
+            mBatteryBarRight = (CheckBoxPreference) findPreference(BATTERY_BAR_RIGHT);
     		mBatteryBarRight.setOnPreferenceChangeListener(this);
     		mBatteryDepletedColor = (Preference) findPreference(BATTERY_DEPLETED_COLOR);
     		mBatteryDepletedColor.setOnPreferenceChangeListener(this);

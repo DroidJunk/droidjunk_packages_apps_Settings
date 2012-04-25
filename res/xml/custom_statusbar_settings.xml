@@ -23,7 +23,7 @@
 		android:title="C L O C K"
 		android:key="clock">
 
-	<SwitchPreference 
+	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="show_clock"
 		android:summaryOn="Clock is on"
@@ -31,7 +31,7 @@
 		android:title="Clock" 
 		android:defaultValue="true"	/>
 
- 	<SwitchPreference 
+ 	<CheckBoxPreference 
  		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="show_clock"
 		android:key="clock_ampm"

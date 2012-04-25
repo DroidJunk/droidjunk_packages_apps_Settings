@@ -22,7 +22,7 @@
 		android:title="I C O N S   A N D   C O L O R S"
 		android:key="icons">
 
-	<SwitchPreference 
+	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="color_icons"
 		android:summaryOn="Coloring of icons is on"
@@ -40,7 +40,7 @@
 		alphaSlider="false" /> 		
 
 
-	<SwitchPreference 
+	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:dependency="color_icons"
 		android:key="color_icons_apply"

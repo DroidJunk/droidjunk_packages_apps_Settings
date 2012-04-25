@@ -8,7 +8,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
+import android.preference.CheckBoxPreference;
 import android.provider.Settings;
 import com.android.settings.R;
 
@@ -27,14 +27,14 @@ public class CustomNavBar extends SettingsPreferenceFragment implements Preferen
 
 	private PreferenceManager prefMgr;
 
-	SwitchPreference mNavBarColorOn;
+	CheckBoxPreference mNavBarColorOn;
 	ColorPickerPreference mNavigationBarColor;
-    SwitchPreference mShowSearchButton;
-    SwitchPreference mShowLeftMenuButton;
-    SwitchPreference mShowRightMenuButton;
-    SwitchPreference mShowSearchButtonLand;
-    SwitchPreference mShowTopMenuButtonLand;
-    SwitchPreference mShowBotMenuButtonLand;
+    CheckBoxPreference mShowSearchButton;
+    CheckBoxPreference mShowLeftMenuButton;
+    CheckBoxPreference mShowRightMenuButton;
+    CheckBoxPreference mShowSearchButtonLand;
+    CheckBoxPreference mShowTopMenuButtonLand;
+    CheckBoxPreference mShowBotMenuButtonLand;
 	
 
         @Override
@@ -49,21 +49,21 @@ public class CustomNavBar extends SettingsPreferenceFragment implements Preferen
             // Load the preferences from an XML resource
             addPreferencesFromResource(R.xml.custom_navbar_settings);
 
-            mNavBarColorOn = (SwitchPreference) findPreference(NAV_BAR_COLOR_ON);
+            mNavBarColorOn = (CheckBoxPreference) findPreference(NAV_BAR_COLOR_ON);
             mNavBarColorOn.setOnPreferenceChangeListener(this);
             mNavigationBarColor = (ColorPickerPreference) findPreference(NAV_BAR_COLOR);
             mNavigationBarColor.setOnPreferenceChangeListener(this);
-            mShowSearchButton = (SwitchPreference) findPreference(SHOW_SEARCH_BUTTON);
+            mShowSearchButton = (CheckBoxPreference) findPreference(SHOW_SEARCH_BUTTON);
             mShowSearchButton.setOnPreferenceChangeListener(this);
-            mShowLeftMenuButton = (SwitchPreference) findPreference(SHOW_LEFT_MENU_BUTTON);
+            mShowLeftMenuButton = (CheckBoxPreference) findPreference(SHOW_LEFT_MENU_BUTTON);
             mShowLeftMenuButton.setOnPreferenceChangeListener(this);
-            mShowRightMenuButton = (SwitchPreference) findPreference(SHOW_RIGHT_MENU_BUTTON);
+            mShowRightMenuButton = (CheckBoxPreference) findPreference(SHOW_RIGHT_MENU_BUTTON);
             mShowRightMenuButton.setOnPreferenceChangeListener(this);
-            mShowSearchButtonLand = (SwitchPreference) findPreference(SHOW_SEARCH_BUTTON_LAND);
+            mShowSearchButtonLand = (CheckBoxPreference) findPreference(SHOW_SEARCH_BUTTON_LAND);
             mShowSearchButtonLand.setOnPreferenceChangeListener(this);
-            mShowTopMenuButtonLand = (SwitchPreference) findPreference(SHOW_TOP_MENU_BUTTON_LAND);
+            mShowTopMenuButtonLand = (CheckBoxPreference) findPreference(SHOW_TOP_MENU_BUTTON_LAND);
             mShowTopMenuButtonLand.setOnPreferenceChangeListener(this);
-            mShowBotMenuButtonLand = (SwitchPreference) findPreference(SHOW_BOT_MENU_BUTTON_LAND);
+            mShowBotMenuButtonLand = (CheckBoxPreference) findPreference(SHOW_BOT_MENU_BUTTON_LAND);
             mShowBotMenuButtonLand.setOnPreferenceChangeListener(this);
         }
 

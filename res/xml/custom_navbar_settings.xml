@@ -5,7 +5,7 @@
   	<PreferenceCategory
 		android:title="N A V I G A T I O N   B A R   C O L O R">
 
-        <SwitchPreference
+        <CheckBoxPreference
         	android:layout="?android:attr/preferenceLayoutChild"
 			android:key="nav_button_color_on"
 			android:title="Navigation Bar Custom Color"
@@ -22,21 +22,21 @@
    	<PreferenceCategory
 		android:title="P O R T R A I T   M O D E">
 	
-        <SwitchPreference
+        <CheckBoxPreference
         	android:layout="?android:attr/preferenceLayoutChild"
 			android:key="search_button"
 			android:title="Show search button"
 			android:defaultValue="false"	
 			 />
 			
-       <SwitchPreference
+       <CheckBoxPreference
        		android:layout="?android:attr/preferenceLayoutChild"
 			android:key="left_menu_button"
 			android:title="Left Menu Button"
 			android:defaultValue="true"	
 			/>
 		
-       <SwitchPreference
+       <CheckBoxPreference
        		android:layout="?android:attr/preferenceLayoutChild"
 			android:key="right_menu_button"
 			android:title="Right Menu Button"
@@ -49,21 +49,21 @@
    	<PreferenceCategory
 		android:title="L A N D S C A P E   M O D E">
 	
-        <SwitchPreference
+        <CheckBoxPreference
         	android:layout="?android:attr/preferenceLayoutChild"
 			android:key="search_button_land"
 			android:title="Show search button"
 			android:defaultValue="false"
 			 />
 			
-       <SwitchPreference
+       <CheckBoxPreference
        		android:layout="?android:attr/preferenceLayoutChild"
 			android:key="top_menu_button_land"
 			android:title="Top Menu Button"
 			android:defaultValue="true"	
 			/>
 		
-       <SwitchPreference
+       <CheckBoxPreference
        		android:layout="?android:attr/preferenceLayoutChild"
 			android:key="bottom_menu_button_land"
 			android:title="Bottom Menu Button"

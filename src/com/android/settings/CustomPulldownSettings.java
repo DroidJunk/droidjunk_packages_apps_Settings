@@ -28,7 +28,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
+import android.preference.CheckBoxPreference;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
@@ -56,13 +56,13 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
-	private SwitchPreference mShowCarrier;
-	private SwitchPreference mShowBattery;
-	private SwitchPreference mShowTemp;
+	private CheckBoxPreference mShowCarrier;
+	private CheckBoxPreference mShowBattery;
+	private CheckBoxPreference mShowTemp;
     private Preference mCarrierColor;
     private Preference mBatteryColor;
     private Preference mTempColor;
-    private SwitchPreference mCarrierCustom;
+    private CheckBoxPreference mCarrierCustom;
     private Preference mCarrierCustomText;
     private Preference mCarrierSize;
     private Preference mBatterySize;
@@ -87,16 +87,16 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
        
         addPreferencesFromResource(R.xml.custom_pulldown_settings);
         
-        mShowCarrier = (SwitchPreference) findPreference(SHOW_CARRIER);
+        mShowCarrier = (CheckBoxPreference) findPreference(SHOW_CARRIER);
 		mShowCarrier.setOnPreferenceChangeListener(this);
-        mShowBattery = (SwitchPreference) findPreference(SHOW_BATTERY_LABEL);
+        mShowBattery = (CheckBoxPreference) findPreference(SHOW_BATTERY_LABEL);
 		mShowBattery.setOnPreferenceChangeListener(this);
 	    mBatteryColor = (Preference) findPreference(BATTERY_LABEL_COLOR);
 		mBatteryColor.setOnPreferenceChangeListener(this);
 	    mBatterySize = (Preference) findPreference(BATTERY_LABEL_SIZE);
 		mBatterySize.setOnPreferenceChangeListener(this);
 		batterySize = prefMgr.getSharedPreferences().getInt(BATTERY_LABEL_SIZE, 14);  
-        mShowTemp = (SwitchPreference) findPreference(SHOW_TEMP_LABEL);
+        mShowTemp = (CheckBoxPreference) findPreference(SHOW_TEMP_LABEL);
 		mShowTemp.setOnPreferenceChangeListener(this);
 	    mTempColor = (Preference) findPreference(TEMP_LABEL_COLOR);
 		mTempColor.setOnPreferenceChangeListener(this);
@@ -105,7 +105,7 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
 		tempSize = prefMgr.getSharedPreferences().getInt(TEMP_LABEL_SIZE, 14);
 		mCarrierColor = (Preference) findPreference(CARRIER_COLOR);
 		mCarrierColor.setOnPreferenceChangeListener(this);
-        mCarrierCustom = (SwitchPreference) findPreference(CARRIER_CUSTOM);
+        mCarrierCustom = (CheckBoxPreference) findPreference(CARRIER_CUSTOM);
 		mCarrierCustom.setOnPreferenceChangeListener(this);
         mCarrierCustomText = (Preference) findPreference(CARRIER_CUSTOM_TEXT);
 		mCarrierCustomText.setOnPreferenceChangeListener(this);

@@ -18,7 +18,7 @@
         android:title="LED Settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-	<SwitchPreference 
+	<CheckBoxPreference 
 		android:key="pulse_led_screen_on"
 		android:summaryOn="Pulse LED with Screen On"
 		android:summaryOff="Do not pulse LED with screen on"
@@ -66,7 +66,7 @@
 		android:defaultValue="#ff0000ff" 
 		alphaSlider="false" /> 
 		
-	<SwitchPreference
+	<CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="incoming_call_pulse"
 		android:summaryOn="LED will pulse"
@@ -105,7 +105,7 @@
 		android:defaultValue="#ff0000ff" 
 		alphaSlider="false" /> 
 		
-	<SwitchPreference
+	<CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="missed_call_pulse"
 		android:summaryOn="LED will pulse"
@@ -144,7 +144,7 @@
 		android:defaultValue="#ff0000ff" 
 		alphaSlider="false" /> 
 		
-	<SwitchPreference
+	<CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="voice_mail_pulse"
 		android:summaryOn="LED will pulse"
