@@ -19,36 +19,19 @@
 		>
 
     <PreferenceCategory
-		android:title="I C O N S   A N D   C O L O R S"
+		android:title="S I G N A L   I C O N S   C O L O R"
 		android:key="icons">
 
-	<CheckBoxPreference 
-		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="color_icons"
-		android:summaryOn="Coloring of icons is on"
-		android:summaryOff="Coloring of icons is off"
-		android:title="Color Icons" 
-		android:defaultValue="false"	/>
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:dependency="color_icons"
 		android:key="icon_color"
-		android:title="Statusbar Icons Color"
-		android:summary="Color for statusbar icons"
+		android:title="Signal Icons Color"
+		android:summary="Color for signal icons"
 		android:defaultValue="#ff3792b4" 
 		alphaSlider="false" /> 		
 
-
-	<CheckBoxPreference 
-		android:layout="?android:attr/preferenceLayoutChild" 
-		android:dependency="color_icons"
-		android:key="color_icons_apply"
-		android:summaryOn="Apply color to other items"
-		android:summaryOff="Do not apply color to other items"
-		android:title="Theme It!" 
-		android:defaultValue="false"	/>
-		
 
     </PreferenceCategory>
 

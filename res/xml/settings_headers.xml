@@ -23,13 +23,13 @@
 	<!-- ***************************************************************************************** -->
 
     <!-- CUSTOMIZE -->
-    <header android:title="Customize Your Junk" />
+    <header android:title="@string/junk_settings_main" />
 
     <header
         android:id="@+id/custom_settings"
         android:icon="@drawable/junk_settings"
         android:fragment="com.android.settings.CustomJunk"
-        android:title="Customize Your Junk" />
+        android:title="@string/junk_settings_main" />
 
 	<!-- ***************************************************************************************** -->
 

@@ -1,40 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="Junk Settings"
     android:key="junk_settings"
 	 >
 
+    <PreferenceCategory
+		android:title="C O L O R S   A N D   T H E M E S"
+		android:key="quickcolor_icons">
     
     <PreferenceScreen
-        android:key="custom_theme_settings"
-        android:title="Theme Options"
-        android:summary="Color icons, save and apply color themes"
-        android:fragment="com.android.settings.CustomThemeSettings" />       
-        
+        android:layout="?android:attr/preferenceLayoutChild"
+        android:key="custom_color_theme_settings"
+        android:title="Color and Theme Settings"
+        android:summary="Coloring for all items and save/apply themes"
+        android:fragment="com.android.settings.CustomColorThemeSettings" />
+           
+    </PreferenceCategory>       
+    
+    
+    <PreferenceCategory
+		android:title="S T A T U S B A R   S E T T I N G S"
+		android:key="statusbar_settings">
+    
+    
     <PreferenceScreen
+   		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="battery_settings"
-        android:title="Battery Options"
+        android:title="Battery Settings"
         android:summary="Settings to customize your statusbar"
         android:fragment="com.android.settings.CustomBatterySettings" />
-   
+    
     <PreferenceScreen
-		android:key="statusbar_settings"
-        android:title="Statusbar Options"
-        android:summary="Customize your statusbar"
-        android:fragment="com.android.settings.CustomSettings" />
+        android:layout="?android:attr/preferenceLayoutChild"
+		android:key="clock_settings"
+        android:title="Clock Settings"
+        android:summary="Customize the statusbar clock settings"
+        android:fragment="com.android.settings.CustomClockSettings" />    
+    
+    
+    <PreferenceScreen
+   		android:layout="?android:attr/preferenceLayoutChild"		
+		android:key="pulldown_settings"
+        android:title="Statusbar Pulldown Settings"
+        android:summary="Customize the statusbar pulldown"
+        android:fragment="com.android.settings.CustomPulldownSettings" />    
+    
+    <PreferenceScreen
+   		android:layout="?android:attr/preferenceLayoutChild"        
+		android:key="toggle_settings"
+        android:title="Pulldown Toggle Settings"
+        android:summary="Customize the pulldown toggles"
+        android:fragment="com.android.settings.CustomToggleSettings" />
+        
+    </PreferenceCategory>  
 
+    
+    <PreferenceCategory
+		android:title="N A V I G A T I O N   B A R"
+		android:key="navigation_settings">
+    
+    
     <PreferenceScreen
-        android:key="notification_settings"
-        android:title="Notification Options"
-	    android:summary="Customize the LED and notifications"
-        android:fragment="com.android.settings.CustomSystemSettings" />
-
-    <PreferenceScreen
+   		android:layout="?android:attr/preferenceLayoutChild"
         android:key="navigation_settings"
-        android:title="Navigation Options"
+        android:title="Navigation Bar Settings"
 	    android:summary="Customize the navigation bar"
-        android:fragment="com.android.settings.CustomNavBar" />
+        android:fragment="com.android.settings.CustomNavBarSettings" />    
+
+    </PreferenceCategory>      
+
+    
+    <PreferenceCategory
+		android:title="N O T I F I C A T I O N   S E T T I N G S"
+		android:key="notificaiton_settings">
+    
+    
+    <PreferenceScreen
+   		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="quiettime_settings"
+        android:title="Notificatin Quiet Time Settings"
+        android:summary="Set a quiet time for notifications"
+        android:fragment="com.android.settings.CustomQuietSettings" />    
+    
+    <PreferenceScreen
+   		android:layout="?android:attr/preferenceLayoutChild"        
+		android:key="led_settings"
+        android:title="Notificaiton LED Settings"
+        android:summary="Customize the notification led"
+        android:fragment="com.android.settings.CustomLedSettings" />        
+
+    </PreferenceCategory>  
 
 
 </PreferenceScreen>

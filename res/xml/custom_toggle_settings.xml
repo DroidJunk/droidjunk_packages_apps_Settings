@@ -15,9 +15,10 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    	xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-        android:title="Toggle Settings"
-        android:key="custom_toggle_settings"
+   	
+   	android:title="@string/junk_settings_main"
+ 	xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"        
+
 >
 
     <PreferenceCategory
@@ -47,8 +48,10 @@
        	android:fragment="com.android.settings.CustomToggleShowHideSettings"
        	android:key="custom_toggle_show_hide_settings"
        	android:title="Pick Toggles To Show" />
+    
     </PreferenceCategory>
 
+    
 
     <PreferenceCategory
 		android:title="I C O N S"
@@ -63,14 +66,13 @@
 		android:defaultValue="#ff272727" 
 		alphaSlider="false" /> 
 		
-		
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
 		android:key="toggles_icon_on_color"
 		android:title="Icon On Color"
 		android:summary="Color for toggle icons when on"
-		android:defaultValue="#ffa6bf3f" 
+		android:defaultValue="#ff3792b4" 
 		alphaSlider="false" /> 
 
 	<com.android.settings.ColorPickerPreference
@@ -90,8 +92,11 @@
 		android:summary="Color for toggle icons when off"
 		android:defaultValue="#ff555555" 
 		alphaSlider="false" />
-    </PreferenceCategory> 
 
+	</PreferenceCategory> 
+
+    
+    
     <PreferenceCategory
 		android:title="I N D I C A T O R S"
 		android:key="toggle_ind">
@@ -103,7 +108,7 @@
 		android:summaryOn="Indicators are on"
 		android:summaryOff="Indicators are off"
 		android:title="Indicators" 
-		android:defaultValue="false"	/>
+		android:defaultValue="true"	/>
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
@@ -124,6 +129,8 @@
 		alphaSlider="false" /> 		
     </PreferenceCategory>
 
+    
+    
     <PreferenceCategory
 		android:title="T E X T   L A B E L S"
 		android:key="toggle_txt">
@@ -135,7 +142,7 @@
 		android:summaryOn="Text is on"
 		android:summaryOff="Text is off"
 		android:title="Text Label" 
-		android:defaultValue="false" />
+		android:defaultValue="true" />
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
@@ -156,6 +163,8 @@
 		alphaSlider="false" />
     </PreferenceCategory>
 
+    
+    
     <PreferenceCategory
 		android:title="D I V I D E R S"
 		android:key="toggle_div">
@@ -177,6 +186,7 @@
 		android:summary="Color for dividers"
 		android:defaultValue="#ff3b3b3b" 
 		alphaSlider="false" />
+	
     </PreferenceCategory>
 </PreferenceScreen>
 

@@ -5,12 +5,7 @@
   	<PreferenceCategory
 		android:title="N A V I G A T I O N   B A R   C O L O R">
 
-        <CheckBoxPreference
-        	android:layout="?android:attr/preferenceLayoutChild"
-			android:key="nav_button_color_on"
-			android:title="Navigation Bar Custom Color"
-			 />  	    
-  	    
+ 	    
 		<com.android.settings.ColorPickerPreference
 			android:key="nav_button_color"
 			android:title="Navigation Button Color"

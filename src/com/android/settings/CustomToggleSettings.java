@@ -106,6 +106,8 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
         mToggleShowDivider.setOnPreferenceChangeListener(this);
         mToggleDividerColor = (Preference) findPreference(TOGGLE_DIVIDER_COLOR);
         mToggleDividerColor.setOnPreferenceChangeListener(this);
+        
+        
     }
 
     

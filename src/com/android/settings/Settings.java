@@ -545,7 +545,36 @@ public class Settings extends PreferenceActivity implements ButtonBarHandler {
         if (pref.getFragment().equals(WallpaperTypeSettings.class.getName())) {
             titleRes = R.string.wallpaper_settings_fragment_title;
         }
-        startPreferencePanel(pref.getFragment(), pref.getExtras(), titleRes, null, null, 0);
+        if (pref.getFragment().equals(CustomPulldownSettings.class.getName())) {
+            titleRes = R.string.junk_settings_pulldown;
+        }
+        if (pref.getFragment().equals(CustomClockSettings.class.getName())) {
+            titleRes = R.string.junk_settings_clock;
+        }
+        if (pref.getFragment().equals(CustomQuietSettings.class.getName())) {
+            titleRes = R.string.junk_settings_quiettime;
+        }
+        if (pref.getFragment().equals(CustomLedSettings.class.getName())) {
+            titleRes = R.string.junk_settings_led;
+        }
+        if (pref.getFragment().equals(CustomBatterySettings.class.getName())) {
+            titleRes = R.string.junk_settings_battery;
+        }
+        if (pref.getFragment().equals(CustomBatteryOptions.class.getName())) {
+            titleRes = R.string.junk_settings_battery_options;
+        }        
+        if (pref.getFragment().equals(CustomNavBarSettings.class.getName())) {
+            titleRes = R.string.junk_settings_navigation;
+        }
+        if (pref.getFragment().equals(CustomToggleSettings.class.getName())) {
+            titleRes = R.string.junk_settings_toggles;
+        }
+        
+        
+        
+        
+        
+        startPreferencePanel(pref.getFragment(), pref.getExtras(), titleRes, "test", null, 0);
         return true;
     }
 
@@ -564,6 +593,8 @@ public class Settings extends PreferenceActivity implements ButtonBarHandler {
         super.setListAdapter(new HeaderAdapter(this, mHeaders));
     }
 
+
+    
     /*
      * Settings subclasses for launching independently.
      */

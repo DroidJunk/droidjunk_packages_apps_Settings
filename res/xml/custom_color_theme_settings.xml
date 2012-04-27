@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="junk_settings"
+	 >
+
+
+    <PreferenceScreen
+        android:layout="?android:attr/preferenceLayoutChild"
+        android:key="custom_color_settings"
+        android:title="Color Items"
+        android:summary="Coloring for all custom items"
+        android:fragment="com.android.settings.CustomQuickColorSettings" />
+           
+    
+    <PreferenceScreen
+   		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="theme_settings"
+        android:title="Theme Settings"
+        android:summary="Save and apply colors and settings"
+        android:fragment="com.android.settings.CustomThemeSettings" />
+    
+
+
+</PreferenceScreen>

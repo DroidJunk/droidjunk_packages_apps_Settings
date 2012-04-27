@@ -32,22 +32,13 @@ import android.preference.CheckBoxPreference;
 public class CustomIconSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
-	private final String Junk_Settings = "JUNK_SETTINGS";
-	private final String ICON_COLOR_ON = "color_icons";
+	private final String Junk_Icon_Settings = "JUNK_ICON_SETTINGS";
 	private final String ICON_COLOR = "icon_color";
-	private final String ICON_COLOR_APPLY = "color_icons_apply";
-	private final String CLOCK_COLOR = "clock_color";
-    private final String PREF_NAV_COLOR = "nav_button_color";	
+
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
-	private CheckBoxPreference mIconColorOn;
 	private Preference mIconColor;
-	private CheckBoxPreference mIconColorApply;
-	private boolean iconColorApply = false;
-	private int iconColor = 0;
-    private Preference mClockColor;
-    
 	
     /** If there is no setting in the provider, use this. */
     @Override
@@ -61,16 +52,12 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
         sharedPref = prefMgr.getSharedPreferences();
         
         addPreferencesFromResource(R.xml.custom_icon_settings);
-
-		mIconColorOn = (CheckBoxPreference) findPreference(ICON_COLOR_ON);
-		mIconColorOn.setOnPreferenceChangeListener(this);	
+	
         mIconColor = (Preference) findPreference(ICON_COLOR);
 		mIconColor.setOnPreferenceChangeListener(this);	
-		mIconColorApply = (CheckBoxPreference) findPreference(ICON_COLOR_APPLY);
-		mIconColorApply.setOnPreferenceChangeListener(this);	
+
 		iconColor = prefMgr.getSharedPreferences().getInt(ICON_COLOR, 0);
-		iconColorApply = prefMgr.getSharedPreferences().getBoolean(ICON_COLOR_APPLY, false);
-        mClockColor = (Preference) findPreference(CLOCK_COLOR);
+
     }
 
     
@@ -99,51 +86,16 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
   
      	final String key = preference.getKey();
 
-     	if (ICON_COLOR_ON.equals(key)) {
+     	if (ICON_COLOR.equals(key)) {
          	Intent i = new Intent();
-         	i.setAction(Junk_Settings);
-       	   	i.putExtra("IconColorOn", (Boolean) objValue);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-     	
-     	} else if (ICON_COLOR.equals(key)) {
-     		iconColor = (Integer) objValue;
-         	Intent i = new Intent();
-         	i.setAction(Junk_Settings);
-       	   	i.putExtra("IconColor", (Integer) objValue);
+         	i.setAction(Junk_Icon_Settings);
+       	   	i.putExtra(ICON_COLOR, (Integer) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        	   	
-       	   	if (iconColorApply) {
-       	   		SharedPreferences.Editor editor = sharedPref.edit();
-       			editor.putInt(CLOCK_COLOR, iconColor);
-       			editor.putInt(PREF_NAV_COLOR, iconColor);
-       			editor.commit();
-
-       			i = new Intent();
-         		i.setAction(Junk_Settings);
-       	   		i.putExtra("IconColorApply", true);
-       	   		i.putExtra("IconColor", iconColor);
-       	   		getActivity().sendBroadcast(i);
-       	   		i = null;
-       	   	}
+      	   	}
        	   	
    	   		
-     	} else if (ICON_COLOR_APPLY.equals(key)) {
-   	   		SharedPreferences.Editor editor = sharedPref.edit();
-   			editor.putInt(CLOCK_COLOR, iconColor);
-   			editor.putInt(PREF_NAV_COLOR, iconColor);
-   			editor.commit();
-
-       	   	iconColorApply = (Boolean) objValue;
-       	   	if (iconColorApply) {
-       	   		Intent i = new Intent();
-       	   		i.setAction(Junk_Settings);
-       	   		i.putExtra("IconColorApply", (Boolean) objValue);
-       	   		i.putExtra("IconColor", iconColor);
-       	   		getActivity().sendBroadcast(i);
-       	   		i = null;
-       	   	}
      	}
  
     

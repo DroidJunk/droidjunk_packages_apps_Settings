@@ -24,7 +24,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
+import android.preference.CheckBoxPreference;
 
 
 
@@ -46,17 +46,17 @@ public class CustomToggleShowHideSettings extends SettingsPreferenceFragment imp
 	private final String TOGGLES_DATA_ON = "toggles_show_data";
 	
 	private PreferenceManager prefMgr;
-	private SwitchPreference mShowTorch;
-	private SwitchPreference mShowFourg;
-	private SwitchPreference mShowWifi;
-	private SwitchPreference mShowGps;
-	private SwitchPreference mShowBluetooth;
-	private SwitchPreference mShowSound;
-	private SwitchPreference mShowAirplane;
-	private SwitchPreference mShowBrightness;
-	private SwitchPreference mShowRotate;
-	private SwitchPreference mShowSync;
-	private SwitchPreference mShowData;
+	private CheckBoxPreference mShowTorch;
+	private CheckBoxPreference mShowFourg;
+	private CheckBoxPreference mShowWifi;
+	private CheckBoxPreference mShowGps;
+	private CheckBoxPreference mShowBluetooth;
+	private CheckBoxPreference mShowSound;
+	private CheckBoxPreference mShowAirplane;
+	private CheckBoxPreference mShowBrightness;
+	private CheckBoxPreference mShowRotate;
+	private CheckBoxPreference mShowSync;
+	private CheckBoxPreference mShowData;
 	
 	
 	
@@ -71,27 +71,27 @@ public class CustomToggleShowHideSettings extends SettingsPreferenceFragment imp
 
         addPreferencesFromResource(R.xml.custom_toggle_show_hide_settings);
 
-        mShowTorch = (SwitchPreference) findPreference(TOGGLES_TORCH_ON);
+        mShowTorch = (CheckBoxPreference) findPreference(TOGGLES_TORCH_ON);
         mShowTorch.setOnPreferenceChangeListener(this);
-        mShowFourg = (SwitchPreference) findPreference(TOGGLES_4G_ON);
+        mShowFourg = (CheckBoxPreference) findPreference(TOGGLES_4G_ON);
         mShowFourg.setOnPreferenceChangeListener(this);
-        mShowWifi = (SwitchPreference) findPreference(TOGGLES_WIFI_ON);
+        mShowWifi = (CheckBoxPreference) findPreference(TOGGLES_WIFI_ON);
         mShowWifi.setOnPreferenceChangeListener(this);
-        mShowGps = (SwitchPreference) findPreference(TOGGLES_GPS_ON);
+        mShowGps = (CheckBoxPreference) findPreference(TOGGLES_GPS_ON);
         mShowGps.setOnPreferenceChangeListener(this);
-        mShowBluetooth = (SwitchPreference) findPreference(TOGGLES_BLUETOOTH_ON);
+        mShowBluetooth = (CheckBoxPreference) findPreference(TOGGLES_BLUETOOTH_ON);
         mShowBluetooth.setOnPreferenceChangeListener(this);
-        mShowSound = (SwitchPreference) findPreference(TOGGLES_SOUND_ON);
+        mShowSound = (CheckBoxPreference) findPreference(TOGGLES_SOUND_ON);
         mShowSound.setOnPreferenceChangeListener(this);
-        mShowAirplane = (SwitchPreference) findPreference(TOGGLES_AIRPLANE_ON);
+        mShowAirplane = (CheckBoxPreference) findPreference(TOGGLES_AIRPLANE_ON);
         mShowAirplane.setOnPreferenceChangeListener(this);
-        mShowBrightness = (SwitchPreference) findPreference(TOGGLES_BRIGHTNESS_ON);
+        mShowBrightness = (CheckBoxPreference) findPreference(TOGGLES_BRIGHTNESS_ON);
         mShowBrightness.setOnPreferenceChangeListener(this);
-        mShowRotate = (SwitchPreference) findPreference(TOGGLES_ROTATE_ON);
+        mShowRotate = (CheckBoxPreference) findPreference(TOGGLES_ROTATE_ON);
         mShowRotate.setOnPreferenceChangeListener(this);
-        mShowSync = (SwitchPreference) findPreference(TOGGLES_SYNC_ON);
+        mShowSync = (CheckBoxPreference) findPreference(TOGGLES_SYNC_ON);
         mShowSync.setOnPreferenceChangeListener(this);
-        mShowData = (SwitchPreference) findPreference(TOGGLES_DATA_ON);
+        mShowData = (CheckBoxPreference) findPreference(TOGGLES_DATA_ON);
         mShowData.setOnPreferenceChangeListener(this);
     }
 

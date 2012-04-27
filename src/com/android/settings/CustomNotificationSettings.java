@@ -24,7 +24,7 @@ import android.preference.PreferenceScreen;
 
 
 
-public class CustomSystemSettings extends SettingsPreferenceFragment implements
+public class CustomNotificationSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
  
 
@@ -36,7 +36,7 @@ public class CustomSystemSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
 
 
-        addPreferencesFromResource(R.xml.custom_system_settings);
+        addPreferencesFromResource(R.xml.custom_notification_settings);
 
     }
 

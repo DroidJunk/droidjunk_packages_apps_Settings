@@ -11,7 +11,7 @@
 		android:title="B A T T E R Y   B A R S"
 		android:key="battery_bars">
 		    
-   	<SwitchPreference 
+   	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="battery_bar_bottom"
 		android:summaryOn="Show a battery bar"
@@ -20,7 +20,7 @@
 		android:layout_width="match_parent" 
 		android:defaultValue="false"	/>       
 		
-   	<SwitchPreference 
+   	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="battery_bar_right"
 		android:summaryOn="Show a battery bar"

@@ -3824,6 +3824,18 @@ found in the list of installed apps.</string>
     
     <string name="led_on_ms">10ths of a second on</string>
 	<string name="led_off_ms">10ths of a second off</string>
+	
+	<string name="junk_settings_main">Customize Your Junk</string>
+	<string name="junk_settings_clock">Statusbar Clock Settings</string>
+	<string name="junk_settings_pulldown">Statusbar Pulldown Settings</string>
+	<string name="junk_settings_toggles">Pulldown Toggle Settings</string>
+	<string name="junk_settings_colors_themes">Colors and Themes</string>
+	<string name="junk_settings_battery">Battery Settings</string>
+	<string name="junk_settings_battery_options">Battery Options</string>
+	<string name="junk_settings_notification">Notification Settings</string>
+	<string name="junk_settings_quiettime">Quiet Time Settings</string>
+	<string name="junk_settings_led">Led Settings</string>
+	<string name="junk_settings_navigation">Navigation Bar Settings</string>
 
 	<!-- ***************************************************************************************** -->
 	<!-- ***************************************************************************************** -->

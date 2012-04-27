@@ -1303,7 +1303,7 @@
         </activity>
 
         <activity android:name="Settings$CustomJunkSettingsActivity"
-            android:label="Custom Junk Settings">
+            android:label="Customize Your Junk">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.settings.CUSTOM_JUNK_SETTINGS" />

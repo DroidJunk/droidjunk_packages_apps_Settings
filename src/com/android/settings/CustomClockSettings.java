@@ -29,7 +29,7 @@ import android.preference.PreferenceScreen;
 
 
 
-public class CustomStatusbarSettings extends SettingsPreferenceFragment implements
+public class CustomClockSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
 	private final String Junk_Settings = "JUNK_SETTINGS";
@@ -62,7 +62,7 @@ public class CustomStatusbarSettings extends SettingsPreferenceFragment implemen
         prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         prefMgr.getSharedPreferences();
 
-        addPreferencesFromResource(R.xml.custom_statusbar_settings);
+        addPreferencesFromResource(R.xml.custom_clock_settings);
         
         mShowClock = (CheckBoxPreference) findPreference(SHOW_CLOCK);
 		mShowClock.setOnPreferenceChangeListener(this);

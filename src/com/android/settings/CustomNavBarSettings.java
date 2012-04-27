@@ -13,10 +13,9 @@ import android.provider.Settings;
 import com.android.settings.R;
 
 
-public class CustomNavBar extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
+public class CustomNavBarSettings extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
-	private final String Junk_Settings = "JUNK_SETTINGS";
-	private final String NAV_BAR_COLOR_ON = "nav_button_color_on";
+	private final String Junk_NavBar_Settings = "JUNK_NAVBAR_SETTINGS";
     private final String NAV_BAR_COLOR = "nav_button_color";
     private final String SHOW_SEARCH_BUTTON = "search_button";
 	private final String SHOW_LEFT_MENU_BUTTON = "left_menu_button";
@@ -27,7 +26,6 @@ public class CustomNavBar extends SettingsPreferenceFragment implements Preferen
 
 	private PreferenceManager prefMgr;
 
-	CheckBoxPreference mNavBarColorOn;
 	ColorPickerPreference mNavigationBarColor;
     CheckBoxPreference mShowSearchButton;
     CheckBoxPreference mShowLeftMenuButton;
@@ -49,8 +47,6 @@ public class CustomNavBar extends SettingsPreferenceFragment implements Preferen
             // Load the preferences from an XML resource
             addPreferencesFromResource(R.xml.custom_navbar_settings);
 
-            mNavBarColorOn = (CheckBoxPreference) findPreference(NAV_BAR_COLOR_ON);
-            mNavBarColorOn.setOnPreferenceChangeListener(this);
             mNavigationBarColor = (ColorPickerPreference) findPreference(NAV_BAR_COLOR);
             mNavigationBarColor.setOnPreferenceChangeListener(this);
             mShowSearchButton = (CheckBoxPreference) findPreference(SHOW_SEARCH_BUTTON);
@@ -81,59 +77,52 @@ public class CustomNavBar extends SettingsPreferenceFragment implements Preferen
  
         	final String key = preference.getKey();
         	
-            if (NAV_BAR_COLOR_ON.equals(key)) {
+        	if (NAV_BAR_COLOR.equals(key)) {
             	Intent i = new Intent();
-            	i.setAction(Junk_Settings );
-           	   	i.putExtra("NavColorOn", (Boolean) objValue);
-           	   	getActivity().sendBroadcast(i);
-           	   	i = null;
-
-            } else  if (NAV_BAR_COLOR.equals(key)) {
-            	Intent i = new Intent();
-            	i.setAction(Junk_Settings );
-           	   	i.putExtra("GlowColor", (Integer) objValue);
+            	i.setAction(Junk_NavBar_Settings );
+           	   	i.putExtra(NAV_BAR_COLOR, (Integer) objValue);
            	   	getActivity().sendBroadcast(i);
            	   	i = null;
            
             } else if (SHOW_SEARCH_BUTTON.equals(key)) {
             	Intent i = new Intent();
-            	i.setAction(Junk_Settings );
-            	i.putExtra("NavShowSearch", (Boolean) objValue);
+            	i.setAction(Junk_NavBar_Settings );
+            	i.putExtra(SHOW_SEARCH_BUTTON, (Boolean) objValue);
             	getActivity().sendBroadcast(i);
             	i = null;        
 
             } else if (SHOW_LEFT_MENU_BUTTON.equals(key)) {
             	Intent i = new Intent();
-            	i.setAction(Junk_Settings );
-            	i.putExtra("NavShowLeftMenu", (Boolean) objValue);
+            	i.setAction(Junk_NavBar_Settings );
+            	i.putExtra(SHOW_LEFT_MENU_BUTTON, (Boolean) objValue);
             	getActivity().sendBroadcast(i);
             	i = null;        
 
             } else if (SHOW_RIGHT_MENU_BUTTON.equals(key)) {
             	Intent i = new Intent();
-            	i.setAction(Junk_Settings );
-            	i.putExtra("NavShowRightMenu", (Boolean) objValue);
+            	i.setAction(Junk_NavBar_Settings );
+            	i.putExtra(SHOW_RIGHT_MENU_BUTTON, (Boolean) objValue);
             	getActivity().sendBroadcast(i);
             	i = null;        
 
             } else if (SHOW_SEARCH_BUTTON_LAND.equals(key)) {
             	Intent i = new Intent();
-            	i.setAction(Junk_Settings );
-            	i.putExtra("NavShowSearchLand", (Boolean) objValue);
+            	i.setAction(Junk_NavBar_Settings );
+            	i.putExtra(SHOW_SEARCH_BUTTON_LAND, (Boolean) objValue);
             	getActivity().sendBroadcast(i);
             	i = null;        
 
             } else if (SHOW_TOP_MENU_BUTTON_LAND.equals(key)) {
             	Intent i = new Intent();
-            	i.setAction(Junk_Settings );
-            	i.putExtra("NavShowTopMenuLand", (Boolean) objValue);
+            	i.setAction(Junk_NavBar_Settings );
+            	i.putExtra(SHOW_TOP_MENU_BUTTON_LAND, (Boolean) objValue);
             	getActivity().sendBroadcast(i);
             	i = null;        
 
             } else if (SHOW_BOT_MENU_BUTTON_LAND.equals(key)) {
             	Intent i = new Intent();
-            	i.setAction(Junk_Settings );
-            	i.putExtra("NavShowBotMenuLand", (Boolean) objValue);
+            	i.setAction(Junk_NavBar_Settings );
+            	i.putExtra(SHOW_BOT_MENU_BUTTON_LAND, (Boolean) objValue);
             	getActivity().sendBroadcast(i);
             	i = null;        
 
