@@ -32,12 +32,11 @@ import android.preference.CheckBoxPreference;
 public class CustomIconSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
-	private final String Junk_Icon_Settings = "JUNK_ICON_SETTINGS";
+    private final String Junk_Icon_Settings = "JUNK_ICON_SETTINGS";
 	private final String ICON_COLOR = "icon_color";
 
     
 	private PreferenceManager prefMgr;
-	private SharedPreferences sharedPref;
 	private Preference mIconColor;
 	
     /** If there is no setting in the provider, use this. */
@@ -49,14 +48,11 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
         prefMgr.setSharedPreferencesName("Junk_Settings");
         prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         prefMgr.getSharedPreferences();
-        sharedPref = prefMgr.getSharedPreferences();
         
         addPreferencesFromResource(R.xml.custom_icon_settings);
 	
         mIconColor = (Preference) findPreference(ICON_COLOR);
 		mIconColor.setOnPreferenceChangeListener(this);	
-
-		iconColor = prefMgr.getSharedPreferences().getInt(ICON_COLOR, 0);
 
     }
 
@@ -92,14 +88,7 @@ public class CustomIconSettings extends SettingsPreferenceFragment implements
        	   	i.putExtra(ICON_COLOR, (Integer) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
-       	   	
-      	   	}
-       	   	
-   	   		
-     	}
- 
-    
-
+   	   	}
         return true;
     }
     

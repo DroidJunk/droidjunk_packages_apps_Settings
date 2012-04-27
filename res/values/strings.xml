@@ -3830,6 +3830,8 @@ found in the list of installed apps.</string>
 	<string name="junk_settings_pulldown">Statusbar Pulldown Settings</string>
 	<string name="junk_settings_toggles">Pulldown Toggle Settings</string>
 	<string name="junk_settings_colors_themes">Colors and Themes</string>
+	<string name="junk_settings_quickcolor">Quick Colors</string>
+	<string name="junk_settings_themes">Theme Settings</string>
 	<string name="junk_settings_battery">Battery Settings</string>
 	<string name="junk_settings_battery_options">Battery Options</string>
 	<string name="junk_settings_notification">Notification Settings</string>

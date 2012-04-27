@@ -19,7 +19,6 @@
 	>
 
     <PreferenceCategory
-   		android:layout="?android:attr/preferenceLayoutChild"
 		android:title="B A T T E R Y   A N D   S I G N A L   I C O N S"
 		android:key="quickcolor_icons">
 
@@ -27,7 +26,7 @@
 			android:layout="?android:attr/preferenceLayoutChild" 
 			android:key="icon_color"
 			android:title="Statusbar Signal Icons Color"
-			android:defaultValue="#ff3792b4" 
+			android:defaultValue="#ff3fa2c7" 
 			alphaSlider="false" /> 			
 
 		<com.android.settings.ColorPickerPreference
@@ -105,6 +104,30 @@
    				
 		<com.android.settings.ColorPickerPreference
 			android:layout="?android:attr/preferenceLayoutChild"
+			android:key="date_color"
+			android:title="Date Color"
+			android:summary="Color for statusbar date"	
+			android:defaultValue="#ff3792b4" 
+			alphaSlider="false" /> 		
+        
+        <com.android.settings.ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild"
+			android:key="clear_button_color"
+			android:title="Clear All Button Color"
+			android:summary="Color for clear all button"
+			android:defaultValue="#ff3792b4" 
+			alphaSlider="false" /> 	
+
+		<com.android.settings.ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild"
+			android:key="close_bar_color"
+			android:title="Pulldown Handle Color"
+			android:summary="Color for statusbar pulldown handle"
+			android:defaultValue="#ff3792b4" 
+			alphaSlider="false" />         
+        
+		<com.android.settings.ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild"
 			android:key="carrier_color"
 			android:title="Carrier Text Color"
 			android:summary="Color for the carrier text"
@@ -127,13 +150,7 @@
 			android:defaultValue="#ff3792b4" 
 			alphaSlider="false" /> 
 			
-		<com.android.settings.ColorPickerPreference
-			android:layout="?android:attr/preferenceLayoutChild"
-			android:key="date_color"
-			android:title="Date Color"
-			android:summary="Color for statusbar date"	
-			android:defaultValue="#ff3792b4" 
-			alphaSlider="false" /> 		
+
 		 
     </PreferenceCategory>    
         

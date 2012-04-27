@@ -32,7 +32,7 @@ import android.preference.PreferenceScreen;
 public class CustomClockSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
-	private final String Junk_Settings = "JUNK_SETTINGS";
+	private final String Junk_Clock_Settings = "JUNK_CLOCK_SETTINGS";
 	private final String SHOW_CLOCK = "show_clock";
 	private final String CLOCK_AMPM = "clock_ampm";
 	private final String CLOCK_COLOR = "clock_color";
@@ -112,22 +112,22 @@ public class CustomClockSettings extends SettingsPreferenceFragment implements
 
      	if (SHOW_CLOCK.equals(key)) {
         	Intent i = new Intent();
-        	i.setAction(Junk_Settings );
-       	   	i.putExtra("ShowClock", (Boolean) objValue);
+        	i.setAction(Junk_Clock_Settings );
+       	   	i.putExtra(SHOW_CLOCK, (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        
         } else if (CLOCK_AMPM.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Junk_Settings );
-            i.putExtra("ClockAmPm", (Boolean) objValue);
+            i.setAction(Junk_Clock_Settings );
+            i.putExtra(CLOCK_AMPM, (Boolean) objValue);
             getActivity().sendBroadcast(i);
             i = null;
         
         } else if (CLOCK_COLOR.equals(key)) {
         	Intent i = new Intent();
-            i.setAction(Junk_Settings );
-            i.putExtra("ClockColor", (Integer) objValue);
+            i.setAction(Junk_Clock_Settings );
+            i.putExtra(CLOCK_COLOR, (Integer) objValue);
             getActivity().sendBroadcast(i);
             i = null;
             
@@ -138,8 +138,8 @@ public class CustomClockSettings extends SettingsPreferenceFragment implements
             editor.commit();
 
         	Intent i = new Intent();
-            i.setAction(Junk_Settings );
-            i.putExtra("ClockSize", (Integer) mSize);
+            i.setAction(Junk_Clock_Settings );
+            i.putExtra(CLOCK_SIZE, (Integer) mSize);
             getActivity().sendBroadcast(i);
             i = null;
         }

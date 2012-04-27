@@ -53,6 +53,8 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
 	private final String CARRIER_SIZE = "carrier_size";
 	private final String DATE_COLOR = "date_color";
 	private final String DATE_SIZE = "date_size";
+	private final String CLEAR_BUTTON_COLOR = "clear_button_color";
+	private final String CLOSE_BAR_COLOR = "close_bar_color";
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
@@ -72,6 +74,8 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
     public int tempSize = 12;
     private Preference mDateColor;
     private Preference mDateSize;
+    private Preference mCloseBarColor;
+    private Preference mClearButtonColor;
     public int dateSize = 17;
     
     
@@ -117,6 +121,10 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
 		mDateSize = (Preference) findPreference(DATE_SIZE);
 		mDateSize.setOnPreferenceChangeListener(this);
 		dateSize = prefMgr.getSharedPreferences().getInt(DATE_SIZE, 17);  
+        mCloseBarColor = (Preference) findPreference(CLOSE_BAR_COLOR);
+		mCloseBarColor.setOnPreferenceChangeListener(this);
+        mClearButtonColor = (Preference) findPreference(CLEAR_BUTTON_COLOR);
+		mClearButtonColor.setOnPreferenceChangeListener(this);
         
 
     
@@ -186,7 +194,7 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
         if (SHOW_CARRIER.equals(key)) {
         	Intent i = new Intent();
         	i.setAction(Junk_Pulldown_Settings );
-       	   	i.putExtra("ShowCarrier", (Boolean) objValue);
+       	   	i.putExtra(SHOW_CARRIER, (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
        	   	
@@ -245,21 +253,21 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
         } else if (CARRIER_COLOR.equals(key)) {
         	Intent i = new Intent();
             i.setAction(Junk_Pulldown_Settings );
-            i.putExtra("CarrierColor", (Integer) objValue);
+            i.putExtra(CARRIER_COLOR, (Integer) objValue);
             getActivity().sendBroadcast(i);
             i = null;
             
         } else if (CARRIER_CUSTOM.equals(key)) {
         	Intent i = new Intent();
             i.setAction(Junk_Pulldown_Settings );
-            i.putExtra("CustomCarrier", (Boolean) objValue);
+            i.putExtra(CARRIER_CUSTOM, (Boolean) objValue);
             getActivity().sendBroadcast(i);
             i = null;
               
         } else if (CARRIER_CUSTOM_TEXT.equals(key)) {
         	Intent i = new Intent();
             i.setAction(Junk_Pulldown_Settings );
-            i.putExtra("CustomCarrierText", (String) objValue);
+            i.putExtra(CARRIER_CUSTOM_TEXT, (String) objValue);
             getActivity().sendBroadcast(i);
             i = null;
         	
@@ -271,14 +279,14 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
 
         	Intent i = new Intent();
             i.setAction(Junk_Pulldown_Settings );
-            i.putExtra("CarrierSize", (Integer) carrierSize);
+            i.putExtra(CARRIER_SIZE, (Integer) carrierSize);
             getActivity().sendBroadcast(i);
             i = null;
         	
         } else if (DATE_COLOR.equals(key)) {
         	Intent i = new Intent();
         	i.setAction(Junk_Pulldown_Settings );
-        	i.putExtra("DateColor", (Integer) objValue);
+        	i.putExtra(DATE_COLOR, (Integer) objValue);
         	getActivity().sendBroadcast(i);
         	i = null;        
 
@@ -290,9 +298,24 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
 
         	Intent i = new Intent();
             i.setAction(Junk_Pulldown_Settings );
-            i.putExtra("DateSize", (Integer) dateSize);
+            i.putExtra(DATE_SIZE, (Integer) dateSize);
             getActivity().sendBroadcast(i);
             i = null;
+            
+        } else if (CLEAR_BUTTON_COLOR.equals(key)) {
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(CLEAR_BUTTON_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;      
+        	
+        } else if (CLOSE_BAR_COLOR.equals(key)) {
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(CLOSE_BAR_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;              	
+            
         }
         
         return true;

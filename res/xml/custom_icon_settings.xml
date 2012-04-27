@@ -25,11 +25,10 @@
 
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
-		android:dependency="color_icons"
 		android:key="icon_color"
 		android:title="Signal Icons Color"
 		android:summary="Color for signal icons"
-		android:defaultValue="#ff3792b4" 
+		android:defaultValue="#ff3fa2c7" 
 		alphaSlider="false" /> 		
 
 

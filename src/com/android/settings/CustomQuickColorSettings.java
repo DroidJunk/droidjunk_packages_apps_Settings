@@ -39,6 +39,7 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 	
 	
 	//Icons - Signal/Wifi
+	private final String Junk_Icon_Settings = "JUNK_ICON_SETTINGS";
 	private final String ICON_COLOR = "icon_color";
 	
 	// Battery
@@ -48,12 +49,6 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 	private final String BATTERY_LEVEL_COLOR_TWO = "battery_levels_color_two";
 	private final String BATTERY_LEVEL_COLOR_THREE = "battery_levels_color_three";    
 	
-	// LED
-	private final String DEFAULT_LED_COLOR = "default_led_color";	
-	private final String INCOMING_CALL_LED_COLOR = "incoming_call_color";
-	private final String MISSED_CALL_LED_COLOR = "missed_call_color";
-	private final String VOICE_MAIL_LED_COLOR = "voice_mail_color";
-
 	//Navbar
 	private final String Junk_NavBar_Settings = "JUNK_NAVBAR_SETTINGS";
     private final String NAV_BAR_COLOR = "nav_button_color";
@@ -64,13 +59,17 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 	private final String TEMP_LABEL_COLOR = "temp_label_color";
 	private final String CARRIER_COLOR = "carrier_color";
 	private final String DATE_COLOR = "date_color";
+	
+	private final String CLEAR_BUTTON_COLOR = "clear_button_color";
+	private final String CLOSE_BAR_COLOR = "close_bar_color";
 
 	//Clock
-	private final String Junk_StatusBar_Settings = "JUNK_STATUSBAR_SETTINGS";
+	private final String Junk_Clock_Settings = "JUNK_CLOCK_SETTINGS";
 	private final String CLOCK_COLOR = "clock_color";
 	
 	//Toggles
 	private final String Junk_Toggle_Settings = "JUNK_TOGGLE_SETTINGS";
+	private final String TOGGLES_UPDATE = "toggles_update";
 	private final String TOGGLE_COLOR = "toggle_color";
 	private final String TOGGLE_ICON_ON_COLOR = "toggles_icon_on_color";
 	private final String TOGGLE_ICON_INTER_COLOR = "toggles_icon_inter_color";
@@ -92,16 +91,15 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
     private Preference mBatteryLevelColorTwo;
     private Preference mBatteryLevelColorThree;
 	
-    private Preference mDefaultLedColor;
-    private Preference mIncomingCallColor;
-    private Preference mMissedCallColor;
-    private Preference mVoiceMailColor;
+   
 	private Preference mNavigationBarColor;
 	
     private Preference mCarrierColor;
     private Preference mBatteryColor;
     private Preference mTempColor;
     private Preference mDateColor;
+    private Preference mCloseBarColor;
+    private Preference mClearButtonColor;
     
     private Preference mClockColor;
     
@@ -130,6 +128,51 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
         sharedPref = prefMgr.getSharedPreferences();
  
        	addPreferencesFromResource(R.xml.custom_quickcolor_settings);
+       	
+        mIconColor = (Preference) findPreference(ICON_COLOR);
+		mIconColor.setOnPreferenceChangeListener(this);	
+		mBatteryDepletedColor = (Preference) findPreference(BATTERY_DEPLETED_COLOR);
+		mBatteryDepletedColor.setOnPreferenceChangeListener(this);
+		mBatteryLevelColorOne = (Preference) findPreference(BATTERY_LEVEL_COLOR_ONE);
+		mBatteryLevelColorOne.setOnPreferenceChangeListener(this);
+		mBatteryLevelColorTwo = (Preference) findPreference(BATTERY_LEVEL_COLOR_TWO);
+		mBatteryLevelColorTwo.setOnPreferenceChangeListener(this);
+		mBatteryLevelColorThree = (Preference) findPreference(BATTERY_LEVEL_COLOR_THREE);
+		mBatteryLevelColorThree.setOnPreferenceChangeListener(this);
+        mNavigationBarColor = (ColorPickerPreference) findPreference(NAV_BAR_COLOR);
+        mNavigationBarColor.setOnPreferenceChangeListener(this);
+		mCarrierColor = (Preference) findPreference(CARRIER_COLOR);
+		mCarrierColor.setOnPreferenceChangeListener(this);        
+	    mBatteryColor = (Preference) findPreference(BATTERY_LABEL_COLOR);
+		mBatteryColor.setOnPreferenceChangeListener(this);
+	    mTempColor = (Preference) findPreference(TEMP_LABEL_COLOR);
+		mTempColor.setOnPreferenceChangeListener(this);
+        mDateColor = (Preference) findPreference(DATE_COLOR);
+        mCloseBarColor = (Preference) findPreference(CLOSE_BAR_COLOR);
+		mCloseBarColor.setOnPreferenceChangeListener(this);
+        mClearButtonColor = (Preference) findPreference(CLEAR_BUTTON_COLOR);
+		mClearButtonColor.setOnPreferenceChangeListener(this);
+		mDateColor.setOnPreferenceChangeListener(this);
+        mClockColor = (Preference) findPreference(CLOCK_COLOR);
+		mClockColor.setOnPreferenceChangeListener(this);
+    	mToggleColor = (Preference) findPreference(TOGGLE_COLOR);
+    	mToggleColor.setOnPreferenceChangeListener(this);
+    	mToggleIconOnColor = (Preference) findPreference(TOGGLE_ICON_ON_COLOR);
+    	mToggleIconOnColor.setOnPreferenceChangeListener(this);
+    	mToggleIconInterColor = (Preference) findPreference(TOGGLE_ICON_INTER_COLOR);
+    	mToggleIconInterColor.setOnPreferenceChangeListener(this);
+    	mToggleIconOffColor = (Preference) findPreference(TOGGLE_ICON_OFF_COLOR);
+    	mToggleIconOffColor.setOnPreferenceChangeListener(this);
+        mToggleIndOnColor = (Preference) findPreference(TOGGLE_IND_ON_COLOR);
+        mToggleIndOnColor.setOnPreferenceChangeListener(this);
+        mToggleIndOffColor = (Preference) findPreference(TOGGLE_IND_OFF_COLOR);
+        mToggleIndOffColor.setOnPreferenceChangeListener(this);
+        mToggleTextOnColor = (Preference) findPreference(TOGGLE_TEXT_ON_COLOR);
+        mToggleTextOnColor.setOnPreferenceChangeListener(this);
+        mToggleTextOffColor = (Preference) findPreference(TOGGLE_TEXT_OFF_COLOR);
+        mToggleTextOffColor.setOnPreferenceChangeListener(this);
+        mToggleDividerColor = (Preference) findPreference(TOGGLE_DIVIDER_COLOR);
+        mToggleDividerColor.setOnPreferenceChangeListener(this);
         
         
     }
@@ -157,8 +200,195 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
     public boolean onPreferenceChange(Preference preference, Object objValue) {
     	  
      	final String key = preference.getKey();
+     	
+     	
+  	if (ICON_COLOR.equals(key)) {
+     	Intent i = new Intent();
+     	i.setAction(Junk_Icon_Settings);
+   	   	i.putExtra(ICON_COLOR, (Integer) objValue);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+   	   	
+  	} else if (BATTERY_DEPLETED_COLOR.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_DEPLETED_COLOR, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;
+ 
+    } else if (BATTERY_LEVEL_COLOR_ONE.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_LEVEL_COLOR_ONE, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;
+         
+    } else if (BATTERY_LEVEL_COLOR_TWO.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_LEVEL_COLOR_TWO, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;
 
+    } else if (BATTERY_LEVEL_COLOR_THREE.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_LEVEL_COLOR_THREE, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;
+    
+    } else if (NAV_BAR_COLOR.equals(key)) {
+        	Intent i = new Intent();
+        	i.setAction(Junk_NavBar_Settings );
+       	   	i.putExtra(NAV_BAR_COLOR, (Integer) objValue);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+       	   	
+    } else if (BATTERY_LABEL_COLOR.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Pulldown_Settings );
+        i.putExtra(BATTERY_LABEL_COLOR, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;           	  
 
+    } else if (TEMP_LABEL_COLOR.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Pulldown_Settings );
+        i.putExtra(TEMP_LABEL_COLOR, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;           	  
+
+    } else if (CARRIER_COLOR.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Pulldown_Settings );
+        i.putExtra(CARRIER_COLOR, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+    } else if (DATE_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(DATE_COLOR, (Integer) objValue);
+    	getActivity().sendBroadcast(i);
+    	i = null;        
+
+    } else if (CLOCK_COLOR.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Clock_Settings );
+        i.putExtra(CLOCK_COLOR, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+	} else if (TOGGLE_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Toggle_Settings);
+   	   	i.putExtra(TOGGLE_COLOR, (Integer) objValue);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+   
+	} else if (TOGGLE_ICON_ON_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Toggle_Settings);
+   	   	i.putExtra(TOGGLE_ICON_ON_COLOR, (Integer) objValue);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+
+	} else if (TOGGLE_ICON_INTER_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Toggle_Settings);
+   	   	i.putExtra(TOGGLE_ICON_INTER_COLOR, (Integer) objValue);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;
+   	   	
+	} else if (TOGGLE_ICON_OFF_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Toggle_Settings);
+   	   	i.putExtra(TOGGLE_ICON_OFF_COLOR, (Integer) objValue);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;       	   	
+   	   	
+    } else if (TOGGLE_IND_ON_COLOR.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Toggle_Settings);
+        i.putExtra(TOGGLE_IND_ON_COLOR, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+    	i = new Intent();
+        i.setAction(Junk_Toggle_Settings);
+        i.putExtra(TOGGLES_UPDATE, true);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+    } else if (TOGGLE_IND_OFF_COLOR.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Toggle_Settings);
+        i.putExtra(TOGGLE_IND_OFF_COLOR, (Integer) objValue);
+         getActivity().sendBroadcast(i);
+        i = null;
+        
+    	i = new Intent();
+        i.setAction(Junk_Toggle_Settings);
+        i.putExtra(TOGGLES_UPDATE, true);
+        getActivity().sendBroadcast(i);
+        i = null;
+
+    } else if (TOGGLE_TEXT_ON_COLOR.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Toggle_Settings);
+        i.putExtra(TOGGLE_TEXT_ON_COLOR, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;        
+        
+    	i = new Intent();
+        i.setAction(Junk_Toggle_Settings);
+        i.putExtra(TOGGLES_UPDATE, true);
+        getActivity().sendBroadcast(i);
+        i = null;
+
+    } else if (TOGGLE_TEXT_OFF_COLOR.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Toggle_Settings);
+        i.putExtra(TOGGLE_TEXT_OFF_COLOR, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;     
+        
+    	i = new Intent();
+        i.setAction(Junk_Toggle_Settings);
+        i.putExtra(TOGGLES_UPDATE, true);
+        getActivity().sendBroadcast(i);
+        i = null;
+    
+    } else if (TOGGLE_DIVIDER_COLOR.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Toggle_Settings);
+        i.putExtra(TOGGLE_DIVIDER_COLOR, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;  
+        
+    	i = new Intent();
+        i.setAction(Junk_Toggle_Settings);
+        i.putExtra(TOGGLES_UPDATE, true);
+        getActivity().sendBroadcast(i);
+        i = null;
+  	
+    } else if (CLEAR_BUTTON_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(CLEAR_BUTTON_COLOR, (Integer) objValue);
+    	getActivity().sendBroadcast(i);
+    	i = null;      
+    	
+    } else if (CLOSE_BAR_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(CLOSE_BAR_COLOR, (Integer) objValue);
+    	getActivity().sendBroadcast(i);
+    	i = null;              	
+        
+    }
+    
+    
         return true;
     }
  

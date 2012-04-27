@@ -21,7 +21,13 @@
     <PreferenceCategory
 		android:title="S T A T U S B A R   S E T T I N G S"
 		android:key="statusbar_settings">
-    
+
+    <PreferenceScreen
+   		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="icon_settings"
+        android:title="Signal Icons Settings"
+        android:summary="Settings to customize signal icons"
+        android:fragment="com.android.settings.CustomIconSettings" />        
     
     <PreferenceScreen
    		android:layout="?android:attr/preferenceLayoutChild"

@@ -33,6 +33,7 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
     
 
 	private final String Junk_Toggle_Settings = "JUNK_TOGGLE_SETTINGS";
+	private final String TOGGLES_UPDATE = "toggles_update";
 	private final String TOGGLES_ON = "toggles_show_toggles";
 	private final String TOGGLES_TOP = "toggles_top";
 	private final String TOGGLE_COLOR = "toggle_color";
@@ -47,7 +48,7 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
 	private final String TOGGLE_TEXT_OFF_COLOR = "toggle_text_off_color";
 	private final String TOGGLE_SHOW_DIVIDER = "toggle_show_divider";
 	private final String TOGGLE_DIVIDER_COLOR = "toggle_divider_color";
-	private final String TOGGLES_UPDATE = "toggles_update";
+	
 
 	private PreferenceManager prefMgr;
 	private CheckBoxPreference mShowToggles;

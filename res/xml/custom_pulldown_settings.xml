@@ -19,39 +19,73 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceCategory
-		android:title="P U L L D O W N   S E T T I N G S"
-		android:key="carrier_on">
+		android:title="C L E A R   A L L   B U T T O N"
+		android:key="clear_button">
+
+ 	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="clear_button_color"
+		android:title="Clear All Button Color"
+		android:summary="Color for clear all button"
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="false" /> 		
+
+    </PreferenceCategory>
+
+
+    
+    <PreferenceCategory
+		android:title="P U L L D O W N   H A N D L E"
+		android:key="pulldown_closebar">    
+    	
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="close_bar_color"
+		android:title="Pulldown Handle Color"
+		android:summary="Color for statusbar pulldown handle"
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="false" /> 				
+	
+    </PreferenceCategory>
+
+
+    
+    <PreferenceCategory
+		android:title="D A T E"
+		android:key="date_settings">
+
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="date_color"
+		android:title="Date Color"
+		android:summary="Color for statusbar date"
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="false" /> 		
+		
+		
+	<Preference 
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="date_size"
+		android:title="Date Text Size"
+		android:summary="Size of the date text"
+		android:defaultValue="17" />		 	
+
+    </PreferenceCategory>    
+    
+    
+    
+    <PreferenceCategory
+		android:title="C A R R I E R"
+		android:key="carrier_settings">
+
 	<CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="show_carrier"
 		android:summaryOn="Show the carrier in the pulldown"
 		android:summaryOff="Do not show the carrier in the pulldown"
 		android:title="Show Carrier" 
-		android:defaultValue="true"	/>
-
-	<CheckBoxPreference
-		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="show_battery_label"
-		android:summaryOn="Show the battery level in the pulldown"
-		android:summaryOff="Do not show the battery level in the pulldown"
-		android:title="Show Battery Level" 
-		android:defaultValue="true"	/>		
-		
-	<CheckBoxPreference
-		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="show_temp_label"
-		android:summaryOn="Show the battery temperature in the pulldown"
-		android:summaryOff="Do not show the battery temperature in the pulldown"
-		android:title="Show Battery Temperature" 
-		android:defaultValue="true"	/>
-	
-	
-    </PreferenceCategory>
-
-    <PreferenceCategory
-		android:title="C A R R I E R"
-		android:key="carrier_settings">
-   				
+		android:defaultValue="true"	/>        
+        				
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="show_carrier"
@@ -97,6 +131,14 @@
     <PreferenceCategory
 		android:title="B A T T E R Y   L E V E L"
 		android:key="battery_label_settings">
+	
+	<CheckBoxPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="show_battery_label"
+		android:summaryOn="Show the battery level in the pulldown"
+		android:summaryOff="Do not show the battery level in the pulldown"
+		android:title="Show Battery Level" 
+		android:defaultValue="true"	/>		        
    				
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
@@ -120,6 +162,15 @@
     <PreferenceCategory
 		android:title="B A T T E R Y   T E M P E R A T U R E"
 		android:key="temp_label_settings">
+	
+        
+    <CheckBoxPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="show_temp_label"
+		android:summaryOn="Show the battery temperature in the pulldown"
+		android:summaryOff="Do not show the battery temperature in the pulldown"
+		android:title="Show Battery Temperature" 
+		android:defaultValue="true"	/>    
    				
 	<com.android.settings.ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
@@ -138,28 +189,12 @@
 		android:summary="Size of the battery temperature text"
 		android:defaultValue="12" />		 
     </PreferenceCategory>        
+  
     
-    <PreferenceCategory
-		android:title="D A T E"
-		android:key="date_settings">
+    
+ 
+    
 
-	<com.android.settings.ColorPickerPreference
-		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="date_color"
-		android:title="Date Color"
-		android:summary="Color for statusbar date"
-		android:defaultValue="#ff3792b4" 
-		alphaSlider="false" /> 		
-		
-		
-	<Preference 
-		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="date_size"
-		android:title="Date Text Size"
-		android:summary="Size of the date text"
-		android:defaultValue="17" />		 	
-
-    </PreferenceCategory>
 
 </PreferenceScreen>
 
