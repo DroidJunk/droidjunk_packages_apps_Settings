@@ -572,9 +572,12 @@ public class Settings extends PreferenceActivity implements ButtonBarHandler {
         }
         
         if (pref.getFragment().equals(CustomColorSettings.class.getName())) {
+            titleRes = R.string.junk_settings_color;
+        }
+        if (pref.getFragment().equals(CustomQuickColorSettings.class.getName())) {
             titleRes = R.string.junk_settings_quickcolor;
         }
-
+        
         if (pref.getFragment().equals(CustomQuietSettings.class.getName())) {
             titleRes = R.string.junk_settings_quiettime;
         }

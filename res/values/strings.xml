@@ -3819,6 +3819,7 @@ found in the list of installed apps.</string>
     <string name="battery_bar_width">Battery bar width</string>
     <string name="battery_font_size">Font size</string>
     <string name="charging_level_max">Max battery level</string>
+    <string name="depleted_level_max">Max depleted level</string>
     
     <string name="start_time">Quiet Time Start</string>
     <string name="stop_time">Quiet Time Stop</string>
@@ -3831,6 +3832,7 @@ found in the list of installed apps.</string>
 	<string name="junk_settings_pulldown">Statusbar Pulldown Settings</string>
 	<string name="junk_settings_toggles">Pulldown Toggle Settings</string>
 	<string name="junk_settings_colors_themes">Colors and Themes</string>
+	<string name="junk_settings_color">Colors</string>
 	<string name="junk_settings_quickcolor">Quick Colors</string>
 	<string name="junk_settings_themes">Theme Settings</string>
 	<string name="junk_settings_battery">Battery Settings</string>

@@ -41,13 +41,20 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
 	private final String BATTERY_BAR_BOTTOM = "battery_bar_bottom";
 	private final String BATTERY_BAR_RIGHT = "battery_bar_right";
 	private final String BATTERY_BAR_WIDTH = "battery_bar_width";
-	private final String BATTERY_DEPLETED_COLOR = "battery_depleted_color";
 	private final String BATTERY_LEVEL_ONE = "battery_levels_one";
 	private final String BATTERY_LEVEL_COLOR_ONE = "battery_levels_color_one";
 	private final String BATTERY_LEVEL_TWO = "battery_levels_two";
 	private final String BATTERY_LEVEL_COLOR_TWO = "battery_levels_color_two";
 	private final String BATTERY_LEVEL_THREE = "battery_levels_three";
 	private final String BATTERY_LEVEL_COLOR_THREE = "battery_levels_color_three";    
+	
+	private final String DEPLETED_LEVEL_ONE = "depleted_levels_one";
+	private final String DEPLETED_LEVEL_COLOR_ONE = "depleted_levels_color_one";
+	private final String DEPLETED_LEVEL_TWO = "depleted_levels_two";
+	private final String DEPLETED_LEVEL_COLOR_TWO = "depleted_levels_color_two";
+	private final String DEPLETED_LEVEL_THREE = "depleted_levels_three";
+	private final String DEPLETED_LEVEL_COLOR_THREE = "depleted_levels_color_three";    
+
 	
 	
 	private final int BATTERY_STOCK = 0;
@@ -64,7 +71,6 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
 	private CheckBoxPreference mBatteryBarBottom;
 	private CheckBoxPreference mBatteryBarRight;
 	private Preference mBatteryBarWidth;
-	private Preference mBatteryDepletedColor;
 	private Preference mBatteryLevelOne;
     private Preference mBatteryLevelColorOne;
 	private Preference mBatteryLevelTwo;
@@ -72,12 +78,21 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
 	private Preference mBatteryLevelThree;
     private Preference mBatteryLevelColorThree;
     
-    public int batBarWidth = 5;
-    public int batLevelOne = 10;
-    public int batLevelTwo = 30;
-    public int batLevelThree = 70;
+	private Preference mDepletedLevelOne;
+    private Preference mDepletedLevelColorOne;
+	private Preference mDepletedLevelTwo;
+    private Preference mDepletedLevelColorTwo;
+	private Preference mDepletedLevelThree;
+    private Preference mDepletedLevelColorThree;
+    
+    private int batBarWidth = 5;
+    private int batLevelOne = 10;
+    private int batLevelTwo = 30;
+    private int batLevelThree = 70;
 
-	
+    private int depletedLevelOne = 10;
+    private int depletedLevelTwo = 30;
+    private int depletedLevelThree = 70;	
 	
 	
     /** If there is no setting in the provider, use this. */
@@ -142,14 +157,25 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
     		mBatteryBarBottom.setOnPreferenceChangeListener(this);
             mBatteryBarRight = (CheckBoxPreference) findPreference(BATTERY_BAR_RIGHT);
     		mBatteryBarRight.setOnPreferenceChangeListener(this);
-    		mBatteryDepletedColor = (Preference) findPreference(BATTERY_DEPLETED_COLOR);
-    		mBatteryDepletedColor.setOnPreferenceChangeListener(this);
             mBatteryBarWidth = (Preference) findPreference(BATTERY_BAR_WIDTH);
     		mBatteryBarWidth.setOnPreferenceChangeListener(this);
+    		
+    		mDepletedLevelOne = (Preference) findPreference(DEPLETED_LEVEL_ONE);
+    		mDepletedLevelOne.setOnPreferenceChangeListener(this);
+    		mDepletedLevelColorOne = (Preference) findPreference(DEPLETED_LEVEL_COLOR_ONE);
+    		mDepletedLevelColorOne.setOnPreferenceChangeListener(this);
+    		mDepletedLevelTwo = (Preference) findPreference(DEPLETED_LEVEL_TWO);
+    		mDepletedLevelTwo.setOnPreferenceChangeListener(this);
+    		mDepletedLevelColorTwo = (Preference) findPreference(DEPLETED_LEVEL_COLOR_TWO);
+    		mDepletedLevelColorTwo.setOnPreferenceChangeListener(this);
+    		mDepletedLevelThree = (Preference) findPreference(DEPLETED_LEVEL_THREE);
+    		mDepletedLevelThree.setOnPreferenceChangeListener(this);
+    		mDepletedLevelColorThree = (Preference) findPreference(DEPLETED_LEVEL_COLOR_THREE);
+    		mDepletedLevelColorThree.setOnPreferenceChangeListener(this);
             break;
 
         case BATTERY_CIRCLE:
-        	addPreferencesFromResource(R.xml.custom_bat_stock_settings);
+        	addPreferencesFromResource(R.xml.custom_bat_circle_settings);
     		mBatteryLevelOne = (Preference) findPreference(BATTERY_LEVEL_ONE);
     		mBatteryLevelOne.setOnPreferenceChangeListener(this);
     		mBatteryLevelColorOne = (Preference) findPreference(BATTERY_LEVEL_COLOR_ONE);
@@ -163,12 +189,23 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
     		mBatteryLevelColorThree = (Preference) findPreference(BATTERY_LEVEL_COLOR_THREE);
     		mBatteryLevelColorThree.setOnPreferenceChangeListener(this);
     		
-    		mBatteryDepletedColor = (Preference) findPreference(BATTERY_DEPLETED_COLOR);
-    		mBatteryDepletedColor.setOnPreferenceChangeListener(this);
+    		mDepletedLevelOne = (Preference) findPreference(DEPLETED_LEVEL_ONE);
+    		mDepletedLevelOne.setOnPreferenceChangeListener(this);
+    		mDepletedLevelColorOne = (Preference) findPreference(DEPLETED_LEVEL_COLOR_ONE);
+    		mDepletedLevelColorOne.setOnPreferenceChangeListener(this);
+    		mDepletedLevelTwo = (Preference) findPreference(DEPLETED_LEVEL_TWO);
+    		mDepletedLevelTwo.setOnPreferenceChangeListener(this);
+    		mDepletedLevelColorTwo = (Preference) findPreference(DEPLETED_LEVEL_COLOR_TWO);
+    		mDepletedLevelColorTwo.setOnPreferenceChangeListener(this);
+    		mDepletedLevelThree = (Preference) findPreference(DEPLETED_LEVEL_THREE);
+    		mDepletedLevelThree.setOnPreferenceChangeListener(this);
+    		mDepletedLevelColorThree = (Preference) findPreference(DEPLETED_LEVEL_COLOR_THREE);
+    		mDepletedLevelColorThree.setOnPreferenceChangeListener(this);
+    		
             break;
 
         case BATTERY_PIE:
-        	addPreferencesFromResource(R.xml.custom_bat_stock_settings);
+        	addPreferencesFromResource(R.xml.custom_bat_circle_settings);
     		mBatteryLevelOne = (Preference) findPreference(BATTERY_LEVEL_ONE);
     		mBatteryLevelOne.setOnPreferenceChangeListener(this);
     		mBatteryLevelColorOne = (Preference) findPreference(BATTERY_LEVEL_COLOR_ONE);
@@ -182,8 +219,19 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
     		mBatteryLevelColorThree = (Preference) findPreference(BATTERY_LEVEL_COLOR_THREE);
     		mBatteryLevelColorThree.setOnPreferenceChangeListener(this);
     		
-    		mBatteryDepletedColor = (Preference) findPreference(BATTERY_DEPLETED_COLOR);
-    		mBatteryDepletedColor.setOnPreferenceChangeListener(this);
+    		mDepletedLevelOne = (Preference) findPreference(DEPLETED_LEVEL_ONE);
+    		mDepletedLevelOne.setOnPreferenceChangeListener(this);
+    		mDepletedLevelColorOne = (Preference) findPreference(DEPLETED_LEVEL_COLOR_ONE);
+    		mDepletedLevelColorOne.setOnPreferenceChangeListener(this);
+    		mDepletedLevelTwo = (Preference) findPreference(DEPLETED_LEVEL_TWO);
+    		mDepletedLevelTwo.setOnPreferenceChangeListener(this);
+    		mDepletedLevelColorTwo = (Preference) findPreference(DEPLETED_LEVEL_COLOR_TWO);
+    		mDepletedLevelColorTwo.setOnPreferenceChangeListener(this);
+    		mDepletedLevelThree = (Preference) findPreference(DEPLETED_LEVEL_THREE);
+    		mDepletedLevelThree.setOnPreferenceChangeListener(this);
+    		mDepletedLevelColorThree = (Preference) findPreference(DEPLETED_LEVEL_COLOR_THREE);
+    		mDepletedLevelColorThree.setOnPreferenceChangeListener(this);
+    		
             break;            
             
         case BATTERY_NONE:
@@ -251,7 +299,30 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
                     1,
                     8,
                     R.string.battery_bar_width).show();
-			
+
+    	} else if (preference == mDepletedLevelOne) {
+			new NumberPickerDialog(preferenceScreen.getContext(),
+					depletedLevelOneListener,
+                depletedLevelOne,
+                0,
+                depletedLevelTwo - 1,
+                R.string.depleted_level_max).show();
+	        
+    	} else if (preference == mDepletedLevelTwo) {
+			new NumberPickerDialog(preferenceScreen.getContext(),
+				depletedLevelTwoListener,
+	            depletedLevelTwo,
+	            depletedLevelOne + 1,
+	            depletedLevelThree - 1,
+	            R.string.depleted_level_max).show();
+	      
+	    } else if (preference == mDepletedLevelThree) {
+			new NumberPickerDialog(preferenceScreen.getContext(),
+					depletedLevelThreeListener,
+				depletedLevelThree,
+				depletedLevelTwo + 1,
+	            99,
+	            R.string.depleted_level_max).show();
         }	
     
         return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -289,6 +360,29 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
                    	}
                  }; 
 
+          NumberPickerDialog.OnNumberSetListener depletedLevelOneListener =
+        		 new NumberPickerDialog.OnNumberSetListener() {
+                 	public void onNumberSet(int limit) {
+                    depletedLevelOne = (int) limit;
+                    mDepletedLevelOne.getOnPreferenceChangeListener().onPreferenceChange(mDepletedLevelOne, (int) limit);
+                 	}
+                 };      
+
+          NumberPickerDialog.OnNumberSetListener depletedLevelTwoListener =
+               	new NumberPickerDialog.OnNumberSetListener() {
+                   	public void onNumberSet(int limit) {
+               		depletedLevelTwo = (int) limit;
+               		mDepletedLevelTwo.getOnPreferenceChangeListener().onPreferenceChange(mDepletedLevelTwo, (int) limit);
+                   	}
+                };      
+
+          NumberPickerDialog.OnNumberSetListener depletedLevelThreeListener =
+               	new NumberPickerDialog.OnNumberSetListener() {
+                   	public void onNumberSet(int limit) {
+              		depletedLevelThree = (int) limit;
+               		mDepletedLevelThree.getOnPreferenceChangeListener().onPreferenceChange(mDepletedLevelThree, (int) limit);
+                  	}
+                };      
              
                  
                  
@@ -319,13 +413,6 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
        	   	getActivity().sendBroadcast(i);
        	   	i = null;       	   	
 
-        } else if (BATTERY_DEPLETED_COLOR.equals(key)) {
-        	Intent i = new Intent();
-            i.setAction(Junk_Battery_Settings);
-            i.putExtra(BATTERY_DEPLETED_COLOR, (Integer) objValue);
-            getActivity().sendBroadcast(i);
-            i = null;
-                    	   	
         } else if (BATTERY_BAR_WIDTH.equals(key)) {
         	sharedPref = prefMgr.getSharedPreferences();
         	SharedPreferences.Editor editor = sharedPref.edit();
@@ -394,7 +481,66 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
             i.putExtra(BATTERY_LEVEL_COLOR_THREE, (Integer) objValue);
             getActivity().sendBroadcast(i);
             i = null;
+        } else if (DEPLETED_LEVEL_ONE.equals(key)) {
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(DEPLETED_LEVEL_ONE, depletedLevelOne);
+            editor.commit();
+        	
+            Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(DEPLETED_LEVEL_ONE, depletedLevelOne);
+            getActivity().sendBroadcast(i);
+            i = null;
+        
+        } else if (DEPLETED_LEVEL_COLOR_ONE.equals(key)) {
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(DEPLETED_LEVEL_COLOR_ONE, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+             
+        } else if (DEPLETED_LEVEL_TWO.equals(key)) {
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(DEPLETED_LEVEL_TWO, depletedLevelTwo);
+            editor.commit();
+        	
+            Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(DEPLETED_LEVEL_TWO, depletedLevelTwo);
+            getActivity().sendBroadcast(i);
+            i = null;
+        
+        } else if (DEPLETED_LEVEL_COLOR_TWO.equals(key)) {
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(DEPLETED_LEVEL_COLOR_TWO, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+
+        } else if (DEPLETED_LEVEL_THREE.equals(key)) {
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(DEPLETED_LEVEL_THREE, depletedLevelThree);
+            editor.commit();
+        	
+            Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(DEPLETED_LEVEL_THREE, depletedLevelThree);
+            getActivity().sendBroadcast(i);
+            i = null;
+        
+        } else if (DEPLETED_LEVEL_COLOR_THREE.equals(key)) {
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(DEPLETED_LEVEL_COLOR_THREE, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
         }
+     	
+     	
+     	
         return true;
     }
  
@@ -420,14 +566,6 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
        	   	i.putExtra(BATTERY_BAR_RIGHT, sharedPref.getBoolean(BATTERY_BAR_RIGHT, false));
        	   	getActivity().sendBroadcast(i);
        	   	i = null;       	   	
-
-
-       	   	i = new Intent();
-       	   	i.setAction(Junk_Battery_Settings );
-       	   	i.putExtra(BATTERY_DEPLETED_COLOR, sharedPref.getInt(BATTERY_DEPLETED_COLOR, 0xffababab));
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-                	   	
 
             i = new Intent();
         	i.setAction(Junk_Battery_Settings );
@@ -470,7 +608,42 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
             i.putExtra(BATTERY_LEVEL_COLOR_THREE, sharedPref.getInt(BATTERY_LEVEL_COLOR_THREE, 0xff3792b4));
             getActivity().sendBroadcast(i);
             i = null;
-    	
+            
+            i = new Intent();
+            i.setAction(Junk_Battery_Settings );
+            i.putExtra(DEPLETED_LEVEL_ONE, depletedLevelOne);
+            getActivity().sendBroadcast(i);
+            i = null;            
+
+            i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(DEPLETED_LEVEL_COLOR_ONE, sharedPref.getInt(DEPLETED_LEVEL_COLOR_ONE, 0xff800000));
+            getActivity().sendBroadcast(i);
+            i = null;
+
+            i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(DEPLETED_LEVEL_TWO, depletedLevelTwo);
+            getActivity().sendBroadcast(i);
+            i = null;
+    
+            i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(DEPLETED_LEVEL_COLOR_TWO, sharedPref.getInt(DEPLETED_LEVEL_COLOR_TWO, 0xffba6900));
+            getActivity().sendBroadcast(i);
+            i = null;
+
+            i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(DEPLETED_LEVEL_THREE, depletedLevelThree);
+            getActivity().sendBroadcast(i);
+            i = null;
+    
+            i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(DEPLETED_LEVEL_COLOR_THREE, sharedPref.getInt(DEPLETED_LEVEL_COLOR_THREE, 0xff296c85));
+            getActivity().sendBroadcast(i);
+            i = null;
     }
     
 } 

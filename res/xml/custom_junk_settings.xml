@@ -12,14 +12,14 @@
         android:layout="?android:attr/preferenceLayoutChild"
         android:key="custom_color_settings"
         android:title="Color Items"
-        android:summary="Coloring for all custom items"
+        android:summary="Coloring for all custom items by setting indivual colors"
         android:fragment="com.android.settings.CustomColorSettings" />
  
     <PreferenceScreen
         android:layout="?android:attr/preferenceLayoutChild"
         android:key="custom_qk_color_settings"
         android:title="Quick Color Items"
-        android:summary="Coloring for all custom items"
+        android:summary="Coloring for all custom items by selecting items to apply a color to"
         android:fragment="com.android.settings.CustomQuickColorSettings" />    
     
     <PreferenceScreen

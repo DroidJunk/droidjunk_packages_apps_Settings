@@ -27,15 +27,6 @@
 		android:summaryOff="Do not show a battery bar"
 		android:title="Right Battery Bar" 
 		android:defaultValue="false"	/>       
- 
-	<com.android.settings.ColorPickerPreference
-		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="battery_depleted_color"
-		android:title="Depleted Level Color"
-		android:summary="Color for the depleted areas"
-		android:defaultValue="#ffababab" 
-		alphaSlider="false" />   	
-   	
    	
 	<Preference	
 		android:layout="?android:attr/preferenceLayoutChild"
@@ -47,6 +38,75 @@
     </PreferenceCategory>
     
     
+    
+    <PreferenceCategory
+		android:title="D E P L E T E D   L E V E L   C O L O R S"
+		android:key="depleted_color_ranges"
+		android:summary="Battery colors based on battery level"	>    
+ 
+    </PreferenceCategory>
+ 	
+    <PreferenceCategory
+		android:title="M A X   L E V E L   O N E"
+		android:key="depleted_max_level_one">     	
+ 	
+	<Preference
+	    android:layout="?android:attr/preferenceLayoutChild"
+		android:key="depleted_levels_one"
+		android:title="Max Level"
+		android:summary="Maximimum level for the color"
+		android:defaultValue="10" />	
+   
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="depleted_levels_color_one"
+		android:title="Level Color"
+		android:summary="Color for Max Level One"
+		android:defaultValue="#ff800000" 
+		alphaSlider="false" />
+
+	</PreferenceCategory>
+ 	
+    <PreferenceCategory
+		android:title="M A X   L E V E L   T W O"
+		android:key="depleted_max_level_two">
+    	
+	<Preference
+	    android:layout="?android:attr/preferenceLayoutChild"
+		android:key="depleted_levels_two"
+		android:title="Max Level"
+		android:summary="Maximimum level for the color"
+		android:defaultValue="30" />	
+   
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="depleted_levels_color_two"
+		android:title="Level Color"
+		android:summary="Color for Max Level Two"
+		android:defaultValue="#ffba6900" 
+		alphaSlider="false" />	
+   </PreferenceCategory>
+
+    <PreferenceCategory
+		android:title="M I N   L E V E L   T H R E E"
+		android:key="depleted_max_level_three">    
+    	
+	<Preference
+	    android:layout="?android:attr/preferenceLayoutChild"
+		android:key="depleted_levels_three"
+		android:title="Min Level"
+		android:summary="Minimum level for the color"
+		android:defaultValue="70" />	
+   
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="depleted_levels_color_three"
+		android:title="Level Color"
+		android:summary="Color for Min Level Three"
+		android:defaultValue="#ff296c85" 
+		alphaSlider="false" />		
+
+    </PreferenceCategory>	    
     
     <PreferenceCategory
 		android:title="B A T T E R Y   L E V E L   C O L O R S"
