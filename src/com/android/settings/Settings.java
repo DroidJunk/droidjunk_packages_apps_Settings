@@ -545,39 +545,50 @@ public class Settings extends PreferenceActivity implements ButtonBarHandler {
         if (pref.getFragment().equals(WallpaperTypeSettings.class.getName())) {
             titleRes = R.string.wallpaper_settings_fragment_title;
         }
-        if (pref.getFragment().equals(CustomPulldownSettings.class.getName())) {
-            titleRes = R.string.junk_settings_pulldown;
+
+        if (pref.getFragment().equals(CustomBatteryOptions.class.getName())) {
+            titleRes = R.string.junk_settings_battery_options;
         }
+        
+        if (pref.getFragment().equals(CustomChargeOptions.class.getName())) {
+            titleRes = R.string.junk_settings_charge_options;    
+        }        
+
         if (pref.getFragment().equals(CustomClockSettings.class.getName())) {
             titleRes = R.string.junk_settings_clock;
         }
-        if (pref.getFragment().equals(CustomQuietSettings.class.getName())) {
-            titleRes = R.string.junk_settings_quiettime;
-        }
+
         if (pref.getFragment().equals(CustomLedSettings.class.getName())) {
             titleRes = R.string.junk_settings_led;
         }
-        if (pref.getFragment().equals(CustomBatterySettings.class.getName())) {
-            titleRes = R.string.junk_settings_battery;
-        }
-        if (pref.getFragment().equals(CustomBatteryOptions.class.getName())) {
-            titleRes = R.string.junk_settings_battery_options;
-        }        
+        
+        
         if (pref.getFragment().equals(CustomNavBarSettings.class.getName())) {
             titleRes = R.string.junk_settings_navigation;
         }
-        if (pref.getFragment().equals(CustomToggleSettings.class.getName())) {
-            titleRes = R.string.junk_settings_toggles;
+
+        if (pref.getFragment().equals(CustomPulldownSettings.class.getName())) {
+            titleRes = R.string.junk_settings_pulldown;
         }
-        if (pref.getFragment().equals(CustomColorThemeSettings.class.getName())) {
-            titleRes = R.string.junk_settings_colors_themes;
-        }
+        
         if (pref.getFragment().equals(CustomColorSettings.class.getName())) {
             titleRes = R.string.junk_settings_quickcolor;
         }
+
+        if (pref.getFragment().equals(CustomQuietSettings.class.getName())) {
+            titleRes = R.string.junk_settings_quiettime;
+        }
+       
         if (pref.getFragment().equals(CustomThemeSettings.class.getName())) {
             titleRes = R.string.junk_settings_themes;
         }
+        
+        if (pref.getFragment().equals(CustomToggleSettings.class.getName())) {
+            titleRes = R.string.junk_settings_toggles;
+        }
+       
+        
+
         
         
         

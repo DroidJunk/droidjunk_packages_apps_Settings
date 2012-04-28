@@ -50,20 +50,19 @@
 	    android:title="Battery Icons"
 	    android:summary="Different battery icons"
 	    android:entryValues="@array/battery_icons_values"
-	    android:entries="@array/battery_icons"
-	   	
-	     />
-
+	    android:entries="@array/battery_icons" />
+	
     <PreferenceScreen
    		android:layout="?android:attr/preferenceLayoutChild"      
         android:fragment="com.android.settings.CustomBatteryOptions"
         android:key="custom_battery_options"
         android:title="Battery Options" />	    
-    
-    
-    
-    
-    
+ 
+    <PreferenceScreen
+   		android:layout="?android:attr/preferenceLayoutChild"      
+        android:fragment="com.android.settings.CustomChargeOptions"
+        android:key="custom_charge_options"
+        android:title="Charging Options" />	    
     
     <PreferenceScreen
         android:layout="?android:attr/preferenceLayoutChild"
@@ -71,7 +70,6 @@
         android:title="Clock Settings"
         android:summary="Customize the statusbar clock settings"
         android:fragment="com.android.settings.CustomClockSettings" />    
-    
     
     <PreferenceScreen
    		android:layout="?android:attr/preferenceLayoutChild"		

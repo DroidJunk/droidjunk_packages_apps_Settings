@@ -33,7 +33,8 @@ Preference.OnPreferenceChangeListener {
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
 	private ListPreference mBatteryIcons;
-	PreferenceScreen mOptionScreen;
+	PreferenceScreen mBatteryOptionScreen;
+	PreferenceScreen mChargeOptionScreen;
 	private int mBatteryIconValue = 0;
 	
 	private Preference mIconColor;
@@ -60,10 +61,8 @@ Preference.OnPreferenceChangeListener {
 		mBatteryIcons.setValue(sharedPref.getString(BATTERY_ICONS, "0"));
 		mBatteryIconValue = Integer.valueOf(sharedPref.getString(BATTERY_ICONS, "0"));
 		
-		mOptionScreen = (PreferenceScreen) prefMgr.findPreference("custom_battery_options");
-
-
-
+		mBatteryOptionScreen = (PreferenceScreen) prefMgr.findPreference("custom_battery_options");
+		mChargeOptionScreen = (PreferenceScreen) prefMgr.findPreference("custom_charge_options");
     }
 
 
@@ -76,12 +75,15 @@ Preference.OnPreferenceChangeListener {
    			mBatteryIconValue = Integer.valueOf((String) newValue);
  		
    			if (mBatteryIconValue == 10) {
-   				mOptionScreen.setEnabled(false);
+   				mBatteryOptionScreen.setEnabled(false);
+   				mChargeOptionScreen.setEnabled(false);
+   			} else if (mBatteryIconValue == 0) {
+   				mChargeOptionScreen.setEnabled(false);
    			} else {
-   				mOptionScreen.setEnabled(true);
+   				mBatteryOptionScreen.setEnabled(true);
+   				mChargeOptionScreen.setEnabled(true);
    			}
    			
-   			Log.e("*****************************************","  INTENT  SENT  ");
         	Intent i = new Intent();
         	i.setAction(Junk_Battery_Settings );
        	   	i.putExtra(BATTERY_ICONS, (String) newValue);

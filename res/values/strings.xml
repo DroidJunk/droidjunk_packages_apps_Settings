@@ -3818,6 +3818,7 @@ found in the list of installed apps.</string>
     <string name="battery_level_max">Max battery level</string>
     <string name="battery_bar_width">Battery bar width</string>
     <string name="battery_font_size">Font size</string>
+    <string name="charging_level_max">Max battery level</string>
     
     <string name="start_time">Quiet Time Start</string>
     <string name="stop_time">Quiet Time Stop</string>
@@ -3834,6 +3835,7 @@ found in the list of installed apps.</string>
 	<string name="junk_settings_themes">Theme Settings</string>
 	<string name="junk_settings_battery">Battery Settings</string>
 	<string name="junk_settings_battery_options">Battery Options</string>
+	<string name="junk_settings_charge_options">Charging Options</string>
 	<string name="junk_settings_notification">Notification Settings</string>
 	<string name="junk_settings_quiettime">Quiet Time Settings</string>
 	<string name="junk_settings_led">Led Settings</string>

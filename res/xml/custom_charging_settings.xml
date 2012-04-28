@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Charge Settings"
+    android:key="custom_charge_settings"
+	 >
+
+ 
+    
+    
+    <PreferenceCategory
+		android:title="C H A R G I N G   L E V E L   C O L O R S"
+		android:key="charge_color_ranges"
+		android:summary="Battery colors based on battery level"	>    
+ 
+    </PreferenceCategory>
+ 	
+    <PreferenceCategory
+		android:title="M A X   L E V E L   O N E"
+		android:key="charge_max_level_one">     	
+ 	
+	<Preference
+	    android:layout="?android:attr/preferenceLayoutChild"
+		android:key="charge_levels_one"
+		android:title="Max Level"
+		android:summary="Maximimum level for the color"
+		android:defaultValue="10" />	
+   
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="charge_levels_color_one"
+		android:title="Level Color"
+		android:summary="Color for Max Level One"
+		android:defaultValue="#ffff0000" 
+		alphaSlider="false" />
+
+	</PreferenceCategory>
+ 	
+    <PreferenceCategory
+		android:title="M A X   L E V E L   T W O"
+		android:key="charge_max_level_two">
+    	
+	<Preference
+	    android:layout="?android:attr/preferenceLayoutChild"
+		android:key="charge_levels_two"
+		android:title="Max Level"
+		android:summary="Maximimum level for the color"
+		android:defaultValue="30" />	
+   
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="charge_levels_color_two"
+		android:title="Level Color"
+		android:summary="Color for Max Level Two"
+		android:defaultValue="#ffff9000" 
+		alphaSlider="false" />	
+   </PreferenceCategory>
+
+    <PreferenceCategory
+		android:title="M I N   L E V E L   T H R E E"
+		android:key="charge_max_level_three">    
+    	
+	<Preference
+	    android:layout="?android:attr/preferenceLayoutChild"
+		android:key="charge_levels_three"
+		android:title="Min Level"
+		android:summary="Minimum level for the color"
+		android:defaultValue="70" />	
+   
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="charge_levels_color_three"
+		android:title="Level Color"
+		android:summary="Color for Min Level Three"
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="false" />		
+
+    </PreferenceCategory>	
+		
+	
+
+</PreferenceScreen>
