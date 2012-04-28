@@ -81,16 +81,7 @@ public class CustomBatterySettings extends SettingsPreferenceFragment implements
   
     
     
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
 
-    
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
 
  
     @Override
@@ -113,7 +104,7 @@ public class CustomBatterySettings extends SettingsPreferenceFragment implements
    				mOptionScreen.setEnabled(true);
    			}
    			
-   			
+   			Log.e("*****************************************","  INTENT  SENT  ");
         	Intent i = new Intent();
         	i.setAction(Junk_Battery_Settings );
        	   	i.putExtra(BATTERY_ICONS, (String) objValue);

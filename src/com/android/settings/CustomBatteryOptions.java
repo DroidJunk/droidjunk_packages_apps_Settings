@@ -132,10 +132,12 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
     		mBatteryLevelThree.setOnPreferenceChangeListener(this);
     		mBatteryLevelColorThree = (Preference) findPreference(BATTERY_LEVEL_COLOR_THREE);
     		mBatteryLevelColorThree.setOnPreferenceChangeListener(this);
+    		
     		batLevelOne = sharedPref.getInt(BATTERY_LEVEL_ONE, 10);
     		batLevelTwo = sharedPref.getInt(BATTERY_LEVEL_TWO, 30);
     		batLevelThree = sharedPref.getInt(BATTERY_LEVEL_THREE, 70);
     		batBarWidth = sharedPref.getInt(BATTERY_BAR_WIDTH, 5);
+    		
             mBatteryBarBottom = (CheckBoxPreference) findPreference(BATTERY_BAR_BOTTOM);
     		mBatteryBarBottom.setOnPreferenceChangeListener(this);
             mBatteryBarRight = (CheckBoxPreference) findPreference(BATTERY_BAR_RIGHT);
@@ -148,12 +150,38 @@ public class CustomBatteryOptions extends SettingsPreferenceFragment implements
 
         case BATTERY_CIRCLE:
         	addPreferencesFromResource(R.xml.custom_bat_stock_settings);
+    		mBatteryLevelOne = (Preference) findPreference(BATTERY_LEVEL_ONE);
+    		mBatteryLevelOne.setOnPreferenceChangeListener(this);
+    		mBatteryLevelColorOne = (Preference) findPreference(BATTERY_LEVEL_COLOR_ONE);
+    		mBatteryLevelColorOne.setOnPreferenceChangeListener(this);
+    		mBatteryLevelTwo = (Preference) findPreference(BATTERY_LEVEL_TWO);
+    		mBatteryLevelTwo.setOnPreferenceChangeListener(this);
+    		mBatteryLevelColorTwo = (Preference) findPreference(BATTERY_LEVEL_COLOR_TWO);
+    		mBatteryLevelColorTwo.setOnPreferenceChangeListener(this);
+    		mBatteryLevelThree = (Preference) findPreference(BATTERY_LEVEL_THREE);
+    		mBatteryLevelThree.setOnPreferenceChangeListener(this);
+    		mBatteryLevelColorThree = (Preference) findPreference(BATTERY_LEVEL_COLOR_THREE);
+    		mBatteryLevelColorThree.setOnPreferenceChangeListener(this);
+    		
     		mBatteryDepletedColor = (Preference) findPreference(BATTERY_DEPLETED_COLOR);
     		mBatteryDepletedColor.setOnPreferenceChangeListener(this);
             break;
 
         case BATTERY_PIE:
         	addPreferencesFromResource(R.xml.custom_bat_stock_settings);
+    		mBatteryLevelOne = (Preference) findPreference(BATTERY_LEVEL_ONE);
+    		mBatteryLevelOne.setOnPreferenceChangeListener(this);
+    		mBatteryLevelColorOne = (Preference) findPreference(BATTERY_LEVEL_COLOR_ONE);
+    		mBatteryLevelColorOne.setOnPreferenceChangeListener(this);
+    		mBatteryLevelTwo = (Preference) findPreference(BATTERY_LEVEL_TWO);
+    		mBatteryLevelTwo.setOnPreferenceChangeListener(this);
+    		mBatteryLevelColorTwo = (Preference) findPreference(BATTERY_LEVEL_COLOR_TWO);
+    		mBatteryLevelColorTwo.setOnPreferenceChangeListener(this);
+    		mBatteryLevelThree = (Preference) findPreference(BATTERY_LEVEL_THREE);
+    		mBatteryLevelThree.setOnPreferenceChangeListener(this);
+    		mBatteryLevelColorThree = (Preference) findPreference(BATTERY_LEVEL_COLOR_THREE);
+    		mBatteryLevelColorThree.setOnPreferenceChangeListener(this);
+    		
     		mBatteryDepletedColor = (Preference) findPreference(BATTERY_DEPLETED_COLOR);
     		mBatteryDepletedColor.setOnPreferenceChangeListener(this);
             break;            

@@ -36,40 +36,67 @@ import android.util.Log;
 public class CustomQuickColorSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
-	
+	private final String QK_COLOR = "qk_color";
+	private final String QK_CLEAR_ALL = "qk_clear_all";
 	
 	//Icons - Signal/Wifi
 	private final String Junk_Icon_Settings = "JUNK_ICON_SETTINGS";
+	private final String QK_ICON_COLOR = "qk_icon_color";
 	private final String ICON_COLOR = "icon_color";
 	
 	// Battery
     private final String Junk_Battery_Settings = "JUNK_BATTERY_SETTINGS";
+	private final String QK_BATTERY_DEPLETED_COLOR = "qk_battery_depleted_color";
+	private final String QK_BATTERY_LEVEL_COLOR_ONE = "qk_battery_levels_color_one";
+	private final String QK_BATTERY_LEVEL_COLOR_TWO = "qk_battery_levels_color_two";
+	private final String QK_BATTERY_LEVEL_COLOR_THREE = "qk_battery_levels_color_three";    
 	private final String BATTERY_DEPLETED_COLOR = "battery_depleted_color";
 	private final String BATTERY_LEVEL_COLOR_ONE = "battery_levels_color_one";
 	private final String BATTERY_LEVEL_COLOR_TWO = "battery_levels_color_two";
 	private final String BATTERY_LEVEL_COLOR_THREE = "battery_levels_color_three";    
+
 	
 	//Navbar
 	private final String Junk_NavBar_Settings = "JUNK_NAVBAR_SETTINGS";
+    private final String QK_NAV_BAR_COLOR = "qk_nav_button_color";
     private final String NAV_BAR_COLOR = "nav_button_color";
+
     
     //Pulldown
     private final String Junk_Pulldown_Settings = "JUNK_PULLDOWN_SETTINGS";
+	private final String QK_BATTERY_LABEL_COLOR = "qk_battery_label_color";
+	private final String QK_TEMP_LABEL_COLOR = "qk_temp_label_color";
+	private final String QK_CARRIER_COLOR = "qk_carrier_color";
+	private final String QK_DATE_COLOR = "qk_date_color";
 	private final String BATTERY_LABEL_COLOR = "battery_label_color";
 	private final String TEMP_LABEL_COLOR = "temp_label_color";
 	private final String CARRIER_COLOR = "carrier_color";
 	private final String DATE_COLOR = "date_color";
+
 	
+	private final String QK_CLEAR_BUTTON_COLOR = "qk_clear_button_color";
+	private final String QK_CLOSE_BAR_COLOR = "qk_close_bar_color";
 	private final String CLEAR_BUTTON_COLOR = "clear_button_color";
 	private final String CLOSE_BAR_COLOR = "close_bar_color";
 
+
 	//Clock
 	private final String Junk_Clock_Settings = "JUNK_CLOCK_SETTINGS";
+	private final String QK_CLOCK_COLOR = "qk_clock_color";
 	private final String CLOCK_COLOR = "clock_color";
 	
 	//Toggles
 	private final String Junk_Toggle_Settings = "JUNK_TOGGLE_SETTINGS";
 	private final String TOGGLES_UPDATE = "toggles_update";
+	private final String QK_TOGGLE_COLOR = "qk_toggle_color";
+	private final String QK_TOGGLE_ICON_ON_COLOR = "qk_toggle_icon_on_color";
+	private final String QK_TOGGLE_ICON_INTER_COLOR = "qk_toggle_icon_inter_color";
+	private final String QK_TOGGLE_ICON_OFF_COLOR = "qk_toggle_icon_off_color";
+	private final String QK_TOGGLE_IND_ON_COLOR = "qk_toggle_ind_on_color";
+	private final String QK_TOGGLE_IND_OFF_COLOR = "qk_toggle_ind_off_color";
+	private final String QK_TOGGLE_TEXT_ON_COLOR = "qk_toggle_text_on_color";
+	private final String QK_TOGGLE_TEXT_OFF_COLOR = "qk_toggle_text_off_color";
+	private final String QK_TOGGLE_DIVIDER_COLOR = "qk_toggle_divider_color";
 	private final String TOGGLE_COLOR = "toggle_color";
 	private final String TOGGLE_ICON_ON_COLOR = "toggles_icon_on_color";
 	private final String TOGGLE_ICON_INTER_COLOR = "toggles_icon_inter_color";
@@ -81,37 +108,41 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 	private final String TOGGLE_DIVIDER_COLOR = "toggle_divider_color";
 
 
+
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
 
-	private Preference mIconColor;
+	private Preference mQkColor;
+	private Preference mQkClearAll;
 	
-	private Preference mBatteryDepletedColor;
-    private Preference mBatteryLevelColorOne;
-    private Preference mBatteryLevelColorTwo;
-    private Preference mBatteryLevelColorThree;
+	private CheckBoxPreference mIconColor;
+	
+	private CheckBoxPreference mBatteryDepletedColor;
+    private CheckBoxPreference mBatteryLevelColorOne;
+    private CheckBoxPreference mBatteryLevelColorTwo;
+    private CheckBoxPreference mBatteryLevelColorThree;
 	
    
-	private Preference mNavigationBarColor;
+	private CheckBoxPreference mNavigationBarColor;
 	
-    private Preference mCarrierColor;
-    private Preference mBatteryColor;
-    private Preference mTempColor;
-    private Preference mDateColor;
-    private Preference mCloseBarColor;
-    private Preference mClearButtonColor;
+    private CheckBoxPreference mCarrierColor;
+    private CheckBoxPreference mBatteryColor;
+    private CheckBoxPreference mTempColor;
+    private CheckBoxPreference mDateColor;
+    private CheckBoxPreference mCloseBarColor;
+    private CheckBoxPreference mClearButtonColor;
     
-    private Preference mClockColor;
+    private CheckBoxPreference mClockColor;
     
-	private Preference mToggleColor;
-	private Preference mToggleIconOnColor;
-	private Preference mToggleIconInterColor;
-	private Preference mToggleIconOffColor;
-    private Preference mToggleIndOnColor;
-    private Preference mToggleIndOffColor;
-    private Preference mToggleTextOnColor;
-    private Preference mToggleTextOffColor;
-    private Preference mToggleDividerColor;
+	private CheckBoxPreference mToggleColor;
+	private CheckBoxPreference mToggleIconOnColor;
+	private CheckBoxPreference mToggleIconInterColor;
+	private CheckBoxPreference mToggleIconOffColor;
+    private CheckBoxPreference mToggleIndOnColor;
+    private CheckBoxPreference mToggleIndOffColor;
+    private CheckBoxPreference mToggleTextOnColor;
+    private CheckBoxPreference mToggleTextOffColor;
+    private CheckBoxPreference mToggleDividerColor;
 
 	
 	
@@ -128,50 +159,55 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
         sharedPref = prefMgr.getSharedPreferences();
  
        	addPreferencesFromResource(R.xml.custom_quickcolor_settings);
-       	
-        mIconColor = (Preference) findPreference(ICON_COLOR);
+
+        mQkClearAll = (Preference) findPreference(QK_CLEAR_ALL);
+		mQkClearAll.setOnPreferenceChangeListener(this);	
+        mQkColor = (Preference) findPreference(QK_COLOR);
+		mQkColor.setOnPreferenceChangeListener(this);	
+
+       	mIconColor = (CheckBoxPreference) findPreference(QK_ICON_COLOR);
 		mIconColor.setOnPreferenceChangeListener(this);	
-		mBatteryDepletedColor = (Preference) findPreference(BATTERY_DEPLETED_COLOR);
+		mBatteryDepletedColor = (CheckBoxPreference) findPreference(QK_BATTERY_DEPLETED_COLOR);
 		mBatteryDepletedColor.setOnPreferenceChangeListener(this);
-		mBatteryLevelColorOne = (Preference) findPreference(BATTERY_LEVEL_COLOR_ONE);
+		mBatteryLevelColorOne = (CheckBoxPreference) findPreference(QK_BATTERY_LEVEL_COLOR_ONE);
 		mBatteryLevelColorOne.setOnPreferenceChangeListener(this);
-		mBatteryLevelColorTwo = (Preference) findPreference(BATTERY_LEVEL_COLOR_TWO);
+		mBatteryLevelColorTwo = (CheckBoxPreference) findPreference(QK_BATTERY_LEVEL_COLOR_TWO);
 		mBatteryLevelColorTwo.setOnPreferenceChangeListener(this);
-		mBatteryLevelColorThree = (Preference) findPreference(BATTERY_LEVEL_COLOR_THREE);
+		mBatteryLevelColorThree = (CheckBoxPreference) findPreference(QK_BATTERY_LEVEL_COLOR_THREE);
 		mBatteryLevelColorThree.setOnPreferenceChangeListener(this);
-        mNavigationBarColor = (ColorPickerPreference) findPreference(NAV_BAR_COLOR);
+        mNavigationBarColor = (CheckBoxPreference) findPreference(QK_NAV_BAR_COLOR);
         mNavigationBarColor.setOnPreferenceChangeListener(this);
-		mCarrierColor = (Preference) findPreference(CARRIER_COLOR);
+		mCarrierColor = (CheckBoxPreference) findPreference(QK_CARRIER_COLOR);
 		mCarrierColor.setOnPreferenceChangeListener(this);        
-	    mBatteryColor = (Preference) findPreference(BATTERY_LABEL_COLOR);
+	    mBatteryColor = (CheckBoxPreference) findPreference(QK_BATTERY_LABEL_COLOR);
 		mBatteryColor.setOnPreferenceChangeListener(this);
-	    mTempColor = (Preference) findPreference(TEMP_LABEL_COLOR);
+	    mTempColor = (CheckBoxPreference) findPreference(QK_TEMP_LABEL_COLOR);
 		mTempColor.setOnPreferenceChangeListener(this);
-        mDateColor = (Preference) findPreference(DATE_COLOR);
-        mCloseBarColor = (Preference) findPreference(CLOSE_BAR_COLOR);
+        mDateColor = (CheckBoxPreference) findPreference(QK_DATE_COLOR);
+        mDateColor.setOnPreferenceChangeListener(this);
+        mCloseBarColor = (CheckBoxPreference) findPreference(QK_CLOSE_BAR_COLOR);
 		mCloseBarColor.setOnPreferenceChangeListener(this);
-        mClearButtonColor = (Preference) findPreference(CLEAR_BUTTON_COLOR);
+        mClearButtonColor = (CheckBoxPreference) findPreference(QK_CLEAR_BUTTON_COLOR);
 		mClearButtonColor.setOnPreferenceChangeListener(this);
-		mDateColor.setOnPreferenceChangeListener(this);
-        mClockColor = (Preference) findPreference(CLOCK_COLOR);
+        mClockColor = (CheckBoxPreference) findPreference(QK_CLOCK_COLOR);
 		mClockColor.setOnPreferenceChangeListener(this);
-    	mToggleColor = (Preference) findPreference(TOGGLE_COLOR);
+    	mToggleColor = (CheckBoxPreference) findPreference(QK_TOGGLE_COLOR);
     	mToggleColor.setOnPreferenceChangeListener(this);
-    	mToggleIconOnColor = (Preference) findPreference(TOGGLE_ICON_ON_COLOR);
+    	mToggleIconOnColor = (CheckBoxPreference) findPreference(QK_TOGGLE_ICON_ON_COLOR);
     	mToggleIconOnColor.setOnPreferenceChangeListener(this);
-    	mToggleIconInterColor = (Preference) findPreference(TOGGLE_ICON_INTER_COLOR);
+    	mToggleIconInterColor = (CheckBoxPreference) findPreference(QK_TOGGLE_ICON_INTER_COLOR);
     	mToggleIconInterColor.setOnPreferenceChangeListener(this);
-    	mToggleIconOffColor = (Preference) findPreference(TOGGLE_ICON_OFF_COLOR);
+    	mToggleIconOffColor = (CheckBoxPreference) findPreference(QK_TOGGLE_ICON_OFF_COLOR);
     	mToggleIconOffColor.setOnPreferenceChangeListener(this);
-        mToggleIndOnColor = (Preference) findPreference(TOGGLE_IND_ON_COLOR);
+        mToggleIndOnColor = (CheckBoxPreference) findPreference(QK_TOGGLE_IND_ON_COLOR);
         mToggleIndOnColor.setOnPreferenceChangeListener(this);
-        mToggleIndOffColor = (Preference) findPreference(TOGGLE_IND_OFF_COLOR);
+        mToggleIndOffColor = (CheckBoxPreference) findPreference(QK_TOGGLE_IND_OFF_COLOR);
         mToggleIndOffColor.setOnPreferenceChangeListener(this);
-        mToggleTextOnColor = (Preference) findPreference(TOGGLE_TEXT_ON_COLOR);
+        mToggleTextOnColor = (CheckBoxPreference) findPreference(QK_TOGGLE_TEXT_ON_COLOR);
         mToggleTextOnColor.setOnPreferenceChangeListener(this);
-        mToggleTextOffColor = (Preference) findPreference(TOGGLE_TEXT_OFF_COLOR);
+        mToggleTextOffColor = (CheckBoxPreference) findPreference(QK_TOGGLE_TEXT_OFF_COLOR);
         mToggleTextOffColor.setOnPreferenceChangeListener(this);
-        mToggleDividerColor = (Preference) findPreference(TOGGLE_DIVIDER_COLOR);
+        mToggleDividerColor = (CheckBoxPreference) findPreference(QK_TOGGLE_DIVIDER_COLOR);
         mToggleDividerColor.setOnPreferenceChangeListener(this);
         
         
@@ -192,6 +228,10 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
  
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+
+    	if (preference == mQkClearAll) {
+    		clearCheckMarks();
+        }  
     	
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -202,198 +242,401 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
      	final String key = preference.getKey();
      	
      	
-  	if (ICON_COLOR.equals(key)) {
-     	Intent i = new Intent();
-     	i.setAction(Junk_Icon_Settings);
-   	   	i.putExtra(ICON_COLOR, (Integer) objValue);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;
-   	   	
-  	} else if (BATTERY_DEPLETED_COLOR.equals(key)) {
-    	Intent i = new Intent();
-        i.setAction(Junk_Battery_Settings);
-        i.putExtra(BATTERY_DEPLETED_COLOR, (Integer) objValue);
-        getActivity().sendBroadcast(i);
-        i = null;
- 
-    } else if (BATTERY_LEVEL_COLOR_ONE.equals(key)) {
-    	Intent i = new Intent();
-        i.setAction(Junk_Battery_Settings);
-        i.putExtra(BATTERY_LEVEL_COLOR_ONE, (Integer) objValue);
-        getActivity().sendBroadcast(i);
-        i = null;
-         
-    } else if (BATTERY_LEVEL_COLOR_TWO.equals(key)) {
-    	Intent i = new Intent();
-        i.setAction(Junk_Battery_Settings);
-        i.putExtra(BATTERY_LEVEL_COLOR_TWO, (Integer) objValue);
-        getActivity().sendBroadcast(i);
-        i = null;
+     	
+     	if (QK_COLOR.equals(key)) {
+     		
 
-    } else if (BATTERY_LEVEL_COLOR_THREE.equals(key)) {
-    	Intent i = new Intent();
-        i.setAction(Junk_Battery_Settings);
-        i.putExtra(BATTERY_LEVEL_COLOR_THREE, (Integer) objValue);
-        getActivity().sendBroadcast(i);
-        i = null;
-    
-    } else if (NAV_BAR_COLOR.equals(key)) {
+  		if (mIconColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(ICON_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+  	     	Intent i = new Intent();
+  	     	i.setAction(Junk_Icon_Settings);
+  	   	   	i.putExtra(ICON_COLOR, (Integer) objValue);
+  	   	   	getActivity().sendBroadcast(i);
+  	   	   	i = null;
+  		}
+  		
+  		
+  		if (mBatteryDepletedColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(BATTERY_DEPLETED_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_DEPLETED_COLOR, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+  		} 		
+  		
+  		
+  		if (mBatteryLevelColorOne.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(BATTERY_LEVEL_COLOR_ONE, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_LEVEL_COLOR_ONE, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+  		} 		
+  		
+  		if (mBatteryLevelColorTwo.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(BATTERY_LEVEL_COLOR_TWO, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_LEVEL_COLOR_TWO, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;  			
+  		} 		
+  		
+  		
+  		if (mBatteryLevelColorThree.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(BATTERY_LEVEL_COLOR_THREE, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_LEVEL_COLOR_THREE, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;  			
+  		} 		
+  		
+  		
+  		if (mNavigationBarColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(NAV_BAR_COLOR, (Integer) objValue);
+            editor.commit();
+  			
         	Intent i = new Intent();
         	i.setAction(Junk_NavBar_Settings );
        	   	i.putExtra(NAV_BAR_COLOR, (Integer) objValue);
        	   	getActivity().sendBroadcast(i);
+       	   	i = null; 		}   		
+  		
+  		if (mBatteryColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(BATTERY_LABEL_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Pulldown_Settings );
+            i.putExtra(BATTERY_LABEL_COLOR, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;           	  
+  		
+  		}
+   	   	
+  		if (mTempColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(TEMP_LABEL_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Pulldown_Settings );
+            i.putExtra(TEMP_LABEL_COLOR, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;           	  
+ 		
+  		}
+
+  		if (mCarrierColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(CARRIER_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Pulldown_Settings );
+            i.putExtra(CARRIER_COLOR, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+     		
+  		}
+
+  		if (mDateColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(DATE_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(DATE_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;        
+     		
+  		}
+
+  		if (mClockColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(CLOCK_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Clock_Settings );
+            i.putExtra(CLOCK_COLOR, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+     		
+  		}
+
+  		if (mToggleColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(TOGGLE_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLE_COLOR, (Integer) objValue);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+  		}
+    
+  		if (mToggleIconOnColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(TOGGLE_ICON_ON_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLE_ICON_ON_COLOR, (Integer) objValue);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+  		}
+    
+  		if (mToggleIconInterColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(TOGGLE_ICON_INTER_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLE_ICON_INTER_COLOR, (Integer) objValue);
+       	   	getActivity().sendBroadcast(i);
        	   	i = null;
        	   	
-    } else if (BATTERY_LABEL_COLOR.equals(key)) {
-    	Intent i = new Intent();
-        i.setAction(Junk_Pulldown_Settings );
-        i.putExtra(BATTERY_LABEL_COLOR, (Integer) objValue);
-        getActivity().sendBroadcast(i);
-        i = null;           	  
+        	i = new Intent();
+            i.setAction(Junk_Toggle_Settings);
+            i.putExtra(TOGGLES_UPDATE, true);
+            getActivity().sendBroadcast(i);
+            i = null;
 
-    } else if (TEMP_LABEL_COLOR.equals(key)) {
-    	Intent i = new Intent();
-        i.setAction(Junk_Pulldown_Settings );
-        i.putExtra(TEMP_LABEL_COLOR, (Integer) objValue);
-        getActivity().sendBroadcast(i);
-        i = null;           	  
+  		}
+  		
+  		if (mToggleIconOffColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(TOGGLE_ICON_OFF_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLE_ICON_OFF_COLOR, (Integer) objValue);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;      
+       	   	
+        	i = new Intent();
+            i.setAction(Junk_Toggle_Settings);
+            i.putExtra(TOGGLES_UPDATE, true);
+            getActivity().sendBroadcast(i);
+            i = null;
 
-    } else if (CARRIER_COLOR.equals(key)) {
-    	Intent i = new Intent();
-        i.setAction(Junk_Pulldown_Settings );
-        i.putExtra(CARRIER_COLOR, (Integer) objValue);
-        getActivity().sendBroadcast(i);
-        i = null;
-        
-    } else if (DATE_COLOR.equals(key)) {
-    	Intent i = new Intent();
-    	i.setAction(Junk_Pulldown_Settings );
-    	i.putExtra(DATE_COLOR, (Integer) objValue);
-    	getActivity().sendBroadcast(i);
-    	i = null;        
+  		}
+  		
+  		if (mToggleIndOnColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(TOGGLE_IND_ON_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Toggle_Settings);
+            i.putExtra(TOGGLE_IND_ON_COLOR, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+            
+        	i = new Intent();
+            i.setAction(Junk_Toggle_Settings);
+            i.putExtra(TOGGLES_UPDATE, true);
+            getActivity().sendBroadcast(i);
+            i = null;
 
-    } else if (CLOCK_COLOR.equals(key)) {
-    	Intent i = new Intent();
-        i.setAction(Junk_Clock_Settings );
-        i.putExtra(CLOCK_COLOR, (Integer) objValue);
-        getActivity().sendBroadcast(i);
-        i = null;
+  		}
         
-	} else if (TOGGLE_COLOR.equals(key)) {
-    	Intent i = new Intent();
-    	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra(TOGGLE_COLOR, (Integer) objValue);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;
-   
-	} else if (TOGGLE_ICON_ON_COLOR.equals(key)) {
-    	Intent i = new Intent();
-    	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra(TOGGLE_ICON_ON_COLOR, (Integer) objValue);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;
+  		if (mToggleIndOffColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(TOGGLE_IND_OFF_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Toggle_Settings);
+            i.putExtra(TOGGLE_IND_OFF_COLOR, (Integer) objValue);
+             getActivity().sendBroadcast(i);
+            i = null; 
+            
+        	i = new Intent();
+            i.setAction(Junk_Toggle_Settings);
+            i.putExtra(TOGGLES_UPDATE, true);
+            getActivity().sendBroadcast(i);
+            i = null;
 
-	} else if (TOGGLE_ICON_INTER_COLOR.equals(key)) {
-    	Intent i = new Intent();
-    	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra(TOGGLE_ICON_INTER_COLOR, (Integer) objValue);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;
-   	   	
-	} else if (TOGGLE_ICON_OFF_COLOR.equals(key)) {
-    	Intent i = new Intent();
-    	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra(TOGGLE_ICON_OFF_COLOR, (Integer) objValue);
-   	   	getActivity().sendBroadcast(i);
-   	   	i = null;       	   	
-   	   	
-    } else if (TOGGLE_IND_ON_COLOR.equals(key)) {
-    	Intent i = new Intent();
-        i.setAction(Junk_Toggle_Settings);
-        i.putExtra(TOGGLE_IND_ON_COLOR, (Integer) objValue);
-        getActivity().sendBroadcast(i);
-        i = null;
-        
-    	i = new Intent();
-        i.setAction(Junk_Toggle_Settings);
-        i.putExtra(TOGGLES_UPDATE, true);
-        getActivity().sendBroadcast(i);
-        i = null;
-        
-    } else if (TOGGLE_IND_OFF_COLOR.equals(key)) {
-    	Intent i = new Intent();
-        i.setAction(Junk_Toggle_Settings);
-        i.putExtra(TOGGLE_IND_OFF_COLOR, (Integer) objValue);
-         getActivity().sendBroadcast(i);
-        i = null;
-        
-    	i = new Intent();
-        i.setAction(Junk_Toggle_Settings);
-        i.putExtra(TOGGLES_UPDATE, true);
-        getActivity().sendBroadcast(i);
-        i = null;
+        }
 
-    } else if (TOGGLE_TEXT_ON_COLOR.equals(key)) {
-    	Intent i = new Intent();
-        i.setAction(Junk_Toggle_Settings);
-        i.putExtra(TOGGLE_TEXT_ON_COLOR, (Integer) objValue);
-        getActivity().sendBroadcast(i);
-        i = null;        
-        
-    	i = new Intent();
-        i.setAction(Junk_Toggle_Settings);
-        i.putExtra(TOGGLES_UPDATE, true);
-        getActivity().sendBroadcast(i);
-        i = null;
-
-    } else if (TOGGLE_TEXT_OFF_COLOR.equals(key)) {
-    	Intent i = new Intent();
-        i.setAction(Junk_Toggle_Settings);
-        i.putExtra(TOGGLE_TEXT_OFF_COLOR, (Integer) objValue);
-        getActivity().sendBroadcast(i);
-        i = null;     
-        
-    	i = new Intent();
-        i.setAction(Junk_Toggle_Settings);
-        i.putExtra(TOGGLES_UPDATE, true);
-        getActivity().sendBroadcast(i);
-        i = null;
-    
-    } else if (TOGGLE_DIVIDER_COLOR.equals(key)) {
-    	Intent i = new Intent();
-        i.setAction(Junk_Toggle_Settings);
-        i.putExtra(TOGGLE_DIVIDER_COLOR, (Integer) objValue);
-        getActivity().sendBroadcast(i);
-        i = null;  
-        
-    	i = new Intent();
-        i.setAction(Junk_Toggle_Settings);
-        i.putExtra(TOGGLES_UPDATE, true);
-        getActivity().sendBroadcast(i);
-        i = null;
+  		if (mToggleTextOnColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(TOGGLE_TEXT_ON_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Toggle_Settings);
+            i.putExtra(TOGGLE_TEXT_ON_COLOR, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;        
+            
+        	i = new Intent();
+            i.setAction(Junk_Toggle_Settings);
+            i.putExtra(TOGGLES_UPDATE, true);
+            getActivity().sendBroadcast(i);
+            i = null;
+        }
   	
-    } else if (CLEAR_BUTTON_COLOR.equals(key)) {
-    	Intent i = new Intent();
-    	i.setAction(Junk_Pulldown_Settings );
-    	i.putExtra(CLEAR_BUTTON_COLOR, (Integer) objValue);
-    	getActivity().sendBroadcast(i);
-    	i = null;      
-    	
-    } else if (CLOSE_BAR_COLOR.equals(key)) {
-    	Intent i = new Intent();
-    	i.setAction(Junk_Pulldown_Settings );
-    	i.putExtra(CLOSE_BAR_COLOR, (Integer) objValue);
-    	getActivity().sendBroadcast(i);
-    	i = null;              	
-        
-    }
-    
-    
-        return true;
-    }
- 
-    
+  		if (mToggleTextOffColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(TOGGLE_TEXT_OFF_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Toggle_Settings);
+            i.putExtra(TOGGLE_TEXT_OFF_COLOR, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;     
+            
+        	i = new Intent();
+            i.setAction(Junk_Toggle_Settings);
+            i.putExtra(TOGGLES_UPDATE, true);
+            getActivity().sendBroadcast(i);
+            i = null;
+        }
+  		
+  		if (mToggleDividerColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(TOGGLE_DIVIDER_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Toggle_Settings);
+            i.putExtra(TOGGLE_DIVIDER_COLOR, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;  
+            
+        	i = new Intent();
+            i.setAction(Junk_Toggle_Settings);
+            i.putExtra(TOGGLES_UPDATE, true);
+            getActivity().sendBroadcast(i);
+            i = null;
+       }
+  		
+  		if (mClearButtonColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(CLEAR_BUTTON_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(CLEAR_BUTTON_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;      
+       }
+
+  		if (mCloseBarColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(CLOSE_BAR_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(CLOSE_BAR_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;              	
+       }
+  		
+  	}
+     	return true;
+    }    	
 
     
- 
-} 
+    private void clearCheckMarks() {
+    	
+       	mIconColor.setChecked(false);
+		mBatteryDepletedColor.setChecked(false);
+		mBatteryLevelColorOne.setChecked(false);
+		mBatteryLevelColorTwo.setChecked(false);
+		mBatteryLevelColorThree.setChecked(false);
+        mNavigationBarColor.setChecked(false);
+		mCarrierColor.setChecked(false);
+	    mBatteryColor.setChecked(false);
+	    mTempColor.setChecked(false);
+        mDateColor.setChecked(false);
+        mCloseBarColor.setChecked(false);
+        mClearButtonColor.setChecked(false);
+        mClockColor.setChecked(false);
+    	mToggleColor.setChecked(false);
+    	mToggleIconOnColor.setChecked(false);
+    	mToggleIconInterColor.setChecked(false);
+    	mToggleIconOffColor.setChecked(false);
+        mToggleIndOnColor.setChecked(false);
+        mToggleIndOffColor.setChecked(false);
+        mToggleTextOnColor.setChecked(false);
+        mToggleTextOffColor.setChecked(false);
+        mToggleDividerColor.setChecked(false);
+    }
+    
+}

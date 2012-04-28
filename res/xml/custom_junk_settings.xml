@@ -10,10 +10,24 @@
     
     <PreferenceScreen
         android:layout="?android:attr/preferenceLayoutChild"
-        android:key="custom_color_theme_settings"
-        android:title="Color and Theme Settings"
-        android:summary="Coloring for all items and save/apply themes"
-        android:fragment="com.android.settings.CustomColorThemeSettings" />
+        android:key="custom_color_settings"
+        android:title="Color Items"
+        android:summary="Coloring for all custom items"
+        android:fragment="com.android.settings.CustomColorSettings" />
+ 
+    <PreferenceScreen
+        android:layout="?android:attr/preferenceLayoutChild"
+        android:key="custom_qk_color_settings"
+        android:title="Quick Color Items"
+        android:summary="Coloring for all custom items"
+        android:fragment="com.android.settings.CustomQuickColorSettings" />    
+    
+    <PreferenceScreen
+   		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="theme_settings"
+        android:title="Theme Settings"
+        android:summary="Save and apply colors and settings"
+        android:fragment="com.android.settings.CustomThemeSettings" />
            
     </PreferenceCategory>       
     
@@ -22,19 +36,34 @@
 		android:title="S T A T U S B A R   S E T T I N G S"
 		android:key="statusbar_settings">
 
-    <PreferenceScreen
-   		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="icon_settings"
-        android:title="Signal Icons Settings"
-        android:summary="Settings to customize signal icons"
-        android:fragment="com.android.settings.CustomIconSettings" />        
+	<com.android.settings.ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="icon_color"
+		android:title="Signal Icons Color"
+		android:summary="Color for signal icons"
+		android:defaultValue="#ff3fa2c7" 
+		alphaSlider="false" /> 	        
     
-    <PreferenceScreen
+	<ListPreference
    		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="battery_settings"
-        android:title="Battery Settings"
-        android:summary="Settings to customize your statusbar"
-        android:fragment="com.android.settings.CustomBatterySettings" />
+	    android:key="battery_icon_num"
+	    android:title="Battery Icons"
+	    android:summary="Different battery icons"
+	    android:entryValues="@array/battery_icons_values"
+	    android:entries="@array/battery_icons"
+	   	
+	     />
+
+    <PreferenceScreen
+   		android:layout="?android:attr/preferenceLayoutChild"      
+        android:fragment="com.android.settings.CustomBatteryOptions"
+        android:key="custom_battery_options"
+        android:title="Battery Options" />	    
+    
+    
+    
+    
+    
     
     <PreferenceScreen
         android:layout="?android:attr/preferenceLayoutChild"
