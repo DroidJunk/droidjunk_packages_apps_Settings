@@ -43,7 +43,6 @@ public class CustomChargeOptions extends SettingsPreferenceFragment implements
 	private final String CHARGING_LEVEL_COLOR_ONE = "charge_levels_color_one";
 	private final String CHARGING_LEVEL_TWO = "charge_levels_two";
 	private final String CHARGING_LEVEL_COLOR_TWO = "charge_levels_color_two";
-	private final String CHARGING_LEVEL_THREE = "charge_levels_three";
 	private final String CHARGING_LEVEL_COLOR_THREE = "charge_levels_color_three";    
 	
 
@@ -54,12 +53,11 @@ public class CustomChargeOptions extends SettingsPreferenceFragment implements
     private Preference mChargingLevelColorOne;
 	private Preference mChargingLevelTwo;
     private Preference mChargingLevelColorTwo;
-	private Preference mChargingLevelThree;
     private Preference mChargingLevelColorThree;
     
     public int chargeLevelOne = 10;
     public int chargeLevelTwo = 30;
-    public int chargeLevelThree = 70;
+
 
 	
 	
@@ -85,19 +83,10 @@ public class CustomChargeOptions extends SettingsPreferenceFragment implements
 		mChargingLevelTwo.setOnPreferenceChangeListener(this);
 		mChargingLevelColorTwo = (Preference) findPreference(CHARGING_LEVEL_COLOR_TWO);
 		mChargingLevelColorTwo.setOnPreferenceChangeListener(this);
-		mChargingLevelThree = (Preference) findPreference(CHARGING_LEVEL_THREE);
-		mChargingLevelThree.setOnPreferenceChangeListener(this);
 		mChargingLevelColorThree = (Preference) findPreference(CHARGING_LEVEL_COLOR_THREE);
 		mChargingLevelColorThree.setOnPreferenceChangeListener(this);
         
-
-        
-
-		
-        
         resendIntents();
-        
-        
     }
 
     
@@ -111,23 +100,15 @@ public class CustomChargeOptions extends SettingsPreferenceFragment implements
                     0,
                     chargeLevelTwo - 1,
                     R.string.charging_level_max).show();
-        
+ 		
     	} else if (preference == mChargingLevelTwo) {
 			new NumberPickerDialog(preferenceScreen.getContext(),
 					chargingLevelTwoListener,
                     chargeLevelTwo,
                     chargeLevelOne + 1,
-                    chargeLevelThree - 1,
-                    R.string.charging_level_max).show();
-      
-    	} else if (preference == mChargingLevelThree) {
-			new NumberPickerDialog(preferenceScreen.getContext(),
-					chargingLevelThreeListener,
-					chargeLevelThree,
-					chargeLevelTwo + 1,
                     99,
                     R.string.charging_level_max).show();
-    	};
+    	}
    
         return super.onPreferenceTreeClick(preferenceScreen, preference);
 
@@ -150,13 +131,6 @@ public class CustomChargeOptions extends SettingsPreferenceFragment implements
             	}
             };      
 
-        NumberPickerDialog.OnNumberSetListener chargingLevelThreeListener =
-        	new NumberPickerDialog.OnNumberSetListener() {
-            	public void onNumberSet(int limit) {
-            		chargeLevelThree = (int) limit;
-            		mChargingLevelThree.getOnPreferenceChangeListener().onPreferenceChange(mChargingLevelThree, (int) limit);
-            	}
-            };      
                 	
 
              
@@ -205,18 +179,6 @@ public class CustomChargeOptions extends SettingsPreferenceFragment implements
             getActivity().sendBroadcast(i);
             i = null;
 
-        } else if (CHARGING_LEVEL_THREE.equals(key)) {
-        	sharedPref = prefMgr.getSharedPreferences();
-        	SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt(CHARGING_LEVEL_THREE, chargeLevelThree);
-            editor.commit();
-        	
-            Intent i = new Intent();
-            i.setAction(Junk_Battery_Settings);
-            i.putExtra(CHARGING_LEVEL_THREE, chargeLevelThree);
-            getActivity().sendBroadcast(i);
-            i = null;
-        
         } else if (CHARGING_LEVEL_COLOR_THREE.equals(key)) {
         	Intent i = new Intent();
             i.setAction(Junk_Battery_Settings);
@@ -256,12 +218,6 @@ public class CustomChargeOptions extends SettingsPreferenceFragment implements
             getActivity().sendBroadcast(i);
             i = null;
 
-            i = new Intent();
-            i.setAction(Junk_Battery_Settings );
-            i.putExtra(CHARGING_LEVEL_THREE, chargeLevelThree);
-            getActivity().sendBroadcast(i);
-            i = null;
-        
             i = new Intent();
             i.setAction(Junk_Battery_Settings );
             i.putExtra(CHARGING_LEVEL_COLOR_THREE, sharedPref.getInt(CHARGING_LEVEL_COLOR_THREE, 0xff3792b4));

@@ -729,26 +729,22 @@
 		<item>10</item>
     </string-array>    
     
-    <string-array name="battery_fonts">
-		<item>System</item>
-		<item>LCD</item>
-		<item>LCD Radio</item>
-		<item>LCD Radio Slim</item>
-       	<item>Dot</item>
-		<item>Dot Multi</item>
-		<item>Radio</item>
-       	<item>Varsity</item>
+    <string-array name="theme_presets">
+		<item>Junk</item>
+		<item>Blue</item>
+		<item>Green</item>
+		<item>Red</item>
+		<item>Orange</item>       	
+		<item>Purple</item>
     </string-array> 
  
-    <string-array name="battery_fonts_values">
-		<item>system</item>
-		<item>lcd</item>
-       	<item>lcdradio</item>
-		<item>lcdradioslim</item>
-       	<item>dot</item>
-       	<item>dotmulti</item>
-       	<item>radio</item>
-       	<item>varsity</item>
+    <string-array name="theme_presets_values">
+		<item>Junk</item>
+		<item>Blue</item>
+		<item>Green</item>
+		<item>Red</item>
+		<item>Orange</item>       	
+		<item>Purple</item>
     </string-array>        
     
 	<!-- ***************************************************************************************** -->    

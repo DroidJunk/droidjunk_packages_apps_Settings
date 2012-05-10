@@ -73,6 +73,31 @@
 					
     </PreferenceCategory>
 
+    <PreferenceCategory
+		android:title="C H A R G I N G   I C O N"
+		android:key="quickcolor_charging">
+
+			
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_charge_levels_color_one"
+		android:title="Charging Level One" 
+		android:defaultValue="false"	/>		
+		
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_charge_levels_color_two"
+		android:title="Charging Level Two" 
+		android:defaultValue="false"	/>			
+		
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_charge_levels_color_three"
+		android:title="Charging Level Three" 
+		android:defaultValue="false"	/>	
+		
+					
+    </PreferenceCategory>
     
     
     <PreferenceCategory

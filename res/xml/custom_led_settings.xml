@@ -37,14 +37,14 @@
 		android:defaultValue="#ff3F9BBF" 
 		alphaSlider="false" /> 
 
-	<Preference	
+	<DJSeekBarPreference	
 		android:layout="?android:attr/preferenceLayoutChild"
    		android:key="default_led_on_ms"
 		android:title="LED On Seconds (in 10ths)"
 		android:summary="Number of seconds LED is on"
 		android:defaultValue="3" />	
 		
-	<Preference	
+	<DJSeekBarPreference	
 		android:layout="?android:attr/preferenceLayoutChild"
    		android:key="default_led_off_ms"
 		android:title="LED Off Seconds (in 10ths)"
@@ -75,7 +75,7 @@
 		android:defaultValue="true"	/>		
 		
 
-	<Preference	
+	<DJSeekBarPreference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="incoming_call_pulse"
    		android:key="incoming_led_on_ms"
@@ -83,7 +83,7 @@
 		android:summary="Number of seconds LED is on"
 		android:defaultValue="3" />	
 		
-	<Preference	
+	<DJSeekBarPreference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="incoming_call_pulse"
    		android:key="incoming_led_off_ms"
@@ -114,7 +114,7 @@
 		android:defaultValue="true"	/>		
 		
 
-	<Preference	
+	<DJSeekBarPreference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="missed_call_pulse"
    		android:key="missed_call_led_on_ms"
@@ -122,7 +122,7 @@
 		android:summary="Number of seconds LED is on"
 		android:defaultValue="3" />	
 		
-	<Preference	
+	<DJSeekBarPreference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="missed_call_pulse"
    		android:key="missed_call_led_off_ms"
@@ -153,7 +153,7 @@
 		android:defaultValue="true"	/>		
 		
 
-	<Preference	
+	<DJSeekBarPreference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="voice_mail_pulse"
    		android:key="voice_mail_led_on_ms"
@@ -161,7 +161,7 @@
 		android:summary="Number of seconds LED is on"
 		android:defaultValue="3" />	
 		
-	<Preference	
+	<DJSeekBarPreference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="voice_mail_pulse"
    		android:key="voice_mail_led_off_ms"

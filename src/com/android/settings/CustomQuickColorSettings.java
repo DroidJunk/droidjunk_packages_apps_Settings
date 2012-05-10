@@ -55,6 +55,14 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 	private final String BATTERY_LEVEL_COLOR_TWO = "battery_levels_color_two";
 	private final String BATTERY_LEVEL_COLOR_THREE = "battery_levels_color_three";    
 
+	// Charge
+	private final String QK_CHARGING_LEVEL_COLOR_ONE = "qk_charge_levels_color_one";
+	private final String QK_CHARGING_LEVEL_COLOR_TWO = "qk_charge_levels_color_two";
+	private final String QK_CHARGING_LEVEL_COLOR_THREE = "qk_charge_levels_color_three";    
+	private final String CHARGING_LEVEL_COLOR_ONE = "charge_levels_color_one";
+	private final String CHARGING_LEVEL_COLOR_TWO = "charge_levels_color_two";
+	private final String CHARGING_LEVEL_COLOR_THREE = "charge_levels_color_three";    
+	
 	
 	//Navbar
 	private final String Junk_NavBar_Settings = "JUNK_NAVBAR_SETTINGS";
@@ -121,7 +129,10 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
     private CheckBoxPreference mBatteryLevelColorOne;
     private CheckBoxPreference mBatteryLevelColorTwo;
     private CheckBoxPreference mBatteryLevelColorThree;
-	
+    
+    private CheckBoxPreference mChargingLevelColorOne;
+    private CheckBoxPreference mChargingLevelColorTwo;
+    private CheckBoxPreference mChargingLevelColorThree;
    
 	private CheckBoxPreference mNavigationBarColor;
 	
@@ -175,7 +186,13 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 		mBatteryLevelColorTwo.setOnPreferenceChangeListener(this);
 		mBatteryLevelColorThree = (CheckBoxPreference) findPreference(QK_BATTERY_LEVEL_COLOR_THREE);
 		mBatteryLevelColorThree.setOnPreferenceChangeListener(this);
-        mNavigationBarColor = (CheckBoxPreference) findPreference(QK_NAV_BAR_COLOR);
+		mChargingLevelColorOne = (CheckBoxPreference) findPreference(QK_CHARGING_LEVEL_COLOR_ONE);
+		mChargingLevelColorOne.setOnPreferenceChangeListener(this);
+		mChargingLevelColorTwo = (CheckBoxPreference) findPreference(QK_CHARGING_LEVEL_COLOR_TWO);
+		mChargingLevelColorTwo.setOnPreferenceChangeListener(this);
+		mChargingLevelColorThree = (CheckBoxPreference) findPreference(QK_CHARGING_LEVEL_COLOR_THREE);
+		mChargingLevelColorThree.setOnPreferenceChangeListener(this);
+		mNavigationBarColor = (CheckBoxPreference) findPreference(QK_NAV_BAR_COLOR);
         mNavigationBarColor.setOnPreferenceChangeListener(this);
 		mCarrierColor = (CheckBoxPreference) findPreference(QK_CARRIER_COLOR);
 		mCarrierColor.setOnPreferenceChangeListener(this);        
@@ -318,6 +335,50 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
             getActivity().sendBroadcast(i);
             i = null;  			
   		} 		
+  		
+  		if (mChargingLevelColorOne.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(CHARGING_LEVEL_COLOR_ONE, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(CHARGING_LEVEL_COLOR_ONE, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+  		} 		
+  		
+  		if (mChargingLevelColorTwo.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(CHARGING_LEVEL_COLOR_TWO, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(CHARGING_LEVEL_COLOR_TWO, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;  			
+  		} 		
+  		
+  		
+  		if (mChargingLevelColorThree.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(CHARGING_LEVEL_COLOR_THREE, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(CHARGING_LEVEL_COLOR_THREE, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;  			
+  		} 		
+
   		
   		
   		if (mNavigationBarColor.isChecked()) {
@@ -620,7 +681,10 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 		mBatteryLevelColorOne.setChecked(false);
 		mBatteryLevelColorTwo.setChecked(false);
 		mBatteryLevelColorThree.setChecked(false);
-        mNavigationBarColor.setChecked(false);
+		mChargingLevelColorOne.setChecked(false);
+		mChargingLevelColorTwo.setChecked(false);
+		mChargingLevelColorThree.setChecked(false);
+		mNavigationBarColor.setChecked(false);
 		mCarrierColor.setChecked(false);
 	    mBatteryColor.setChecked(false);
 	    mTempColor.setChecked(false);

@@ -195,8 +195,8 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
             i.setAction(Junk_Toggle_Settings);
             i.putExtra(TOGGLE_SHOW_INDICATOR, (Boolean) objValue);
             if ((Boolean) objValue) {
-            	i.putExtra(TOGGLE_IND_ON_COLOR, (Integer) prefMgr.getSharedPreferences().getInt(TOGGLE_IND_ON_COLOR, 0xffffbb33));
-            	i.putExtra(TOGGLE_IND_OFF_COLOR, (Integer) prefMgr.getSharedPreferences().getInt(TOGGLE_IND_OFF_COLOR, 0xffba7b00));
+            	i.putExtra(TOGGLE_IND_ON_COLOR, (Integer) prefMgr.getSharedPreferences().getInt(TOGGLE_IND_ON_COLOR, 0xffffffff));
+            	i.putExtra(TOGGLE_IND_OFF_COLOR, (Integer) prefMgr.getSharedPreferences().getInt(TOGGLE_IND_OFF_COLOR, 0xff555555));
             	} else {
             		i.putExtra(TOGGLE_IND_ON_COLOR,0);
             		i.putExtra(TOGGLE_IND_OFF_COLOR,0);
@@ -242,8 +242,8 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
             i.setAction(Junk_Toggle_Settings);
             i.putExtra(TOGGLE_SHOW_TEXT, (Boolean) objValue);
             if ((Boolean) objValue) {
-            	i.putExtra(TOGGLE_TEXT_ON_COLOR, (Integer) prefMgr.getSharedPreferences().getInt(TOGGLE_TEXT_ON_COLOR, 0xffffbb33));
-            	i.putExtra(TOGGLE_TEXT_OFF_COLOR, (Integer) prefMgr.getSharedPreferences().getInt(TOGGLE_TEXT_OFF_COLOR, 0xffba7b00));
+            	i.putExtra(TOGGLE_TEXT_ON_COLOR, (Integer) prefMgr.getSharedPreferences().getInt(TOGGLE_TEXT_ON_COLOR, 0xffffffff));
+            	i.putExtra(TOGGLE_TEXT_OFF_COLOR, (Integer) prefMgr.getSharedPreferences().getInt(TOGGLE_TEXT_OFF_COLOR, 0xff555555));
             	} else {
             		i.putExtra(TOGGLE_TEXT_ON_COLOR,0);
             		i.putExtra(TOGGLE_TEXT_OFF_COLOR,0);
@@ -289,7 +289,7 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
         	i.setAction(Junk_Toggle_Settings);
         	i.putExtra(TOGGLE_SHOW_DIVIDER, (Boolean) objValue);
             if ((Boolean) objValue) {
-            	i.putExtra(TOGGLE_DIVIDER_COLOR, (Integer) prefMgr.getSharedPreferences().getInt(TOGGLE_DIVIDER_COLOR, 0xff535252));
+            	i.putExtra(TOGGLE_DIVIDER_COLOR, (Integer) prefMgr.getSharedPreferences().getInt(TOGGLE_DIVIDER_COLOR, 0xff3b3b3b));
             	} else {
             		i.putExtra(TOGGLE_DIVIDER_COLOR,0);
             }

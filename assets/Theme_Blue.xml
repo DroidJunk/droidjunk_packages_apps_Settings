@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+<boolean name="sound_effects" value="true" />
+<boolean name="com.android.inputmethod.latin/.LatinIME" value="true" />
+<boolean name="vibrate_on_ring" value="true" />
+<string name="font_size">1.0</string>
+<boolean name="haptic_feedback" value="true" />
+<int name="missed_call_led_off_ms" value="3" />
+<string name="emergency_tone">0</string>
+<int name="default_led_on_ms" value="3" />
+<boolean name="com.google.android.voicesearch/.ime.VoiceInputMethodService" value="true" />
+<boolean name="spellcheckers_settings" value="false" />
+<boolean name="lock_sounds" value="true" />
+<int name="default_led_off_ms" value="3" />
+<boolean name="enable_adb" value="true" />
+<int name="missed_call_led_on_ms" value="3" />
+<string name="silent_mode">off</string>
+<boolean name="dtmf_tone" value="true" />
+</map>

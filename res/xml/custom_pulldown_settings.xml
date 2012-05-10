@@ -155,7 +155,7 @@
 		android:key="battery_label_size"
 		android:title="Battery Level Text Size"
 		android:summary="Size of the battery level text"
-		android:defaultValue="12" />		 
+		android:defaultValue="14" />		 
     </PreferenceCategory>    
 
     
@@ -187,7 +187,7 @@
 		android:key="temp_label_size"
 		android:title="Battery Temperature Text Size"
 		android:summary="Size of the battery temperature text"
-		android:defaultValue="12" />		 
+		android:defaultValue="14" />		 
     </PreferenceCategory>        
   
     

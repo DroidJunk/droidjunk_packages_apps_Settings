@@ -63,6 +63,37 @@
 			
     </PreferenceCategory>
 
+ 
+
+    <PreferenceCategory
+		android:title="C H A R G I N G   I C O N"
+		android:key="quickcolor_charge">
+
+		<com.android.settings.ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild" 
+			android:key="charge_levels_color_one"
+			android:title="Charging Level One Color"
+			android:summary="Color for Max Level One"
+			android:defaultValue="#ffff0000" 
+			alphaSlider="false" />
+
+		<com.android.settings.ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild" 
+			android:key="charge_levels_color_two"
+			android:title="Charging Level Two Color"
+			android:summary="Color for Max Level Two"
+			android:defaultValue="#ffff9000" 
+			alphaSlider="false" />	
+
+		<com.android.settings.ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild" 
+			android:key="charge_levels_color_three"
+			android:title="Charging Level Three Color"
+			android:summary="Color for Min Level Three"
+			android:defaultValue="#ff3792b4" 
+			alphaSlider="false" />				
+			
+    </PreferenceCategory>    
     
     
     <PreferenceCategory

@@ -19,6 +19,22 @@
         >
 
     <PreferenceCategory
+		android:title="T H E M E   P R E S E T S"
+		android:key="theme_one"
+		>    
+    
+	<ListPreference
+		android:key="theme_presets"
+		android:dialogTitle="Preset Themes"
+		android:title="Choose a preset theme"
+		android:entries="@array/theme_presets"
+		android:entryValues="@array/theme_presets_values"
+		android:defaultValue="Junk"/>      
+	
+	</PreferenceCategory>    
+    
+    
+    <PreferenceCategory
 		android:title="T H E M E   O N E"
 		android:key="theme_one"
 		>

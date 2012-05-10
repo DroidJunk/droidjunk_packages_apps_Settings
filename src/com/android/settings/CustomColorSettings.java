@@ -49,6 +49,13 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 	private final String BATTERY_LEVEL_COLOR_TWO = "battery_levels_color_two";
 	private final String BATTERY_LEVEL_COLOR_THREE = "battery_levels_color_three";    
 	
+	// Charge
+	private final String CHARGING_LEVEL_ONE = "charge_levels_one";
+	private final String CHARGING_LEVEL_COLOR_ONE = "charge_levels_color_one";
+	private final String CHARGING_LEVEL_TWO = "charge_levels_two";
+	private final String CHARGING_LEVEL_COLOR_TWO = "charge_levels_color_two";
+	private final String CHARGING_LEVEL_COLOR_THREE = "charge_levels_color_three";    
+	
 	//Navbar
 	private final String Junk_NavBar_Settings = "JUNK_NAVBAR_SETTINGS";
     private final String NAV_BAR_COLOR = "nav_button_color";
@@ -91,7 +98,9 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
     private Preference mBatteryLevelColorTwo;
     private Preference mBatteryLevelColorThree;
 	
-   
+	private Preference mChargingLevelColorOne;
+	private Preference mChargingLevelColorTwo;
+    private Preference mChargingLevelColorThree;   
 	private Preference mNavigationBarColor;
 	
     private Preference mCarrierColor;
@@ -139,6 +148,12 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 		mBatteryLevelColorTwo.setOnPreferenceChangeListener(this);
 		mBatteryLevelColorThree = (Preference) findPreference(BATTERY_LEVEL_COLOR_THREE);
 		mBatteryLevelColorThree.setOnPreferenceChangeListener(this);
+		mChargingLevelColorOne = (Preference) findPreference(CHARGING_LEVEL_COLOR_ONE);
+		mChargingLevelColorOne.setOnPreferenceChangeListener(this);
+		mChargingLevelColorTwo = (Preference) findPreference(CHARGING_LEVEL_COLOR_TWO);
+		mChargingLevelColorTwo.setOnPreferenceChangeListener(this);
+		mChargingLevelColorThree = (Preference) findPreference(CHARGING_LEVEL_COLOR_THREE);
+		mChargingLevelColorThree.setOnPreferenceChangeListener(this);
         mNavigationBarColor = (ColorPickerPreference) findPreference(NAV_BAR_COLOR);
         mNavigationBarColor.setOnPreferenceChangeListener(this);
 		mCarrierColor = (Preference) findPreference(CARRIER_COLOR);
@@ -237,12 +252,33 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
         getActivity().sendBroadcast(i);
         i = null;
     
+    } else if (CHARGING_LEVEL_COLOR_ONE.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(CHARGING_LEVEL_COLOR_ONE, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;
+         
+    } else if (CHARGING_LEVEL_COLOR_TWO.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(CHARGING_LEVEL_COLOR_TWO, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;
+
+    } else if (CHARGING_LEVEL_COLOR_THREE.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(CHARGING_LEVEL_COLOR_THREE, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;
+
     } else if (NAV_BAR_COLOR.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_NavBar_Settings );
-       	   	i.putExtra(NAV_BAR_COLOR, (Integer) objValue);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
+        Intent i = new Intent();
+        i.setAction(Junk_NavBar_Settings );
+       	i.putExtra(NAV_BAR_COLOR, (Integer) objValue);
+       	getActivity().sendBroadcast(i);
+       	i = null;
        	   	
     } else if (BATTERY_LABEL_COLOR.equals(key)) {
     	Intent i = new Intent();

@@ -18,6 +18,8 @@ package com.android.settings;
 
 
 
+import java.io.IOException;
+
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
@@ -25,25 +27,20 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.preference.SeekBarPreference;
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-import android.util.Log;
 import android.widget.Toast;
 
 
 
 public class CustomThemeSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
-    
-	private final String Junk_Settings = "JUNK_SETTINGS";
+
+	private final String THEME_PRESETS = "theme_presets";
+
 	private final String THEME_ONE = "theme_one";
 	private final String THEME_TWO = "theme_two";
 	private final String THEME_THREE = "theme_three";
@@ -58,7 +55,13 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 	private final String THEME_APPLY_THREE = "apply_theme_three";
 	private final String SAVED_THEME = "saved_theme";
 	
-
+	private final String Junk_Pulldown_Settings = "JUNK_PULLDOWN_SETTINGS";
+	private final String SHOW_BATTERY_LABEL = "show_battery_label";
+	private final String BATTERY_LABEL_COLOR = "battery_label_color";
+	private final String BATTERY_LABEL_SIZE = "battery_label_size";
+	private final String SHOW_TEMP_LABEL = "show_temp_label";
+	private final String TEMP_LABEL_COLOR = "temp_label_color";
+	private final String TEMP_LABEL_SIZE = "temp_label_size";
 	private final String SHOW_CARRIER = "show_carrier";
 	private final String CARRIER_COLOR = "carrier_color";
 	private final String CARRIER_CUSTOM = "carrier_custom";
@@ -66,14 +69,41 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 	private final String CARRIER_SIZE = "carrier_size";
 	private final String DATE_COLOR = "date_color";
 	private final String DATE_SIZE = "date_size";
-	private final String SHOW_CLOCK = "show_clock";
+	private final String CLEAR_BUTTON_COLOR = "clear_button_color";
+	private final String CLOSE_BAR_COLOR = "close_bar_color";
+
+    private final String Junk_Battery_Settings = "JUNK_BATTERY_SETTINGS";	
+	private final String BATTERY_ICONS = "battery_icon_num";
+	private final String BATTERY_BAR_BOTTOM = "battery_bar_bottom";
+	private final String BATTERY_BAR_RIGHT = "battery_bar_right";
+	private final String BATTERY_BAR_WIDTH = "battery_bar_width";
+	private final String BATTERY_LEVEL_ONE = "battery_levels_one";
+	private final String BATTERY_LEVEL_COLOR_ONE = "battery_levels_color_one";
+	private final String BATTERY_LEVEL_TWO = "battery_levels_two";
+	private final String BATTERY_LEVEL_COLOR_TWO = "battery_levels_color_two";
+	private final String BATTERY_LEVEL_COLOR_THREE = "battery_levels_color_three";    
+	private final String DEPLETED_LEVEL_ONE = "depleted_levels_one";
+	private final String DEPLETED_LEVEL_COLOR_ONE = "depleted_levels_color_one";
+	private final String DEPLETED_LEVEL_TWO = "depleted_levels_two";
+	private final String DEPLETED_LEVEL_COLOR_TWO = "depleted_levels_color_two";
+	private final String DEPLETED_LEVEL_COLOR_THREE = "depleted_levels_color_three";    
+	private final String CHARGING_LEVEL_ONE = "charge_levels_one";
+	private final String CHARGING_LEVEL_COLOR_ONE = "charge_levels_color_one";
+	private final String CHARGING_LEVEL_TWO = "charge_levels_two";
+	private final String CHARGING_LEVEL_COLOR_TWO = "charge_levels_color_two";
+	private final String CHARGING_LEVEL_COLOR_THREE = "charge_levels_color_three";    
+	
+	private final String Junk_Clock_Settings = "JUNK_CLOCK_SETTINGS";
+    private final String SHOW_CLOCK = "show_clock";
 	private final String CLOCK_AMPM = "clock_ampm";
 	private final String CLOCK_COLOR = "clock_color";
 	private final String CLOCK_SIZE = "clock_size";
+	
+	
+	private final String Junk_Toggle_Settings = "JUNK_TOGGLE_SETTINGS";
 	private final String TOGGLES_ON = "toggles_show_toggles";
 	private final String TOGGLES_TOP = "toggles_top";
 	private final String TOGGLE_COLOR = "toggle_color";
-	private final String TOGGLE_CUSTOM_ICON_COLORS = "toggles_custom_icon_colors";
 	private final String TOGGLE_ICON_ON_COLOR = "toggles_icon_on_color";
 	private final String TOGGLE_ICON_INTER_COLOR = "toggles_icon_inter_color";
 	private final String TOGGLE_ICON_OFF_COLOR = "toggles_icon_off_color";
@@ -96,24 +126,25 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 	private final String TOGGLES_ROTATE_ON = "toggles_show_rotate";
 	private final String TOGGLES_SYNC_ON = "toggles_show_sync";
 	private final String TOGGLES_DATA_ON = "toggles_show_data";
+	
+	private final String Junk_Icon_Settings = "JUNK_ICON_SETTINGS";
+	private final String ICON_COLOR = "icon_color";
+	
+	private final String Junk_NavBar_Settings = "JUNK_NAVBAR_SETTINGS";
+    private final String NAV_BAR_COLOR = "nav_button_color";
     private final String SHOW_SEARCH_BUTTON = "search_button";
 	private final String SHOW_LEFT_MENU_BUTTON = "left_menu_button";
 	private final String SHOW_RIGHT_MENU_BUTTON = "right_menu_button";
     private final String SHOW_SEARCH_BUTTON_LAND = "search_button_land";
 	private final String SHOW_TOP_MENU_BUTTON_LAND = "top_menu_button_land";
 	private final String SHOW_BOT_MENU_BUTTON_LAND = "bottom_menu_button_land";
-	private final String ICON_COLOR_ON = "color_icons";
-	private final String ICON_COLOR = "icon_color";
-	private final String NAV_BAR_COLOR_ON = "nav_button_color_on";
-    private final String NAV_BAR_COLOR = "nav_button_color";
 
-	
-	
-    
 	private PreferenceManager prefMgr;
 	private PreferenceManager themeMgr;
 	private SharedPreferences themeEditor;
+	private SharedPreferences sp;
 	private SharedPreferences.Editor editor = null;
+    private ListPreference mThemePresets;
 	private PreferenceCategory mThemeOne;
 	private PreferenceCategory mThemeTwo;
 	private PreferenceCategory mThemeThree;
@@ -128,18 +159,26 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 	private Preference mApplyThemeThree;
 	private String themeOneName, themeTwoName, themeThreeName;
     private int whichTheme;
-    private boolean showCarrier, carrierCustom;
-    private boolean iconColorOn, showClock, clockAmPm, togglesShowToggles, togglesTop, toggleCustomIconColors ; 
+    private boolean batteryBarBottom, batteryBarRight;
+    private boolean showCarrier, carrierCustom, showBatteryLabel, showTempLabel;
+    private boolean showClock, clockAmPm, togglesShowToggles, togglesTop; 
     private boolean togglesShowIndicator, toggleShowText, toggleShowDivider;
     private boolean showTorch, showFourg, showWifi, showGps, showBluetooth, showSound, showAirplane;
     private boolean showBrightness, showRotate, showSync, showData;
-    private boolean showSearchButton, showLeftMenuButton, showRightMenuButton, showSearchButtonLand;
-    private boolean showTopMenuButtonLand, showBotMenuButtonLand, navBarColorOn;
+    private boolean showSearchButton, showLeftMenuButton, showLeftMenuButtonLand;
+    private boolean showRightMenuButton, showRightMenuButtonLand, showSearchButtonLand;
+    private boolean showTopMenuButtonLand, showBotMenuButtonLand;
+    private int batteryBarWidth, batteryLevelOne, batteryLevelOneColor;
+    private int batteryLevelTwo, batteryLevelTwoColor, batteryLevelThreeColor, depletedLevelOne;
+    private int depletedLevelOneColor, depletedLevelTwo, depletedLevelTwoColor, depletedLevelThreeColor;
+    private int chargingLevelOne, chargingLevelOneColor, chargingLevelTwo, chargingLevelTwoColor, chargingLevelThreeColor;
+    private int batteryLabelLevelColor, batteryLabelLevelSize, batteryLabelTempColor, batteryLabelTempSize;
     private int carrierColor, iconColor, clockColor, clockSize, toggleColor, toggleIconOnColor;
     private int toggleIconInterColor, toggleIconOffColor, toggleIndOnColor, toggleIndOffColor;
     private int toggleTextOnColor, toggleTextOffColor, toggleDividerColor, navBarColor;
-    private int carrierSize, dateColor, dateSize;
-	private String carrierCustomText;
+    private int carrierSize, dateColor, dateSize, clearButtonColor, closeBarColor;
+	private String carrierCustomText, batteryIconNum;
+
     
     
     /** If there is no setting in the provider, use this. */
@@ -153,7 +192,9 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         prefMgr.getSharedPreferences();
  
         addPreferencesFromResource(R.xml.custom_theme_settings);
-        
+
+        mThemePresets = (ListPreference) findPreference(THEME_PRESETS);
+        mThemePresets.setOnPreferenceChangeListener(this);
         mThemeOne = (PreferenceCategory) findPreference(THEME_ONE);
         mThemeTwo = (PreferenceCategory) findPreference(THEME_TWO);
         mThemeThree = (PreferenceCategory) findPreference(THEME_THREE);
@@ -191,6 +232,52 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         themeMgr.getSharedPreferences();
 		mApplyThemeThree.setEnabled(prefMgr.getSharedPreferences().getBoolean(SAVED_THEME,false));
+		
+
+		boolean copied = false;
+    	try {
+				copied = AssetUtils.copyAsset(getActivity().getBaseContext(), "Theme_Junk.xml",
+						"data/data/com.android.settings/shared_prefs/Theme_Junk.xml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+    	try {
+				copied = AssetUtils.copyAsset(getActivity().getBaseContext(), "Theme_Blue.xml",
+						"data/data/com.android.settings/shared_prefs/Theme_Blue.xml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+    	try {
+				copied = AssetUtils.copyAsset(getActivity().getBaseContext(), "Theme_Green.xml",
+						"data/data/com.android.settings/shared_prefs/Theme_Green.xml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+    	try {
+				copied = AssetUtils.copyAsset(getActivity().getBaseContext(), "Theme_Red.xml",
+						"data/data/com.android.settings/shared_prefs/Theme_Red.xml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+    	try {
+				copied = AssetUtils.copyAsset(getActivity().getBaseContext(), "Theme_Orange.xml",
+						"data/data/com.android.settings/shared_prefs/Theme_Orange.xml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
+		
+    	try {
+				copied = AssetUtils.copyAsset(getActivity().getBaseContext(), "Theme_Purple.xml",
+						"data/data/com.android.settings/shared_prefs/Theme_Purple.xml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
+		
+		
     }
 
     
@@ -249,7 +336,31 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
      	} else if (THEME_THREE_NAME.equals(key)) {
      		mThemeThree.setTitle((String) objValue);
      		themeThreeName = (String) objValue;
-     	}
+ 
+     	} else if (preference == mThemePresets) {
+        	PreferenceManager prefMgr = getPreferenceManager();
+            prefMgr.setSharedPreferencesName("Junk_" + (String) objValue);
+            prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+            prefMgr.getSharedPreferences();
+            
+            GetSettings();
+         	
+	        themeMgr = getPreferenceManager();
+	        themeMgr.setSharedPreferencesName("Junk_Settings");
+	        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+	        themeMgr.getSharedPreferences();
+	        themeEditor = themeMgr.getSharedPreferences();
+	        
+	        ApplyTheme();
+	        
+	        prefMgr = getPreferenceManager();
+	        prefMgr.setSharedPreferencesName("Junk_Settings");
+	        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+	        prefMgr.getSharedPreferences();
+	        prefMgr.getSharedPreferencesName();
+        }
+     	
+     	
         return true;
     }
     
@@ -280,18 +391,41 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 
     private void SaveTheme() {
     	editor = themeEditor.edit();
+    	editor.putString(BATTERY_ICONS, batteryIconNum);
+    	editor.putBoolean(BATTERY_BAR_BOTTOM, batteryBarBottom);
+    	editor.putBoolean(BATTERY_BAR_RIGHT, batteryBarRight);
+    	editor.putInt(BATTERY_BAR_WIDTH, batteryBarWidth);
+    	editor.putInt(BATTERY_LEVEL_ONE, batteryLevelOne);
+    	editor.putInt(BATTERY_LEVEL_COLOR_ONE, batteryLevelOneColor);
+    	editor.putInt(BATTERY_LEVEL_TWO, batteryLevelTwo);
+    	editor.putInt(BATTERY_LEVEL_COLOR_TWO, batteryLevelTwoColor);
+    	editor.putInt(BATTERY_LEVEL_COLOR_THREE, batteryLevelThreeColor);    	
+    	editor.putInt(DEPLETED_LEVEL_ONE, depletedLevelOne);
+    	editor.putInt(DEPLETED_LEVEL_COLOR_ONE, depletedLevelOneColor);
+    	editor.putInt(DEPLETED_LEVEL_TWO, depletedLevelTwo);
+    	editor.putInt(DEPLETED_LEVEL_COLOR_TWO, depletedLevelTwoColor);
+    	editor.putInt(DEPLETED_LEVEL_COLOR_THREE, depletedLevelThreeColor);    	
+    	editor.putInt(CHARGING_LEVEL_ONE, chargingLevelOne);
+    	editor.putInt(CHARGING_LEVEL_COLOR_ONE, chargingLevelOneColor);
+    	editor.putInt(CHARGING_LEVEL_TWO, chargingLevelTwo);
+    	editor.putInt(CHARGING_LEVEL_COLOR_TWO, chargingLevelTwoColor);
+    	editor.putInt(CHARGING_LEVEL_COLOR_THREE, chargingLevelThreeColor);    	
     	editor.putBoolean(SAVED_THEME, true);
         editor.putBoolean(SHOW_CARRIER, showCarrier);  
         editor.putBoolean(CARRIER_CUSTOM, carrierCustom);
         editor.putInt(CARRIER_SIZE, carrierSize);
         editor.putInt(DATE_COLOR, dateColor);
         editor.putInt(DATE_SIZE, dateSize);
-        editor.putBoolean(ICON_COLOR_ON, iconColorOn);
+    	editor.putBoolean(SHOW_BATTERY_LABEL, showBatteryLabel);
+    	editor.putInt(BATTERY_LABEL_COLOR, batteryLabelLevelColor);
+    	editor.putInt(BATTERY_LABEL_SIZE, batteryLabelLevelSize);
+    	editor.putBoolean(SHOW_TEMP_LABEL, showTempLabel);
+    	editor.putInt(TEMP_LABEL_COLOR, batteryLabelTempColor);
+    	editor.putInt(TEMP_LABEL_SIZE, batteryLabelTempSize);
         editor.putBoolean(SHOW_CLOCK, showClock);
         editor.putBoolean(CLOCK_AMPM, clockAmPm);
         editor.putBoolean(TOGGLES_ON, togglesShowToggles);
         editor.putBoolean(TOGGLES_TOP, togglesTop);
-        editor.putBoolean(TOGGLE_CUSTOM_ICON_COLORS, toggleCustomIconColors);
         editor.putBoolean(TOGGLE_SHOW_INDICATOR, togglesShowIndicator);
         editor.putBoolean(TOGGLE_SHOW_TEXT, toggleShowText);
         editor.putBoolean(TOGGLE_SHOW_DIVIDER, toggleShowDivider);
@@ -328,8 +462,15 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         editor.putString(CARRIER_CUSTOM_TEXT, carrierCustomText);
         editor.putInt(CARRIER_SIZE, carrierSize);
         editor.putInt(DATE_COLOR, dateColor);
+        editor.putInt(CLOSE_BAR_COLOR, closeBarColor);
+        editor.putInt(CLEAR_BUTTON_COLOR, clearButtonColor);
         editor.putInt(DATE_SIZE, dateSize);
-        editor.putBoolean(NAV_BAR_COLOR_ON, navBarColorOn);
+        editor.putBoolean(SHOW_SEARCH_BUTTON, showSearchButton);
+        editor.putBoolean(SHOW_LEFT_MENU_BUTTON, showLeftMenuButton);
+        editor.putBoolean(SHOW_RIGHT_MENU_BUTTON, showRightMenuButton);
+        editor.putBoolean(SHOW_SEARCH_BUTTON_LAND, showSearchButtonLand);
+        editor.putBoolean(SHOW_TOP_MENU_BUTTON_LAND, showLeftMenuButtonLand);
+        editor.putBoolean(SHOW_BOT_MENU_BUTTON_LAND, showRightMenuButtonLand);
         editor.putInt(NAV_BAR_COLOR, navBarColor);
         editor.commit();
     }
@@ -337,17 +478,42 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
     
     private void ApplyTheme() {
     	editor = themeEditor.edit();
+    	editor.putString(BATTERY_ICONS, batteryIconNum);
+    	editor.putBoolean(BATTERY_BAR_BOTTOM, batteryBarBottom);
+    	editor.putBoolean(BATTERY_BAR_RIGHT, batteryBarRight);
+    	editor.putInt(BATTERY_BAR_WIDTH, batteryBarWidth);
+    	editor.putInt(BATTERY_LEVEL_ONE, batteryLevelOne);
+    	editor.putInt(BATTERY_LEVEL_COLOR_ONE, batteryLevelOneColor);
+    	editor.putInt(BATTERY_LEVEL_TWO, batteryLevelTwo);
+    	editor.putInt(BATTERY_LEVEL_COLOR_TWO, batteryLevelTwoColor);
+    	editor.putInt(BATTERY_LEVEL_COLOR_THREE, batteryLevelThreeColor);    	
+    	editor.putInt(DEPLETED_LEVEL_ONE, depletedLevelOne);
+    	editor.putInt(DEPLETED_LEVEL_COLOR_ONE, depletedLevelOneColor);
+    	editor.putInt(DEPLETED_LEVEL_TWO, depletedLevelTwo);
+    	editor.putInt(DEPLETED_LEVEL_COLOR_TWO, depletedLevelTwoColor);
+    	editor.putInt(DEPLETED_LEVEL_COLOR_THREE, depletedLevelThreeColor);    	
+    	editor.putInt(CHARGING_LEVEL_ONE, chargingLevelOne);
+    	editor.putInt(CHARGING_LEVEL_COLOR_ONE, chargingLevelOneColor);
+    	editor.putInt(CHARGING_LEVEL_TWO, chargingLevelTwo);
+    	editor.putInt(CHARGING_LEVEL_COLOR_TWO, chargingLevelTwoColor);
+    	editor.putInt(CHARGING_LEVEL_COLOR_THREE, chargingLevelThreeColor);    	
         editor.putBoolean(SHOW_CARRIER, showCarrier);  
         editor.putBoolean(CARRIER_CUSTOM, carrierCustom);
         editor.putInt(CARRIER_SIZE, carrierSize);
         editor.putInt(DATE_COLOR, dateColor);
         editor.putInt(DATE_SIZE, dateSize);
-        editor.putBoolean(ICON_COLOR_ON, iconColorOn);
+        editor.putInt(CLOSE_BAR_COLOR, closeBarColor);
+        editor.putInt(CLEAR_BUTTON_COLOR, clearButtonColor);
+    	editor.putBoolean(SHOW_BATTERY_LABEL, showBatteryLabel);
+    	editor.putInt(BATTERY_LABEL_COLOR, batteryLabelLevelColor);
+    	editor.putInt(BATTERY_LABEL_SIZE, batteryLabelLevelSize);
+    	editor.putBoolean(SHOW_TEMP_LABEL, showTempLabel);
+    	editor.putInt(TEMP_LABEL_COLOR, batteryLabelTempColor);
+    	editor.putInt(TEMP_LABEL_SIZE, batteryLabelTempSize);
         editor.putBoolean(SHOW_CLOCK, showClock);
         editor.putBoolean(CLOCK_AMPM, clockAmPm);
         editor.putBoolean(TOGGLES_ON, togglesShowToggles);
         editor.putBoolean(TOGGLES_TOP, togglesTop);
-        editor.putBoolean(TOGGLE_CUSTOM_ICON_COLORS, toggleCustomIconColors);
         editor.putBoolean(TOGGLE_SHOW_INDICATOR, togglesShowIndicator);
         editor.putBoolean(TOGGLE_SHOW_TEXT, toggleShowText);
         editor.putBoolean(TOGGLE_SHOW_DIVIDER, toggleShowDivider);
@@ -385,6 +551,13 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         editor.putInt(CARRIER_SIZE, carrierSize);
         editor.putInt(DATE_COLOR, dateColor);
         editor.putInt(DATE_SIZE, dateSize);
+        editor.putBoolean(SHOW_SEARCH_BUTTON, showSearchButton);
+        editor.putBoolean(SHOW_LEFT_MENU_BUTTON, showLeftMenuButton);
+        editor.putBoolean(SHOW_RIGHT_MENU_BUTTON, showRightMenuButton);
+        editor.putBoolean(SHOW_SEARCH_BUTTON_LAND, showSearchButtonLand);
+        editor.putBoolean(SHOW_TOP_MENU_BUTTON_LAND, showLeftMenuButtonLand);
+        editor.putBoolean(SHOW_BOT_MENU_BUTTON_LAND, showRightMenuButtonLand);
+        editor.putInt(NAV_BAR_COLOR, navBarColor);
         editor.commit();
         
         SendIntents();
@@ -393,14 +566,33 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
     
 
 
-    private void GetSettings(boolean readSystem) {
+    private void GetSettings() {
+    	
+    	batteryIconNum = prefMgr.getSharedPreferences().getString(BATTERY_ICONS, "0");
+    	batteryBarBottom = prefMgr.getSharedPreferences().getBoolean(BATTERY_BAR_BOTTOM, false);
+    	batteryBarRight = prefMgr.getSharedPreferences().getBoolean(BATTERY_BAR_RIGHT, false);
+    	batteryBarWidth = prefMgr.getSharedPreferences().getInt(BATTERY_BAR_WIDTH, 5);
+    	batteryLevelOne = prefMgr.getSharedPreferences().getInt(BATTERY_LEVEL_ONE, 10);
+    	batteryLevelOneColor = prefMgr.getSharedPreferences().getInt(BATTERY_LEVEL_COLOR_ONE, 0xffff0000);
+    	batteryLevelTwo = prefMgr.getSharedPreferences().getInt(BATTERY_LEVEL_TWO, 30);
+    	batteryLevelTwoColor = prefMgr.getSharedPreferences().getInt(BATTERY_LEVEL_COLOR_TWO, 0xffff9000);
+    	batteryLevelThreeColor = prefMgr.getSharedPreferences().getInt(BATTERY_LEVEL_COLOR_THREE, 0xff3792b4);
+    	depletedLevelOne = prefMgr.getSharedPreferences().getInt(DEPLETED_LEVEL_ONE, 10);
+    	depletedLevelOneColor = prefMgr.getSharedPreferences().getInt(DEPLETED_LEVEL_COLOR_ONE, 0xff800000);
+    	depletedLevelTwo = prefMgr.getSharedPreferences().getInt(DEPLETED_LEVEL_TWO, 30);
+    	depletedLevelTwoColor = prefMgr.getSharedPreferences().getInt(DEPLETED_LEVEL_COLOR_TWO, 0xffba6900);
+    	depletedLevelThreeColor = prefMgr.getSharedPreferences().getInt(DEPLETED_LEVEL_COLOR_THREE, 0xff296c85);
+    	chargingLevelOne = prefMgr.getSharedPreferences().getInt(CHARGING_LEVEL_ONE, 10);
+    	chargingLevelOneColor = prefMgr.getSharedPreferences().getInt(CHARGING_LEVEL_COLOR_ONE, 0xff800000);
+    	chargingLevelTwo = prefMgr.getSharedPreferences().getInt(CHARGING_LEVEL_TWO, 30);
+    	chargingLevelTwoColor = prefMgr.getSharedPreferences().getInt(CHARGING_LEVEL_COLOR_TWO, 0xffba6900);
+    	chargingLevelThreeColor = prefMgr.getSharedPreferences().getInt(CHARGING_LEVEL_COLOR_THREE, 0xff296c85);
     	showClock = prefMgr.getSharedPreferences().getBoolean(SHOW_CLOCK, true);
     	clockAmPm = prefMgr.getSharedPreferences().getBoolean(CLOCK_AMPM, false);
     	clockColor = prefMgr.getSharedPreferences().getInt(CLOCK_COLOR, 0xff3F9BBF);
     	clockSize = prefMgr.getSharedPreferences().getInt(CLOCK_SIZE, 17);
     	togglesShowToggles = prefMgr.getSharedPreferences().getBoolean(TOGGLES_ON, true);
     	togglesTop = prefMgr.getSharedPreferences().getBoolean(TOGGLES_TOP, true);
-    	toggleCustomIconColors = prefMgr.getSharedPreferences().getBoolean(TOGGLE_CUSTOM_ICON_COLORS, false);
     	toggleColor = prefMgr.getSharedPreferences().getInt(TOGGLE_COLOR, 0xff000000);
     	toggleIconOnColor = prefMgr.getSharedPreferences().getInt(TOGGLE_ICON_ON_COLOR, 0xff33b5e5);
         toggleIconInterColor = prefMgr.getSharedPreferences().getInt(TOGGLE_ICON_INTER_COLOR, 0xffff0000);
@@ -437,94 +629,227 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         carrierCustomText = prefMgr.getSharedPreferences().getString(CARRIER_CUSTOM_TEXT, "J u n k   R O M");
     	dateColor = prefMgr.getSharedPreferences().getInt(DATE_COLOR, 0xff3F9BBF);
     	dateSize = prefMgr.getSharedPreferences().getInt(DATE_SIZE, 17);
-    	iconColorOn = prefMgr.getSharedPreferences().getBoolean(ICON_COLOR_ON, false);
+    	closeBarColor = prefMgr.getSharedPreferences().getInt(CLOSE_BAR_COLOR, 0x03792b4);
+    	clearButtonColor = prefMgr.getSharedPreferences().getInt(CLEAR_BUTTON_COLOR, 0x03792b4);
+    	showBatteryLabel = prefMgr.getSharedPreferences().getBoolean(SHOW_BATTERY_LABEL, true);
+    	batteryLabelLevelColor = prefMgr.getSharedPreferences().getInt(BATTERY_LABEL_COLOR, 0xff3792b4);
+    	batteryLabelLevelSize = prefMgr.getSharedPreferences().getInt(BATTERY_LABEL_SIZE, 12);
+    	showTempLabel = prefMgr.getSharedPreferences().getBoolean(SHOW_TEMP_LABEL, true);
+    	batteryLabelTempColor = prefMgr.getSharedPreferences().getInt(TEMP_LABEL_COLOR, 0xff3792b4);
+    	batteryLabelTempSize = prefMgr.getSharedPreferences().getInt(TEMP_LABEL_SIZE, 12);
     	iconColor = prefMgr.getSharedPreferences().getInt(ICON_COLOR, 0xff3F9BBF);
+        showSearchButton = prefMgr.getSharedPreferences().getBoolean(SHOW_SEARCH_BUTTON, false);
+        showLeftMenuButton = prefMgr.getSharedPreferences().getBoolean(SHOW_LEFT_MENU_BUTTON, true);
+        showRightMenuButton = prefMgr.getSharedPreferences().getBoolean(SHOW_RIGHT_MENU_BUTTON, true);
+        showSearchButtonLand = prefMgr.getSharedPreferences().getBoolean(SHOW_SEARCH_BUTTON_LAND, false);
+        showLeftMenuButtonLand = prefMgr.getSharedPreferences().getBoolean(SHOW_TOP_MENU_BUTTON_LAND, true);
+        showRightMenuButtonLand = prefMgr.getSharedPreferences().getBoolean(SHOW_BOT_MENU_BUTTON_LAND, true);
         navBarColor = prefMgr.getSharedPreferences().getInt(NAV_BAR_COLOR, 0xffffffff);
-        navBarColorOn = prefMgr.getSharedPreferences().getBoolean(NAV_BAR_COLOR_ON, true);
+        
     }    
     
 
     private void SendIntents() {
     	Intent i = new Intent();
-    	i.setAction(Junk_Settings);
+ 
+		i = new Intent();
+		i.setAction(Junk_Battery_Settings );
+	   		i.putExtra(BATTERY_ICONS, batteryIconNum);
+	   		getActivity().sendBroadcast(i);
+	   		i = null;
+    	
+       	if ((Boolean) batteryBarBottom == true) {
+            	i = new Intent();
+            	i.setAction(Junk_Battery_Settings);
+           	   	i.putExtra(BATTERY_BAR_RIGHT, false);
+           	   	getActivity().sendBroadcast(i);
+           	   	i = null;  
+        	}
+        	
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+       	i.putExtra(BATTERY_BAR_BOTTOM, (Boolean) batteryBarBottom);
+       	getActivity().sendBroadcast(i);
+       	i = null;    
+ 
+       	if ((Boolean) batteryBarRight == true) {
+               	i = new Intent();
+            	i.setAction(Junk_Battery_Settings);
+           	   	i.putExtra(BATTERY_BAR_BOTTOM, false);
+           	   	getActivity().sendBroadcast(i);
+           	   	i = null; 
+        	}
+        
+       	i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+       	i.putExtra(BATTERY_BAR_RIGHT, (Boolean) batteryBarRight);
+       	getActivity().sendBroadcast(i);
+       	i = null;       	   	
+       	   	
+       	i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+       	i.putExtra(BATTERY_BAR_WIDTH, (Integer) batteryBarWidth);
+       	getActivity().sendBroadcast(i);
+       	i = null;       	   	
+       	   	
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_LEVEL_ONE, batteryLevelOne);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_LEVEL_COLOR_ONE, (Integer) batteryLevelOneColor);
+        getActivity().sendBroadcast(i);
+        i = null;
+             
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_LEVEL_TWO, batteryLevelTwo);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_LEVEL_COLOR_TWO, (Integer) batteryLevelTwoColor);
+        getActivity().sendBroadcast(i);
+        i = null;
+
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_LEVEL_COLOR_THREE, (Integer) batteryLevelThreeColor);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(DEPLETED_LEVEL_ONE, depletedLevelOne);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(DEPLETED_LEVEL_COLOR_ONE, (Integer) depletedLevelOneColor);
+        getActivity().sendBroadcast(i);
+        i = null;
+             
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(DEPLETED_LEVEL_TWO, depletedLevelTwo);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(DEPLETED_LEVEL_COLOR_TWO, (Integer) depletedLevelTwoColor);
+        getActivity().sendBroadcast(i);
+        i = null;
+
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(DEPLETED_LEVEL_COLOR_THREE, (Integer) depletedLevelThreeColor);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(CHARGING_LEVEL_ONE, chargingLevelOne);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(CHARGING_LEVEL_COLOR_ONE, (Integer) chargingLevelOneColor);
+        getActivity().sendBroadcast(i);
+        i = null;
+             
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(CHARGING_LEVEL_TWO, chargingLevelTwo);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(CHARGING_LEVEL_COLOR_TWO, (Integer) chargingLevelTwoColor);
+        getActivity().sendBroadcast(i);
+        i = null;
+
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(CHARGING_LEVEL_COLOR_THREE, (Integer) chargingLevelThreeColor);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+     	i = new Intent();        
+    	i.setAction(Junk_Clock_Settings);
    	   	i.putExtra("ShowClock", showClock);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
    
      	i = new Intent();
-        i.setAction(Junk_Settings);
+        i.setAction(Junk_Clock_Settings);
         i.putExtra("ClockAmPm", (Boolean) clockAmPm);
         getActivity().sendBroadcast(i);
         i = null;
     
     	i = new Intent();
-        i.setAction(Junk_Settings);
+        i.setAction(Junk_Clock_Settings);
         i.putExtra("ClockColor", (Integer) clockColor);
         getActivity().sendBroadcast(i);
         i = null;
 
     	i = new Intent();
-        i.setAction(Junk_Settings);
+        i.setAction(Junk_Clock_Settings);
         i.putExtra("ClockSize", (Integer) clockSize);
         getActivity().sendBroadcast(i);
         i = null;
         
         i = new Intent();
-        i.setAction(Junk_Settings);
-       	i.putExtra("IconColorOn", (Boolean) iconColorOn);
-       	getActivity().sendBroadcast(i);
-       	i = null;
-
-        i = new Intent();
-        i.setAction(Junk_Settings);
+        i.setAction(Junk_Icon_Settings);
        	i.putExtra("IconColor", (Integer) iconColor);
        	getActivity().sendBroadcast(i);
        	i = null;
         
        	i = new Intent();
-       	i.setAction(Junk_Settings);
+       	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("TogglesOn", (Boolean) togglesShowToggles);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        	   	
        	i = new Intent();
-        i.setAction(Junk_Settings);
+        i.setAction(Junk_Toggle_Settings);
        	i.putExtra("TogglesTop", (Boolean) togglesTop);
        	getActivity().sendBroadcast(i);
        	i = null;
        	   	
        	i = new Intent();
-       	i.setAction(Junk_Settings);
+       	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("ToggleColor", (Integer) toggleColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-        i.setAction(Junk_Settings);
-       	i.putExtra("ToggleCustomIconColors", (Boolean) toggleCustomIconColors);
-       	getActivity().sendBroadcast(i);
-       	i = null;
-       
-       	i = new Intent();
-       	i.setAction(Junk_Settings);
+       	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("ToggleIconOnColor", (Integer) toggleIconOnColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-       	i.setAction(Junk_Settings);
+       	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("ToggleIconInterColor", (Integer) toggleIconInterColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        	   	
        	i = new Intent();
-      	i.setAction(Junk_Settings);
+      	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("ToggleIconOffColor", (Integer) toggleIconOffColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;       	   	
        	   	
        	i = new Intent();
-        i.setAction(Junk_Settings);
+        i.setAction(Junk_Toggle_Settings);
         i.putExtra("ToggleShowIndicator", (Boolean) togglesShowIndicator);
         	if ((Boolean) togglesShowIndicator) {
         		i.putExtra("ToggleIndOnColor", toggleIndOnColor);
@@ -537,7 +862,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         i = null;
 
        	i = new Intent();
-        i.setAction(Junk_Settings);
+        i.setAction(Junk_Toggle_Settings);
         i.putExtra("ToggleShowText", (Boolean) toggleShowText);
         	if ((Boolean) toggleShowText) {
         		i.putExtra("ToggleTextOnColor", (Integer) toggleTextOnColor);
@@ -550,7 +875,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         i = null;
 
        	i = new Intent();
-       	i.setAction(Junk_Settings);
+       	i.setAction(Junk_Toggle_Settings);
        	i.putExtra("ToggleShowDivider", (Boolean) toggleShowDivider);
         if ((Boolean) toggleShowDivider) {
            	i.putExtra("ToggleDividerColor", (Integer) toggleDividerColor);
@@ -561,118 +886,216 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
        	i = null;      
         
        	i = new Intent();
-        i.setAction(Junk_Settings);
+        i.setAction(Junk_Toggle_Settings);
         i.putExtra("UpdateToggles", true);
         getActivity().sendBroadcast(i);
         i = null;
 
       	i = new Intent();
-      	i.setAction(Junk_Settings);
+      	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("ShowTorch", (Boolean) showTorch);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
         
         i = new Intent();
-      	i.setAction(Junk_Settings);
+      	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("ShowFourg", (Boolean) showFourg);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
         	   	
        	i = new Intent();
-       	i.setAction(Junk_Settings);
+       	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("ShowWifi", (Boolean) showWifi);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
         	   	
        	i = new Intent();
-      	i.setAction(Junk_Settings);
+      	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("ShowGps", (Boolean) showGps);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        
        	i = new Intent();
-       	i.setAction(Junk_Settings);
+       	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("ShowBluetooth", (Boolean) showBluetooth);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
             
        	i = new Intent();
-       	i.setAction(Junk_Settings);
+       	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("ShowSound", (Boolean) showSound);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
            
        	i = new Intent();
-      	i.setAction(Junk_Settings);
+      	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("ShowAirplane", (Boolean) showAirplane);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-       	i.setAction(Junk_Settings);
+       	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("ShowBrightness", (Boolean) showBrightness);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-      	i.setAction(Junk_Settings);
+      	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("ShowRotate", (Boolean) showRotate);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
  
        	i = new Intent();
-      	i.setAction(Junk_Settings );
+      	i.setAction(Junk_Toggle_Settings );
    	   	i.putExtra("ShowSync", (Boolean) showSync);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
-       	i.setAction(Junk_Settings);
+       	i.setAction(Junk_Toggle_Settings);
    	   	i.putExtra("ShowData", (Boolean) showData);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;            
    	   	
       	i = new Intent();
-       	i.setAction(Junk_Settings);
+       	i.setAction(Junk_Pulldown_Settings);
    	   	i.putExtra("ShowCarrier", (Boolean) showCarrier);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        
       	i = new Intent();
-        i.setAction(Junk_Settings);
+        i.setAction(Junk_Pulldown_Settings);
         i.putExtra("CarrierColor", (Integer) carrierColor);
         getActivity().sendBroadcast(i);
         i = null;
             
        	i = new Intent();
-        i.setAction(Junk_Settings);
+        i.setAction(Junk_Pulldown_Settings);
         i.putExtra("CustomCarrier", (Boolean) carrierCustom);
         getActivity().sendBroadcast(i);
         i = null;
               
        	i = new Intent();
-        i.setAction(Junk_Settings);
+        i.setAction(Junk_Pulldown_Settings);
         i.putExtra("CustomCarrierText", (String) carrierCustomText);
         getActivity().sendBroadcast(i);
         i = null;
         	
        	i = new Intent();
-        i.setAction(Junk_Settings);
+        i.setAction(Junk_Pulldown_Settings);
         i.putExtra("CarrierSize", (Integer) carrierSize);
         getActivity().sendBroadcast(i);
         i = null;
         	
       	i = new Intent();
-      	i.setAction(Junk_Settings);
+      	i.setAction(Junk_Pulldown_Settings);
        	i.putExtra("DateColor", (Integer) dateColor);
        	getActivity().sendBroadcast(i);
        	i = null;        
 
        	i = new Intent();
-        i.setAction(Junk_Settings);
+        i.setAction(Junk_Pulldown_Settings);
         i.putExtra("DateSize", (Integer) dateSize);
         getActivity().sendBroadcast(i);
-        i = null;       	   		
+        i = null;       	 
+        
+    	i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+   	   	i.putExtra(SHOW_BATTERY_LABEL, (Boolean) showBatteryLabel);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;       	
+
+   	   	i = new Intent();
+   	   	i.setAction(Junk_Pulldown_Settings );
+   	   	i.putExtra(BATTERY_LABEL_COLOR, (Integer) batteryLabelLevelColor);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;           	  
+
+   	   	i = new Intent();
+   	   	i.setAction(Junk_Pulldown_Settings );
+   	   	i.putExtra(BATTERY_LABEL_SIZE, (Integer) batteryLabelLevelSize);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;            
+
+    	i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+   	   	i.putExtra(SHOW_TEMP_LABEL, (Boolean) showTempLabel);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;               	   	
+   	   	
+   	   	i = new Intent();
+   	   	i.setAction(Junk_Pulldown_Settings );
+   	   	i.putExtra(TEMP_LABEL_COLOR, (Integer) batteryLabelTempColor);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;           	  
+
+   	   	i = new Intent();
+   	   	i.setAction(Junk_Pulldown_Settings );
+   	   	i.putExtra(TEMP_LABEL_SIZE, (Integer) batteryLabelTempSize);
+   	   	getActivity().sendBroadcast(i);
+   	   	i = null;             
+   	   	
+   	   	i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(CLEAR_BUTTON_COLOR, (Integer) clearButtonColor);
+    	getActivity().sendBroadcast(i);
+    	i = null;      
+    	
+    	i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(CLOSE_BAR_COLOR, (Integer) closeBarColor);
+    	getActivity().sendBroadcast(i);
+    	i = null;              	
+
+   	   	i = new Intent();
+        i.setAction(Junk_NavBar_Settings );
+       	i.putExtra(NAV_BAR_COLOR, (Integer) navBarColor);
+       	getActivity().sendBroadcast(i);
+       	i = null;
+       
+       	i = new Intent();
+        i.setAction(Junk_NavBar_Settings );
+        i.putExtra(SHOW_SEARCH_BUTTON, (Boolean) showSearchButton);
+        getActivity().sendBroadcast(i);
+        i = null;        
+
+        i = new Intent();
+        i.setAction(Junk_NavBar_Settings );
+        i.putExtra(SHOW_LEFT_MENU_BUTTON, (Boolean) showLeftMenuButton);
+        getActivity().sendBroadcast(i);
+        i = null;        
+
+        i = new Intent();
+        i.setAction(Junk_NavBar_Settings );
+        i.putExtra(SHOW_RIGHT_MENU_BUTTON, (Boolean) showRightMenuButton);
+        getActivity().sendBroadcast(i);
+        i = null;        
+
+        i = new Intent();
+        i.setAction(Junk_NavBar_Settings );
+        i.putExtra(SHOW_SEARCH_BUTTON_LAND, (Boolean) showSearchButtonLand);
+        getActivity().sendBroadcast(i);
+        i = null;        
+
+        i = new Intent();
+        i.setAction(Junk_NavBar_Settings );
+        i.putExtra(SHOW_TOP_MENU_BUTTON_LAND, (Boolean) showLeftMenuButtonLand);
+        getActivity().sendBroadcast(i);
+        i = null;        
+
+        i = new Intent();
+        i.setAction(Junk_NavBar_Settings );
+        i.putExtra(SHOW_BOT_MENU_BUTTON_LAND, (Boolean) showRightMenuButtonLand);
+        getActivity().sendBroadcast(i);
+        i = null;   	   	
+   	   	
+   	   	
+   	   	
+   	   	
+   	   	
+   	   	
+   	   	
+   	   	
 }    
     
     DialogInterface.OnClickListener saveDialogPositiveListener =
@@ -686,7 +1109,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 				        
-				        GetSettings(true);
+				        GetSettings();
 				        
 				        themeMgr = getPreferenceManager();
 				        themeMgr.setSharedPreferencesName("Junk_Theme_One");
@@ -711,7 +1134,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 				        
-				        GetSettings(true);
+				        GetSettings();
 				        
 				        themeMgr = getPreferenceManager();
 				        themeMgr.setSharedPreferencesName("Junk_Theme_Two");
@@ -736,7 +1159,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 				        
-				        GetSettings(true);
+				        GetSettings();
 				        
 				        themeMgr = getPreferenceManager();
 				        themeMgr.setSharedPreferencesName("Junk_Theme_Three");
@@ -769,7 +1192,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 						
-				        GetSettings(false);
+				        GetSettings();
 				        
 				        themeMgr = getPreferenceManager();
 				        themeMgr.setSharedPreferencesName("Junk_Settings");
@@ -793,7 +1216,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 						
-				        GetSettings(false);
+				        GetSettings();
 				        
 				        themeMgr = getPreferenceManager();
 				        themeMgr.setSharedPreferencesName("Junk_Settings");
@@ -818,7 +1241,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 				        prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
 				        prefMgr.getSharedPreferences();
 						
-				        GetSettings(false);
+				        GetSettings();
 				        
 				        themeMgr = getPreferenceManager();
 				        themeMgr.setSharedPreferencesName("Junk_Settings");
