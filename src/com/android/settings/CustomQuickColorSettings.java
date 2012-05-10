@@ -718,7 +718,9 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
     private void clearCheckMarks() {
     	
        	mIconColor.setChecked(false);
-		mBatteryDepletedColor.setChecked(false);
+		mDepletedLevelColorOne.setChecked(false);
+		mDepletedLevelColorTwo.setChecked(false);
+		mDepletedLevelColorThree.setChecked(false);
 		mBatteryLevelColorOne.setChecked(false);
 		mBatteryLevelColorTwo.setChecked(false);
 		mBatteryLevelColorThree.setChecked(false);
