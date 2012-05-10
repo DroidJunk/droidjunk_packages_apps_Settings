@@ -46,14 +46,19 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 	
 	// Battery
     private final String Junk_Battery_Settings = "JUNK_BATTERY_SETTINGS";
-	private final String QK_BATTERY_DEPLETED_COLOR = "qk_battery_depleted_color";
 	private final String QK_BATTERY_LEVEL_COLOR_ONE = "qk_battery_levels_color_one";
 	private final String QK_BATTERY_LEVEL_COLOR_TWO = "qk_battery_levels_color_two";
 	private final String QK_BATTERY_LEVEL_COLOR_THREE = "qk_battery_levels_color_three";    
-	private final String BATTERY_DEPLETED_COLOR = "battery_depleted_color";
 	private final String BATTERY_LEVEL_COLOR_ONE = "battery_levels_color_one";
 	private final String BATTERY_LEVEL_COLOR_TWO = "battery_levels_color_two";
 	private final String BATTERY_LEVEL_COLOR_THREE = "battery_levels_color_three";    
+
+	private final String QK_DEPLETED_LEVEL_COLOR_ONE = "depleted_levels_color_one";
+	private final String QK_DEPLETED_LEVEL_COLOR_TWO = "depleted_levels_color_two";
+	private final String QK_DEPLETED_LEVEL_COLOR_THREE = "depleted_levels_color_three";    
+	private final String DEPLETED_LEVEL_COLOR_ONE = "depleted_levels_color_one";
+	private final String DEPLETED_LEVEL_COLOR_TWO = "depleted_levels_color_two";
+	private final String DEPLETED_LEVEL_COLOR_THREE = "depleted_levels_color_three";    
 
 	// Charge
 	private final String QK_CHARGING_LEVEL_COLOR_ONE = "qk_charge_levels_color_one";
@@ -125,10 +130,14 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 	
 	private CheckBoxPreference mIconColor;
 	
-	private CheckBoxPreference mBatteryDepletedColor;
+
     private CheckBoxPreference mBatteryLevelColorOne;
     private CheckBoxPreference mBatteryLevelColorTwo;
     private CheckBoxPreference mBatteryLevelColorThree;
+    
+    private CheckBoxPreference mDepletedLevelColorOne;
+    private CheckBoxPreference mDepletedLevelColorTwo;
+    private CheckBoxPreference mDepletedLevelColorThree;
     
     private CheckBoxPreference mChargingLevelColorOne;
     private CheckBoxPreference mChargingLevelColorTwo;
@@ -178,8 +187,12 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 
        	mIconColor = (CheckBoxPreference) findPreference(QK_ICON_COLOR);
 		mIconColor.setOnPreferenceChangeListener(this);	
-		mBatteryDepletedColor = (CheckBoxPreference) findPreference(QK_BATTERY_DEPLETED_COLOR);
-		mBatteryDepletedColor.setOnPreferenceChangeListener(this);
+		mDepletedLevelColorOne = (CheckBoxPreference) findPreference(DEPLETED_LEVEL_COLOR_ONE);
+		mDepletedLevelColorOne.setOnPreferenceChangeListener(this);
+		mDepletedLevelColorTwo = (CheckBoxPreference) findPreference(DEPLETED_LEVEL_COLOR_TWO);
+		mDepletedLevelColorTwo.setOnPreferenceChangeListener(this);
+		mDepletedLevelColorThree = (CheckBoxPreference) findPreference(DEPLETED_LEVEL_COLOR_THREE);
+		mDepletedLevelColorThree.setOnPreferenceChangeListener(this);
 		mBatteryLevelColorOne = (CheckBoxPreference) findPreference(QK_BATTERY_LEVEL_COLOR_ONE);
 		mBatteryLevelColorOne.setOnPreferenceChangeListener(this);
 		mBatteryLevelColorTwo = (CheckBoxPreference) findPreference(QK_BATTERY_LEVEL_COLOR_TWO);
@@ -278,20 +291,48 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
   		}
   		
   		
-  		if (mBatteryDepletedColor.isChecked()) {
+  		if (mDepletedLevelColorOne.isChecked()) {
   			
         	sharedPref = prefMgr.getSharedPreferences();
         	SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt(BATTERY_DEPLETED_COLOR, (Integer) objValue);
+            editor.putInt(DEPLETED_LEVEL_COLOR_ONE, (Integer) objValue);
             editor.commit();
   			
         	Intent i = new Intent();
             i.setAction(Junk_Battery_Settings);
-            i.putExtra(BATTERY_DEPLETED_COLOR, (Integer) objValue);
+            i.putExtra(DEPLETED_LEVEL_COLOR_ONE, (Integer) objValue);
             getActivity().sendBroadcast(i);
             i = null;
   		} 		
   		
+  		if (mDepletedLevelColorTwo.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(DEPLETED_LEVEL_COLOR_TWO, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(DEPLETED_LEVEL_COLOR_TWO, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+  		} 		
+
+  		if (mDepletedLevelColorThree.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(DEPLETED_LEVEL_COLOR_THREE, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(DEPLETED_LEVEL_COLOR_THREE, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+  		} 		
+
   		
   		if (mBatteryLevelColorOne.isChecked()) {
   			

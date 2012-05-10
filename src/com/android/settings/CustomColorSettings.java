@@ -44,10 +44,13 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 	
 	// Battery
     private final String Junk_Battery_Settings = "JUNK_BATTERY_SETTINGS";
-	private final String BATTERY_DEPLETED_COLOR = "battery_depleted_color";
 	private final String BATTERY_LEVEL_COLOR_ONE = "battery_levels_color_one";
 	private final String BATTERY_LEVEL_COLOR_TWO = "battery_levels_color_two";
 	private final String BATTERY_LEVEL_COLOR_THREE = "battery_levels_color_three";    
+	
+	private final String DEPLETED_LEVEL_COLOR_ONE = "depleted_levels_color_one";
+	private final String DEPLETED_LEVEL_COLOR_TWO = "depleted_levels_color_two";
+	private final String DEPLETED_LEVEL_COLOR_THREE = "depleted_levels_color_three";    
 	
 	// Charge
 	private final String CHARGING_LEVEL_ONE = "charge_levels_one";
@@ -89,7 +92,6 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 
 
 	private PreferenceManager prefMgr;
-	private SharedPreferences sharedPref;
 
 	private Preference mIconColor;
 	
@@ -101,6 +103,13 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 	private Preference mChargingLevelColorOne;
 	private Preference mChargingLevelColorTwo;
     private Preference mChargingLevelColorThree;   
+    
+	private Preference mDepletedLevelOne;
+    private Preference mDepletedLevelColorOne;
+	private Preference mDepletedLevelTwo;
+    private Preference mDepletedLevelColorTwo;
+    private Preference mDepletedLevelColorThree;
+    
 	private Preference mNavigationBarColor;
 	
     private Preference mCarrierColor;
@@ -134,14 +143,17 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
         prefMgr.setSharedPreferencesName("Junk_Settings");
         prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         prefMgr.getSharedPreferences();
-        sharedPref = prefMgr.getSharedPreferences();
  
        	addPreferencesFromResource(R.xml.custom_color_settings);
        	
         mIconColor = (Preference) findPreference(ICON_COLOR);
 		mIconColor.setOnPreferenceChangeListener(this);	
-		mBatteryDepletedColor = (Preference) findPreference(BATTERY_DEPLETED_COLOR);
-		mBatteryDepletedColor.setOnPreferenceChangeListener(this);
+		mDepletedLevelColorOne = (Preference) findPreference(DEPLETED_LEVEL_COLOR_ONE);
+		mDepletedLevelColorOne.setOnPreferenceChangeListener(this);
+		mDepletedLevelColorTwo = (Preference) findPreference(DEPLETED_LEVEL_COLOR_TWO);
+		mDepletedLevelColorTwo.setOnPreferenceChangeListener(this);
+		mDepletedLevelColorThree = (Preference) findPreference(DEPLETED_LEVEL_COLOR_THREE);
+		mDepletedLevelColorThree.setOnPreferenceChangeListener(this);
 		mBatteryLevelColorOne = (Preference) findPreference(BATTERY_LEVEL_COLOR_ONE);
 		mBatteryLevelColorOne.setOnPreferenceChangeListener(this);
 		mBatteryLevelColorTwo = (Preference) findPreference(BATTERY_LEVEL_COLOR_TWO);
@@ -224,13 +236,28 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
    	   	
-  	} else if (BATTERY_DEPLETED_COLOR.equals(key)) {
+  	} else if (DEPLETED_LEVEL_COLOR_ONE.equals(key)) {
     	Intent i = new Intent();
         i.setAction(Junk_Battery_Settings);
-        i.putExtra(BATTERY_DEPLETED_COLOR, (Integer) objValue);
+        i.putExtra(DEPLETED_LEVEL_COLOR_ONE, (Integer) objValue);
         getActivity().sendBroadcast(i);
         i = null;
- 
+
+  	} else if (DEPLETED_LEVEL_COLOR_TWO.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(DEPLETED_LEVEL_COLOR_TWO, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;
+
+  	} else if (DEPLETED_LEVEL_COLOR_THREE.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(DEPLETED_LEVEL_COLOR_THREE, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+        
     } else if (BATTERY_LEVEL_COLOR_ONE.equals(key)) {
     	Intent i = new Intent();
         i.setAction(Junk_Battery_Settings);
