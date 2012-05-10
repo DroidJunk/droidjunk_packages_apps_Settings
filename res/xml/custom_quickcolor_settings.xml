@@ -46,11 +46,25 @@
 		android:title="Signal Icons" 
 		android:defaultValue="false"	/>		
 
-	<CheckBoxPreference 
+	
+	<CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="qk_battery_depleted_color"
-		android:title="Battery Depleted" 
+		android:key="qk_depleted_levels_color_one"
+		android:title="Depleted Level One Color"
 		android:defaultValue="false"	/>
+	
+	<CheckBoxPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_depleted_levels_color_two"
+		android:title="Depleted Level Two Color"
+		android:defaultValue="false"	/>
+			
+	<CheckBoxPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_depleted_levels_color_three"
+		android:title="Depleted Level Three Color"
+		android:defaultValue="false"	/>	
+	
 				
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 

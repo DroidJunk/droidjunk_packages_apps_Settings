@@ -338,7 +338,7 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
  
      	} else if (preference == mThemePresets) {
         	PreferenceManager prefMgr = getPreferenceManager();
-            prefMgr.setSharedPreferencesName("Junk_" + (String) objValue);
+            prefMgr.setSharedPreferencesName("Theme_" + (String) objValue);
             prefMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
             prefMgr.getSharedPreferences();
             

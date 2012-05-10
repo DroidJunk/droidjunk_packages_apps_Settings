@@ -53,9 +53,9 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 	private final String BATTERY_LEVEL_COLOR_TWO = "battery_levels_color_two";
 	private final String BATTERY_LEVEL_COLOR_THREE = "battery_levels_color_three";    
 
-	private final String QK_DEPLETED_LEVEL_COLOR_ONE = "depleted_levels_color_one";
-	private final String QK_DEPLETED_LEVEL_COLOR_TWO = "depleted_levels_color_two";
-	private final String QK_DEPLETED_LEVEL_COLOR_THREE = "depleted_levels_color_three";    
+	private final String QK_DEPLETED_LEVEL_COLOR_ONE = "qk_depleted_levels_color_one";
+	private final String QK_DEPLETED_LEVEL_COLOR_TWO = "qk_depleted_levels_color_two";
+	private final String QK_DEPLETED_LEVEL_COLOR_THREE = "qk_depleted_levels_color_three";    
 	private final String DEPLETED_LEVEL_COLOR_ONE = "depleted_levels_color_one";
 	private final String DEPLETED_LEVEL_COLOR_TWO = "depleted_levels_color_two";
 	private final String DEPLETED_LEVEL_COLOR_THREE = "depleted_levels_color_three";    
@@ -187,11 +187,11 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 
        	mIconColor = (CheckBoxPreference) findPreference(QK_ICON_COLOR);
 		mIconColor.setOnPreferenceChangeListener(this);	
-		mDepletedLevelColorOne = (CheckBoxPreference) findPreference(DEPLETED_LEVEL_COLOR_ONE);
+		mDepletedLevelColorOne = (CheckBoxPreference) findPreference(QK_DEPLETED_LEVEL_COLOR_ONE);
 		mDepletedLevelColorOne.setOnPreferenceChangeListener(this);
-		mDepletedLevelColorTwo = (CheckBoxPreference) findPreference(DEPLETED_LEVEL_COLOR_TWO);
+		mDepletedLevelColorTwo = (CheckBoxPreference) findPreference(QK_DEPLETED_LEVEL_COLOR_TWO);
 		mDepletedLevelColorTwo.setOnPreferenceChangeListener(this);
-		mDepletedLevelColorThree = (CheckBoxPreference) findPreference(DEPLETED_LEVEL_COLOR_THREE);
+		mDepletedLevelColorThree = (CheckBoxPreference) findPreference(QK_DEPLETED_LEVEL_COLOR_THREE);
 		mDepletedLevelColorThree.setOnPreferenceChangeListener(this);
 		mBatteryLevelColorOne = (CheckBoxPreference) findPreference(QK_BATTERY_LEVEL_COLOR_ONE);
 		mBatteryLevelColorOne.setOnPreferenceChangeListener(this);
