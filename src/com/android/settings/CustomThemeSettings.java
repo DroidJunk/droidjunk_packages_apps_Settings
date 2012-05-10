@@ -99,8 +99,8 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 	private final String CLOCK_COLOR = "clock_color";
 	private final String CLOCK_SIZE = "clock_size";
 	
-	
 	private final String Junk_Toggle_Settings = "JUNK_TOGGLE_SETTINGS";
+	private final String TOGGLES_UPDATE = "toggles_update";
 	private final String TOGGLES_ON = "toggles_show_toggles";
 	private final String TOGGLES_TOP = "toggles_top";
 	private final String TOGGLE_COLOR = "toggle_color";
@@ -142,7 +142,6 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
 	private PreferenceManager prefMgr;
 	private PreferenceManager themeMgr;
 	private SharedPreferences themeEditor;
-	private SharedPreferences sp;
 	private SharedPreferences.Editor editor = null;
     private ListPreference mThemePresets;
 	private PreferenceCategory mThemeOne;
@@ -784,218 +783,218 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         
      	i = new Intent();        
     	i.setAction(Junk_Clock_Settings);
-   	   	i.putExtra("ShowClock", showClock);
+   	   	i.putExtra(SHOW_CLOCK, showClock);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
    
      	i = new Intent();
         i.setAction(Junk_Clock_Settings);
-        i.putExtra("ClockAmPm", (Boolean) clockAmPm);
+        i.putExtra(CLOCK_AMPM, (Boolean) clockAmPm);
         getActivity().sendBroadcast(i);
         i = null;
     
     	i = new Intent();
         i.setAction(Junk_Clock_Settings);
-        i.putExtra("ClockColor", (Integer) clockColor);
+        i.putExtra(CLOCK_COLOR, (Integer) clockColor);
         getActivity().sendBroadcast(i);
         i = null;
 
     	i = new Intent();
         i.setAction(Junk_Clock_Settings);
-        i.putExtra("ClockSize", (Integer) clockSize);
+        i.putExtra(CLOCK_SIZE, (Integer) clockSize);
         getActivity().sendBroadcast(i);
         i = null;
         
         i = new Intent();
         i.setAction(Junk_Icon_Settings);
-       	i.putExtra("IconColor", (Integer) iconColor);
+       	i.putExtra(ICON_COLOR, (Integer) iconColor);
        	getActivity().sendBroadcast(i);
        	i = null;
         
        	i = new Intent();
        	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("TogglesOn", (Boolean) togglesShowToggles);
+   	   	i.putExtra(TOGGLES_ON, (Boolean) togglesShowToggles);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        	   	
        	i = new Intent();
         i.setAction(Junk_Toggle_Settings);
-       	i.putExtra("TogglesTop", (Boolean) togglesTop);
+       	i.putExtra(TOGGLES_TOP, (Boolean) togglesTop);
        	getActivity().sendBroadcast(i);
        	i = null;
        	   	
        	i = new Intent();
        	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("ToggleColor", (Integer) toggleColor);
+   	   	i.putExtra(TOGGLE_COLOR, (Integer) toggleColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
        	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("ToggleIconOnColor", (Integer) toggleIconOnColor);
+   	   	i.putExtra(TOGGLE_ICON_ON_COLOR, (Integer) toggleIconOnColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
        	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("ToggleIconInterColor", (Integer) toggleIconInterColor);
+   	   	i.putExtra(TOGGLE_ICON_INTER_COLOR, (Integer) toggleIconInterColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        	   	
        	i = new Intent();
       	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("ToggleIconOffColor", (Integer) toggleIconOffColor);
+   	   	i.putExtra(TOGGLE_ICON_OFF_COLOR, (Integer) toggleIconOffColor);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;       	   	
        	   	
        	i = new Intent();
         i.setAction(Junk_Toggle_Settings);
-        i.putExtra("ToggleShowIndicator", (Boolean) togglesShowIndicator);
+        i.putExtra(TOGGLE_SHOW_INDICATOR, (Boolean) togglesShowIndicator);
         	if ((Boolean) togglesShowIndicator) {
-        		i.putExtra("ToggleIndOnColor", toggleIndOnColor);
-            	i.putExtra("ToggleIndOffColor", toggleIndOffColor);
+        		i.putExtra(TOGGLE_IND_ON_COLOR, toggleIndOnColor);
+            	i.putExtra(TOGGLE_IND_OFF_COLOR, toggleIndOffColor);
             	} else {
-            		i.putExtra("ToggleIndOnColor",0);
-            		i.putExtra("ToggleIndOffColor",0);
+            		i.putExtra(TOGGLE_IND_ON_COLOR,0);
+            		i.putExtra(TOGGLE_IND_OFF_COLOR,0);
             }
         getActivity().sendBroadcast(i);
         i = null;
 
        	i = new Intent();
         i.setAction(Junk_Toggle_Settings);
-        i.putExtra("ToggleShowText", (Boolean) toggleShowText);
+        i.putExtra(TOGGLE_SHOW_TEXT, (Boolean) toggleShowText);
         	if ((Boolean) toggleShowText) {
-        		i.putExtra("ToggleTextOnColor", (Integer) toggleTextOnColor);
-            	i.putExtra("ToggleTextOffColor", (Integer) toggleTextOffColor);
+        		i.putExtra(TOGGLE_TEXT_ON_COLOR, (Integer) toggleTextOnColor);
+            	i.putExtra(TOGGLE_TEXT_OFF_COLOR, (Integer) toggleTextOffColor);
             	} else {
-            		i.putExtra("ToggleTextOnColor",0);
-            		i.putExtra("ToggleTextOffColor",0);
+            		i.putExtra(TOGGLE_TEXT_ON_COLOR,0);
+            		i.putExtra(TOGGLE_TEXT_OFF_COLOR,0);
             }
         getActivity().sendBroadcast(i);
         i = null;
 
        	i = new Intent();
        	i.setAction(Junk_Toggle_Settings);
-       	i.putExtra("ToggleShowDivider", (Boolean) toggleShowDivider);
+       	i.putExtra(TOGGLE_SHOW_DIVIDER, (Boolean) toggleShowDivider);
         if ((Boolean) toggleShowDivider) {
-           	i.putExtra("ToggleDividerColor", (Integer) toggleDividerColor);
+           	i.putExtra(TOGGLE_DIVIDER_COLOR, (Integer) toggleDividerColor);
            	} else {
-           		i.putExtra("ToggleDividerColor",0);
+           		i.putExtra(TOGGLE_DIVIDER_COLOR,0);
             }
        	getActivity().sendBroadcast(i);
        	i = null;      
         
        	i = new Intent();
         i.setAction(Junk_Toggle_Settings);
-        i.putExtra("UpdateToggles", true);
+        i.putExtra(TOGGLES_UPDATE, true);
         getActivity().sendBroadcast(i);
         i = null;
 
       	i = new Intent();
       	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("ShowTorch", (Boolean) showTorch);
+   	   	i.putExtra(TOGGLES_TORCH_ON, (Boolean) showTorch);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
         
         i = new Intent();
       	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("ShowFourg", (Boolean) showFourg);
+   	   	i.putExtra(TOGGLES_4G_ON, (Boolean) showFourg);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
         	   	
        	i = new Intent();
        	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("ShowWifi", (Boolean) showWifi);
+   	   	i.putExtra(TOGGLES_WIFI_ON, (Boolean) showWifi);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
         	   	
        	i = new Intent();
       	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("ShowGps", (Boolean) showGps);
+   	   	i.putExtra(TOGGLES_GPS_ON, (Boolean) showGps);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        
        	i = new Intent();
        	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("ShowBluetooth", (Boolean) showBluetooth);
+   	   	i.putExtra(TOGGLES_BLUETOOTH_ON, (Boolean) showBluetooth);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
             
        	i = new Intent();
        	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("ShowSound", (Boolean) showSound);
+   	   	i.putExtra(TOGGLES_SOUND_ON, (Boolean) showSound);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
            
        	i = new Intent();
       	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("ShowAirplane", (Boolean) showAirplane);
+   	   	i.putExtra(TOGGLES_AIRPLANE_ON, (Boolean) showAirplane);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
        	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("ShowBrightness", (Boolean) showBrightness);
+   	   	i.putExtra(TOGGLES_BRIGHTNESS_ON, (Boolean) showBrightness);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
       	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("ShowRotate", (Boolean) showRotate);
+   	   	i.putExtra(TOGGLES_ROTATE_ON, (Boolean) showRotate);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
  
        	i = new Intent();
       	i.setAction(Junk_Toggle_Settings );
-   	   	i.putExtra("ShowSync", (Boolean) showSync);
+   	   	i.putExtra(TOGGLES_SYNC_ON, (Boolean) showSync);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
 
        	i = new Intent();
        	i.setAction(Junk_Toggle_Settings);
-   	   	i.putExtra("ShowData", (Boolean) showData);
+   	   	i.putExtra(TOGGLES_DATA_ON, (Boolean) showData);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;            
    	   	
       	i = new Intent();
        	i.setAction(Junk_Pulldown_Settings);
-   	   	i.putExtra("ShowCarrier", (Boolean) showCarrier);
+   	   	i.putExtra(SHOW_CARRIER, (Boolean) showCarrier);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
        
       	i = new Intent();
         i.setAction(Junk_Pulldown_Settings);
-        i.putExtra("CarrierColor", (Integer) carrierColor);
+        i.putExtra(CARRIER_COLOR, (Integer) carrierColor);
         getActivity().sendBroadcast(i);
         i = null;
             
        	i = new Intent();
         i.setAction(Junk_Pulldown_Settings);
-        i.putExtra("CustomCarrier", (Boolean) carrierCustom);
+        i.putExtra(CARRIER_CUSTOM, (Boolean) carrierCustom);
         getActivity().sendBroadcast(i);
         i = null;
               
        	i = new Intent();
         i.setAction(Junk_Pulldown_Settings);
-        i.putExtra("CustomCarrierText", (String) carrierCustomText);
+        i.putExtra(CARRIER_CUSTOM_TEXT, (String) carrierCustomText);
         getActivity().sendBroadcast(i);
         i = null;
         	
        	i = new Intent();
         i.setAction(Junk_Pulldown_Settings);
-        i.putExtra("CarrierSize", (Integer) carrierSize);
+        i.putExtra(CARRIER_SIZE, (Integer) carrierSize);
         getActivity().sendBroadcast(i);
         i = null;
         	
       	i = new Intent();
       	i.setAction(Junk_Pulldown_Settings);
-       	i.putExtra("DateColor", (Integer) dateColor);
+       	i.putExtra(DATE_COLOR, (Integer) dateColor);
        	getActivity().sendBroadcast(i);
        	i = null;        
 
        	i = new Intent();
         i.setAction(Junk_Pulldown_Settings);
-        i.putExtra("DateSize", (Integer) dateSize);
+        i.putExtra(DATE_SIZE, (Integer) dateSize);
         getActivity().sendBroadcast(i);
         i = null;       	 
         
@@ -1088,13 +1087,6 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         i.putExtra(SHOW_BOT_MENU_BUTTON_LAND, (Boolean) showRightMenuButtonLand);
         getActivity().sendBroadcast(i);
         i = null;   	   	
-   	   	
-   	   	
-   	   	
-   	   	
-   	   	
-   	   	
-   	   	
    	   	
 }    
     
