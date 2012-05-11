@@ -461,9 +461,9 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         editor.putString(CARRIER_CUSTOM_TEXT, carrierCustomText);
         editor.putInt(CARRIER_SIZE, carrierSize);
         editor.putInt(DATE_COLOR, dateColor);
+        editor.putInt(DATE_SIZE, dateSize);
         editor.putInt(CLOSE_BAR_COLOR, closeBarColor);
         editor.putInt(CLEAR_BUTTON_COLOR, clearButtonColor);
-        editor.putInt(DATE_SIZE, dateSize);
         editor.putBoolean(SHOW_SEARCH_BUTTON, showSearchButton);
         editor.putBoolean(SHOW_LEFT_MENU_BUTTON, showLeftMenuButton);
         editor.putBoolean(SHOW_RIGHT_MENU_BUTTON, showRightMenuButton);
@@ -550,6 +550,8 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
         editor.putInt(CARRIER_SIZE, carrierSize);
         editor.putInt(DATE_COLOR, dateColor);
         editor.putInt(DATE_SIZE, dateSize);
+        editor.putInt(CLOSE_BAR_COLOR, closeBarColor);
+        editor.putInt(CLEAR_BUTTON_COLOR, clearButtonColor);
         editor.putBoolean(SHOW_SEARCH_BUTTON, showSearchButton);
         editor.putBoolean(SHOW_LEFT_MENU_BUTTON, showLeftMenuButton);
         editor.putBoolean(SHOW_RIGHT_MENU_BUTTON, showRightMenuButton);
