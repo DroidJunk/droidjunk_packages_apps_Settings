@@ -27,7 +27,7 @@
 <int name="toggle_text_off_color" value="-9079435" />
 <boolean name="toggles_show_data" value="true" />
 <string name="battery_icon_num">2</string>
-<int name="clear_button_color" value="-14538497" />
+<int name="clear_button_color" value="-13135180" />
 <boolean name="toggles_show_rotate" value="true" />
 <int name="close_bar_color" value="-13135180" />
 <boolean name="toggle_show_indicator" value="true" />

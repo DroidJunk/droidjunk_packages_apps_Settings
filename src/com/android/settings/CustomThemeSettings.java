@@ -327,15 +327,42 @@ public class CustomThemeSettings extends SettingsPreferenceFragment implements
      	if (THEME_ONE_NAME.equals(key)) {
      		mThemeOne.setTitle((String) objValue);
      		themeOneName = (String) objValue;
+     		
+	        themeMgr = getPreferenceManager();
+	        themeMgr.setSharedPreferencesName("Junk_Settings");
+	        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+	        themeMgr.getSharedPreferences();
+	        themeEditor = themeMgr.getSharedPreferences();
+	    	editor = themeEditor.edit();
+	    	editor.putString(THEME_ONE_NAME, themeOneName);
+	    	editor.commit();
      	
      	} else if (THEME_TWO_NAME.equals(key)) {
      		mThemeTwo.setTitle((String) objValue);
      		themeTwoName = (String) objValue;
+     		
+	        themeMgr = getPreferenceManager();
+	        themeMgr.setSharedPreferencesName("Junk_Settings");
+	        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+	        themeMgr.getSharedPreferences();
+	        themeEditor = themeMgr.getSharedPreferences();
+	    	editor = themeEditor.edit();
+	    	editor.putString(THEME_TWO_NAME, themeTwoName);
+	    	editor.commit();
      	
      	} else if (THEME_THREE_NAME.equals(key)) {
      		mThemeThree.setTitle((String) objValue);
      		themeThreeName = (String) objValue;
- 
+
+	        themeMgr = getPreferenceManager();
+	        themeMgr.setSharedPreferencesName("Junk_Settings");
+	        themeMgr.setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+	        themeMgr.getSharedPreferences();
+	        themeEditor = themeMgr.getSharedPreferences();
+	    	editor = themeEditor.edit();
+	    	editor.putString(THEME_THREE_NAME, themeThreeName);
+	    	editor.commit();
+
      	} else if (preference == mThemePresets) {
         	PreferenceManager prefMgr = getPreferenceManager();
             prefMgr.setSharedPreferencesName("Theme_" + (String) objValue);

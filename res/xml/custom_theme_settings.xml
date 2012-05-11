@@ -20,7 +20,7 @@
 
     <PreferenceCategory
 		android:title="T H E M E   P R E S E T S"
-		android:key="theme_one"
+		android:key="theme_presets_cat"
 		>    
     
 	<ListPreference
