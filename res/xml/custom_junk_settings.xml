@@ -111,14 +111,14 @@
     <PreferenceScreen
    		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="quiettime_settings"
-        android:title="Notificatin Quiet Time Settings"
+        android:title="Notification Quiet Time Settings"
         android:summary="Set a quiet time for notifications"
         android:fragment="com.android.settings.CustomQuietSettings" />    
     
     <PreferenceScreen
    		android:layout="?android:attr/preferenceLayoutChild"        
 		android:key="led_settings"
-        android:title="Notificaiton LED Settings"
+        android:title="Notification LED Settings"
         android:summary="Customize the notification led"
         android:fragment="com.android.settings.CustomLedSettings" />        
 

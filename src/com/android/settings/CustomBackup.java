@@ -78,9 +78,10 @@ Preference.OnPreferenceChangeListener {
     	alertDialog.show();
     }       
     
+       
     
     DialogInterface.OnClickListener backupDialogPositiveListener =
-            new DialogInterface.OnClickListener() {
+    		new DialogInterface.OnClickListener() {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
@@ -139,7 +140,6 @@ Preference.OnPreferenceChangeListener {
 			        		Toast.makeText(getActivity().getBaseContext(), "Restore Successful", Toast.LENGTH_SHORT).show();
 
 			        		SharedPreferences prefTemp = getActivity().getBaseContext().getSharedPreferences("Junk_Settings_Temp", Context.MODE_PRIVATE);
-			        		//CustomSettingsUtils.GetSettings(prefTemp);
 			        		SharedPreferences prefMgr = getActivity().getBaseContext().getSharedPreferences("Junk_Settings", Context.MODE_PRIVATE);
 			        		CustomSettingsUtils.GetSettings(prefTemp);
 			        		CustomSettingsUtils.WriteSettings(prefMgr);
@@ -185,6 +185,8 @@ Preference.OnPreferenceChangeListener {
 			};
 
 
+
+			
 
 	@Override
 	public boolean onPreferenceChange(Preference preference, Object newValue) {

@@ -37,7 +37,7 @@
 		android:title="Restore Junk Settings" 
 		android:summary="Restore Junk settings and themes"
 		/>        
-        
+ 
   	
 	</PreferenceCategory>    
 
