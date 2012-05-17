@@ -36,7 +36,7 @@
 		android:title="S T A T U S B A R   S E T T I N G S"
 		android:key="statusbar_settings">
 
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="icon_color"
 		android:title="Signal Icons Color"

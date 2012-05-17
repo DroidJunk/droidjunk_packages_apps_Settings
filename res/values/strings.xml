@@ -3828,6 +3828,7 @@ found in the list of installed apps.</string>
 	<string name="led_off_ms">10ths of a second off</string>
 	
 	<string name="junk_settings_main">Customize Your Junk</string>
+	<string name="junk_settings_backup">Backup/Restore Junk</string>
 	<string name="junk_settings_clock">Statusbar Clock Settings</string>
 	<string name="junk_settings_pulldown">Statusbar Pulldown Settings</string>
 	<string name="junk_settings_toggles">Pulldown Toggle Settings</string>

@@ -57,7 +57,7 @@
 		android:title="I C O N S"
 		android:key="toggle_colors">
 
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
 		android:key="toggle_color"
@@ -66,7 +66,7 @@
 		android:defaultValue="#ff272727" 
 		alphaSlider="false" /> 
 		
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
 		android:key="toggles_icon_on_color"
@@ -75,7 +75,7 @@
 		android:defaultValue="#ff3792b4" 
 		alphaSlider="false" /> 
 
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
 		android:key="toggles_icon_inter_color"
@@ -84,7 +84,7 @@
 		android:defaultValue="#ffff0000" 
 		alphaSlider="false" /> 
 
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggles_show_toggles"
 		android:key="toggles_icon_off_color"
@@ -110,7 +110,7 @@
 		android:title="Indicators" 
 		android:defaultValue="true"	/>
 
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggle_show_indicator"
 		android:key="toggle_ind_on_color"
@@ -119,7 +119,7 @@
 		android:defaultValue="#ffffffff" 
 		alphaSlider="false" /> 
 
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:dependency="toggle_show_indicator"
 		android:key="toggle_ind_off_color"
@@ -144,7 +144,7 @@
 		android:title="Text Label" 
 		android:defaultValue="true" />
 
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggle_show_text"
 		android:key="toggle_text_on_color"
@@ -153,7 +153,7 @@
 		android:defaultValue="#ffffffff" 
 		alphaSlider="false" />
 
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggle_show_text"
 		android:key="toggle_text_off_color"
@@ -178,7 +178,7 @@
 		android:title="Dividers" 
 		android:defaultValue="true"	/>
 
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="toggle_show_divider"
 		android:key="toggle_divider_color"

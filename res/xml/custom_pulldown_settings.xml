@@ -22,7 +22,7 @@
 		android:title="C L E A R   A L L   B U T T O N"
 		android:key="clear_button">
 
- 	<com.android.settings.ColorPickerPreference
+ 	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="clear_button_color"
 		android:title="Clear All Button Color"
@@ -38,7 +38,7 @@
 		android:title="P U L L D O W N   H A N D L E"
 		android:key="pulldown_closebar">    
     	
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="close_bar_color"
 		android:title="Pulldown Handle Color"
@@ -54,7 +54,7 @@
 		android:title="D A T E"
 		android:key="date_settings">
 
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="date_color"
 		android:title="Date Color"
@@ -86,7 +86,7 @@
 		android:title="Show Carrier" 
 		android:defaultValue="true"	/>        
         				
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="show_carrier"
 		android:key="carrier_color"
@@ -140,7 +140,7 @@
 		android:title="Show Battery Level" 
 		android:defaultValue="true"	/>		        
    				
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="show_battery_label"
 		android:key="battery_label_color"
@@ -172,7 +172,7 @@
 		android:title="Show Battery Temperature" 
 		android:defaultValue="true"	/>    
    				
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="show_temp_label"
 		android:key="temp_label_color"

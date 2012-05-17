@@ -29,7 +29,7 @@
 		android:title="D E F A U L T   L E D"
 		android:key="default_led">
 
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="default_led_color"
 		android:title="Default LED Color"
@@ -58,7 +58,7 @@
 		android:title="I N C O M I N G   C A L L"
 		android:key="phone_leds">
 
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="incoming_call_color"
 		android:title="Incoming Call Color"
@@ -97,7 +97,7 @@
 		android:title="M I S S E D   C A L L S"
 		android:key="missed_call_leds">
 
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="missed_call_color"
 		android:title="LED Color"
@@ -136,7 +136,7 @@
 		android:title="V O I C E   M A I L"
 		android:key="voice_mail_leds">
 
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="voice_mail_color"
 		android:title="LED Color"

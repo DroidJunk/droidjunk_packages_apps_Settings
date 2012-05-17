@@ -40,7 +40,7 @@
 		android:title="Clock am/pm" 
 		android:defaultValue="false"	/>
    				
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="show_clock"
 		android:key="clock_color"

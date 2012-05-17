@@ -19,7 +19,7 @@
 	>
 	
     
-   	<com.android.settings.ColorPickerPreference
+   	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="qk_color"
 		android:title="Color"

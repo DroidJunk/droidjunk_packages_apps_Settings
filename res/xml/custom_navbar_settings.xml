@@ -6,7 +6,7 @@
 		android:title="N A V I G A T I O N   B A R   C O L O R">
 
  	    
-		<com.android.settings.ColorPickerPreference
+		<ColorPickerPreference
 			android:key="nav_button_color"
 			android:title="Navigation Button Color"
 			android:defaultValue="#ffffffff" />

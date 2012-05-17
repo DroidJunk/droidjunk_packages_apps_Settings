@@ -31,6 +31,13 @@
         android:fragment="com.android.settings.CustomJunk"
         android:title="@string/junk_settings_main" />
 
+    <header
+        android:id="@+id/custom_backup_restore"
+        android:icon="@drawable/ic_settings_backup"
+        android:fragment="com.android.settings.CustomBackup"
+        android:title="@string/junk_settings_backup" />
+    
+    
 	<!-- ***************************************************************************************** -->
 
     

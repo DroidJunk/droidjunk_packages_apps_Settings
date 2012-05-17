@@ -15,26 +15,31 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="System Settings"
-		>
-        
+        android:title="Backup and Restore Settings"
+        >
+
     <PreferenceCategory
-		android:title="S Y S T E M   S E T T I N G S"
-		android:key="system_settings">
+		android:title="B A C K U P   A N D   R E S T O R E"
+		android:key="junk_backup_restore"
+		>    
     
-    <PreferenceScreen
-        android:fragment="com.android.settings.CustomQuietSettings"
-        android:key="custom_quiet_time_settings"
-        android:title="Quiet Time" />
 
+    <Preference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="junk_backup"
+		android:title="Backup Junk Settings" 
+		android:summary="Backup Junk settings and themes"
+		/>       
 
-    <PreferenceScreen
-        android:fragment="com.android.settings.CustomLedSettings"
-        android:key="custom_led_settings"
-        android:title="Led Settings" />
- 
-    </PreferenceCategory>
+    <Preference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="junk_restore"
+		android:title="Restore Junk Settings" 
+		android:summary="Restore Junk settings and themes"
+		/>        
         
+  	
+	</PreferenceCategory>    
+
 
 </PreferenceScreen>
-

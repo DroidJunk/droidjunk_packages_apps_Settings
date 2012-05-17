@@ -22,7 +22,7 @@
 		android:summary="Maximimum level for the color"
 		android:defaultValue="10" />	
    
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="charge_levels_color_one"
 		android:title="Max Level One Color"
@@ -38,7 +38,7 @@
 		android:summary="Maximimum level for the color"
 		android:defaultValue="30" />	
    
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="charge_levels_color_two"
 		android:title="Max Level Two Color"
@@ -47,7 +47,7 @@
 		alphaSlider="false" />	
 
    
-	<com.android.settings.ColorPickerPreference
+	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="charge_levels_color_three"
 		android:title="Max Level Three Color"

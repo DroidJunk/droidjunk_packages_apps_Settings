@@ -22,14 +22,11 @@ import com.android.settings.R;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.preference.CheckBoxPreference;
-import android.util.Log;
+import android.preference.ColorPickerPreference;
 
 
 

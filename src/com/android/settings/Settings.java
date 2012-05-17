@@ -24,6 +24,7 @@ import com.android.settings.wifi.WifiEnabler;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -31,6 +32,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,6 +46,8 @@ import android.widget.ListAdapter;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -79,6 +83,127 @@ public class Settings extends PreferenceActivity implements ButtonBarHandler {
 
     protected HashMap<Integer, Integer> mHeaderIndexMap = new HashMap<Integer, Integer>();
     private List<Header> mHeaders;
+    
+    
+    
+    
+    
+	private final String Junk_Pulldown_Settings = "JUNK_PULLDOWN_SETTINGS";
+	private final String SHOW_BATTERY_LABEL = "show_battery_label";
+	private final String BATTERY_LABEL_COLOR = "battery_label_color";
+	private final String BATTERY_LABEL_SIZE = "battery_label_size";
+	private final String SHOW_TEMP_LABEL = "show_temp_label";
+	private final String TEMP_LABEL_COLOR = "temp_label_color";
+	private final String TEMP_LABEL_SIZE = "temp_label_size";
+	private final String SHOW_CARRIER = "show_carrier";
+	private final String CARRIER_COLOR = "carrier_color";
+	private final String CARRIER_CUSTOM = "carrier_custom";
+	private final String CARRIER_CUSTOM_TEXT = "carrier_custom_text";
+	private final String CARRIER_SIZE = "carrier_size";
+	private final String DATE_COLOR = "date_color";
+	private final String DATE_SIZE = "date_size";
+	private final String CLEAR_BUTTON_COLOR = "clear_button_color";
+	private final String CLOSE_BAR_COLOR = "close_bar_color";
+
+    private final String Junk_Battery_Settings = "JUNK_BATTERY_SETTINGS";	
+	private final String BATTERY_ICONS = "battery_icon_num";
+	private final String BATTERY_BAR_BOTTOM = "battery_bar_bottom";
+	private final String BATTERY_BAR_RIGHT = "battery_bar_right";
+	private final String BATTERY_BAR_WIDTH = "battery_bar_width";
+	private final String BATTERY_LEVEL_ONE = "battery_levels_one";
+	private final String BATTERY_LEVEL_COLOR_ONE = "battery_levels_color_one";
+	private final String BATTERY_LEVEL_TWO = "battery_levels_two";
+	private final String BATTERY_LEVEL_COLOR_TWO = "battery_levels_color_two";
+	private final String BATTERY_LEVEL_COLOR_THREE = "battery_levels_color_three";    
+	private final String DEPLETED_LEVEL_ONE = "depleted_levels_one";
+	private final String DEPLETED_LEVEL_COLOR_ONE = "depleted_levels_color_one";
+	private final String DEPLETED_LEVEL_TWO = "depleted_levels_two";
+	private final String DEPLETED_LEVEL_COLOR_TWO = "depleted_levels_color_two";
+	private final String DEPLETED_LEVEL_COLOR_THREE = "depleted_levels_color_three";    
+	private final String CHARGING_LEVEL_ONE = "charge_levels_one";
+	private final String CHARGING_LEVEL_COLOR_ONE = "charge_levels_color_one";
+	private final String CHARGING_LEVEL_TWO = "charge_levels_two";
+	private final String CHARGING_LEVEL_COLOR_TWO = "charge_levels_color_two";
+	private final String CHARGING_LEVEL_COLOR_THREE = "charge_levels_color_three";    
+	
+	private final String Junk_Clock_Settings = "JUNK_CLOCK_SETTINGS";
+    private final String SHOW_CLOCK = "show_clock";
+	private final String CLOCK_AMPM = "clock_ampm";
+	private final String CLOCK_COLOR = "clock_color";
+	private final String CLOCK_SIZE = "clock_size";
+	
+	private final String Junk_Toggle_Settings = "JUNK_TOGGLE_SETTINGS";
+	private final String TOGGLES_UPDATE = "toggles_update";
+	private final String TOGGLES_ON = "toggles_show_toggles";
+	private final String TOGGLES_TOP = "toggles_top";
+	private final String TOGGLE_COLOR = "toggle_color";
+	private final String TOGGLE_ICON_ON_COLOR = "toggles_icon_on_color";
+	private final String TOGGLE_ICON_INTER_COLOR = "toggles_icon_inter_color";
+	private final String TOGGLE_ICON_OFF_COLOR = "toggles_icon_off_color";
+	private final String TOGGLE_SHOW_INDICATOR = "toggle_show_indicator";
+	private final String TOGGLE_IND_ON_COLOR = "toggle_ind_on_color";
+	private final String TOGGLE_IND_OFF_COLOR = "toggle_ind_off_color";
+	private final String TOGGLE_SHOW_TEXT = "toggle_show_text";
+	private final String TOGGLE_TEXT_ON_COLOR = "toggle_text_on_color";
+	private final String TOGGLE_TEXT_OFF_COLOR = "toggle_text_off_color";
+	private final String TOGGLE_SHOW_DIVIDER = "toggle_show_divider";
+	private final String TOGGLE_DIVIDER_COLOR = "toggle_divider_color";
+	private final String TOGGLES_TORCH_ON = "toggles_show_torch";
+	private final String TOGGLES_4G_ON = "toggles_show_fourg";
+	private final String TOGGLES_WIFI_ON = "toggles_show_wifi";
+	private final String TOGGLES_GPS_ON = "toggles_show_gps";
+	private final String TOGGLES_BLUETOOTH_ON = "toggles_show_bluetooth";
+	private final String TOGGLES_SOUND_ON = "toggles_show_sound";
+	private final String TOGGLES_AIRPLANE_ON = "toggles_show_airplane";
+	private final String TOGGLES_BRIGHTNESS_ON = "toggles_show_brightness";
+	private final String TOGGLES_ROTATE_ON = "toggles_show_rotate";
+	private final String TOGGLES_SYNC_ON = "toggles_show_sync";
+	private final String TOGGLES_DATA_ON = "toggles_show_data";
+	
+	private final String Junk_Icon_Settings = "JUNK_ICON_SETTINGS";
+	private final String ICON_COLOR = "icon_color";
+	
+	private final String Junk_NavBar_Settings = "JUNK_NAVBAR_SETTINGS";
+    private final String NAV_BAR_COLOR = "nav_button_color";
+    private final String SHOW_SEARCH_BUTTON = "search_button";
+	private final String SHOW_LEFT_MENU_BUTTON = "left_menu_button";
+	private final String SHOW_RIGHT_MENU_BUTTON = "right_menu_button";
+    private final String SHOW_SEARCH_BUTTON_LAND = "search_button_land";
+	private final String SHOW_TOP_MENU_BUTTON_LAND = "top_menu_button_land";
+	private final String SHOW_BOT_MENU_BUTTON_LAND = "bottom_menu_button_land";
+
+	private SharedPreferences prefMgr ;
+	
+	
+	
+    private boolean batteryBarBottom, batteryBarRight;
+    private boolean showCarrier, carrierCustom, showBatteryLabel, showTempLabel;
+    private boolean showClock, clockAmPm, togglesShowToggles, togglesTop; 
+    private boolean togglesShowIndicator, toggleShowText, toggleShowDivider;
+    private boolean showTorch, showFourg, showWifi, showGps, showBluetooth, showSound, showAirplane;
+    private boolean showBrightness, showRotate, showSync, showData;
+    private boolean showSearchButton, showLeftMenuButton, showLeftMenuButtonLand;
+    private boolean showRightMenuButton, showRightMenuButtonLand, showSearchButtonLand;
+    private boolean showTopMenuButtonLand, showBotMenuButtonLand;
+    private int batteryBarWidth, batteryLevelOne, batteryLevelOneColor;
+    private int batteryLevelTwo, batteryLevelTwoColor, batteryLevelThreeColor, depletedLevelOne;
+    private int depletedLevelOneColor, depletedLevelTwo, depletedLevelTwoColor, depletedLevelThreeColor;
+    private int chargingLevelOne, chargingLevelOneColor, chargingLevelTwo, chargingLevelTwoColor, chargingLevelThreeColor;
+    private int batteryLabelLevelColor, batteryLabelLevelSize, batteryLabelTempColor, batteryLabelTempSize;
+    private int carrierColor, iconColor, clockColor, clockSize, toggleColor, toggleIconOnColor;
+    private int toggleIconInterColor, toggleIconOffColor, toggleIndOnColor, toggleIndOffColor;
+    private int toggleTextOnColor, toggleTextOffColor, toggleDividerColor, navBarColor;
+    private int carrierSize, dateColor, dateSize, clearButtonColor, closeBarColor;
+	private String carrierCustomText, batteryIconNum;
+
+    
+    
+    
+    
+    
+    
+    
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +211,64 @@ public class Settings extends PreferenceActivity implements ButtonBarHandler {
             getWindow().setUiOptions(0);
         }
 
+        File junkBackupDir = new File("/sdcard/.junk/backup/");
+        junkBackupDir.mkdirs();        
+
+        boolean settingsRestored = false;
+        try {
+        	if (!BackupUtils.settingsExist() & BackupUtils.backupExist(
+        			"sdcard/.junk/backup/Junk_Settings.xml")) {
+        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Settings.xml",
+						"data/data/com.android.settings/shared_prefs/Junk_Settings.xml");
+        		Log.v("JUNK: Settings Backup Found: ","Restoring Junk Settings");
+        		settingsRestored = true;
+        	} else {
+        		Log.v("JUNK: Settings Restore: ","Settings exist or there is not a backup");	
+        	}
+        } catch (IOException e) {
+        	Log.e("JUNK: Settings Restore: ","ERROR JUNK SETTINGS");
+        };	
+
+        try {        
+        	if (!BackupUtils.themeOneExist() & BackupUtils.backupExist(
+        			"sdcard/.junk/backup/Junk_Theme_One.xml")) {
+        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Theme_One.xml",
+						"data/data/com.android.settings/shared_prefs/Junk_Theme_One.xml");
+        	}
+        } catch (IOException e) {
+        	Log.e("JUNK: Settings Restore: ","ERROR THEME ONE");
+        };	
+        	
+        try {        
+        	if (!BackupUtils.themeTwoExist() & BackupUtils.backupExist(
+        			"sdcard/.junk/backup/Junk_Theme_Two.xml")) {
+        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Theme_Two.xml",
+						"data/data/com.android.settings/shared_prefs/Junk_Theme_Two.xml");
+        	}
+        } catch (IOException e) {
+        	Log.e("JUNK: Settings Restore: ","ERROR THEME TWO");
+        };	
+
+        try {        
+        	if (!BackupUtils.themeThreeExist() & BackupUtils.backupExist(
+        			"sdcard/.junk/backup/Junk_Theme_Three.xml")) {
+        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Theme_Three.xml",
+						"data/data/com.android.settings/shared_prefs/Junk_Theme_Three.xml");
+        	}
+        } catch (IOException e) {
+        	Log.e("JUNK: Settings Restore: ","ERROR THEME THREE");
+        };
+        
+        if (settingsRestored) {
+            SharedPreferences prefMgr = getBaseContext().getSharedPreferences(
+            		"Junk_Settings", Context.MODE_PRIVATE);
+
+        	CustomSettingsUtils.GetSettings(prefMgr);
+        	CustomSettingsUtils.SendIntents(getBaseContext());
+        	
+        }
+      
+		
         getMetaData();
         mInLocalHeaderSwitch = true;
         super.onCreate(savedInstanceState);
@@ -590,6 +773,9 @@ public class Settings extends PreferenceActivity implements ButtonBarHandler {
             titleRes = R.string.junk_settings_toggles;
         }
        
+        if (pref.getFragment().equals(CustomBackup.class.getName())) {
+            titleRes = R.string.junk_settings_backup;
+        }
         
 
         
@@ -659,5 +845,9 @@ public class Settings extends PreferenceActivity implements ButtonBarHandler {
     public static class TextToSpeechSettingsActivity extends Settings { /* empty */ }
     public static class AndroidBeamSettingsActivity extends Settings { /* empty */ }
     public static class CustomJunkSettingsActivity extends Settings { /* empty */ }
+    
+    
 
+    
+    
 }
