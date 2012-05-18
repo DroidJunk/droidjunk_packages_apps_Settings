@@ -33,14 +33,18 @@ public class CustomClockSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
 	private final String Junk_Clock_Settings = "JUNK_CLOCK_SETTINGS";
-	private final String SHOW_CLOCK = "show_clock";
+	private final String SHOW_CLOCK_LEFT = "show_clock_left";
+	private final String SHOW_CLOCK_CENTER = "show_clock_center";
+	private final String SHOW_CLOCK_RIGHT = "show_clock_right";
 	private final String CLOCK_AMPM = "clock_ampm";
 	private final String CLOCK_COLOR = "clock_color";
 	private final String CLOCK_SIZE = "clock_size";
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
-	private CheckBoxPreference mShowClock;
+	private CheckBoxPreference mShowClockLeft;
+	private CheckBoxPreference mShowClockCenter;
+	private CheckBoxPreference mShowClockRight;
 	private CheckBoxPreference mClockAmPm;
     private Preference mClockColor;
     private Preference mClockSize;
@@ -64,8 +68,12 @@ public class CustomClockSettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.custom_clock_settings);
         
-        mShowClock = (CheckBoxPreference) findPreference(SHOW_CLOCK);
-		mShowClock.setOnPreferenceChangeListener(this);
+        mShowClockLeft = (CheckBoxPreference) findPreference(SHOW_CLOCK_LEFT);
+		mShowClockLeft.setOnPreferenceChangeListener(this);
+        mShowClockCenter = (CheckBoxPreference) findPreference(SHOW_CLOCK_CENTER);
+		mShowClockCenter.setOnPreferenceChangeListener(this);
+        mShowClockRight = (CheckBoxPreference) findPreference(SHOW_CLOCK_RIGHT);
+		mShowClockRight.setOnPreferenceChangeListener(this);
         mClockAmPm = (CheckBoxPreference) findPreference(CLOCK_AMPM);
 		mClockAmPm.setOnPreferenceChangeListener(this);
         mClockColor = (Preference) findPreference(CLOCK_COLOR);
@@ -110,13 +118,71 @@ public class CustomClockSettings extends SettingsPreferenceFragment implements
   
      	final String key = preference.getKey();
 
-     	if (SHOW_CLOCK.equals(key)) {
+        if (SHOW_CLOCK_LEFT.equals(key)) {
+    		mShowClockCenter.setChecked(false);
+    		mShowClockRight.setChecked(false);
         	Intent i = new Intent();
-        	i.setAction(Junk_Clock_Settings );
-       	   	i.putExtra(SHOW_CLOCK, (Boolean) objValue);
-       	   	getActivity().sendBroadcast(i);
-       	   	i = null;
-       
+            i.setAction(Junk_Clock_Settings );
+            i.putExtra(SHOW_CLOCK_LEFT, (Boolean) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+            
+        	i = new Intent();
+            i.setAction(Junk_Clock_Settings );
+            i.putExtra(SHOW_CLOCK_CENTER, false);
+            getActivity().sendBroadcast(i);
+            i = null;
+            
+        	i = new Intent();
+            i.setAction(Junk_Clock_Settings );
+            i.putExtra(SHOW_CLOCK_RIGHT, false);
+            getActivity().sendBroadcast(i);
+            i = null;
+
+        } else if (SHOW_CLOCK_CENTER.equals(key)) {
+    		mShowClockLeft.setChecked(false);
+    		mShowClockRight.setChecked(false);
+        	Intent i = new Intent();
+            i.setAction(Junk_Clock_Settings );
+            i.putExtra(SHOW_CLOCK_CENTER, (Boolean) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+            
+        	i = new Intent();
+            i.setAction(Junk_Clock_Settings );
+            i.putExtra(SHOW_CLOCK_LEFT, false);
+            getActivity().sendBroadcast(i);
+            i = null;
+            
+        	i = new Intent();
+            i.setAction(Junk_Clock_Settings );
+            i.putExtra(SHOW_CLOCK_RIGHT, false);
+            getActivity().sendBroadcast(i);
+            i = null;
+            
+            
+        } else if (SHOW_CLOCK_RIGHT.equals(key)) {
+    		mShowClockCenter.setChecked(false);
+    		mShowClockLeft.setChecked(false);
+        	Intent i = new Intent();
+            i.setAction(Junk_Clock_Settings );
+            i.putExtra(SHOW_CLOCK_RIGHT, (Boolean) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+            
+        	i = new Intent();
+            i.setAction(Junk_Clock_Settings );
+            i.putExtra(SHOW_CLOCK_LEFT, false);
+            getActivity().sendBroadcast(i);
+            i = null;
+            
+        	i = new Intent();
+            i.setAction(Junk_Clock_Settings );
+            i.putExtra(SHOW_CLOCK_CENTER, false);
+            getActivity().sendBroadcast(i);
+            i = null;
+
+            
         } else if (CLOCK_AMPM.equals(key)) {
         	Intent i = new Intent();
             i.setAction(Junk_Clock_Settings );

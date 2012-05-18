@@ -23,17 +23,33 @@
 		android:title="C L O C K"
 		android:key="clock">
 
+
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="show_clock"
-		android:summaryOn="Clock is on"
-		android:summaryOff="Clock is off"
-		android:title="Clock" 
+		android:key="show_clock_left"
+		android:summaryOn="Left Clock is on"
+		android:summaryOff="Left Clock is off"
+		android:title="Left Clock" 
+		android:defaultValue="true"	/>	
+	
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="show_clock_center"
+		android:summaryOn="Center Clock is on"
+		android:summaryOff="Center Clock is off"
+		android:title="Center Clock" 
 		android:defaultValue="true"	/>
-
+	
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="show_clock_right"
+		android:summaryOn="Right Clock is on"
+		android:summaryOff="Right Clock is off"
+		android:title="Right Clock" 
+		android:defaultValue="true"	/>		
+	
  	<CheckBoxPreference 
  		android:layout="?android:attr/preferenceLayoutChild"
-	    android:dependency="show_clock"
 		android:key="clock_ampm"
 		android:summaryOn="Show am/pm"
 		android:summaryOff="Do not show am/pm"
@@ -42,7 +58,6 @@
    				
 	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
-	    android:dependency="show_clock"
 		android:key="clock_color"
 		android:title="Clock Color"
 		android:summary="Color for statusbar clock"
@@ -51,7 +66,6 @@
 
 	<Preference 
 		android:layout="?android:attr/preferenceLayoutChild"
-    	android:dependency="show_clock"
 		android:key="clock_size"
 		android:title="Clock Size"
 		android:summary="Size of the clock"
