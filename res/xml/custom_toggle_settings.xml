@@ -62,9 +62,9 @@
 		android:dependency="toggles_show_toggles"
 		android:key="toggle_color"
 		android:title="Toggle Background Color"
-		android:summary="Color for toggles"
+		android:summary="Background color for the toggles"
 		android:defaultValue="#ff272727" 
-		alphaSlider="false" /> 
+		alphaSlider="true" /> 
 		
 	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
