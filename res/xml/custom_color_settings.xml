@@ -118,11 +118,23 @@
 		android:key="quickcolor_navbar">
    				
 		<ColorPickerPreference
-	   		android:layout="?android:attr/preferenceLayoutChild"
+			android:key="nav_bar_color"
+			android:title="Navigation Bar Color"
+			android:defaultValue="#ff000000"
+			/>  	    
+ 	    
+		<ColorPickerPreference
 			android:key="nav_button_color"
 			android:title="Navigation Button Color"
+			android:defaultValue="#ffffffff" />
+
+		<ColorPickerPreference
+			android:key="nav_button_glow_color"
+			android:title="Navigation Button Glow Color"
 			android:defaultValue="#ffffffff"
-			alphaSlider="false" />
+			/>		
+		
+
 		 
     </PreferenceCategory>
   
@@ -144,7 +156,39 @@
     </PreferenceCategory>
 
     
-	
+    <PreferenceCategory
+		android:title="P U L L D O W N   N O T I F I C A T I O N S"
+		android:key="pd_notif">
+
+       
+        
+ 	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="pd_notif_icon_bg_color"
+		android:title="Icon Background Color"
+		android:summary="Background color for the notification icon (reboot required)"
+		android:defaultValue="#ff000000" 
+		alphaSlider="true" /> 		
+        
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="pd_notif_text_color"
+		android:title="Text Color"
+		android:summary="Notification text color (reboot required)"
+		android:defaultValue="#ffffffff" 
+		alphaSlider="false" /> 		
+ 	
+ 	
+ 	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="pd_notif_text_bg_color"
+		android:title="Text Background Color"
+		android:summary="Background color for the notification text (reboot required)"
+		android:defaultValue="#ff000000" 
+		alphaSlider="true" /> 		
+
+    </PreferenceCategory>
+		
         
     <PreferenceCategory
 		android:title="S T A T U S B A R   P U L L D O W N"
@@ -158,21 +202,54 @@
 			android:defaultValue="#ff3792b4" 
 			alphaSlider="false" /> 		
         
+	 	<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild"
+			android:key="date_bar_color"
+			android:title="Date Bar Color"
+			android:summary="Color for the date bar"
+			android:defaultValue="#ffffffff" 	
+			alphaSlider="true" /> 	        
+				
+		
         <ColorPickerPreference
 			android:layout="?android:attr/preferenceLayoutChild"
 			android:key="clear_button_color"
 			android:title="Clear All Button Color"
-			android:summary="Color for clear all button"
+			android:summary="Color for clear all button (reboot required)"
 			android:defaultValue="#ff3792b4" 
 			alphaSlider="false" /> 	
+			
+        <ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild"
+			android:key="clear_button_text_color"
+			android:title="Clear All Button Text Color"
+			android:summary="Color for clear all button text (reboot required)"
+			android:defaultValue="#ff3792b4" 
+			alphaSlider="false" /> 	        
 
 		<ColorPickerPreference
 			android:layout="?android:attr/preferenceLayoutChild"
-			android:key="close_bar_color"
+			android:key="pd_shade_color"
+			android:title="Pulldown Shade"
+			android:summary="Color for statusbar pulldown shade"
+			android:defaultValue="#80000000" 
+			alphaSlider="true" /> 				
+        	
+		<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild"
+			android:key="pd_handle_color"
 			android:title="Pulldown Handle Color"
 			android:summary="Color for statusbar pulldown handle"
 			android:defaultValue="#ff3792b4" 
-			alphaSlider="false" />         
+			alphaSlider="true" /> 	
+		
+		<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild"
+			android:key="pd_grip_color"
+			android:title="Pulldown Grip Color"
+			android:summary="Color for statusbar pulldown grip"
+			android:defaultValue="#ff000000" 
+			alphaSlider="true" /> 			
         
 		<ColorPickerPreference
 			android:layout="?android:attr/preferenceLayoutChild"
@@ -181,7 +258,16 @@
 			android:summary="Color for the carrier text"
 			android:defaultValue="#ff3792b4" 
 			alphaSlider="false" /> 
-			
+
+		<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild"
+			android:key="pd_carrier_frame_color"
+			android:title="Carrier Bar Color"
+			android:summary="Color for carrier bar"
+			android:defaultValue="#ff3792b4" 
+			alphaSlider="true" /> 		
+				
+					
 		<ColorPickerPreference
 			android:layout="?android:attr/preferenceLayoutChild"
 			android:key="battery_label_color"

@@ -3,14 +3,32 @@
 	xmlns:android="http://schemas.android.com/apk/res/android">
 
   	<PreferenceCategory
-		android:title="N A V I G A T I O N   B A R   C O L O R">
+		android:title="N A V I G A T I O N   B A R">
 
+		<ColorPickerPreference
+			android:key="nav_bar_color"
+			android:title="Navigation Bar Color"
+			android:defaultValue="#ff000000"
+			/>  	    
  	    
 		<ColorPickerPreference
 			android:key="nav_button_color"
 			android:title="Navigation Button Color"
 			android:defaultValue="#ffffffff" />
 
+		<ColorPickerPreference
+			android:key="nav_button_glow_color"
+			android:title="Navigation Button Glow Color"
+			android:defaultValue="#ffffffff"
+			/>		
+		
+		<DJSeekBarPreference	
+			android:layout="?android:attr/preferenceLayoutChild"
+   			android:key="nav_anim_speed"
+			android:title="Navigation Bar Glow Animation"
+			android:summary="Set to 0 to turn animatin off"
+			android:defaultValue="5" />		
+		
     </PreferenceCategory>
 
    	

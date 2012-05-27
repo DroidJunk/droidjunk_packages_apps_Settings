@@ -30,7 +30,7 @@
 		android:summaryOn="Left Clock is on"
 		android:summaryOff="Left Clock is off"
 		android:title="Left Clock" 
-		android:defaultValue="true"	/>	
+		android:defaultValue="false"	/>	
 	
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
@@ -38,7 +38,7 @@
 		android:summaryOn="Center Clock is on"
 		android:summaryOff="Center Clock is off"
 		android:title="Center Clock" 
-		android:defaultValue="true"	/>
+		android:defaultValue="false"	/>
 	
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 

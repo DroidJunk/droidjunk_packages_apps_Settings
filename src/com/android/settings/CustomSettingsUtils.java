@@ -41,9 +41,19 @@ public class CustomSettingsUtils {
 	private final static String CARRIER_CUSTOM_TEXT = "carrier_custom_text";
 	private final static String CARRIER_SIZE = "carrier_size";
 	private final static String DATE_COLOR = "date_color";
+	private final static String DATE_BAR_COLOR = "date_bar_color";
 	private final static String DATE_SIZE = "date_size";
 	private final static String CLEAR_BUTTON_COLOR = "clear_button_color";
-	private final static String CLOSE_BAR_COLOR = "close_bar_color";
+	private final static String CLEAR_BUTTON_TEXT_COLOR = "clear_button_text_color";
+	private final static String PD_HANDLE_COLOR = "pd_handle_color";
+	private final static String PD_SHADE_COLOR = "pd_shade_color";
+	private final static String PD_GRIP_COLOR = "pd_grip_color";
+	private final static String PD_CARRIER_FRAME_COLOR = "pd_carrier_frame_color";
+//	private final static String PD_NOTIF_ICON_COLOR = "pd_notif_icon_color";
+	private final static String PD_NOTIF_ICON_BG_COLOR = "pd_notif_icon_bg_color";
+	private final static String PD_NOTIF_TEXT_COLOR = "pd_notif_text_color";
+	private final static String PD_NOTIF_TEXT_BG_COLOR = "pd_notif_text_bg_color";
+
 
     private final static String Junk_Battery_Settings = "JUNK_BATTERY_SETTINGS";	
 	private final static String BATTERY_ICONS = "battery_icon_num";
@@ -68,6 +78,9 @@ public class CustomSettingsUtils {
 	
 	private final static String Junk_Clock_Settings = "JUNK_CLOCK_SETTINGS";
     private final static String SHOW_CLOCK = "show_clock";
+	private final static String SHOW_CLOCK_LEFT = "show_clock_left";
+	private final static String SHOW_CLOCK_CENTER = "show_clock_center";
+	private final static String SHOW_CLOCK_RIGHT = "show_clock_right";
 	private final static String CLOCK_AMPM = "clock_ampm";
 	private final static String CLOCK_COLOR = "clock_color";
 	private final static String CLOCK_SIZE = "clock_size";
@@ -104,7 +117,10 @@ public class CustomSettingsUtils {
 	private final static String ICON_COLOR = "icon_color";
 	
 	private final static String Junk_NavBar_Settings = "JUNK_NAVBAR_SETTINGS";
-    private final static String NAV_BAR_COLOR = "nav_button_color";
+	private final static String NAV_BAR_COLOR = "nav_bar_color";
+    private final static String NAV_BAR_BUTTON_COLOR = "nav_button_color";
+    private final static String NAV_BAR_GLOW_COLOR = "nav_button_glow_color";
+    private final static String NAV_BAR_ANIM_SPEED = "nav_anim_speed";
     private final static String SHOW_SEARCH_BUTTON = "search_button";
 	private final static String SHOW_LEFT_MENU_BUTTON = "left_menu_button";
 	private final static String SHOW_RIGHT_MENU_BUTTON = "right_menu_button";
@@ -112,7 +128,7 @@ public class CustomSettingsUtils {
 	private final static String SHOW_TOP_MENU_BUTTON_LAND = "top_menu_button_land";
 	private final static String SHOW_BOT_MENU_BUTTON_LAND = "bottom_menu_button_land";
 
-    private static boolean batteryBarBottom, batteryBarRight;
+    private static boolean batteryBarBottom, batteryBarRight,clockLeft, clockCenter, clockRight;
     private static boolean showCarrier, carrierCustom, showBatteryLabel, showTempLabel;
     private static boolean showClock, clockAmPm, togglesShowToggles, togglesTop; 
     private static boolean togglesShowIndicator, toggleShowText, toggleShowDivider;
@@ -121,6 +137,8 @@ public class CustomSettingsUtils {
     private static boolean showSearchButton, showLeftMenuButton, showLeftMenuButtonLand;
     private static boolean showRightMenuButton, showRightMenuButtonLand, showSearchButtonLand;
     private static boolean showTopMenuButtonLand, showBotMenuButtonLand;
+    private static int dateBarColor, shadeColor, gripColor, carrierBarColor, notifIconBgColor;
+    private static int notifTextColor, notifTextBgColor, navBarColor, navBarButtonColor, navBarGlowColor, navBarAnim;
     private static int batteryBarWidth, batteryLevelOne, batteryLevelOneColor;
     private static int batteryLevelTwo, batteryLevelTwoColor, batteryLevelThreeColor, depletedLevelOne;
     private static int depletedLevelOneColor, depletedLevelTwo, depletedLevelTwoColor, depletedLevelThreeColor;
@@ -128,8 +146,8 @@ public class CustomSettingsUtils {
     private static int batteryLabelLevelColor, batteryLabelLevelSize, batteryLabelTempColor, batteryLabelTempSize;
     private static int carrierColor, iconColor, clockColor, clockSize, toggleColor, toggleIconOnColor;
     private static int toggleIconInterColor, toggleIconOffColor, toggleIndOnColor, toggleIndOffColor;
-    private static int toggleTextOnColor, toggleTextOffColor, toggleDividerColor, navBarColor;
-    private static int carrierSize, dateColor, dateSize, clearButtonColor, closeBarColor;
+    private static int toggleTextOnColor, toggleTextOffColor, toggleDividerColor;
+    private static int carrierSize, dateColor, dateSize, clearButtonColor, clearButtonTextColor, closeBarColor;
 	private static String carrierCustomText;
 	private static String batteryIconNum;
 
@@ -161,21 +179,24 @@ public class CustomSettingsUtils {
     	showClock = prefMgr.getBoolean(SHOW_CLOCK, true);
     	clockAmPm = prefMgr.getBoolean(CLOCK_AMPM, false);
     	clockColor = prefMgr.getInt(CLOCK_COLOR, 0xff3F9BBF);
+    	clockLeft = prefMgr.getBoolean(SHOW_CLOCK_LEFT, false);
+    	clockCenter = prefMgr.getBoolean(SHOW_CLOCK_CENTER, false);
+    	clockRight = prefMgr.getBoolean(SHOW_CLOCK_RIGHT, true);
     	clockSize = prefMgr.getInt(CLOCK_SIZE, 17);
     	togglesShowToggles = prefMgr.getBoolean(TOGGLES_ON, true);
     	togglesTop = prefMgr.getBoolean(TOGGLES_TOP, true);
-    	toggleColor = prefMgr.getInt(TOGGLE_COLOR, 0xff000000);
-    	toggleIconOnColor = prefMgr.getInt(TOGGLE_ICON_ON_COLOR, 0xff33b5e5);
+    	toggleColor = prefMgr.getInt(TOGGLE_COLOR, 0xff141414);
+    	toggleIconOnColor = prefMgr.getInt(TOGGLE_ICON_ON_COLOR, 0xff3792b4);
         toggleIconInterColor = prefMgr.getInt(TOGGLE_ICON_INTER_COLOR, 0xffff0000);
-        toggleIconOffColor = prefMgr.getInt(TOGGLE_ICON_OFF_COLOR, 0xff5d5d5d);
+        toggleIconOffColor = prefMgr.getInt(TOGGLE_ICON_OFF_COLOR, 0xff555555);
         togglesShowIndicator = prefMgr.getBoolean(TOGGLE_SHOW_INDICATOR, false);
-        toggleIndOnColor = prefMgr.getInt(TOGGLE_IND_ON_COLOR, 0xfffbb33);
-        toggleIndOffColor = prefMgr.getInt(TOGGLE_IND_OFF_COLOR, 0xff757575);
+        toggleIndOnColor = prefMgr.getInt(TOGGLE_IND_ON_COLOR, 0xffffffff);
+        toggleIndOffColor = prefMgr.getInt(TOGGLE_IND_OFF_COLOR, 0xff555555);
         toggleShowText = prefMgr.getBoolean(TOGGLE_SHOW_TEXT, false);
-        toggleTextOnColor = prefMgr.getInt(TOGGLE_TEXT_ON_COLOR, 0xffffbb33);
-        toggleTextOffColor = prefMgr.getInt(TOGGLE_TEXT_OFF_COLOR, 0xff757575);
+        toggleTextOnColor = prefMgr.getInt(TOGGLE_TEXT_ON_COLOR, 0xffffffff);
+        toggleTextOffColor = prefMgr.getInt(TOGGLE_TEXT_OFF_COLOR, 0xff555555);
         toggleShowDivider = prefMgr.getBoolean(TOGGLE_SHOW_DIVIDER, true);
-        toggleDividerColor = prefMgr.getInt(TOGGLE_DIVIDER_COLOR, 0xff757575);
+        toggleDividerColor = prefMgr.getInt(TOGGLE_DIVIDER_COLOR, 0xff2c2c2c);
     	showTorch = prefMgr.getBoolean(TOGGLES_TORCH_ON, true);
         showFourg = prefMgr.getBoolean(TOGGLES_4G_ON, true);
     	showWifi = prefMgr.getBoolean(TOGGLES_WIFI_ON, true);
@@ -199,9 +220,17 @@ public class CustomSettingsUtils {
     	carrierCustom = prefMgr.getBoolean(CARRIER_CUSTOM, false);
         carrierCustomText = prefMgr.getString(CARRIER_CUSTOM_TEXT, "J u n k   R O M");
     	dateColor = prefMgr.getInt(DATE_COLOR, 0xff3F9BBF);
+    	dateBarColor = prefMgr.getInt(DATE_BAR_COLOR, 0xff000000);
     	dateSize = prefMgr.getInt(DATE_SIZE, 17);
-    	closeBarColor = prefMgr.getInt(CLOSE_BAR_COLOR, 0x03792b4);
-    	clearButtonColor = prefMgr.getInt(CLEAR_BUTTON_COLOR, 0x03792b4);
+    	closeBarColor = prefMgr.getInt(PD_HANDLE_COLOR, 0xd7000000);
+    	clearButtonTextColor = prefMgr.getInt(CLEAR_BUTTON_TEXT_COLOR, 0xffffffff);
+    	clearButtonColor = prefMgr.getInt(CLEAR_BUTTON_COLOR, 0xff1a4554);
+    	shadeColor = prefMgr.getInt(PD_SHADE_COLOR, 0xbd000000);
+    	gripColor = prefMgr.getInt(PD_GRIP_COLOR, 0xff3792b4);
+    	carrierBarColor = prefMgr.getInt(PD_CARRIER_FRAME_COLOR, 0xd3000000);
+    	notifIconBgColor = prefMgr.getInt(PD_NOTIF_ICON_BG_COLOR, 0xff1a4554);
+    	notifTextColor = prefMgr.getInt(PD_NOTIF_TEXT_COLOR, 0xff000000);
+    	notifTextBgColor = prefMgr.getInt(PD_NOTIF_TEXT_BG_COLOR, 0xff2782a3);
     	showBatteryLabel = prefMgr.getBoolean(SHOW_BATTERY_LABEL, true);
     	batteryLabelLevelColor = prefMgr.getInt(BATTERY_LABEL_COLOR, 0xff3792b4);
     	batteryLabelLevelSize = prefMgr.getInt(BATTERY_LABEL_SIZE, 12);
@@ -215,7 +244,10 @@ public class CustomSettingsUtils {
         showSearchButtonLand = prefMgr.getBoolean(SHOW_SEARCH_BUTTON_LAND, false);
         showLeftMenuButtonLand = prefMgr.getBoolean(SHOW_TOP_MENU_BUTTON_LAND, true);
         showRightMenuButtonLand = prefMgr.getBoolean(SHOW_BOT_MENU_BUTTON_LAND, true);
-        navBarColor = prefMgr.getInt(NAV_BAR_COLOR, 0xffffffff);
+        navBarColor = prefMgr.getInt(NAV_BAR_COLOR, 0xff000000);
+        navBarButtonColor = prefMgr.getInt(NAV_BAR_BUTTON_COLOR, 0xffffffff);
+        navBarGlowColor = prefMgr.getInt(NAV_BAR_GLOW_COLOR, 0xffffffff);
+        navBarAnim = prefMgr.getInt(NAV_BAR_ANIM_SPEED, 5);
         
     }    
 
@@ -247,6 +279,7 @@ public class CustomSettingsUtils {
         editor.putBoolean(CARRIER_CUSTOM, carrierCustom);
         editor.putInt(CARRIER_SIZE, carrierSize);
         editor.putInt(DATE_COLOR, dateColor);
+        editor.putInt(DATE_BAR_COLOR, dateBarColor);
         editor.putInt(DATE_SIZE, dateSize);
     	editor.putBoolean(SHOW_BATTERY_LABEL, showBatteryLabel);
     	editor.putInt(BATTERY_LABEL_COLOR, batteryLabelLevelColor);
@@ -255,6 +288,9 @@ public class CustomSettingsUtils {
     	editor.putInt(TEMP_LABEL_COLOR, batteryLabelTempColor);
     	editor.putInt(TEMP_LABEL_SIZE, batteryLabelTempSize);
         editor.putBoolean(SHOW_CLOCK, showClock);
+        editor.putBoolean(SHOW_CLOCK_LEFT, clockLeft);
+        editor.putBoolean(SHOW_CLOCK_CENTER, clockCenter);
+        editor.putBoolean(SHOW_CLOCK_RIGHT, clockRight);
         editor.putBoolean(CLOCK_AMPM, clockAmPm);
         editor.putBoolean(TOGGLES_ON, togglesShowToggles);
         editor.putBoolean(TOGGLES_TOP, togglesTop);
@@ -293,10 +329,15 @@ public class CustomSettingsUtils {
         editor.putInt(TOGGLE_DIVIDER_COLOR, toggleDividerColor);
         editor.putString(CARRIER_CUSTOM_TEXT, carrierCustomText);
         editor.putInt(CARRIER_SIZE, carrierSize);
-        editor.putInt(DATE_COLOR, dateColor);
-        editor.putInt(DATE_SIZE, dateSize);
-        editor.putInt(CLOSE_BAR_COLOR, closeBarColor);
+        editor.putInt(PD_HANDLE_COLOR, closeBarColor);
+        editor.putInt(CLEAR_BUTTON_TEXT_COLOR, clearButtonTextColor);
         editor.putInt(CLEAR_BUTTON_COLOR, clearButtonColor);
+        editor.putInt(PD_SHADE_COLOR, shadeColor);
+        editor.putInt(PD_GRIP_COLOR, gripColor);
+        editor.putInt(PD_CARRIER_FRAME_COLOR, carrierBarColor);
+        editor.putInt(PD_NOTIF_ICON_BG_COLOR, notifIconBgColor);
+        editor.putInt(PD_NOTIF_TEXT_COLOR, notifTextColor);
+        editor.putInt(PD_NOTIF_TEXT_BG_COLOR, notifTextBgColor);
         editor.putBoolean(SHOW_SEARCH_BUTTON, showSearchButton);
         editor.putBoolean(SHOW_LEFT_MENU_BUTTON, showLeftMenuButton);
         editor.putBoolean(SHOW_RIGHT_MENU_BUTTON, showRightMenuButton);
@@ -304,6 +345,9 @@ public class CustomSettingsUtils {
         editor.putBoolean(SHOW_TOP_MENU_BUTTON_LAND, showLeftMenuButtonLand);
         editor.putBoolean(SHOW_BOT_MENU_BUTTON_LAND, showRightMenuButtonLand);
         editor.putInt(NAV_BAR_COLOR, navBarColor);
+        editor.putInt(NAV_BAR_BUTTON_COLOR, navBarButtonColor);
+        editor.putInt(NAV_BAR_GLOW_COLOR, navBarGlowColor);
+        editor.putInt(NAV_BAR_ANIM_SPEED, navBarAnim);
         editor.commit();
     }    
 
@@ -446,7 +490,26 @@ public class CustomSettingsUtils {
    	   	i.putExtra(SHOW_CLOCK, showClock);
    	   	context.sendBroadcast(i);
    	   	i = null;
-   
+
+     	i = new Intent();        
+    	i.setAction(Junk_Clock_Settings);
+   	   	i.putExtra(SHOW_CLOCK_LEFT, clockLeft);
+   	   	context.sendBroadcast(i);
+   	   	i = null;
+
+     	i = new Intent();        
+    	i.setAction(Junk_Clock_Settings);
+   	   	i.putExtra(SHOW_CLOCK_CENTER, clockCenter);
+   	   	context.sendBroadcast(i);
+   	   	i = null;
+
+     	i = new Intent();        
+    	i.setAction(Junk_Clock_Settings);
+   	   	i.putExtra(SHOW_CLOCK_RIGHT, clockRight);
+   	   	context.sendBroadcast(i);
+   	   	i = null;
+   	   	
+   	   	
      	i = new Intent();
         i.setAction(Junk_Clock_Settings);
         i.putExtra(CLOCK_AMPM, (Boolean) clockAmPm);
@@ -652,6 +715,13 @@ public class CustomSettingsUtils {
        	context.sendBroadcast(i);
        	i = null;        
 
+      	i = new Intent();
+      	i.setAction(Junk_Pulldown_Settings);
+       	i.putExtra(DATE_BAR_COLOR, (Integer) dateBarColor);
+       	context.sendBroadcast(i);
+       	i = null;        
+       	
+       	
        	i = new Intent();
         i.setAction(Junk_Pulldown_Settings);
         i.putExtra(DATE_SIZE, (Integer) dateSize);
@@ -702,16 +772,70 @@ public class CustomSettingsUtils {
     	
     	i = new Intent();
     	i.setAction(Junk_Pulldown_Settings );
-    	i.putExtra(CLOSE_BAR_COLOR, (Integer) closeBarColor);
+    	i.putExtra(PD_HANDLE_COLOR, (Integer) closeBarColor);
     	context.sendBroadcast(i);
     	i = null;              	
-
+    	
+    	i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_SHADE_COLOR, (Integer) shadeColor);
+    	context.sendBroadcast(i);
+    	i = null;              	
+    	
+    	i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_GRIP_COLOR, (Integer) gripColor);
+    	context.sendBroadcast(i);
+    	i = null;              	
+    	
+    	i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_CARRIER_FRAME_COLOR, (Integer) carrierBarColor);
+    	context.sendBroadcast(i);
+    	i = null;              	
+    	
+    	i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_NOTIF_ICON_BG_COLOR, (Integer) notifIconBgColor);
+    	context.sendBroadcast(i);
+    	i = null;              	
+    	
+    	i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_NOTIF_TEXT_COLOR, (Integer) notifTextColor);
+    	context.sendBroadcast(i);
+    	i = null;              	
+    	
+    	i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_NOTIF_TEXT_BG_COLOR, (Integer) notifTextBgColor);
+    	context.sendBroadcast(i);
+    	i = null;              	
+ 
    	   	i = new Intent();
         i.setAction(Junk_NavBar_Settings );
        	i.putExtra(NAV_BAR_COLOR, (Integer) navBarColor);
        	context.sendBroadcast(i);
+       	i = null;    	
+    	
+   	   	i = new Intent();
+        i.setAction(Junk_NavBar_Settings );
+       	i.putExtra(NAV_BAR_BUTTON_COLOR, (Integer) navBarButtonColor);
+       	context.sendBroadcast(i);
        	i = null;
        
+   	   	i = new Intent();
+        i.setAction(Junk_NavBar_Settings );
+       	i.putExtra(NAV_BAR_GLOW_COLOR, (Integer) navBarGlowColor);
+       	context.sendBroadcast(i);
+       	i = null;       	
+       	
+   	   	i = new Intent();
+        i.setAction(Junk_NavBar_Settings );
+       	i.putExtra(NAV_BAR_ANIM_SPEED, (Integer) navBarAnim);
+       	context.sendBroadcast(i);
+       	i = null;       	
+       	
        	i = new Intent();
         i.setAction(Junk_NavBar_Settings );
         i.putExtra(SHOW_SEARCH_BUTTON, (Boolean) showSearchButton);

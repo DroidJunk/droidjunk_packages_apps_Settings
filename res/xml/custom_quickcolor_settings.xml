@@ -117,13 +117,25 @@
     <PreferenceCategory
 		android:title="N A V I G A T I O N   B A R"
 		android:key="quickcolor_navbar">
-   				
+ 
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_nav_bar_color"
+		android:title="Navigation Bar" 
+		android:defaultValue="false"	/>			        
+        				
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="qk_nav_button_color"
 		android:title="Navigation Button" 
 		android:defaultValue="false"	/>			
 				 
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_nav_button_glow_color"
+		android:title="Navigation Button Glow" 
+		android:defaultValue="false"	/>				
+	
     </PreferenceCategory>
   
 
@@ -147,7 +159,13 @@
     <PreferenceCategory
 		android:title="S T A T U S B A R   P U L L D O W N"
 		android:key="quickcolor_pulldown">
-   				
+   			
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_date_bar_color"
+		android:title="Date Bar" 
+		android:defaultValue="false"	/>	        
+        	
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="qk_date_color"
@@ -158,12 +176,36 @@
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="qk_clear_button_color"
 		android:title="Clear All Button" 
-		android:defaultValue="false"	/>	        
-        
+		android:defaultValue="false"	/>	       
+		
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="qk_close_bar_color"
+		android:key="qk_clear_button_text_color"
+		android:title="Clear All Button Text" 
+		android:defaultValue="false"	/>	     	
+	
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_pd_shade_color"
+		android:title="Pulldown Shade" 
+		android:defaultValue="false"	/>	       	
+	
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_pd_carrier_frame_color"
+		android:title="Carrier Bar" 
+		android:defaultValue="false"	/>			
+		
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_pd_handle_color"
 		android:title="Pulldown Handle" 
+		android:defaultValue="false"	/>			
+		
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_pd_grip_color"
+		android:title="Pulldown Grip" 
 		android:defaultValue="false"	/>			
 		
 	<CheckBoxPreference 
@@ -187,6 +229,34 @@
 		 
     </PreferenceCategory>    
         
+ 
+    
+    <PreferenceCategory
+		android:title="P U L L D O W N   N O T I F I C A T I O N S"
+		android:key="quickcolor_pulldown_notif">    
+    
+    
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_pd_notif_icon_bg_color"
+		android:title="Icon Background" 
+		android:defaultValue="false"	/>	
+        
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_pd_notif_text_color"
+		android:title="Text" 
+		android:defaultValue="false"	/>	
+	
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_pd_notif_text_bg_color"
+		android:title="Text Background" 
+		android:defaultValue="false"	/>	
+    
+    </PreferenceCategory>        
+    
+    
     
     
     <PreferenceCategory

@@ -51,6 +51,7 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
 	private final String DATE_COLOR = "date_color";
 	private final String DATE_SIZE = "date_size";
 	private final String CLEAR_BUTTON_COLOR = "clear_button_color";
+	private final String CLEAR_BUTTON_TEXT_COLOR = "clear_button_text_color";
 	private final String PD_HANDLE_COLOR = "pd_handle_color";
 	private final String PD_SHADE_COLOR = "pd_shade_color";
 	private final String PD_GRIP_COLOR = "pd_grip_color";
@@ -81,6 +82,7 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
     private Preference mDateSize;
     private Preference mCloseBarColor;
     private Preference mClearButtonColor;
+    private Preference mClearButtonTextColor;
     private Preference mShadeColor;
     private Preference mGripColor;
     private Preference mCarrierFrameColor;
@@ -137,8 +139,10 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
 		dateSize = prefMgr.getSharedPreferences().getInt(DATE_SIZE, dateSize);  
         mCloseBarColor = (Preference) findPreference(PD_HANDLE_COLOR);
 		mCloseBarColor.setOnPreferenceChangeListener(this);
-        mClearButtonColor = (Preference) findPreference(CLEAR_BUTTON_COLOR);
+        mClearButtonColor = (Preference) findPreference(CLEAR_BUTTON_TEXT_COLOR);
 		mClearButtonColor.setOnPreferenceChangeListener(this);
+        mClearButtonTextColor = (Preference) findPreference(CLEAR_BUTTON_TEXT_COLOR);
+		mClearButtonTextColor.setOnPreferenceChangeListener(this);
         mShadeColor = (Preference) findPreference(PD_SHADE_COLOR);
 		mShadeColor.setOnPreferenceChangeListener(this);        
         mGripColor = (Preference) findPreference(PD_GRIP_COLOR);
@@ -345,6 +349,13 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
         	i.putExtra(CLEAR_BUTTON_COLOR, (Integer) objValue);
         	getActivity().sendBroadcast(i);
         	i = null;      
+ 
+        } else if (CLEAR_BUTTON_TEXT_COLOR.equals(key)) {
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(CLEAR_BUTTON_TEXT_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;              	
         	
         } else if (PD_HANDLE_COLOR.equals(key)) {
         	Intent i = new Intent();

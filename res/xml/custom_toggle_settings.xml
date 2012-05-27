@@ -63,7 +63,7 @@
 		android:key="toggle_color"
 		android:title="Toggle Background Color"
 		android:summary="Background color for the toggles"
-		android:defaultValue="#ff272727" 
+		android:defaultValue="#ff141414" 
 		alphaSlider="true" /> 
 		
 	<ColorPickerPreference
@@ -184,7 +184,7 @@
 		android:key="toggle_divider_color"
 		android:title="Divider Color"
 		android:summary="Color for dividers"
-		android:defaultValue="#ff3b3b3b" 
+		android:defaultValue="#ff2c2c2c" 
 		alphaSlider="false" />
 	
     </PreferenceCategory>

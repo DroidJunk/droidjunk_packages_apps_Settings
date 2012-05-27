@@ -50,15 +50,16 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 	private final String DEPLETED_LEVEL_COLOR_THREE = "depleted_levels_color_three";    
 	
 	// Charge
-	private final String CHARGING_LEVEL_ONE = "charge_levels_one";
 	private final String CHARGING_LEVEL_COLOR_ONE = "charge_levels_color_one";
-	private final String CHARGING_LEVEL_TWO = "charge_levels_two";
 	private final String CHARGING_LEVEL_COLOR_TWO = "charge_levels_color_two";
 	private final String CHARGING_LEVEL_COLOR_THREE = "charge_levels_color_three";    
 	
 	//Navbar
 	private final String Junk_NavBar_Settings = "JUNK_NAVBAR_SETTINGS";
-    private final String NAV_BAR_COLOR = "nav_button_color";
+	private final String NAV_BAR_COLOR = "nav_bar_color";
+    private final String NAV_BAR_BUTTON_COLOR = "nav_button_color";
+    private final String NAV_BAR_GLOW_COLOR = "nav_button_glow_color";
+
     
     //Pulldown
     private final String Junk_Pulldown_Settings = "JUNK_PULLDOWN_SETTINGS";
@@ -66,9 +67,19 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 	private final String TEMP_LABEL_COLOR = "temp_label_color";
 	private final String CARRIER_COLOR = "carrier_color";
 	private final String DATE_COLOR = "date_color";
+	private final String DATE_BAR_COLOR = "date_bar_color";
 	
 	private final String CLEAR_BUTTON_COLOR = "clear_button_color";
-	private final String CLOSE_BAR_COLOR = "close_bar_color";
+	private final String CLEAR_BUTTON_TEXT_COLOR = "clear_button_text_color";
+	private final String PD_HANDLE_COLOR = "pd_handle_color";
+	private final String PD_SHADE_COLOR = "pd_shade_color";
+	private final String PD_GRIP_COLOR = "pd_grip_color";
+	private final String PD_CARRIER_FRAME_COLOR = "pd_carrier_frame_color";
+//	private final String PD_NOTIF_ICON_COLOR = "pd_notif_icon_color";
+	private final String PD_NOTIF_ICON_BG_COLOR = "pd_notif_icon_bg_color";
+	private final String PD_NOTIF_TEXT_COLOR = "pd_notif_text_color";
+	private final String PD_NOTIF_TEXT_BG_COLOR = "pd_notif_text_bg_color";
+
 
 	//Clock
 	private final String Junk_Clock_Settings = "JUNK_CLOCK_SETTINGS";
@@ -92,7 +103,6 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 
 	private Preference mIconColor;
 	
-	private Preference mBatteryDepletedColor;
     private Preference mBatteryLevelColorOne;
     private Preference mBatteryLevelColorTwo;
     private Preference mBatteryLevelColorThree;
@@ -101,20 +111,30 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 	private Preference mChargingLevelColorTwo;
     private Preference mChargingLevelColorThree;   
     
-	private Preference mDepletedLevelOne;
     private Preference mDepletedLevelColorOne;
-	private Preference mDepletedLevelTwo;
     private Preference mDepletedLevelColorTwo;
     private Preference mDepletedLevelColorThree;
     
-	private Preference mNavigationBarColor;
+	private Preference mNavBarColor;
+	private Preference mNavBarButtonColor;
+	private Preference mNavBarGlowColor;
 	
     private Preference mCarrierColor;
     private Preference mBatteryColor;
     private Preference mTempColor;
     private Preference mDateColor;
+    private Preference mDateBarColor;
     private Preference mCloseBarColor;
     private Preference mClearButtonColor;
+    private Preference mClearButtonTextColor;
+    private Preference mShadeColor;
+    private Preference mGripColor;
+    private Preference mCarrierFrameColor;
+//  private Preference mNotifIconColor;
+    private Preference mNotifIconBgColor;
+    private Preference mNotifTextColor;
+    private Preference mNotifTextBgColor;
+
     
     private Preference mClockColor;
     
@@ -163,8 +183,12 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 		mChargingLevelColorTwo.setOnPreferenceChangeListener(this);
 		mChargingLevelColorThree = (Preference) findPreference(CHARGING_LEVEL_COLOR_THREE);
 		mChargingLevelColorThree.setOnPreferenceChangeListener(this);
-        mNavigationBarColor = (ColorPickerPreference) findPreference(NAV_BAR_COLOR);
-        mNavigationBarColor.setOnPreferenceChangeListener(this);
+        mNavBarColor = (ColorPickerPreference) findPreference(NAV_BAR_COLOR);
+        mNavBarColor.setOnPreferenceChangeListener(this);
+        mNavBarButtonColor = (ColorPickerPreference) findPreference(NAV_BAR_BUTTON_COLOR);
+        mNavBarButtonColor.setOnPreferenceChangeListener(this);
+        mNavBarGlowColor = (ColorPickerPreference) findPreference(NAV_BAR_GLOW_COLOR);
+        mNavBarGlowColor.setOnPreferenceChangeListener(this);
 		mCarrierColor = (Preference) findPreference(CARRIER_COLOR);
 		mCarrierColor.setOnPreferenceChangeListener(this);        
 	    mBatteryColor = (Preference) findPreference(BATTERY_LABEL_COLOR);
@@ -172,13 +196,31 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 	    mTempColor = (Preference) findPreference(TEMP_LABEL_COLOR);
 		mTempColor.setOnPreferenceChangeListener(this);
         mDateColor = (Preference) findPreference(DATE_COLOR);
-        mCloseBarColor = (Preference) findPreference(CLOSE_BAR_COLOR);
+        mDateBarColor = (Preference) findPreference(DATE_BAR_COLOR);
+		mDateBarColor.setOnPreferenceChangeListener(this);
+        mCloseBarColor = (Preference) findPreference(PD_HANDLE_COLOR);
 		mCloseBarColor.setOnPreferenceChangeListener(this);
         mClearButtonColor = (Preference) findPreference(CLEAR_BUTTON_COLOR);
 		mClearButtonColor.setOnPreferenceChangeListener(this);
+        mClearButtonTextColor = (Preference) findPreference(CLEAR_BUTTON_TEXT_COLOR);
+		mClearButtonTextColor.setOnPreferenceChangeListener(this);
 		mDateColor.setOnPreferenceChangeListener(this);
         mClockColor = (Preference) findPreference(CLOCK_COLOR);
 		mClockColor.setOnPreferenceChangeListener(this);
+        mShadeColor = (Preference) findPreference(PD_SHADE_COLOR);
+		mShadeColor.setOnPreferenceChangeListener(this);        
+        mGripColor = (Preference) findPreference(PD_GRIP_COLOR);
+		mGripColor.setOnPreferenceChangeListener(this);        
+        mCarrierFrameColor = (Preference) findPreference(PD_CARRIER_FRAME_COLOR);
+		mCarrierFrameColor.setOnPreferenceChangeListener(this);        
+//      mNotifIconColor = (Preference) findPreference(PD_NOTIF_ICON_COLOR);
+//		mNotifIconColor.setOnPreferenceChangeListener(this);        
+        mNotifIconBgColor = (Preference) findPreference(PD_NOTIF_ICON_BG_COLOR);
+        mNotifIconBgColor.setOnPreferenceChangeListener(this);        
+        mNotifTextColor = (Preference) findPreference(PD_NOTIF_TEXT_COLOR);
+        mNotifTextColor.setOnPreferenceChangeListener(this);        
+        mNotifTextBgColor = (Preference) findPreference(PD_NOTIF_TEXT_BG_COLOR);
+        mNotifTextBgColor.setOnPreferenceChangeListener(this);        
     	mToggleColor = (Preference) findPreference(TOGGLE_COLOR);
     	mToggleColor.setOnPreferenceChangeListener(this);
     	mToggleIconOnColor = (Preference) findPreference(TOGGLE_ICON_ON_COLOR);
@@ -303,6 +345,20 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
        	i.putExtra(NAV_BAR_COLOR, (Integer) objValue);
        	getActivity().sendBroadcast(i);
        	i = null;
+
+    } else if (NAV_BAR_BUTTON_COLOR.equals(key)) {
+       	Intent i = new Intent();
+       	i.setAction(Junk_NavBar_Settings );
+       	i.putExtra(NAV_BAR_BUTTON_COLOR, (Integer) objValue);
+       	getActivity().sendBroadcast(i);
+       	i = null;      
+
+    } else if (NAV_BAR_GLOW_COLOR.equals(key)) {
+       	Intent i = new Intent();
+       	i.setAction(Junk_NavBar_Settings );
+       	i.putExtra(NAV_BAR_GLOW_COLOR, (Integer) objValue);
+       	getActivity().sendBroadcast(i);
+       	i = null;           	   	
        	   	
     } else if (BATTERY_LABEL_COLOR.equals(key)) {
     	Intent i = new Intent();
@@ -332,6 +388,13 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
     	getActivity().sendBroadcast(i);
     	i = null;        
 
+    } else if (DATE_BAR_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(DATE_BAR_COLOR, (Integer) objValue);
+    	getActivity().sendBroadcast(i);
+    	i = null;        
+    	
     } else if (CLOCK_COLOR.equals(key)) {
     	Intent i = new Intent();
         i.setAction(Junk_Clock_Settings );
@@ -438,14 +501,77 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
     	i.putExtra(CLEAR_BUTTON_COLOR, (Integer) objValue);
     	getActivity().sendBroadcast(i);
     	i = null;      
-    	
-    } else if (CLOSE_BAR_COLOR.equals(key)) {
+
+    } else if (CLEAR_BUTTON_TEXT_COLOR.equals(key)) {
     	Intent i = new Intent();
     	i.setAction(Junk_Pulldown_Settings );
-    	i.putExtra(CLOSE_BAR_COLOR, (Integer) objValue);
+    	i.putExtra(CLEAR_BUTTON_TEXT_COLOR, (Integer) objValue);
+    	getActivity().sendBroadcast(i);
+    	i = null;      	
+    	
+    } else if (PD_HANDLE_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_HANDLE_COLOR, (Integer) objValue);
     	getActivity().sendBroadcast(i);
     	i = null;              	
         
+    	
+    } else if (PD_HANDLE_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_HANDLE_COLOR, (Integer) objValue);
+    	getActivity().sendBroadcast(i);
+    	i = null;              	
+    	
+    } else if (PD_SHADE_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_SHADE_COLOR, (Integer) objValue);
+    	getActivity().sendBroadcast(i);
+    	i = null;         	
+
+    } else if (PD_GRIP_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_GRIP_COLOR, (Integer) objValue);
+    	getActivity().sendBroadcast(i);
+    	i = null;           	
+
+    } else if (PD_CARRIER_FRAME_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_CARRIER_FRAME_COLOR, (Integer) objValue);
+    	getActivity().sendBroadcast(i);
+    	i = null;           	
+
+/*        } else if (PD_NOTIF_ICON_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_NOTIF_ICON_COLOR, (Integer) objValue);
+    	getActivity().sendBroadcast(i);
+    	i = null; */         	
+
+    } else if (PD_NOTIF_ICON_BG_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_NOTIF_ICON_BG_COLOR, (Integer) objValue);
+    	getActivity().sendBroadcast(i);
+    	i = null;          	
+
+    } else if (PD_NOTIF_TEXT_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_NOTIF_TEXT_COLOR, (Integer) objValue);
+    	getActivity().sendBroadcast(i);
+    	i = null;          	
+    	
+    } else if (PD_NOTIF_TEXT_BG_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_NOTIF_TEXT_BG_COLOR, (Integer) objValue);
+    	getActivity().sendBroadcast(i);
+    	i = null;         	
     }
     
     

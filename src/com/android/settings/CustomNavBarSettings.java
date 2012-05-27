@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ColorPickerPreference;
+import android.preference.DJSeekBarPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
@@ -17,7 +18,10 @@ import com.android.settings.R;
 public class CustomNavBarSettings extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
 	private final String Junk_NavBar_Settings = "JUNK_NAVBAR_SETTINGS";
-    private final String NAV_BAR_COLOR = "nav_button_color";
+	private final String NAV_BAR_COLOR = "nav_bar_color";
+    private final String NAV_BAR_BUTTON_COLOR = "nav_button_color";
+    private final String NAV_BAR_GLOW_COLOR = "nav_button_glow_color";
+    private final String NAV_BAR_ANIM_SPEED = "nav_anim_speed";
     private final String SHOW_SEARCH_BUTTON = "search_button";
 	private final String SHOW_LEFT_MENU_BUTTON = "left_menu_button";
 	private final String SHOW_RIGHT_MENU_BUTTON = "right_menu_button";
@@ -27,13 +31,16 @@ public class CustomNavBarSettings extends SettingsPreferenceFragment implements 
 
 	private PreferenceManager prefMgr;
 
-	ColorPickerPreference mNavigationBarColor;
-    CheckBoxPreference mShowSearchButton;
-    CheckBoxPreference mShowLeftMenuButton;
-    CheckBoxPreference mShowRightMenuButton;
-    CheckBoxPreference mShowSearchButtonLand;
-    CheckBoxPreference mShowTopMenuButtonLand;
-    CheckBoxPreference mShowBotMenuButtonLand;
+	private ColorPickerPreference mNavBarColor;
+	private ColorPickerPreference mNavBarButtonColor;
+	private ColorPickerPreference mNavBarGlowColor;
+	private DJSeekBarPreference mNavBarAnimSpeed;
+	private CheckBoxPreference mShowSearchButton;
+	private CheckBoxPreference mShowLeftMenuButton;
+	private CheckBoxPreference mShowRightMenuButton;
+	private CheckBoxPreference mShowSearchButtonLand;
+	private CheckBoxPreference mShowTopMenuButtonLand;
+	private CheckBoxPreference mShowBotMenuButtonLand;
 	
 
         @Override
@@ -48,8 +55,16 @@ public class CustomNavBarSettings extends SettingsPreferenceFragment implements 
             // Load the preferences from an XML resource
             addPreferencesFromResource(R.xml.custom_navbar_settings);
 
-            mNavigationBarColor = (ColorPickerPreference) findPreference(NAV_BAR_COLOR);
-            mNavigationBarColor.setOnPreferenceChangeListener(this);
+            mNavBarColor = (ColorPickerPreference) findPreference(NAV_BAR_COLOR);
+            mNavBarColor.setOnPreferenceChangeListener(this);
+            mNavBarButtonColor = (ColorPickerPreference) findPreference(NAV_BAR_BUTTON_COLOR);
+            mNavBarButtonColor.setOnPreferenceChangeListener(this);
+            mNavBarGlowColor = (ColorPickerPreference) findPreference(NAV_BAR_GLOW_COLOR);
+            mNavBarGlowColor.setOnPreferenceChangeListener(this);
+            mNavBarAnimSpeed = (DJSeekBarPreference) findPreference(NAV_BAR_ANIM_SPEED);
+            mNavBarAnimSpeed.setOnPreferenceChangeListener(this);
+            mNavBarAnimSpeed.setMax(5);
+            mNavBarAnimSpeed.setProgress(prefMgr.getSharedPreferences().getInt(NAV_BAR_ANIM_SPEED, 5));  
             mShowSearchButton = (CheckBoxPreference) findPreference(SHOW_SEARCH_BUTTON);
             mShowSearchButton.setOnPreferenceChangeListener(this);
             mShowLeftMenuButton = (CheckBoxPreference) findPreference(SHOW_LEFT_MENU_BUTTON);
@@ -84,7 +99,28 @@ public class CustomNavBarSettings extends SettingsPreferenceFragment implements 
            	   	i.putExtra(NAV_BAR_COLOR, (Integer) objValue);
            	   	getActivity().sendBroadcast(i);
            	   	i = null;
-           
+
+            } else if (NAV_BAR_BUTTON_COLOR.equals(key)) {
+            	Intent i = new Intent();
+            	i.setAction(Junk_NavBar_Settings );
+           	   	i.putExtra(NAV_BAR_BUTTON_COLOR, (Integer) objValue);
+           	   	getActivity().sendBroadcast(i);
+           	   	i = null;      
+
+            } else if (NAV_BAR_GLOW_COLOR.equals(key)) {
+            	Intent i = new Intent();
+            	i.setAction(Junk_NavBar_Settings );
+           	   	i.putExtra(NAV_BAR_GLOW_COLOR, (Integer) objValue);
+           	   	getActivity().sendBroadcast(i);
+           	   	i = null;           	   	
+
+            } else if (NAV_BAR_ANIM_SPEED.equals(key)) {
+            	Intent i = new Intent();
+            	i.setAction(Junk_NavBar_Settings );
+           	   	i.putExtra(NAV_BAR_ANIM_SPEED, (Integer) objValue);
+           	   	getActivity().sendBroadcast(i);
+           	   	i = null;           	   	
+           	   	
             } else if (SHOW_SEARCH_BUTTON.equals(key)) {
             	Intent i = new Intent();
             	i.setAction(Junk_NavBar_Settings );

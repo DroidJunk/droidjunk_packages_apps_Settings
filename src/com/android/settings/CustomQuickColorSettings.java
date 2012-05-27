@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.ColorPickerPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
@@ -71,8 +72,13 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 	
 	//Navbar
 	private final String Junk_NavBar_Settings = "JUNK_NAVBAR_SETTINGS";
-    private final String QK_NAV_BAR_COLOR = "qk_nav_button_color";
-    private final String NAV_BAR_COLOR = "nav_button_color";
+	private final String QK_NAV_BAR_COLOR = "qk_nav_bar_color";
+    private final String QK_NAV_BAR_BUTTON_COLOR = "qk_nav_button_color";
+    private final String QK_NAV_BAR_GLOW_COLOR = "qk_nav_button_glow_color";
+	private final String NAV_BAR_COLOR = "nav_bar_color";
+    private final String NAV_BAR_BUTTON_COLOR = "nav_button_color";
+    private final String NAV_BAR_GLOW_COLOR = "nav_button_glow_color";
+
 
     
     //Pulldown
@@ -81,17 +87,34 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 	private final String QK_TEMP_LABEL_COLOR = "qk_temp_label_color";
 	private final String QK_CARRIER_COLOR = "qk_carrier_color";
 	private final String QK_DATE_COLOR = "qk_date_color";
+	private final String QK_DATE_BAR_COLOR = "qk_date_bar_color";
 	private final String BATTERY_LABEL_COLOR = "battery_label_color";
 	private final String TEMP_LABEL_COLOR = "temp_label_color";
 	private final String CARRIER_COLOR = "carrier_color";
 	private final String DATE_COLOR = "date_color";
+	private final String DATE_BAR_COLOR = "date_bar_color";
 
 	
 	private final String QK_CLEAR_BUTTON_COLOR = "qk_clear_button_color";
-	private final String QK_CLOSE_BAR_COLOR = "qk_close_bar_color";
+	private final String QK_CLEAR_BUTTON_TEXT_COLOR = "qk_clear_button_text_color";
+	private final String QK_PD_HANDLE_COLOR = "qk_pd_handle_color";
+	private final String QK_PD_SHADE_COLOR = "qk_pd_shade_color";
+	private final String QK_PD_GRIP_COLOR = "qk_pd_grip_color";
+	private final String QK_PD_CARRIER_FRAME_COLOR = "qk_pd_carrier_frame_color";
+//	private final String QK_PD_NOTIF_ICON_COLOR = "qk_pd_notif_icon_color";
+	private final String QK_PD_NOTIF_ICON_BG_COLOR = "qk_pd_notif_icon_bg_color";
+	private final String QK_PD_NOTIF_TEXT_COLOR = "qk_pd_notif_text_color";
+	private final String QK_PD_NOTIF_TEXT_BG_COLOR = "qk_pd_notif_text_bg_color";
+	private final String CLEAR_BUTTON_TEXT_COLOR = "clear_button_text_color";
 	private final String CLEAR_BUTTON_COLOR = "clear_button_color";
-	private final String CLOSE_BAR_COLOR = "close_bar_color";
-
+	private final String PD_HANDLE_COLOR = "pd_handle_color";
+	private final String PD_SHADE_COLOR = "pd_shade_color";
+	private final String PD_GRIP_COLOR = "pd_grip_color";
+	private final String PD_CARRIER_FRAME_COLOR = "pd_carrier_frame_color";
+//	private final String PD_NOTIF_ICON_COLOR = "pd_notif_icon_color";
+	private final String PD_NOTIF_ICON_BG_COLOR = "pd_notif_icon_bg_color";
+	private final String PD_NOTIF_TEXT_COLOR = "pd_notif_text_color";
+	private final String PD_NOTIF_TEXT_BG_COLOR = "pd_notif_text_bg_color";
 
 	//Clock
 	private final String Junk_Clock_Settings = "JUNK_CLOCK_SETTINGS";
@@ -128,32 +151,47 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 	private Preference mQkColor;
 	private Preference mQkClearAll;
 	
+	//Icons - Signal/Wifi
 	private CheckBoxPreference mIconColor;
 	
-
+	// Battery
     private CheckBoxPreference mBatteryLevelColorOne;
     private CheckBoxPreference mBatteryLevelColorTwo;
     private CheckBoxPreference mBatteryLevelColorThree;
-    
     private CheckBoxPreference mDepletedLevelColorOne;
     private CheckBoxPreference mDepletedLevelColorTwo;
     private CheckBoxPreference mDepletedLevelColorThree;
-    
     private CheckBoxPreference mChargingLevelColorOne;
     private CheckBoxPreference mChargingLevelColorTwo;
     private CheckBoxPreference mChargingLevelColorThree;
-   
-	private CheckBoxPreference mNavigationBarColor;
-	
+
+	//Navbar
+    private CheckBoxPreference mNavBarColor;
+    private CheckBoxPreference mNavBarButtonColor;
+    private CheckBoxPreference mNavBarGlowColor;
+
+    //Pulldown
+    private CheckBoxPreference mDateBarColor;
+    private CheckBoxPreference mShadeColor;
+    private CheckBoxPreference mGripColor;
+    private CheckBoxPreference mCarrierFrameColor;
+//    private CheckBoxPreference mNotifIconColor;
+    private CheckBoxPreference mNotifIconBgColor;
+    private CheckBoxPreference mNotifTextColor;
+    private CheckBoxPreference mNotifTextBgColor;
+
     private CheckBoxPreference mCarrierColor;
     private CheckBoxPreference mBatteryColor;
     private CheckBoxPreference mTempColor;
     private CheckBoxPreference mDateColor;
     private CheckBoxPreference mCloseBarColor;
     private CheckBoxPreference mClearButtonColor;
-    
+    private CheckBoxPreference mClearButtonTextColor;
+
+	//Clock
     private CheckBoxPreference mClockColor;
-    
+ 
+	//Toggles
 	private CheckBoxPreference mToggleColor;
 	private CheckBoxPreference mToggleIconOnColor;
 	private CheckBoxPreference mToggleIconInterColor;
@@ -205,8 +243,12 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 		mChargingLevelColorTwo.setOnPreferenceChangeListener(this);
 		mChargingLevelColorThree = (CheckBoxPreference) findPreference(QK_CHARGING_LEVEL_COLOR_THREE);
 		mChargingLevelColorThree.setOnPreferenceChangeListener(this);
-		mNavigationBarColor = (CheckBoxPreference) findPreference(QK_NAV_BAR_COLOR);
-        mNavigationBarColor.setOnPreferenceChangeListener(this);
+        mNavBarColor = (CheckBoxPreference) findPreference(QK_NAV_BAR_COLOR);
+        mNavBarColor.setOnPreferenceChangeListener(this);
+        mNavBarButtonColor = (CheckBoxPreference) findPreference(QK_NAV_BAR_BUTTON_COLOR);
+        mNavBarButtonColor.setOnPreferenceChangeListener(this);
+        mNavBarGlowColor = (CheckBoxPreference) findPreference(QK_NAV_BAR_GLOW_COLOR);
+        mNavBarGlowColor.setOnPreferenceChangeListener(this);
 		mCarrierColor = (CheckBoxPreference) findPreference(QK_CARRIER_COLOR);
 		mCarrierColor.setOnPreferenceChangeListener(this);        
 	    mBatteryColor = (CheckBoxPreference) findPreference(QK_BATTERY_LABEL_COLOR);
@@ -215,10 +257,28 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 		mTempColor.setOnPreferenceChangeListener(this);
         mDateColor = (CheckBoxPreference) findPreference(QK_DATE_COLOR);
         mDateColor.setOnPreferenceChangeListener(this);
-        mCloseBarColor = (CheckBoxPreference) findPreference(QK_CLOSE_BAR_COLOR);
+        mDateBarColor = (CheckBoxPreference) findPreference(QK_DATE_BAR_COLOR);
+		mDateBarColor.setOnPreferenceChangeListener(this);
+        mCloseBarColor = (CheckBoxPreference) findPreference(QK_PD_HANDLE_COLOR);
 		mCloseBarColor.setOnPreferenceChangeListener(this);
         mClearButtonColor = (CheckBoxPreference) findPreference(QK_CLEAR_BUTTON_COLOR);
 		mClearButtonColor.setOnPreferenceChangeListener(this);
+        mClearButtonTextColor = (CheckBoxPreference) findPreference(QK_CLEAR_BUTTON_TEXT_COLOR);
+		mClearButtonTextColor.setOnPreferenceChangeListener(this);
+        mShadeColor = (CheckBoxPreference) findPreference(QK_PD_SHADE_COLOR);
+		mShadeColor.setOnPreferenceChangeListener(this);        
+        mGripColor = (CheckBoxPreference) findPreference(QK_PD_GRIP_COLOR);
+		mGripColor.setOnPreferenceChangeListener(this);        
+        mCarrierFrameColor = (CheckBoxPreference) findPreference(QK_PD_CARRIER_FRAME_COLOR);
+		mCarrierFrameColor.setOnPreferenceChangeListener(this);        
+//      mNotifIconColor = (Preference) findPreference(QK_PD_NOTIF_ICON_COLOR);
+//		mNotifIconColor.setOnPreferenceChangeListener(this);        
+        mNotifIconBgColor = (CheckBoxPreference) findPreference(QK_PD_NOTIF_ICON_BG_COLOR);
+        mNotifIconBgColor.setOnPreferenceChangeListener(this);        
+        mNotifTextColor = (CheckBoxPreference) findPreference(QK_PD_NOTIF_TEXT_COLOR);
+        mNotifTextColor.setOnPreferenceChangeListener(this);        
+        mNotifTextBgColor = (CheckBoxPreference) findPreference(QK_PD_NOTIF_TEXT_BG_COLOR);
+        mNotifTextBgColor.setOnPreferenceChangeListener(this);        
         mClockColor = (CheckBoxPreference) findPreference(QK_CLOCK_COLOR);
 		mClockColor.setOnPreferenceChangeListener(this);
     	mToggleColor = (CheckBoxPreference) findPreference(QK_TOGGLE_COLOR);
@@ -419,10 +479,8 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
             getActivity().sendBroadcast(i);
             i = null;  			
   		} 		
-
-  		
-  		
-  		if (mNavigationBarColor.isChecked()) {
+	
+  		if (mNavBarColor.isChecked()) {
   			
         	sharedPref = prefMgr.getSharedPreferences();
         	SharedPreferences.Editor editor = sharedPref.edit();
@@ -433,7 +491,37 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
         	i.setAction(Junk_NavBar_Settings );
        	   	i.putExtra(NAV_BAR_COLOR, (Integer) objValue);
        	   	getActivity().sendBroadcast(i);
-       	   	i = null; 		}   		
+       	   	i = null;
+   	   	}
+  		
+  		if (mNavBarButtonColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(NAV_BAR_BUTTON_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_NavBar_Settings );
+       	   	i.putExtra(NAV_BAR_BUTTON_COLOR, (Integer) objValue);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null; 		
+  		}   		
+  		
+  		if (mNavBarGlowColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(NAV_BAR_GLOW_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_NavBar_Settings );
+       	   	i.putExtra(NAV_BAR_GLOW_COLOR, (Integer) objValue);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null; 		
+  		}   		
+  		
   		
   		if (mBatteryColor.isChecked()) {
   			
@@ -494,19 +582,37 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
         	i = null;        
      		
   		}
+  		
 
-  		if (mClockColor.isChecked()) {
+  		if (mDateColor.isChecked()) {
+      			
+           	sharedPref = prefMgr.getSharedPreferences();
+           	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(DATE_COLOR, (Integer) objValue);
+            editor.commit();
+      			
+           	Intent i = new Intent();
+           	i.setAction(Junk_Pulldown_Settings );
+           	i.putExtra(DATE_COLOR, (Integer) objValue);
+           	getActivity().sendBroadcast(i);
+           	i = null;        
+         		
+   		}
+        	
+        	
+  		if (mDateBarColor.isChecked()) {
   			
         	sharedPref = prefMgr.getSharedPreferences();
         	SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt(CLOCK_COLOR, (Integer) objValue);
+            editor.putInt(DATE_BAR_COLOR, (Integer) objValue);
             editor.commit();
   			
         	Intent i = new Intent();
-            i.setAction(Junk_Clock_Settings );
-            i.putExtra(CLOCK_COLOR, (Integer) objValue);
-            getActivity().sendBroadcast(i);
-            i = null;
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(DATE_BAR_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;        
+
      		
   		}
 
@@ -682,6 +788,20 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
             i = null;
        }
   		
+  		if (mClockColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(CLOCK_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Clock_Settings );
+        	i.putExtra(CLOCK_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;      
+       }  		
+  		
   		if (mClearButtonColor.isChecked()) {
   			
         	sharedPref = prefMgr.getSharedPreferences();
@@ -696,19 +816,133 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
         	i = null;      
        }
 
-  		if (mCloseBarColor.isChecked()) {
+  		if (mClearButtonTextColor.isChecked()) {
   			
         	sharedPref = prefMgr.getSharedPreferences();
         	SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt(CLOSE_BAR_COLOR, (Integer) objValue);
+            editor.putInt(CLEAR_BUTTON_TEXT_COLOR, (Integer) objValue);
             editor.commit();
   			
         	Intent i = new Intent();
         	i.setAction(Junk_Pulldown_Settings );
-        	i.putExtra(CLOSE_BAR_COLOR, (Integer) objValue);
+        	i.putExtra(CLEAR_BUTTON_TEXT_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;      
+       }  		
+  		
+  		if (mCloseBarColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(PD_HANDLE_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(PD_HANDLE_COLOR, (Integer) objValue);
         	getActivity().sendBroadcast(i);
         	i = null;              	
        }
+  		
+  		if (mShadeColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(PD_SHADE_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(PD_SHADE_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;              	
+       }  		
+
+  		if (mGripColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(PD_GRIP_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(PD_GRIP_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;              	
+       }  		
+  		
+  		if (mCarrierFrameColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(PD_CARRIER_FRAME_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(PD_CARRIER_FRAME_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;              	
+       }  		
+  		
+/*  		if (mNotifIconColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(PD_NOTIF_ICON_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(PD_NOTIF_ICON_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;              	
+       	}  	*/	
+
+  		if (mNotifIconBgColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(PD_NOTIF_ICON_BG_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(PD_NOTIF_ICON_BG_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;              	
+  		}  		
+
+  		if (mNotifTextColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(PD_NOTIF_TEXT_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(PD_NOTIF_TEXT_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;              	
+       }  		
+
+  		if (mNotifTextBgColor.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(PD_NOTIF_TEXT_BG_COLOR, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+        	i.setAction(Junk_Pulldown_Settings );
+        	i.putExtra(PD_NOTIF_TEXT_BG_COLOR, (Integer) objValue);
+        	getActivity().sendBroadcast(i);
+        	i = null;              	
+       }  		
+  		
+  		
   		
   	}
      	return true;
@@ -727,13 +961,25 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 		mChargingLevelColorOne.setChecked(false);
 		mChargingLevelColorTwo.setChecked(false);
 		mChargingLevelColorThree.setChecked(false);
-		mNavigationBarColor.setChecked(false);
+	    mNavBarColor.setChecked(false);
+	    mNavBarButtonColor.setChecked(false);
+	    mNavBarGlowColor.setChecked(false);
 		mCarrierColor.setChecked(false);
 	    mBatteryColor.setChecked(false);
 	    mTempColor.setChecked(false);
         mDateColor.setChecked(false);
         mCloseBarColor.setChecked(false);
         mClearButtonColor.setChecked(false);
+        mClearButtonTextColor.setChecked(false);
+        mDateBarColor.setChecked(false);
+        mDateBarColor.setChecked(false);
+        mShadeColor.setChecked(false);
+        mGripColor.setChecked(false);
+        mCarrierFrameColor.setChecked(false);
+        //mNotifIconColor.setChecked(false);
+        mNotifIconBgColor.setChecked(false);
+        mNotifTextColor.setChecked(false);
+        mNotifTextBgColor.setChecked(false);
         mClockColor.setChecked(false);
     	mToggleColor.setChecked(false);
     	mToggleIconOnColor.setChecked(false);
