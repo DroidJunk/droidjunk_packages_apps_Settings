@@ -11,7 +11,16 @@
 			android:title="Navigation Bar Glow Animation"
 			android:summary="Set to 0 to turn animatin off"
 			android:defaultValue="5" />		
+
 		
+		<DJSeekBarPreference	
+			android:layout="?android:attr/preferenceLayoutChild"
+   			android:key="nav_button_intens"
+			android:title="Navigation Bar Button Glow"
+			android:summary="Button icon itensity.  Glow effect is reduced with higher settings."
+			android:defaultValue="5" />		
+				
+				
     </PreferenceCategory>
 
    	

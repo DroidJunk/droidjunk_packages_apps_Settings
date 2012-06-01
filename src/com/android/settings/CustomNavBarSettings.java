@@ -20,6 +20,7 @@ public class CustomNavBarSettings extends SettingsPreferenceFragment
 
 	private final String Junk_NavBar_Settings = "JUNK_NAVBAR_SETTINGS";
     private final String NAV_BAR_ANIM_SPEED = "nav_anim_speed";
+    private final String NAV_BAR_BUTTON_INTENS = "nav_button_intens";
     private final String SHOW_SEARCH_BUTTON = "search_button";
 	private final String SHOW_LEFT_MENU_BUTTON = "left_menu_button";
 	private final String SHOW_RIGHT_MENU_BUTTON = "right_menu_button";
@@ -30,6 +31,7 @@ public class CustomNavBarSettings extends SettingsPreferenceFragment
 	private PreferenceManager prefMgr;
 
 	private DJSeekBarPreference mNavBarAnimSpeed;
+	private DJSeekBarPreference mNavBarButtonIntens;
 	private CheckBoxPreference mShowSearchButton;
 	private CheckBoxPreference mShowLeftMenuButton;
 	private CheckBoxPreference mShowRightMenuButton;
@@ -54,6 +56,10 @@ public class CustomNavBarSettings extends SettingsPreferenceFragment
             mNavBarAnimSpeed.setOnPreferenceChangeListener(this);
             mNavBarAnimSpeed.setMax(5);
             mNavBarAnimSpeed.setProgress(prefMgr.getSharedPreferences().getInt(NAV_BAR_ANIM_SPEED, 5));  
+            mNavBarButtonIntens = (DJSeekBarPreference) findPreference(NAV_BAR_BUTTON_INTENS);
+            mNavBarButtonIntens.setOnPreferenceChangeListener(this);
+            mNavBarButtonIntens.setMax(5);
+            mNavBarButtonIntens.setProgress(prefMgr.getSharedPreferences().getInt(NAV_BAR_BUTTON_INTENS, 5));  
             mShowSearchButton = (CheckBoxPreference) findPreference(SHOW_SEARCH_BUTTON);
             mShowSearchButton.setOnPreferenceChangeListener(this);
             mShowLeftMenuButton = (CheckBoxPreference) findPreference(SHOW_LEFT_MENU_BUTTON);
@@ -88,6 +94,13 @@ public class CustomNavBarSettings extends SettingsPreferenceFragment
            	   	i.putExtra(NAV_BAR_ANIM_SPEED, (Integer) objValue);
            	   	getActivity().sendBroadcast(i);
            	   	i = null;           	   	
+           	   	
+            } else if (NAV_BAR_BUTTON_INTENS.equals(key)) {
+            	Intent i = new Intent();
+            	i.setAction(Junk_NavBar_Settings );
+            	i.putExtra(NAV_BAR_BUTTON_INTENS, (Integer) objValue);
+            	getActivity().sendBroadcast(i);
+            	i = null;        
            	   	
             } else if (SHOW_SEARCH_BUTTON.equals(key)) {
             	Intent i = new Intent();
