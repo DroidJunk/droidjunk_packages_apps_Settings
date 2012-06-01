@@ -37,7 +37,6 @@ public class CustomClockSettings extends SettingsPreferenceFragment implements
 	private final String SHOW_CLOCK_CENTER = "show_clock_center";
 	private final String SHOW_CLOCK_RIGHT = "show_clock_right";
 	private final String CLOCK_AMPM = "clock_ampm";
-	private final String CLOCK_COLOR = "clock_color";
 	private final String CLOCK_SIZE = "clock_size";
     
 	private PreferenceManager prefMgr;
@@ -46,7 +45,6 @@ public class CustomClockSettings extends SettingsPreferenceFragment implements
 	private CheckBoxPreference mShowClockCenter;
 	private CheckBoxPreference mShowClockRight;
 	private CheckBoxPreference mClockAmPm;
-    private Preference mClockColor;
     private Preference mClockSize;
     public int mSize = 17;
     
@@ -76,8 +74,6 @@ public class CustomClockSettings extends SettingsPreferenceFragment implements
 		mShowClockRight.setOnPreferenceChangeListener(this);
         mClockAmPm = (CheckBoxPreference) findPreference(CLOCK_AMPM);
 		mClockAmPm.setOnPreferenceChangeListener(this);
-        mClockColor = (Preference) findPreference(CLOCK_COLOR);
-		mClockColor.setOnPreferenceChangeListener(this);
 	    mClockSize = (Preference) findPreference(CLOCK_SIZE);
 		mClockSize.setOnPreferenceChangeListener(this);
 		mSize = prefMgr.getSharedPreferences().getInt(CLOCK_SIZE, 17);  
@@ -190,13 +186,6 @@ public class CustomClockSettings extends SettingsPreferenceFragment implements
             getActivity().sendBroadcast(i);
             i = null;
         
-        } else if (CLOCK_COLOR.equals(key)) {
-        	Intent i = new Intent();
-            i.setAction(Junk_Clock_Settings );
-            i.putExtra(CLOCK_COLOR, (Integer) objValue);
-            getActivity().sendBroadcast(i);
-            i = null;
-            
         } else if (CLOCK_SIZE.equals(key)) {
         	sharedPref = prefMgr.getSharedPreferences();
         	SharedPreferences.Editor editor = sharedPref.edit();

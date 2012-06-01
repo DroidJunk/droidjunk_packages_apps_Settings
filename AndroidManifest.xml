@@ -1302,6 +1302,21 @@
                 android:resource="@id/sync_settings" />
         </activity>
 
+        <activity android:name="com.android.settings.accounts.AddAccountSettings"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/header_add_an_account">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.ADD_ACCOUNT_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+	<!-- ***************************************************************************************** -->
+	<!-- *****************************      NEW JUNK SETTINGS      ******************************* -->
+	<!-- ***************************************************************************************** -->        
+        
         <activity android:name="Settings$CustomJunkSettingsActivity"
             android:label="Customize Your Junk">
             <intent-filter>
@@ -1314,31 +1329,143 @@
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/custom_settings" />
         </activity>
-
-
-
-        <activity android:name="com.android.settings.accounts.AddAccountSettings"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/header_add_an_account">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.settings.ADD_ACCOUNT_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-
+        
 	<activity android:name="CustomJunk"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="Customize Junk">
+            android:label="Customize Your Junk">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
+        <activity android:name="Settings$CustomClockSettingsActivity"
+            android:label="Clock Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.CUSTOM_CLOCK_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomClockSettings" />
+        </activity>	
+	
+        <activity android:name="Settings$CustomBatterySettingsActivity"
+            android:label="Battery Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.CUSTOM_BATTERY_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomBatterySettings" />
+        </activity>
+
+        <activity android:name="Settings$CustomChargingSettingsActivity"
+            android:label="Charge Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.CUSTOM_CHARGING_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomChargeSettings" />
+        </activity>
+        
+        
+        <activity android:name="Settings$CustomPulldownSettingsActivity"
+            android:label="Status Bar Pulldown Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.CUSTOM_PULLDOWN_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomPulldownSettings" />
+        </activity>
+	
+        <activity android:name="Settings$CustomToggleSettingsActivity"
+            android:label="Pulldown Toggle Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.CUSTOM_TOGGLE_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomToggleSettings" />
+        </activity>	
+
+        <activity android:name="Settings$CustomNavBarSettingsActivity"
+            android:label="Navigation Bar Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.CUSTOM_NAVBAR_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomNavBarSettings" />
+        </activity>	
+        
+        <activity android:name="Settings$CustomQuietTimeSettingsActivity"
+            android:label="Quiet Time Settinsg">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.CUSTOM_QUIETTIME_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomQuietSettings" />
+        </activity>	
+        
+        <activity android:name="Settings$CustomNotifLedSettingsActivity"
+            android:label="LED Notification Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.CUSTOM_NOTIFLED_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomLedSettings" />
+        </activity>	
+        
+
+         <activity android:name="Settings$CustomQuickColorSettingsActivity"
+            android:label="Quick Color Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.CUSTOM_QUICK_COLOR_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomQuickColorSettings" />
+        </activity>	
+        
+        
+        <activity android:name="Settings$CustomColorSettingsActivity"
+            android:label="Color Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.CUSTOM_COLOR_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomColorSettings" />
+        </activity>	
+        
+        
+	<!-- ***************************************************************************************** -->	
+		
         <activity android:name="com.android.settings.accounts.ChooseAccountActivity"
             android:label="@string/header_add_an_account"
             android:configChanges="orientation|keyboardHidden|screenSize"

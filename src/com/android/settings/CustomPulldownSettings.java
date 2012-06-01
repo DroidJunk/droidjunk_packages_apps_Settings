@@ -37,38 +37,21 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
     
 	private final String Junk_Pulldown_Settings = "JUNK_PULLDOWN_SETTINGS";
 	private final String SHOW_BATTERY_LABEL = "show_battery_label";
-	private final String BATTERY_LABEL_COLOR = "battery_label_color";
 	private final String BATTERY_LABEL_SIZE = "battery_label_size";
 	private final String SHOW_TEMP_LABEL = "show_temp_label";
-	private final String TEMP_LABEL_COLOR = "temp_label_color";
 	private final String TEMP_LABEL_SIZE = "temp_label_size";
 	private final String SHOW_CARRIER = "show_carrier";
-	private final String CARRIER_COLOR = "carrier_color";
 	private final String CARRIER_CUSTOM = "carrier_custom";
 	private final String CARRIER_CUSTOM_TEXT = "carrier_custom_text";
 	private final String CARRIER_SIZE = "carrier_size";
-	private final String DATE_BAR_COLOR = "date_bar_color";
-	private final String DATE_COLOR = "date_color";
 	private final String DATE_SIZE = "date_size";
-	private final String CLEAR_BUTTON_COLOR = "clear_button_color";
-	private final String CLEAR_BUTTON_TEXT_COLOR = "clear_button_text_color";
-	private final String PD_HANDLE_COLOR = "pd_handle_color";
-	private final String PD_SHADE_COLOR = "pd_shade_color";
-	private final String PD_GRIP_COLOR = "pd_grip_color";
-	private final String PD_CARRIER_FRAME_COLOR = "pd_carrier_frame_color";
-//	private final String PD_NOTIF_ICON_COLOR = "pd_notif_icon_color";
-	private final String PD_NOTIF_ICON_BG_COLOR = "pd_notif_icon_bg_color";
-	private final String PD_NOTIF_TEXT_COLOR = "pd_notif_text_color";
-	private final String PD_NOTIF_TEXT_BG_COLOR = "pd_notif_text_bg_color";
     
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
 	private CheckBoxPreference mShowCarrier;
 	private CheckBoxPreference mShowBattery;
 	private CheckBoxPreference mShowTemp;
-    private Preference mCarrierColor;
-    private Preference mBatteryColor;
-    private Preference mTempColor;
+
     private CheckBoxPreference mCarrierCustom;
     private Preference mCarrierCustomText;
     private Preference mCarrierSize;
@@ -77,19 +60,7 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
     public int carrierSize = 15;
     public int batterySize = 12;
     public int tempSize = 12;
-    private Preference mDateBarColor;
-    private Preference mDateColor;
     private Preference mDateSize;
-    private Preference mCloseBarColor;
-    private Preference mClearButtonColor;
-    private Preference mClearButtonTextColor;
-    private Preference mShadeColor;
-    private Preference mGripColor;
-    private Preference mCarrierFrameColor;
-//    private Preference mNotifIconColor;
-    private Preference mNotifIconBgColor;
-    private Preference mNotifTextColor;
-    private Preference mNotifTextBgColor;
     public int dateSize = 17;
     
     
@@ -109,20 +80,14 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
 		mShowCarrier.setOnPreferenceChangeListener(this);
         mShowBattery = (CheckBoxPreference) findPreference(SHOW_BATTERY_LABEL);
 		mShowBattery.setOnPreferenceChangeListener(this);
-	    mBatteryColor = (Preference) findPreference(BATTERY_LABEL_COLOR);
-		mBatteryColor.setOnPreferenceChangeListener(this);
 	    mBatterySize = (Preference) findPreference(BATTERY_LABEL_SIZE);
 		mBatterySize.setOnPreferenceChangeListener(this);
 		batterySize = prefMgr.getSharedPreferences().getInt(BATTERY_LABEL_SIZE, batterySize);  
         mShowTemp = (CheckBoxPreference) findPreference(SHOW_TEMP_LABEL);
 		mShowTemp.setOnPreferenceChangeListener(this);
-	    mTempColor = (Preference) findPreference(TEMP_LABEL_COLOR);
-		mTempColor.setOnPreferenceChangeListener(this);
 	    mTempSize = (Preference) findPreference(TEMP_LABEL_SIZE);
 		mTempSize.setOnPreferenceChangeListener(this);
 		tempSize = prefMgr.getSharedPreferences().getInt(TEMP_LABEL_SIZE, tempSize);
-		mCarrierColor = (Preference) findPreference(CARRIER_COLOR);
-		mCarrierColor.setOnPreferenceChangeListener(this);
         mCarrierCustom = (CheckBoxPreference) findPreference(CARRIER_CUSTOM);
 		mCarrierCustom.setOnPreferenceChangeListener(this);
         mCarrierCustomText = (Preference) findPreference(CARRIER_CUSTOM_TEXT);
@@ -130,33 +95,9 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
 	    mCarrierSize = (Preference) findPreference(CARRIER_SIZE);
 		mCarrierSize.setOnPreferenceChangeListener(this);
 		carrierSize = prefMgr.getSharedPreferences().getInt(CARRIER_SIZE, carrierSize);  
-        mDateBarColor = (Preference) findPreference(DATE_BAR_COLOR);
-		mDateBarColor.setOnPreferenceChangeListener(this);
-        mDateColor = (Preference) findPreference(DATE_COLOR);
-		mDateColor.setOnPreferenceChangeListener(this);
 		mDateSize = (Preference) findPreference(DATE_SIZE);
 		mDateSize.setOnPreferenceChangeListener(this);
 		dateSize = prefMgr.getSharedPreferences().getInt(DATE_SIZE, dateSize);  
-        mCloseBarColor = (Preference) findPreference(PD_HANDLE_COLOR);
-		mCloseBarColor.setOnPreferenceChangeListener(this);
-        mClearButtonColor = (Preference) findPreference(CLEAR_BUTTON_TEXT_COLOR);
-		mClearButtonColor.setOnPreferenceChangeListener(this);
-        mClearButtonTextColor = (Preference) findPreference(CLEAR_BUTTON_TEXT_COLOR);
-		mClearButtonTextColor.setOnPreferenceChangeListener(this);
-        mShadeColor = (Preference) findPreference(PD_SHADE_COLOR);
-		mShadeColor.setOnPreferenceChangeListener(this);        
-        mGripColor = (Preference) findPreference(PD_GRIP_COLOR);
-		mGripColor.setOnPreferenceChangeListener(this);        
-        mCarrierFrameColor = (Preference) findPreference(PD_CARRIER_FRAME_COLOR);
-		mCarrierFrameColor.setOnPreferenceChangeListener(this);        
-//      mNotifIconColor = (Preference) findPreference(PD_NOTIF_ICON_COLOR);
-//		mNotifIconColor.setOnPreferenceChangeListener(this);        
-        mNotifIconBgColor = (Preference) findPreference(PD_NOTIF_ICON_BG_COLOR);
-        mNotifIconBgColor.setOnPreferenceChangeListener(this);        
-        mNotifTextColor = (Preference) findPreference(PD_NOTIF_TEXT_COLOR);
-        mNotifTextColor.setOnPreferenceChangeListener(this);        
-        mNotifTextBgColor = (Preference) findPreference(PD_NOTIF_TEXT_BG_COLOR);
-        mNotifTextBgColor.setOnPreferenceChangeListener(this);        
 
 		
 		
@@ -238,13 +179,6 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
            	   	getActivity().sendBroadcast(i);
            	   	i = null;       	
            	   	
-        } else if (BATTERY_LABEL_COLOR.equals(key)) {
-        	Intent i = new Intent();
-            i.setAction(Junk_Pulldown_Settings );
-            i.putExtra(BATTERY_LABEL_COLOR, (Integer) objValue);
-            getActivity().sendBroadcast(i);
-            i = null;           	  
-
         } else if (BATTERY_LABEL_SIZE.equals(key)) {
         	sharedPref = prefMgr.getSharedPreferences();
         	SharedPreferences.Editor editor = sharedPref.edit();
@@ -256,13 +190,6 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
             i.putExtra(BATTERY_LABEL_SIZE, (Integer) batterySize);
             getActivity().sendBroadcast(i);
             i = null;            
-
-        } else if (TEMP_LABEL_COLOR.equals(key)) {
-        	Intent i = new Intent();
-            i.setAction(Junk_Pulldown_Settings );
-            i.putExtra(TEMP_LABEL_COLOR, (Integer) objValue);
-            getActivity().sendBroadcast(i);
-            i = null;           	  
 
         } else if (TEMP_LABEL_SIZE.equals(key)) {
         	sharedPref = prefMgr.getSharedPreferences();
@@ -283,13 +210,6 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
        	   	getActivity().sendBroadcast(i);
        	   	i = null;               	   	
            	   	
-        } else if (CARRIER_COLOR.equals(key)) {
-        	Intent i = new Intent();
-            i.setAction(Junk_Pulldown_Settings );
-            i.putExtra(CARRIER_COLOR, (Integer) objValue);
-            getActivity().sendBroadcast(i);
-            i = null;
-            
         } else if (CARRIER_CUSTOM.equals(key)) {
         	Intent i = new Intent();
             i.setAction(Junk_Pulldown_Settings );
@@ -316,21 +236,6 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
             getActivity().sendBroadcast(i);
             i = null;
         	
-        } else if (DATE_COLOR.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_Pulldown_Settings );
-        	i.putExtra(DATE_COLOR, (Integer) objValue);
-        	getActivity().sendBroadcast(i);
-        	i = null;        
-
-        } else if (DATE_BAR_COLOR.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_Pulldown_Settings );
-        	i.putExtra(DATE_BAR_COLOR, (Integer) objValue);
-        	getActivity().sendBroadcast(i);
-        	i = null;        
-        	
-        	
         } else if (DATE_SIZE.equals(key)) {
         	sharedPref = prefMgr.getSharedPreferences();
         	SharedPreferences.Editor editor = sharedPref.edit();
@@ -342,77 +247,6 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
             i.putExtra(DATE_SIZE, (Integer) dateSize);
             getActivity().sendBroadcast(i);
             i = null;
-            
-        } else if (CLEAR_BUTTON_COLOR.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_Pulldown_Settings );
-        	i.putExtra(CLEAR_BUTTON_COLOR, (Integer) objValue);
-        	getActivity().sendBroadcast(i);
-        	i = null;      
- 
-        } else if (CLEAR_BUTTON_TEXT_COLOR.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_Pulldown_Settings );
-        	i.putExtra(CLEAR_BUTTON_TEXT_COLOR, (Integer) objValue);
-        	getActivity().sendBroadcast(i);
-        	i = null;              	
-        	
-        } else if (PD_HANDLE_COLOR.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_Pulldown_Settings );
-        	i.putExtra(PD_HANDLE_COLOR, (Integer) objValue);
-        	getActivity().sendBroadcast(i);
-        	i = null;              	
-        	
-        } else if (PD_SHADE_COLOR.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_Pulldown_Settings );
-        	i.putExtra(PD_SHADE_COLOR, (Integer) objValue);
-        	getActivity().sendBroadcast(i);
-        	i = null;         	
- 
-        } else if (PD_GRIP_COLOR.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_Pulldown_Settings );
-        	i.putExtra(PD_GRIP_COLOR, (Integer) objValue);
-        	getActivity().sendBroadcast(i);
-        	i = null;           	
-
-        } else if (PD_CARRIER_FRAME_COLOR.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_Pulldown_Settings );
-        	i.putExtra(PD_CARRIER_FRAME_COLOR, (Integer) objValue);
-        	getActivity().sendBroadcast(i);
-        	i = null;           	
-
-/*        } else if (PD_NOTIF_ICON_COLOR.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_Pulldown_Settings );
-        	i.putExtra(PD_NOTIF_ICON_COLOR, (Integer) objValue);
-        	getActivity().sendBroadcast(i);
-        	i = null; */         	
-
-        } else if (PD_NOTIF_ICON_BG_COLOR.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_Pulldown_Settings );
-        	i.putExtra(PD_NOTIF_ICON_BG_COLOR, (Integer) objValue);
-        	getActivity().sendBroadcast(i);
-        	i = null;          	
- 
-        } else if (PD_NOTIF_TEXT_COLOR.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_Pulldown_Settings );
-        	i.putExtra(PD_NOTIF_TEXT_COLOR, (Integer) objValue);
-        	getActivity().sendBroadcast(i);
-        	i = null;          	
-        	
-        } else if (PD_NOTIF_TEXT_BG_COLOR.equals(key)) {
-        	Intent i = new Intent();
-        	i.setAction(Junk_Pulldown_Settings );
-        	i.putExtra(PD_NOTIF_TEXT_BG_COLOR, (Integer) objValue);
-        	getActivity().sendBroadcast(i);
-        	i = null;          	
-
         	
         }
         

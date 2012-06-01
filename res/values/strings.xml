@@ -3843,6 +3843,37 @@ found in the list of installed apps.</string>
 	<string name="junk_settings_quiettime">Quiet Time Settings</string>
 	<string name="junk_settings_led">Led Settings</string>
 	<string name="junk_settings_navigation">Navigation Bar Settings</string>
+	
+	<string name="junk_frontend_backup">Backup Junk Settings</string>
+	<string name="junk_frontend_restore">Restore Junk Settings</string>
+	<string name="junk_frontend_pulldown">Status Bar Pulldown Settings</string>
+	<string name="junk_frontend_clock">Clock Settings</string>
+	<string name="junk_frontend_battery_icons">Battery Icons</string>
+	<string name="junk_frontend_battery">Battery Settings</string>
+	<string name="junk_frontend_charging">Charging Settings</string>
+	<string name="junk_frontend_toggle">Toggle Settings</string>
+	<string name="junk_frontend_navbar">Navigation Bar Settings</string>
+	<string name="junk_frontend_quiettime">Quiet Time Settings</string>
+	<string name="junk_frontend_led">LED Notification Settings</string>
+	
+	<string name="junk_frontend_quick_color">Quick Colors</string>
+	<string name="junk_frontend_color_color">Colors - Full List</string>
+	<string name="junk_frontend_jumpto_color">Jump To Colors</string>	
+	<string name="junk_frontend_signal_color">Signal Icons</string>
+	<string name="junk_frontend_battery_color">Battery</string>
+	<string name="junk_frontend_charging_color">Charging</string>
+	<string name="junk_frontend_navbar_color">Navigation Bar</string>
+	<string name="junk_frontend_clock_color">Clock</string>
+	<string name="junk_frontend_statpull_color">Status Bar Pulldown</string>
+	<string name="junk_frontend_toggle_color">Toggles</string>
+	<string name="junk_frontend_preset_theme">Preset Themes</string>
+	<string name="junk_frontend_themeone_theme">Theme One</string>
+	<string name="junk_frontend_themetwo_theme">Theme Two</string>
+	<string name="junk_frontend_themethree_theme">Theme Three</string>
+	<string name="junk_frontend_save_theme">Save Theme</string>
+	<string name="junk_frontend_apply_theme">Apply Theme</string>
+	<string name="junk_frontend_name_theme">Theme Name</string>
+	
 
 	<!-- ***************************************************************************************** -->
 	<!-- ***************************************************************************************** -->

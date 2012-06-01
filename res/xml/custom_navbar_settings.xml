@@ -5,23 +5,6 @@
   	<PreferenceCategory
 		android:title="N A V I G A T I O N   B A R">
 
-		<ColorPickerPreference
-			android:key="nav_bar_color"
-			android:title="Navigation Bar Color"
-			android:defaultValue="#ff000000"
-			/>  	    
- 	    
-		<ColorPickerPreference
-			android:key="nav_button_color"
-			android:title="Navigation Button Color"
-			android:defaultValue="#ffffffff" />
-
-		<ColorPickerPreference
-			android:key="nav_button_glow_color"
-			android:title="Navigation Button Glow Color"
-			android:defaultValue="#ffffffff"
-			/>		
-		
 		<DJSeekBarPreference	
 			android:layout="?android:attr/preferenceLayoutChild"
    			android:key="nav_anim_speed"
@@ -33,7 +16,7 @@
 
    	
    	<PreferenceCategory
-		android:title="P O R T R A I T   M O D E">
+		android:title="P O R T R A I T   M O D E   B U T T O N S">
 	
         <CheckBoxPreference
         	android:layout="?android:attr/preferenceLayoutChild"
@@ -60,7 +43,7 @@
 
 
    	<PreferenceCategory
-		android:title="L A N D S C A P E   M O D E">
+		android:title="L A N D S C A P E   M O D E   B U T T O N S">
 	
         <CheckBoxPreference
         	android:layout="?android:attr/preferenceLayoutChild"

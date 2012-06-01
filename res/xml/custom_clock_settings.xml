@@ -56,14 +56,6 @@
 		android:title="Clock am/pm" 
 		android:defaultValue="false"	/>
    				
-	<ColorPickerPreference
-		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="clock_color"
-		android:title="Clock Color"
-		android:summary="Color for statusbar clock"
-		android:defaultValue="#ff3792b4" 
-		alphaSlider="false" /> 
-
 	<Preference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="clock_size"

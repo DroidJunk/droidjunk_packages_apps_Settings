@@ -22,11 +22,14 @@ import com.android.settings.R;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.ColorPickerPreference;
+import android.util.Log;
+import android.widget.ListView;
 
 
 
@@ -147,6 +150,8 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
     private Preference mToggleTextOnColor;
     private Preference mToggleTextOffColor;
     private Preference mToggleDividerColor;
+    
+    private int rowid = 0;
 
 	
 	
@@ -155,6 +160,8 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        rowid = getActivity().getIntent().getIntExtra("junk_color_rowid", 0); 
         
         prefMgr = getPreferenceManager();
         prefMgr.setSharedPreferencesName("Junk_Settings");
@@ -241,8 +248,21 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
         mToggleDividerColor.setOnPreferenceChangeListener(this);
         
         
+
+        
     }
 
+    
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+      
+
+        ListView lView = this.getListView();
+        lView.clearFocus();
+        lView.setSelection(rowid);
+        
+    }
     
     @Override
     public void onResume() {

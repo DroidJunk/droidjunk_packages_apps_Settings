@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <LinearLayout 
+        android:orientation="vertical"
+        android:layout_width="match_parent" 
+        android:layout_height="match_parent">
+        
+        <TabWidget 
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content" 
+            android:visibility="visible" 
+            android:tabStripEnabled="true">
+            
+        </TabWidget>
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <ScrollView  
+				android:scrollbars="none" 
+				android:layout_width="match_parent" 
+				android:layout_height="wrap_content" >
+            
+            <LinearLayout
+                android:id="@+id/tab1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" 
+                android:paddingTop="8dp"
+                android:paddingBottom="4dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                >
+
+                <LinearLayout 
+        			android:orientation="horizontal"
+        			android:layout_width="match_parent" 
+        			android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/but_backup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_backup"
+                    android:textSize="16dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/but_restore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_restore"
+                    android:textSize="16dp" 
+                    android:layout_weight="1" />
+                </LinearLayout>
+                
+
+                <Button
+                    android:id="@+id/but_clock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_clock"
+                    android:textSize="16dp"
+                   />
+
+                <LinearLayout 
+        			android:orientation="horizontal"
+        			android:layout_width="match_parent" 
+        			android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/but_battery_icons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_battery_icons"
+                    android:textSize="16dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/but_battery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_battery"
+                    android:textSize="16dp" 
+                    android:layout_weight="1" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/but_charging"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_charging"
+                    android:textSize="16dp" 
+                    />                
+                
+                <Button
+                    android:id="@+id/but_pulldown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_pulldown"
+                    android:textSize="16dp" 
+                    />
+
+                <Button
+                    android:id="@+id/but_toggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_toggle"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/but_navbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_navbar"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/but_quiettime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_quiettime"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/but_led"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_led"
+                    android:textSize="16dp" />
+            </LinearLayout>
+			</ScrollView>
+
+            <ScrollView  
+				android:scrollbars="none" 
+				android:layout_width="match_parent" 
+				android:layout_height="wrap_content" >
+            
+            <LinearLayout
+                android:id="@+id/tab2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="4dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp" >
+
+                <Button
+                    android:id="@+id/but_color_quick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_quick_color"
+                    android:textSize="16dp" />
+                                
+                <Button
+                    android:id="@+id/but_color_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_color_color"
+                    android:textSize="16dp" />                                
+
+                <TextView
+                    android:id="@+id/textView0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_jumpto_color"
+                    android:textAppearance="?android:attr/textAppearanceMedium" 
+                    android:gravity="center_horizontal" 
+                    android:textSize="18dp"
+                    android:layout_marginTop="8dp"/>                
+                
+                <Button
+                    android:id="@+id/but_color_signal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_signal_color"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/but_color_battery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_battery_color"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/but_color_charging"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_charging_color"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/but_color_clock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_clock_color"
+                    android:textSize="16dp" />                
+
+                <Button
+                    android:id="@+id/but_color_statpull"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_statpull_color"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/but_color_toggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_toggle_color"
+                    android:textSize="16dp" />                
+                
+                <Button
+                    android:id="@+id/but_color_navbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_navbar_color"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+			</ScrollView>
+            
+            <ScrollView  
+				android:scrollbars="none" 
+				android:layout_width="match_parent" 
+				android:layout_height="wrap_content" >
+            
+            <LinearLayout
+                android:id="@+id/tab3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="4dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp" >
+
+                <Button
+                    android:id="@+id/but_theme_preset"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_preset_theme"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/theme1text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_themeone_theme"
+                    android:textAppearance="?android:attr/textAppearanceMedium" 
+                    android:gravity="center_horizontal" 
+                    android:textSize="18dp"
+                    android:layout_marginTop="8dp"/>
+
+                <LinearLayout 
+        			android:orientation="horizontal"
+        			android:layout_width="match_parent" 
+        			android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/but_theme1_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_save_theme"
+                    android:textSize="16dp"
+                    android:layout_weight="1"  />
+
+                <Button
+                    android:id="@+id/but_theme1_apply"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_apply_theme"
+                    android:textSize="16dp"
+                    android:layout_weight="1"  />
+				</LinearLayout>
+                
+                <Button
+                    android:id="@+id/but_theme1_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_name_theme"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/theme2text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_themetwo_theme"
+                    android:textAppearance="?android:attr/textAppearanceMedium" 
+                    android:gravity="center_horizontal" 
+                    android:textSize="18dp"
+                    android:layout_marginTop="8dp"/>
+              
+                <LinearLayout 
+        			android:orientation="horizontal"
+        			android:layout_width="match_parent" 
+        			android:layout_height="match_parent">
+                
+                <Button
+                    android:id="@+id/but_theme2_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_save_theme"
+                    android:textSize="16dp"
+                    android:layout_weight="1"  />
+
+                <Button
+                    android:id="@+id/but_theme2_apply"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_apply_theme"
+                    android:textSize="16dp"
+                    android:layout_weight="1"  />
+				</LinearLayout>
+				
+                <Button
+                    android:id="@+id/but_theme2_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_name_theme"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/theme3text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_themethree_theme"
+                    android:textAppearance="?android:attr/textAppearanceMedium" 
+                    android:gravity="center_horizontal" 
+                    android:textSize="18dp"
+                    android:layout_marginTop="8dp"/>
+
+                <LinearLayout 
+        			android:orientation="horizontal"
+        			android:layout_width="match_parent" 
+        			android:layout_height="match_parent">                
+                <Button
+                    android:id="@+id/but_theme3_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_save_theme"
+                    android:textSize="16dp"
+                    android:layout_weight="1"  />
+
+                <Button
+                    android:id="@+id/but_theme3_apply"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_apply_theme"
+                    android:textSize="16dp"
+                    android:layout_weight="1"  />
+				</LinearLayout>
+                
+                <Button
+                    android:id="@+id/but_theme3_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/junk_frontend_name_theme"
+                    android:textSize="16dp" />
+            </LinearLayout>
+			</ScrollView>
+        </FrameLayout>
+
+    </LinearLayout>
+</TabHost>

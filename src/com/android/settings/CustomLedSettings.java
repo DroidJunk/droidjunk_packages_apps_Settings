@@ -63,8 +63,6 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 	private DJSeekBarPreference mDefaultLedOnMs;
 	private DJSeekBarPreference mDefaultLedOffMs;
 	private CheckBoxPreference mPulseLedScreenOn;
-//    private int DefaultLedOnMs;
-//    private int DefaultLedOffMs;
     private Boolean PulseLedScreenOn;
     
     
@@ -73,8 +71,6 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 	private DJSeekBarPreference mIncomingCallLedOnMs;
 	private DJSeekBarPreference mIncomingCallLedOffMs;
 	private Boolean IncomingCallPulse;
-//	private int IncomingCallLedOnMs;
-//    private int IncomingCallLedOffMs;
     
 
     private Preference mMissedCallColor;
@@ -82,16 +78,12 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 	private DJSeekBarPreference mMissedCallLedOnMs;
 	private DJSeekBarPreference mMissedCallLedOffMs;
 	private Boolean MissedCallPulse;
-//	private int MissedCallLedOnMs;
-//    private int MissedCallLedOffMs;
 	
     private Preference mVoiceMailColor;
 	private CheckBoxPreference mVoiceMailPulse;
 	private DJSeekBarPreference mVoiceMailLedOnMs;
 	private DJSeekBarPreference mVoiceMailLedOffMs;
 	private Boolean VoiceMailPulse;
-//	private int VoiceMailLedOnMs;
-//    private int VoiceMailLedOffMs;
 	
 	
     /** If there is no setting in the provider, use this. */
@@ -185,10 +177,11 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         
         mDefaultLedOnMs.setMax(50);
         mDefaultLedOnMs.setDefaultValue(prefMgr.getSharedPreferences().getInt(DEFAULT_LED_ON_MS, 3));
-        mDefaultLedOnMs.setProgress(prefMgr.getSharedPreferences().getInt(DEFAULT_LED_ON_MS, 3));        
+        mDefaultLedOnMs.setProgress(prefMgr.getSharedPreferences().getInt(DEFAULT_LED_ON_MS, 3));      
         mDefaultLedOffMs.setMax(50);
         mDefaultLedOffMs.setDefaultValue(prefMgr.getSharedPreferences().getInt(DEFAULT_LED_OFF_MS, 3));
         mDefaultLedOffMs.setProgress(prefMgr.getSharedPreferences().getInt(DEFAULT_LED_OFF_MS, 3));        
+        
         
         mIncomingCallLedOnMs.setMax(50);
         mIncomingCallLedOnMs.setDefaultValue(prefMgr.getSharedPreferences().getInt(INCOMING_CALL_LED_ON_MS, 3));
@@ -342,7 +335,7 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
            	SharedPreferences.Editor editor = sharedPref.edit();
            	editor.putInt(INCOMING_CALL_LED_OFF_MS, mIncomingCallLedOffMs.getProgress());
             editor.commit();
-        
+            
         } else if (MISSED_CALL_LED_PULSE.equals(key)) {
           	sharedPref = prefMgr.getSharedPreferences();
            	SharedPreferences.Editor editor = sharedPref.edit();
@@ -394,8 +387,6 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
             editor.commit();
       
         }
-     	
-     	
      	
         updateDb();    
         return true;
