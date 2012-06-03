@@ -13,7 +13,7 @@
  
 	
  	
-	<Preference
+	<DJSeekBarPreference
 	    android:layout="?android:attr/preferenceLayoutChild"
 		android:key="depleted_levels_one"
 		android:title="Max Level One"
@@ -21,7 +21,7 @@
 		android:defaultValue="10" />	
    
     	
-	<Preference
+	<DJSeekBarPreference
 	    android:layout="?android:attr/preferenceLayoutChild"
 		android:key="depleted_levels_two"
 		android:title="Max Level Two"
@@ -35,14 +35,14 @@
 		android:key="battery_color_ranges"
 		android:summary="Battery colors based on battery level"	>    
  
-	<Preference
+	<DJSeekBarPreference
 	    android:layout="?android:attr/preferenceLayoutChild"
 		android:key="battery_levels_one"
 		android:title="Max Level One"
 		android:summary="Maximimum level for the color"
 		android:defaultValue="10" />	
    
-	<Preference
+	<DJSeekBarPreference
 	    android:layout="?android:attr/preferenceLayoutChild"
 		android:key="battery_levels_two"
 		android:title="Max Level Two"

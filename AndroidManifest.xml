@@ -1414,7 +1414,7 @@
         </activity>	
         
         <activity android:name="Settings$CustomQuietTimeSettingsActivity"
-            android:label="Quiet Time Settinsg">
+            android:label="Quiet Time Settings">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.settings.CUSTOM_QUIETTIME_SETTINGS" />

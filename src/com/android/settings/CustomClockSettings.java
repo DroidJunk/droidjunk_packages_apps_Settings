@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.DJSeekBarPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
@@ -45,7 +46,7 @@ public class CustomClockSettings extends SettingsPreferenceFragment implements
 	private CheckBoxPreference mShowClockCenter;
 	private CheckBoxPreference mShowClockRight;
 	private CheckBoxPreference mClockAmPm;
-    private Preference mClockSize;
+    private DJSeekBarPreference mClockSize;
     public int mSize = 17;
     
 
@@ -74,9 +75,12 @@ public class CustomClockSettings extends SettingsPreferenceFragment implements
 		mShowClockRight.setOnPreferenceChangeListener(this);
         mClockAmPm = (CheckBoxPreference) findPreference(CLOCK_AMPM);
 		mClockAmPm.setOnPreferenceChangeListener(this);
-	    mClockSize = (Preference) findPreference(CLOCK_SIZE);
+	    mClockSize = (DJSeekBarPreference) findPreference(CLOCK_SIZE);
 		mClockSize.setOnPreferenceChangeListener(this);
 		mSize = prefMgr.getSharedPreferences().getInt(CLOCK_SIZE, 17);  
+		mClockSize.setMin(10);
+		mClockSize.setMax(20);
+		mClockSize.setProgress(mSize);
     }
 
     
@@ -94,16 +98,6 @@ public class CustomClockSettings extends SettingsPreferenceFragment implements
  
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-
- 
-    	if (preference == mClockSize) {
-			new NumberPickerDialog(preferenceScreen.getContext(),
-                    clockSizeListener,
-            		mSize,
-                    10,
-                    20,
-                    R.string.clock_size).show();
-        }    	
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
     
@@ -187,14 +181,10 @@ public class CustomClockSettings extends SettingsPreferenceFragment implements
             i = null;
         
         } else if (CLOCK_SIZE.equals(key)) {
-        	sharedPref = prefMgr.getSharedPreferences();
-        	SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt(CLOCK_SIZE, mSize);
-            editor.commit();
 
         	Intent i = new Intent();
             i.setAction(Junk_Clock_Settings );
-            i.putExtra(CLOCK_SIZE, (Integer) mSize);
+            i.putExtra(CLOCK_SIZE, (Integer) objValue + 10);
             getActivity().sendBroadcast(i);
             i = null;
         }
@@ -202,12 +192,5 @@ public class CustomClockSettings extends SettingsPreferenceFragment implements
     }
     
     
-    NumberPickerDialog.OnNumberSetListener clockSizeListener =
-            new NumberPickerDialog.OnNumberSetListener() {
-    	public void onNumberSet(int limit) {
-    		mSize = (int) limit;
-    		mClockSize.getOnPreferenceChangeListener().onPreferenceChange(mClockSize, (int) limit);
-    	}
-    	};      
     
 }

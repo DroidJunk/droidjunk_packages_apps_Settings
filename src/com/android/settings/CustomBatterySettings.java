@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.DJSeekBarPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
@@ -44,28 +45,25 @@ public class CustomBatterySettings extends SettingsPreferenceFragment implements
 	
 	private final String DEPLETED_LEVEL_ONE = "depleted_levels_one";
 	private final String DEPLETED_LEVEL_TWO = "depleted_levels_two";
-
-	
 	
 	private final int BATTERY_STOCK = 0;
     private final int BATTERY_NUMBER = 1;
     private final int BATTERY_CIRCLE = 2;
     private final int BATTERY_PIE = 3;
     private final int BATTERY_NONE = 4;
-	
-
 
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
 	private int mBatteryIconValue = 0;
 	private CheckBoxPreference mBatteryBarBottom;
 	private CheckBoxPreference mBatteryBarRight;
-	private Preference mBatteryBarWidth;
-	private Preference mBatteryLevelOne;
-	private Preference mBatteryLevelTwo;
+	
+	private DJSeekBarPreference mBatteryBarWidth;
+	private DJSeekBarPreference mBatteryLevelOne;
+	private DJSeekBarPreference mBatteryLevelTwo;
     
-	private Preference mDepletedLevelOne;
-	private Preference mDepletedLevelTwo;
+	private DJSeekBarPreference mDepletedLevelOne;
+	private DJSeekBarPreference mDepletedLevelTwo;
     
     private int batBarWidth = 5;
     private int batLevelOne = 10;
@@ -91,84 +89,146 @@ public class CustomBatterySettings extends SettingsPreferenceFragment implements
  
         // Set the preferences based on what battery is chosen
 
+		batLevelOne = sharedPref.getInt(BATTERY_LEVEL_ONE, 10);
+		batLevelTwo = sharedPref.getInt(BATTERY_LEVEL_TWO, 30);
+		batBarWidth = sharedPref.getInt(BATTERY_BAR_WIDTH, 5);
+		depletedLevelOne = sharedPref.getInt(DEPLETED_LEVEL_ONE, 10);
+		depletedLevelTwo = sharedPref.getInt(DEPLETED_LEVEL_TWO, 30);
+
+        
         switch (mBatteryIconValue) {
 
         case BATTERY_STOCK:
         	addPreferencesFromResource(R.xml.custom_bat_stock_settings);
-    		mBatteryLevelOne = (Preference) findPreference(BATTERY_LEVEL_ONE);
-    		mBatteryLevelOne.setOnPreferenceChangeListener(this);
-    		mBatteryLevelTwo = (Preference) findPreference(BATTERY_LEVEL_TWO);
-    		mBatteryLevelTwo.setOnPreferenceChangeListener(this);
     		
-    		batLevelOne = sharedPref.getInt(BATTERY_LEVEL_ONE, 10);
-    		batLevelTwo = sharedPref.getInt(BATTERY_LEVEL_TWO, 30);
-    		batBarWidth = sharedPref.getInt(BATTERY_BAR_WIDTH, 5);
+    		mBatteryLevelOne = (DJSeekBarPreference) findPreference(BATTERY_LEVEL_ONE);
+       		mBatteryLevelOne.setOnPreferenceChangeListener(this);
+    		mBatteryLevelOne.setMax(100);
+    		mBatteryLevelOne.setMin(0);
+    		mBatteryLevelOne.setProgress(batLevelOne);
+ 
+    		mBatteryLevelTwo = (DJSeekBarPreference) findPreference(BATTERY_LEVEL_TWO);
+    		mBatteryLevelTwo.setOnPreferenceChangeListener(this);
+    		mBatteryLevelTwo.setMax(100);
+    		mBatteryLevelTwo.setMin(0);
+    		mBatteryLevelTwo.setProgress(batLevelTwo);
+
+    		mDepletedLevelOne = (DJSeekBarPreference) findPreference(DEPLETED_LEVEL_ONE);
+    		mDepletedLevelOne.setOnPreferenceChangeListener(this);
+    		mDepletedLevelOne.setMax(100);
+    		mDepletedLevelOne.setMin(0);
+    		mDepletedLevelOne.setProgress(depletedLevelOne);
+
+    		mDepletedLevelTwo = (DJSeekBarPreference) findPreference(DEPLETED_LEVEL_TWO);
+    		mDepletedLevelTwo.setOnPreferenceChangeListener(this);
+    		mDepletedLevelTwo.setMax(100);
+    		mDepletedLevelTwo.setMin(0);
+    		mDepletedLevelTwo.setProgress(depletedLevelTwo);
             break;
             
         case BATTERY_NUMBER:
         	addPreferencesFromResource(R.xml.custom_bat_number_settings);
-    		mBatteryLevelOne = (Preference) findPreference(BATTERY_LEVEL_ONE);
-    		mBatteryLevelOne.setOnPreferenceChangeListener(this);
-    		mBatteryLevelTwo = (Preference) findPreference(BATTERY_LEVEL_TWO);
-    		mBatteryLevelTwo.setOnPreferenceChangeListener(this);
-    		
-    		batLevelOne = sharedPref.getInt(BATTERY_LEVEL_ONE, 10);
-    		batLevelTwo = sharedPref.getInt(BATTERY_LEVEL_TWO, 30);
-    		batBarWidth = sharedPref.getInt(BATTERY_BAR_WIDTH, 5);
     		
             mBatteryBarBottom = (CheckBoxPreference) findPreference(BATTERY_BAR_BOTTOM);
     		mBatteryBarBottom.setOnPreferenceChangeListener(this);
             mBatteryBarRight = (CheckBoxPreference) findPreference(BATTERY_BAR_RIGHT);
     		mBatteryBarRight.setOnPreferenceChangeListener(this);
-            mBatteryBarWidth = (Preference) findPreference(BATTERY_BAR_WIDTH);
+            mBatteryBarWidth = (DJSeekBarPreference) findPreference(BATTERY_BAR_WIDTH);
     		mBatteryBarWidth.setOnPreferenceChangeListener(this);
+    		mBatteryBarWidth.setMax(5);
+    		mBatteryBarWidth.setMin(1);
+    		mBatteryBarWidth.setProgress(batBarWidth);
     		
-    		mDepletedLevelOne = (Preference) findPreference(DEPLETED_LEVEL_ONE);
+    		mBatteryLevelOne = (DJSeekBarPreference) findPreference(BATTERY_LEVEL_ONE);
+       		mBatteryLevelOne.setOnPreferenceChangeListener(this);
+    		mBatteryLevelOne.setMax(100);
+    		mBatteryLevelOne.setMin(0);
+    		mBatteryLevelOne.setProgress(batLevelOne);
+ 
+    		mBatteryLevelTwo = (DJSeekBarPreference) findPreference(BATTERY_LEVEL_TWO);
+    		mBatteryLevelTwo.setOnPreferenceChangeListener(this);
+    		mBatteryLevelTwo.setMax(100);
+    		mBatteryLevelTwo.setMin(0);
+    		mBatteryLevelTwo.setProgress(batLevelTwo);
+
+    		
+    		mDepletedLevelOne = (DJSeekBarPreference) findPreference(DEPLETED_LEVEL_ONE);
     		mDepletedLevelOne.setOnPreferenceChangeListener(this);
-    		mDepletedLevelTwo = (Preference) findPreference(DEPLETED_LEVEL_TWO);
+    		mDepletedLevelOne.setMax(100);
+    		mDepletedLevelOne.setMin(0);
+    		mDepletedLevelOne.setProgress(depletedLevelOne);
+
+    		mDepletedLevelTwo = (DJSeekBarPreference) findPreference(DEPLETED_LEVEL_TWO);
     		mDepletedLevelTwo.setOnPreferenceChangeListener(this);
+    		mDepletedLevelTwo.setMax(100);
+    		mDepletedLevelTwo.setMin(0);
+    		mDepletedLevelTwo.setProgress(depletedLevelTwo);
             break;
 
         case BATTERY_CIRCLE:
         	addPreferencesFromResource(R.xml.custom_bat_circle_settings);
-    		mBatteryLevelOne = (Preference) findPreference(BATTERY_LEVEL_ONE);
-    		mBatteryLevelOne.setOnPreferenceChangeListener(this);
-    		mBatteryLevelTwo = (Preference) findPreference(BATTERY_LEVEL_TWO);
+        	
+    		mBatteryLevelOne = (DJSeekBarPreference) findPreference(BATTERY_LEVEL_ONE);
+       		mBatteryLevelOne.setOnPreferenceChangeListener(this);
+    		mBatteryLevelOne.setMax(100);
+    		mBatteryLevelOne.setMin(0);
+    		mBatteryLevelOne.setProgress(batLevelOne);
+ 
+    		mBatteryLevelTwo = (DJSeekBarPreference) findPreference(BATTERY_LEVEL_TWO);
     		mBatteryLevelTwo.setOnPreferenceChangeListener(this);
+    		mBatteryLevelTwo.setMax(100);
+    		mBatteryLevelTwo.setMin(0);
+    		mBatteryLevelTwo.setProgress(batLevelTwo);
+
     		
-    		mDepletedLevelOne = (Preference) findPreference(DEPLETED_LEVEL_ONE);
+    		mDepletedLevelOne = (DJSeekBarPreference) findPreference(DEPLETED_LEVEL_ONE);
     		mDepletedLevelOne.setOnPreferenceChangeListener(this);
-    		mDepletedLevelTwo = (Preference) findPreference(DEPLETED_LEVEL_TWO);
+    		mDepletedLevelOne.setMax(100);
+    		mDepletedLevelOne.setMin(0);
+    		mDepletedLevelOne.setProgress(depletedLevelOne);
+
+    		mDepletedLevelTwo = (DJSeekBarPreference) findPreference(DEPLETED_LEVEL_TWO);
     		mDepletedLevelTwo.setOnPreferenceChangeListener(this);
-    		
+    		mDepletedLevelTwo.setMax(100);
+    		mDepletedLevelTwo.setMin(0);
+    		mDepletedLevelTwo.setProgress(depletedLevelTwo);
             break;
 
         case BATTERY_PIE:
         	addPreferencesFromResource(R.xml.custom_bat_circle_settings);
-    		mBatteryLevelOne = (Preference) findPreference(BATTERY_LEVEL_ONE);
-    		mBatteryLevelOne.setOnPreferenceChangeListener(this);
-    		mBatteryLevelTwo = (Preference) findPreference(BATTERY_LEVEL_TWO);
+        	
+    		mBatteryLevelOne = (DJSeekBarPreference) findPreference(BATTERY_LEVEL_ONE);
+       		mBatteryLevelOne.setOnPreferenceChangeListener(this);
+    		mBatteryLevelOne.setMax(100);
+    		mBatteryLevelOne.setMin(0);
+    		mBatteryLevelOne.setProgress(batLevelOne);
+ 
+    		mBatteryLevelTwo = (DJSeekBarPreference) findPreference(BATTERY_LEVEL_TWO);
     		mBatteryLevelTwo.setOnPreferenceChangeListener(this);
+    		mBatteryLevelTwo.setMax(100);
+    		mBatteryLevelTwo.setMin(0);
+    		mBatteryLevelTwo.setProgress(batLevelTwo);
+
     		
-    		mDepletedLevelOne = (Preference) findPreference(DEPLETED_LEVEL_ONE);
+    		mDepletedLevelOne = (DJSeekBarPreference) findPreference(DEPLETED_LEVEL_ONE);
     		mDepletedLevelOne.setOnPreferenceChangeListener(this);
-    		mDepletedLevelTwo = (Preference) findPreference(DEPLETED_LEVEL_TWO);
+    		mDepletedLevelOne.setMax(100);
+    		mDepletedLevelOne.setMin(0);
+    		mDepletedLevelOne.setProgress(depletedLevelOne);
+
+    		mDepletedLevelTwo = (DJSeekBarPreference) findPreference(DEPLETED_LEVEL_TWO);
     		mDepletedLevelTwo.setOnPreferenceChangeListener(this);
-    		
+    		mDepletedLevelTwo.setMax(100);
+    		mDepletedLevelTwo.setMin(0);
+    		mDepletedLevelTwo.setProgress(depletedLevelTwo);
             break;            
             
         case BATTERY_NONE:
-
-        	
             break;           
             
        default:
             break;
         } 
-        
-        
-
-		
         
         resendIntents();
         
@@ -190,95 +250,11 @@ public class CustomBatterySettings extends SettingsPreferenceFragment implements
  
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-    	
-    	if (preference == mBatteryLevelOne) {
-			new NumberPickerDialog(preferenceScreen.getContext(),
-                    batteryLevelOneListener,
-                    batLevelOne,
-                    0,
-                    batLevelTwo - 1,
-                    R.string.battery_level_max).show();
-        
-    	} else if (preference == mBatteryLevelTwo) {
-			new NumberPickerDialog(preferenceScreen.getContext(),
-                    batteryLevelTwoListener,
-                    batLevelTwo,
-                    batLevelOne + 1,
-                    99,
-                    R.string.battery_level_max).show();
-      
-    	} else if (preference == mBatteryBarWidth) {
-			new NumberPickerDialog(preferenceScreen.getContext(),
-                    batBarWidthListener,
-                    batBarWidth,
-                    1,
-                    8,
-                    R.string.battery_bar_width).show();
-
-    	} else if (preference == mDepletedLevelOne) {
-			new NumberPickerDialog(preferenceScreen.getContext(),
-					depletedLevelOneListener,
-                depletedLevelOne,
-                0,
-                depletedLevelTwo - 1,
-                R.string.depleted_level_max).show();
-	        
-    	} else if (preference == mDepletedLevelTwo) {
-			new NumberPickerDialog(preferenceScreen.getContext(),
-				depletedLevelTwoListener,
-	            depletedLevelTwo,
-	            depletedLevelOne + 1,
-	            99,
-	            R.string.depleted_level_max).show();
-	      
-        }	
-    
-        return super.onPreferenceTreeClick(preferenceScreen, preference);
+    	return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
-    NumberPickerDialog.OnNumberSetListener batteryLevelOneListener =
-            new NumberPickerDialog.OnNumberSetListener() {
-        		public void onNumberSet(int limit) {
-        			batLevelOne = (int) limit;
-        			mBatteryLevelOne.getOnPreferenceChangeListener().onPreferenceChange(mBatteryLevelOne, (int) limit);
-        		}
-        	};      
-
-        NumberPickerDialog.OnNumberSetListener batteryLevelTwoListener =
-        	new NumberPickerDialog.OnNumberSetListener() {
-            	public void onNumberSet(int limit) {
-            		batLevelTwo = (int) limit;
-            		mBatteryLevelTwo.getOnPreferenceChangeListener().onPreferenceChange(mBatteryLevelTwo, (int) limit);
-            	}
-            };      
-
-         	
-         NumberPickerDialog.OnNumberSetListener batBarWidthListener =
-               	new NumberPickerDialog.OnNumberSetListener() {
-                   	public void onNumberSet(int limit) {
-                   		batBarWidth = (int) limit;
-                   		mBatteryBarWidth.getOnPreferenceChangeListener().onPreferenceChange(mBatteryBarWidth, (int) limit);
-                   	}
-                 }; 
-
-          NumberPickerDialog.OnNumberSetListener depletedLevelOneListener =
-        		 new NumberPickerDialog.OnNumberSetListener() {
-                 	public void onNumberSet(int limit) {
-                    depletedLevelOne = (int) limit;
-                    mDepletedLevelOne.getOnPreferenceChangeListener().onPreferenceChange(mDepletedLevelOne, (int) limit);
-                 	}
-                 };      
-
-          NumberPickerDialog.OnNumberSetListener depletedLevelTwoListener =
-               	new NumberPickerDialog.OnNumberSetListener() {
-                   	public void onNumberSet(int limit) {
-               		depletedLevelTwo = (int) limit;
-               		mDepletedLevelTwo.getOnPreferenceChangeListener().onPreferenceChange(mDepletedLevelTwo, (int) limit);
-                   	}
-                };      
-
-                 
-                 
+    
+    
     public boolean onPreferenceChange(Preference preference, Object objValue) {
     	  
      	final String key = preference.getKey();
@@ -319,46 +295,15 @@ public class CustomBatterySettings extends SettingsPreferenceFragment implements
        	   	i = null;       	   	
        	   	
         } else if (BATTERY_BAR_WIDTH.equals(key)) {
-        	sharedPref = prefMgr.getSharedPreferences();
-        	SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt(BATTERY_BAR_WIDTH, batBarWidth);
-            editor.commit();
 
         	Intent i = new Intent();
         	i.setAction(Junk_Battery_Settings);
-       	   	i.putExtra(BATTERY_BAR_WIDTH, (Integer) objValue);
+       	   	i.putExtra(BATTERY_BAR_WIDTH, (Integer) objValue + 1);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;       	   	
        	   	
-        } else if (BATTERY_LEVEL_ONE.equals(key)) {
-        	sharedPref = prefMgr.getSharedPreferences();
-        	SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt(BATTERY_LEVEL_ONE, batLevelOne);
-            editor.commit();
-        	
-            Intent i = new Intent();
-            i.setAction(Junk_Battery_Settings);
-            i.putExtra(BATTERY_LEVEL_ONE, batLevelOne);
-            getActivity().sendBroadcast(i);
-            i = null;
-        
-        } else if (BATTERY_LEVEL_TWO.equals(key)) {
-        	sharedPref = prefMgr.getSharedPreferences();
-        	SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt(BATTERY_LEVEL_TWO, batLevelTwo);
-            editor.commit();
-        	
-            Intent i = new Intent();
-            i.setAction(Junk_Battery_Settings);
-            i.putExtra(BATTERY_LEVEL_TWO, batLevelTwo);
-            getActivity().sendBroadcast(i);
-            i = null;
-        
         } else if (DEPLETED_LEVEL_ONE.equals(key)) {
-        	sharedPref = prefMgr.getSharedPreferences();
-        	SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt(DEPLETED_LEVEL_ONE, depletedLevelOne);
-            editor.commit();
+        	depletedLevelOne = (Integer) objValue;
         	
             Intent i = new Intent();
             i.setAction(Junk_Battery_Settings);
@@ -367,19 +312,34 @@ public class CustomBatterySettings extends SettingsPreferenceFragment implements
             i = null;
         
         } else if (DEPLETED_LEVEL_TWO.equals(key)) {
-        	sharedPref = prefMgr.getSharedPreferences();
-        	SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt(DEPLETED_LEVEL_TWO, depletedLevelTwo);
-            editor.commit();
-        	
+        	depletedLevelTwo = (Integer) objValue;
+            
             Intent i = new Intent();
             i.setAction(Junk_Battery_Settings);
             i.putExtra(DEPLETED_LEVEL_TWO, depletedLevelTwo);
             getActivity().sendBroadcast(i);
             i = null;
         
+       	   	
+        } else if (BATTERY_LEVEL_ONE.equals(key)) {
+        	batLevelOne = (Integer) objValue;
+        	
+            Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_LEVEL_ONE, batLevelOne);
+            getActivity().sendBroadcast(i);
+            i = null;
+        
+        } else if (BATTERY_LEVEL_TWO.equals(key)) {
+        	batLevelTwo = (Integer) objValue;
+        	
+            Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_LEVEL_TWO, batLevelTwo);
+            getActivity().sendBroadcast(i);
+            i = null;
+        
         }
-     	
      	
      	
         return true;

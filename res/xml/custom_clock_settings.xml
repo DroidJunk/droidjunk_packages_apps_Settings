@@ -56,7 +56,7 @@
 		android:title="Clock am/pm" 
 		android:defaultValue="false"	/>
    				
-	<Preference 
+	<DJSeekBarPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="clock_size"
 		android:title="Clock Size"

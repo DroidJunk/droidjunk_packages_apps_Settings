@@ -59,7 +59,7 @@ public class CustomNavBarSettings extends SettingsPreferenceFragment
             mNavBarButtonIntens = (DJSeekBarPreference) findPreference(NAV_BAR_BUTTON_INTENS);
             mNavBarButtonIntens.setOnPreferenceChangeListener(this);
             mNavBarButtonIntens.setMax(5);
-            mNavBarButtonIntens.setProgress(prefMgr.getSharedPreferences().getInt(NAV_BAR_BUTTON_INTENS, 5));  
+            mNavBarButtonIntens.setProgress(prefMgr.getSharedPreferences().getInt(NAV_BAR_BUTTON_INTENS, 0));  
             mShowSearchButton = (CheckBoxPreference) findPreference(SHOW_SEARCH_BUTTON);
             mShowSearchButton.setOnPreferenceChangeListener(this);
             mShowLeftMenuButton = (CheckBoxPreference) findPreference(SHOW_LEFT_MENU_BUTTON);

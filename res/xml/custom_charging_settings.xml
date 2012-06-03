@@ -15,7 +15,7 @@
  
 
  	
-	<Preference
+	<DJSeekBarPreference
 	    android:layout="?android:attr/preferenceLayoutChild"
 		android:key="charge_levels_one"
 		android:title="Max Level One"
@@ -24,7 +24,7 @@
    
 
     	
-	<Preference
+	<DJSeekBarPreference
 	    android:layout="?android:attr/preferenceLayoutChild"
 		android:key="charge_levels_two"
 		android:title="Max Level Two"

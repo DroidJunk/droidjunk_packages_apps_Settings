@@ -53,7 +53,7 @@ public class CustomToggleSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mToggleShowText;
     private CheckBoxPreference mToggleShowDivider;
 
-    public int mSize = 17;	
+
 
     /** If there is no setting in the provider, use this. */
     @Override
