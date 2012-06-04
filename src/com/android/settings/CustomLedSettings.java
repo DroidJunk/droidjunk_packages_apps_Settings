@@ -38,6 +38,9 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 
 	private final String Junk_Settings = "JUNK_SETTINGS";
 	private final String DEFAULT_LED_COLOR = "default_led_color";	
+	private final String DEFAULT_OVERRIDE_APPS = "led_override_apps";	
+	private final String DEFAULT_OVERRIDE_EMAIL = "led_override_email";
+	private final String DEFAULT_OVERRIDE_MMS = "led_override_mms";
 	private final String DEFAULT_LED_ON_MS = "default_led_on_ms";
 	private final String DEFAULT_LED_OFF_MS = "default_led_off_ms";
 	private final String PULSE_LED_SCREEN_ON = "pulse_led_screen_on";
@@ -59,10 +62,17 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 	
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
+
 	private Preference mDefaultLedColor;
+	private CheckBoxPreference mLedOverrideApps;
+	private CheckBoxPreference mLedOverrideEmail;
+	private CheckBoxPreference mLedOverrideMms;
 	private DJSeekBarPreference mDefaultLedOnMs;
 	private DJSeekBarPreference mDefaultLedOffMs;
 	private CheckBoxPreference mPulseLedScreenOn;
+	private Boolean LedOverrideApps;
+	private Boolean LedOverrideEmail;
+	private Boolean LedOverrideMms;
     private Boolean PulseLedScreenOn;
     
     
@@ -100,6 +110,12 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         
         mDefaultLedColor = (Preference) findPreference(DEFAULT_LED_COLOR);
         mDefaultLedColor.setOnPreferenceChangeListener(this);
+        mLedOverrideApps = (CheckBoxPreference) findPreference(DEFAULT_OVERRIDE_APPS);
+        mLedOverrideApps.setOnPreferenceChangeListener(this);
+        mLedOverrideEmail = (CheckBoxPreference) findPreference(DEFAULT_OVERRIDE_EMAIL);
+        mLedOverrideEmail.setOnPreferenceChangeListener(this);
+        mLedOverrideMms = (CheckBoxPreference) findPreference(DEFAULT_OVERRIDE_MMS);
+        mLedOverrideMms.setOnPreferenceChangeListener(this);
         mDefaultLedOnMs = (DJSeekBarPreference) findPreference(DEFAULT_LED_ON_MS);
         mDefaultLedOnMs.setOnPreferenceChangeListener(this);
         mDefaultLedOffMs = (DJSeekBarPreference) findPreference(DEFAULT_LED_OFF_MS);
@@ -174,6 +190,19 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         editor.putInt(VOICE_MAIL_LED_OFF_MS, cur.getInt(5));
         editor.commit();          
         
+		cur = Settings.NotifOptions.getLedOverrideApps(getActivity().getBaseContext().getContentResolver());
+    	editor.putBoolean(DEFAULT_OVERRIDE_APPS, cur.getString(2).equals("LedOverrideApps=true"));
+        editor.commit(); 
+        
+		cur = Settings.NotifOptions.getLedOverrideEmail(getActivity().getBaseContext().getContentResolver());
+    	editor.putBoolean(DEFAULT_OVERRIDE_EMAIL, cur.getString(2).equals("LedOverrideEmail=true"));
+        editor.commit(); 
+
+		cur = Settings.NotifOptions.getLedOverrideMms(getActivity().getBaseContext().getContentResolver());
+    	editor.putBoolean(DEFAULT_OVERRIDE_MMS, cur.getString(2).equals("LedOverrideMms=true"));
+        editor.commit(); 
+        
+        
         
         mDefaultLedOnMs.setMax(50);
         mDefaultLedOnMs.setDefaultValue(prefMgr.getSharedPreferences().getInt(DEFAULT_LED_ON_MS, 3));
@@ -205,6 +234,9 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         mVoiceMailLedOffMs.setProgress(prefMgr.getSharedPreferences().getInt(VOICE_MAIL_LED_OFF_MS, 3)); 
         
         PulseLedScreenOn = prefMgr.getSharedPreferences().getBoolean(PULSE_LED_SCREEN_ON, false);
+        LedOverrideApps = prefMgr.getSharedPreferences().getBoolean(DEFAULT_OVERRIDE_APPS, false);
+        LedOverrideEmail = prefMgr.getSharedPreferences().getBoolean(DEFAULT_OVERRIDE_EMAIL, false);
+        LedOverrideMms = prefMgr.getSharedPreferences().getBoolean(DEFAULT_OVERRIDE_MMS, false);
         IncomingCallPulse = prefMgr.getSharedPreferences().getBoolean(INCOMING_CALL_LED_PULSE, true);
         MissedCallPulse = prefMgr.getSharedPreferences().getBoolean(MISSED_CALL_LED_PULSE, true);
         VoiceMailPulse = prefMgr.getSharedPreferences().getBoolean(VOICE_MAIL_LED_PULSE, true);
@@ -253,11 +285,28 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
           
          Settings.NotifOptions.updateVoiceMailLed(getActivity().getBaseContext().getContentResolver(), values);   
          values = null;     
+       
          
+ 		 values = new ContentValues(1);
+         // Write the default led option values to the database     
+ 		 values.put(Settings.NotifOptions.PKG_NAME, LedOverrideApps.toString());
+          
+         Settings.NotifOptions.updateLedOverrideApps(getActivity().getBaseContext().getContentResolver(), values);   
+         values = null;     
          
+ 		 values = new ContentValues(1);
+         // Write the default led option values to the database     
+ 		 values.put(Settings.NotifOptions.PKG_NAME, LedOverrideEmail.toString());
+          
+         Settings.NotifOptions.updateLedOverrideEmail(getActivity().getBaseContext().getContentResolver(), values);   
+         values = null;          
          
-         
-         
+ 		 values = new ContentValues(1);
+         // Write the default led option values to the database     
+ 		 values.put(Settings.NotifOptions.PKG_NAME, LedOverrideMms.toString());
+          
+         Settings.NotifOptions.updateLedOverrideMms(getActivity().getBaseContext().getContentResolver(), values);   
+         values = null;          
          
      }
     
@@ -310,6 +359,27 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
            	editor.putBoolean(PULSE_LED_SCREEN_ON, (Boolean) objValue);
            	PulseLedScreenOn = (Boolean) objValue;
             editor.commit();
+
+        } else if (DEFAULT_OVERRIDE_APPS.equals(key)) {
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(DEFAULT_OVERRIDE_APPS, (Boolean) objValue);
+            LedOverrideApps = (Boolean) objValue;
+            editor.commit();        
+            
+        } else if (DEFAULT_OVERRIDE_EMAIL.equals(key)) {
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(DEFAULT_OVERRIDE_EMAIL, (Boolean) objValue);
+            LedOverrideEmail = (Boolean) objValue;
+            editor.commit();        
+            
+        } else if (DEFAULT_OVERRIDE_MMS.equals(key)) {
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(DEFAULT_OVERRIDE_MMS, (Boolean) objValue);
+            LedOverrideMms = (Boolean) objValue;
+            editor.commit();        
             
         } else if (INCOMING_CALL_LED_PULSE.equals(key)) {
           	sharedPref = prefMgr.getSharedPreferences();

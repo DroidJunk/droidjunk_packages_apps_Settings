@@ -135,17 +135,17 @@ public class CustomJunk extends Fragment {
     		
     		
         prefMgr = getActivity().getBaseContext().getSharedPreferences(
-        		"Junk_Theme_One", Context.MODE_PRIVATE);    		
+        		"Junk_Theme_One", Context.MODE_WORLD_READABLE);    		
     	mThemeOneApply.setEnabled(prefMgr.getBoolean(SAVED_THEME,false));
     	mThemeOneText.setText(prefMgr.getString(THEME_ONE_NAME,"Theme One"));
 
         prefMgr = getActivity().getBaseContext().getSharedPreferences(
-           		"Junk_Theme_Two", Context.MODE_PRIVATE);
+           		"Junk_Theme_Two", Context.MODE_WORLD_READABLE);
         mThemeTwoApply.setEnabled(prefMgr.getBoolean(SAVED_THEME,false));
         mThemeTwoText.setText(prefMgr.getString(THEME_TWO_NAME,"Theme Two"));
 
         prefMgr = getActivity().getBaseContext().getSharedPreferences(
-           		"Junk_Theme_Three", Context.MODE_PRIVATE);
+           		"Junk_Theme_Three", Context.MODE_WORLD_READABLE);
         mThemeThreeApply.setEnabled(prefMgr.getBoolean(SAVED_THEME,false));
         mThemeThreeText.setText(prefMgr.getString(THEME_THREE_NAME,"Theme Three"));
 
@@ -188,7 +188,7 @@ public class CustomJunk extends Fragment {
 		} catch (IOException e) {
 		}// Assets
 
-        prefMgr = getActivity().getBaseContext().getSharedPreferences("Junk_Settings", Context.MODE_PRIVATE);
+        prefMgr = getActivity().getBaseContext().getSharedPreferences("Junk_Settings", Context.MODE_WORLD_READABLE);
         
         // Keeping these values as strings for backward compatibility
         BatteryIconValue = Integer.valueOf(prefMgr.getString(BATTERY_ICONS, "0"));
@@ -664,17 +664,17 @@ public class CustomJunk extends Fragment {
 			    	editor.commit();
 			    	
 		            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-		            		"Theme_" + mPreset, Context.MODE_PRIVATE);
+		            		"Theme_" + mPreset, Context.MODE_WORLD_READABLE);
 		            CustomSettingsUtils.GetSettings(prefMgr);
 			        
 		            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-		            		"Junk_Settings", Context.MODE_PRIVATE);
+		            		"Junk_Settings", Context.MODE_WORLD_READABLE);
 
 			        CustomSettingsUtils.WriteSettings(prefMgr);
 			        CustomSettingsUtils.SendIntents(getActivity().getBaseContext());
 
 			        prefMgr = getActivity().getBaseContext().getSharedPreferences(
-		            		"Junk_Settings", Context.MODE_PRIVATE);
+		            		"Junk_Settings", Context.MODE_WORLD_READABLE);
 
 				}
 			};    
@@ -687,54 +687,54 @@ public class CustomJunk extends Fragment {
 				public void onClick(DialogInterface dialog, int which) {
 					if (mThemeNum == 1 ) {
 			            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-			            		"Junk_Settings", Context.MODE_PRIVATE);
+			            		"Junk_Settings", Context.MODE_WORLD_READABLE);
 				        CustomSettingsUtils.GetSettings(prefMgr);
 				        
 			            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-			            		"Junk_Theme_One", Context.MODE_PRIVATE);
+			            		"Junk_Theme_One", Context.MODE_WORLD_READABLE);
 			            editor= prefMgr.edit();
 			            editor.putBoolean(SAVED_THEME, true);
 			            editor.commit();
 			            CustomSettingsUtils.WriteSettings(prefMgr);
 				        
 			            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-			            		"Junk_Settings", Context.MODE_PRIVATE);
+			            		"Junk_Settings", Context.MODE_WORLD_READABLE);
 				        Toast.makeText(getActivity().getBaseContext(), mThemeOneText.getText() +
 				        		" has been saved", Toast.LENGTH_SHORT).show();
 				        mThemeOneApply.setEnabled(true);
 				        
 					} else if (mThemeNum == 2 ) {				        
 				        prefMgr = getActivity().getBaseContext().getSharedPreferences(
-			            		"Junk_Settings", Context.MODE_PRIVATE);
+			            		"Junk_Settings", Context.MODE_WORLD_READABLE);
 				        CustomSettingsUtils.GetSettings(prefMgr);
 				        
 			            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-			            		"Junk_Theme_Two", Context.MODE_PRIVATE);
+			            		"Junk_Theme_Two", Context.MODE_WORLD_READABLE);
 			            editor= prefMgr.edit();
 			            editor.putBoolean(SAVED_THEME, true);
 			            editor.commit();
 			            CustomSettingsUtils.WriteSettings(prefMgr);
 				        
 			            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-			            		"Junk_Settings", Context.MODE_PRIVATE);
+			            		"Junk_Settings", Context.MODE_WORLD_READABLE);
 						Toast.makeText(getActivity().getBaseContext(), mThemeTwoText.getText() +
 								" has been saved", Toast.LENGTH_SHORT).show();
 						mThemeTwoApply.setEnabled(true);
 						
 					} else if (mThemeNum == 3 ) {
 			            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-			            		"Junk_Settings", Context.MODE_PRIVATE);
+			            		"Junk_Settings", Context.MODE_WORLD_READABLE);
 			            CustomSettingsUtils.GetSettings(prefMgr);
 				        
 			            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-			            		"Junk_Theme_Three", Context.MODE_PRIVATE);
+			            		"Junk_Theme_Three", Context.MODE_WORLD_READABLE);
 			            editor= prefMgr.edit();
 			            editor.putBoolean(SAVED_THEME, true);
 			            editor.commit();
 			            CustomSettingsUtils.WriteSettings(prefMgr);
 				        
 			            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-			            		"Junk_Settings", Context.MODE_PRIVATE);
+			            		"Junk_Settings", Context.MODE_WORLD_READABLE);
 						Toast.makeText(getActivity().getBaseContext(), mThemeThreeText.getText() +
 								" has been saved", Toast.LENGTH_SHORT).show();
 						mThemeThreeApply.setEnabled(true);
@@ -750,11 +750,11 @@ public class CustomJunk extends Fragment {
 					public void onClick(DialogInterface dialog, int which) {
 						if (mThemeNum == 1 ) {
 				            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-				            		"Junk_Theme_One", Context.MODE_PRIVATE);
+				            		"Junk_Theme_One", Context.MODE_WORLD_READABLE);
 				            CustomSettingsUtils.GetSettings(prefMgr);
 							        
 				            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-				            		"Junk_Settings", Context.MODE_PRIVATE);
+				            		"Junk_Settings", Context.MODE_WORLD_READABLE);
 					        CustomSettingsUtils.WriteSettings(prefMgr);
 					        CustomSettingsUtils.SendIntents(getActivity().getBaseContext());
 							        
@@ -763,11 +763,11 @@ public class CustomJunk extends Fragment {
 									
 						} else if (mThemeNum == 2 ) {
 				            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-				            		"Junk_Theme_Two", Context.MODE_PRIVATE);
+				            		"Junk_Theme_Two", Context.MODE_WORLD_READABLE);
 				            CustomSettingsUtils.GetSettings(prefMgr);
 							        
 				            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-				            		"Junk_Settings", Context.MODE_PRIVATE);
+				            		"Junk_Settings", Context.MODE_WORLD_READABLE);
 				            CustomSettingsUtils.WriteSettings(prefMgr);
 					        CustomSettingsUtils.SendIntents(getActivity().getBaseContext());
 				
@@ -776,11 +776,11 @@ public class CustomJunk extends Fragment {
 									
 						} else if (mThemeNum == 3 ) {
 				            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-				            		"Junk_Theme_Three", Context.MODE_PRIVATE);
+				            		"Junk_Theme_Three", Context.MODE_WORLD_READABLE);
 				            CustomSettingsUtils.GetSettings(prefMgr);
 							        
 				            prefMgr = getActivity().getBaseContext().getSharedPreferences(
-				            		"Junk_Settings", Context.MODE_PRIVATE);
+				            		"Junk_Settings", Context.MODE_WORLD_READABLE);
 				            CustomSettingsUtils.WriteSettings(prefMgr);
 					        CustomSettingsUtils.SendIntents(getActivity().getBaseContext());
 							        
@@ -800,7 +800,7 @@ public class CustomJunk extends Fragment {
 							
 							mThemeOneText.setText(mEditText.getText().toString());
 					        prefMgr = getActivity().getBaseContext().getSharedPreferences(
-					        		"Junk_Theme_One", Context.MODE_PRIVATE);   
+					        		"Junk_Theme_One", Context.MODE_WORLD_READABLE);   
 					        editor = prefMgr.edit();
 					    	editor.putString(THEME_ONE_NAME, mEditText.getText().toString());
 					    	editor.commit();
@@ -809,7 +809,7 @@ public class CustomJunk extends Fragment {
 							
 							mThemeTwoText.setText(mEditText.getText().toString());
 					        prefMgr = getActivity().getBaseContext().getSharedPreferences(
-					        		"Junk_Theme_Two", Context.MODE_PRIVATE);   
+					        		"Junk_Theme_Two", Context.MODE_WORLD_READABLE);   
 					        editor = prefMgr.edit();
 					    	editor.putString(THEME_TWO_NAME, mEditText.getText().toString());
 					    	editor.commit();
@@ -818,7 +818,7 @@ public class CustomJunk extends Fragment {
 							
 							mThemeThreeText.setText(mEditText.getText().toString());
 					        prefMgr = getActivity().getBaseContext().getSharedPreferences(
-					        		"Junk_Theme_Three", Context.MODE_PRIVATE);   
+					        		"Junk_Theme_Three", Context.MODE_WORLD_READABLE);   
 					        editor = prefMgr.edit();
 					    	editor.putString(THEME_THREE_NAME, mEditText.getText().toString());
 					    	editor.commit();
@@ -921,8 +921,8 @@ public class CustomJunk extends Fragment {
 									"data/data/com.android.settings/shared_prefs/Junk_Settings_Temp.xml");
 			        		Toast.makeText(getActivity().getBaseContext(), "Restore Successful", Toast.LENGTH_SHORT).show();
 
-			        		SharedPreferences prefTemp = getActivity().getBaseContext().getSharedPreferences("Junk_Settings_Temp", Context.MODE_PRIVATE);
-			        		SharedPreferences prefMgr = getActivity().getBaseContext().getSharedPreferences("Junk_Settings", Context.MODE_PRIVATE);
+			        		SharedPreferences prefTemp = getActivity().getBaseContext().getSharedPreferences("Junk_Settings_Temp", Context.MODE_WORLD_READABLE);
+			        		SharedPreferences prefMgr = getActivity().getBaseContext().getSharedPreferences("Junk_Settings", Context.MODE_WORLD_READABLE);
 			        		CustomSettingsUtils.GetSettings(prefTemp);
 			        		CustomSettingsUtils.WriteSettings(prefMgr);
 					        		

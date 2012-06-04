@@ -168,7 +168,7 @@
 		android:title="Icon Background Color"
 		android:summary="Background color for the notification icon (reboot required)"
 		android:defaultValue="#ff000000" 
-		alphaSlider="true" /> 		
+		alphaSlider="false" /> 		
         
 	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
@@ -185,7 +185,7 @@
 		android:title="Text Background Color"
 		android:summary="Background color for the notification text (reboot required)"
 		android:defaultValue="#ff000000" 
-		alphaSlider="true" /> 		
+		alphaSlider="false" /> 		
 
     </PreferenceCategory>
 		
