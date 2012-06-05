@@ -42,7 +42,17 @@
 		android:summaryOff="Do not override LED color of the stock email app"
 		android:title="Override Stock Email App" 
 		android:defaultValue="false" />    
-			
+
+	
+	<Preference 
+		android:key="led_override_list"
+		android:title="Select Apps to Override" 
+		/>    
+		
+	
+	
+	
+				
 	<CheckBoxPreference 
 		android:key="led_override_mms"
 		android:summaryOn="Override LED color of the stock mms app"
