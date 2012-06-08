@@ -16,11 +16,9 @@
 
 package com.android.settings;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 /**
  * Top-level settings activity to handle single pane and double pane UI layout.
@@ -49,7 +47,7 @@ public class CustomSettingsUtils {
 	private final static String PD_SHADE_COLOR = "pd_shade_color";
 	private final static String PD_GRIP_COLOR = "pd_grip_color";
 	private final static String PD_CARRIER_FRAME_COLOR = "pd_carrier_frame_color";
-//	private final static String PD_NOTIF_ICON_COLOR = "pd_notif_icon_color";
+	private final static String PD_NOTIF_ICON_COLOR = "pd_notif_icon_color";
 	private final static String PD_NOTIF_ICON_BG_COLOR = "pd_notif_icon_bg_color";
 	private final static String PD_NOTIF_TEXT_COLOR = "pd_notif_text_color";
 	private final static String PD_NOTIF_TEXT_BG_COLOR = "pd_notif_text_bg_color";
@@ -137,7 +135,7 @@ public class CustomSettingsUtils {
     private static boolean showSearchButton, showLeftMenuButton, showLeftMenuButtonLand;
     private static boolean showRightMenuButton, showRightMenuButtonLand, showSearchButtonLand;
     private static boolean showTopMenuButtonLand, showBotMenuButtonLand;
-    private static int dateBarColor, shadeColor, gripColor, carrierBarColor, notifIconBgColor;
+    private static int dateBarColor, shadeColor, gripColor, carrierBarColor, notifIconColor, notifIconBgColor;
     private static int notifTextColor, notifTextBgColor, navBarColor, navBarButtonColor, navBarGlowColor, navBarAnim;
     private static int batteryBarWidth, batteryLevelOne, batteryLevelOneColor;
     private static int batteryLevelTwo, batteryLevelTwoColor, batteryLevelThreeColor, depletedLevelOne;
@@ -228,6 +226,7 @@ public class CustomSettingsUtils {
     	shadeColor = prefMgr.getInt(PD_SHADE_COLOR, 0xbd000000);
     	gripColor = prefMgr.getInt(PD_GRIP_COLOR, 0xff3792b4);
     	carrierBarColor = prefMgr.getInt(PD_CARRIER_FRAME_COLOR, 0xd3000000);
+    	notifIconColor = prefMgr.getInt(PD_NOTIF_ICON_COLOR, 0xffffffff);
     	notifIconBgColor = prefMgr.getInt(PD_NOTIF_ICON_BG_COLOR, 0xff1a4554);
     	notifTextColor = prefMgr.getInt(PD_NOTIF_TEXT_COLOR, 0xff000000);
     	notifTextBgColor = prefMgr.getInt(PD_NOTIF_TEXT_BG_COLOR, 0xff2782a3);
@@ -335,6 +334,7 @@ public class CustomSettingsUtils {
         editor.putInt(PD_SHADE_COLOR, shadeColor);
         editor.putInt(PD_GRIP_COLOR, gripColor);
         editor.putInt(PD_CARRIER_FRAME_COLOR, carrierBarColor);
+        editor.putInt(PD_NOTIF_ICON_COLOR, notifIconColor);
         editor.putInt(PD_NOTIF_ICON_BG_COLOR, notifIconBgColor);
         editor.putInt(PD_NOTIF_TEXT_COLOR, notifTextColor);
         editor.putInt(PD_NOTIF_TEXT_BG_COLOR, notifTextBgColor);
@@ -793,6 +793,12 @@ public class CustomSettingsUtils {
     	i.putExtra(PD_CARRIER_FRAME_COLOR, (Integer) carrierBarColor);
     	context.sendBroadcast(i);
     	i = null;              	
+
+    	i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(PD_NOTIF_ICON_COLOR, (Integer) notifIconColor);
+    	context.sendBroadcast(i);
+    	i = null;               	
     	
     	i = new Intent();
     	i.setAction(Junk_Pulldown_Settings );

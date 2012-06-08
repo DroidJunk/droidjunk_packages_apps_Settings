@@ -18,10 +18,20 @@ package com.android.settings;
 
 
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.ResolveInfo;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.DJSeekBarPreference;
@@ -29,6 +39,10 @@ import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 
@@ -38,9 +52,6 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 
 	private final String Junk_Settings = "JUNK_SETTINGS";
 	private final String DEFAULT_LED_COLOR = "default_led_color";	
-	private final String DEFAULT_OVERRIDE_APPS = "led_override_apps";	
-	private final String DEFAULT_OVERRIDE_EMAIL = "led_override_email";
-	private final String DEFAULT_OVERRIDE_MMS = "led_override_mms";
 	private final String DEFAULT_LED_ON_MS = "default_led_on_ms";
 	private final String DEFAULT_LED_OFF_MS = "default_led_off_ms";
 	private final String PULSE_LED_SCREEN_ON = "pulse_led_screen_on";
@@ -90,6 +101,7 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 	private DJSeekBarPreference mVoiceMailLedOffMs;
 	private Boolean VoiceMailPulse;
 	
+	private Preference mAppList;
 	
     /** If there is no setting in the provider, use this. */
     @Override
@@ -143,6 +155,8 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         mVoiceMailLedOffMs.setOnPreferenceChangeListener(this);            
         
         
+        mAppList = (Preference) findPreference("led_override_list");
+        mAppList.setOnPreferenceChangeListener(this);
         
         
         
@@ -180,8 +194,7 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         editor.putInt(VOICE_MAIL_LED_OFF_MS, cur.getInt(5));
         editor.commit();          
         
-        
-        
+
         
         mDefaultLedOnMs.setMax(50);
         mDefaultLedOnMs.setDefaultValue(prefMgr.getSharedPreferences().getInt(DEFAULT_LED_ON_MS, 3));
@@ -217,6 +230,9 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         MissedCallPulse = prefMgr.getSharedPreferences().getBoolean(MISSED_CALL_LED_PULSE, true);
         VoiceMailPulse = prefMgr.getSharedPreferences().getBoolean(VOICE_MAIL_LED_PULSE, true);
 		
+        
+
+        
         
     }
 
@@ -284,6 +300,8 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
        
+    	
+    	if (preference == mAppList) AppListDialog(); 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
     
@@ -316,7 +334,7 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
            	PulseLedScreenOn = (Boolean) objValue;
             editor.commit();
 
-           
+
         } else if (INCOMING_CALL_LED_PULSE.equals(key)) {
           	sharedPref = prefMgr.getSharedPreferences();
            	SharedPreferences.Editor editor = sharedPref.edit();
@@ -391,6 +409,12 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
            	SharedPreferences.Editor editor = sharedPref.edit();
            	editor.putInt(VOICE_MAIL_LED_OFF_MS, mVoiceMailLedOffMs.getProgress());
             editor.commit();
+            
+            
+            
+            
+        } else if ("led_override_list".equals(key)) {
+        	AppListDialog();       
       
         }
      	
@@ -398,6 +422,93 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         return true;
     }
     
-                
+  
+    private void AppListDialog() {
+    	Builder alertDialog = new AlertDialog.Builder(getActivity());
+    	alertDialog.setTitle("Theme Presets");
+    	alertDialog.setNegativeButton("Cancel", null);
+    	alertDialog.setPositiveButton("Select", null);
+    	final Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+    	mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+
+    	List<String> listItems = getAppNames(false);
+
+
+
+    	final CharSequence[] cs = listItems.toArray(new CharSequence[listItems.size()]);
+    	alertDialog.setMultiChoiceItems(cs, null, null);
+    	alertDialog.show();
+    	
+    }    
+    
+    
+    
+    class PInfo {
+        private String appname = "";
+        private String pname = "";
+        private String versionName = "";
+        private int versionCode = 0;
+        private Drawable icon;
+//        private void prettyPrint() {
+            //Log.v(appname + "\t" + pname + "\t" + versionName + "\t" + versionCode);
+//        }
+    }
+
+ 
+ 
+    
+    private ArrayList<PInfo> getPackages() {
+        ArrayList<PInfo> apps = getInstalledApps(false); /* false = no system packages */
+        final int max = apps.size();
+        for (int i=0; i<max; i++) {
+            //apps.get(i).prettyPrint();
+        	
+        }
+        return apps;
+    }
+
+    private ArrayList<PInfo> getInstalledApps(boolean getSysPackages) {
+        ArrayList<PInfo> res = new ArrayList<PInfo>();        
+        List<PackageInfo> packs = getPackageManager().getInstalledPackages(0);
+        for(int i=0;i<packs.size();i++) {
+            PackageInfo p = packs.get(i);
+            if ((!getSysPackages) && (p.versionName == null)) {
+                continue ;
+            }
+            PInfo newInfo = new PInfo();
+            newInfo.appname = p.applicationInfo.loadLabel(getPackageManager()).toString();
+            newInfo.pname = p.packageName;
+            newInfo.versionName = p.versionName;
+            newInfo.versionCode = p.versionCode;
+            newInfo.icon = p.applicationInfo.loadIcon(getPackageManager());
+            res.add(newInfo);
+        }
+        return res; 
+    }    
+    
+    
+    private ArrayList<String> getAppNames(boolean getSysPackages) {
+        ArrayList<String> res = new ArrayList<String>();        
+        List<PackageInfo> packs = getPackageManager().getInstalledPackages(0);
+        for(int i=0;i<packs.size();i++) {
+            PackageInfo p = packs.get(i);
+            if ((p.applicationInfo.flags & p.applicationInfo.FLAG_SYSTEM) !=0) {
+            	continue;
+            }
+//            if ((!getSysPackages) && (p.versionName == null)) {
+//                continue ;
+//            }
+            String newInfo = p.applicationInfo.loadLabel(getPackageManager()).toString();
+            res.add(newInfo);
+        }
+        Collections.sort(res);
+        return res; 
+    }     
+    
+    
+    
+    
+    
+    
                 
 }
