@@ -155,8 +155,6 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         mVoiceMailLedOffMs.setOnPreferenceChangeListener(this);            
         
         
-        mAppList = (Preference) findPreference("led_override_list");
-        mAppList.setOnPreferenceChangeListener(this);
         
         
         

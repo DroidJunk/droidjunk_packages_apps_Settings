@@ -78,7 +78,6 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 	private final String PD_SHADE_COLOR = "pd_shade_color";
 	private final String PD_GRIP_COLOR = "pd_grip_color";
 	private final String PD_CARRIER_FRAME_COLOR = "pd_carrier_frame_color";
-	private final String PD_NOTIF_ICON_COLOR = "pd_notif_icon_color";
 	private final String PD_NOTIF_ICON_BG_COLOR = "pd_notif_icon_bg_color";
 	private final String PD_NOTIF_TEXT_COLOR = "pd_notif_text_color";
 	private final String PD_NOTIF_TEXT_BG_COLOR = "pd_notif_text_bg_color";
@@ -133,7 +132,6 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
     private Preference mShadeColor;
     private Preference mGripColor;
     private Preference mCarrierFrameColor;
-    private Preference mNotifIconColor;
     private Preference mNotifIconBgColor;
     private Preference mNotifTextColor;
     private Preference mNotifTextBgColor;
@@ -220,8 +218,6 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 		mGripColor.setOnPreferenceChangeListener(this);        
         mCarrierFrameColor = (Preference) findPreference(PD_CARRIER_FRAME_COLOR);
 		mCarrierFrameColor.setOnPreferenceChangeListener(this);        
-		mNotifIconColor = (Preference) findPreference(PD_NOTIF_ICON_COLOR);
-		mNotifIconColor.setOnPreferenceChangeListener(this);        
         mNotifIconBgColor = (Preference) findPreference(PD_NOTIF_ICON_BG_COLOR);
         mNotifIconBgColor.setOnPreferenceChangeListener(this);        
         mNotifTextColor = (Preference) findPreference(PD_NOTIF_TEXT_COLOR);
@@ -564,13 +560,6 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
     	i.putExtra(PD_CARRIER_FRAME_COLOR, (Integer) objValue);
     	getActivity().sendBroadcast(i);
     	i = null;           	
-
-        } else if (PD_NOTIF_ICON_COLOR.equals(key)) {
-    	Intent i = new Intent();
-    	i.setAction(Junk_Pulldown_Settings );
-    	i.putExtra(PD_NOTIF_ICON_COLOR, (Integer) objValue);
-    	getActivity().sendBroadcast(i);
-    	i = null;          	
 
     } else if (PD_NOTIF_ICON_BG_COLOR.equals(key)) {
     	Intent i = new Intent();

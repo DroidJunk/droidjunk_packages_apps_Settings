@@ -29,39 +29,6 @@
 		android:title="D E F A U L T   L E D"
 		android:key="default_led">
 		
-<<<<<<< HEAD
-=======
-	<CheckBoxPreference 
-		android:key="led_override_apps"
-		android:summaryOn="Override LED color of apps that set their own color and pulse rate"
-		android:summaryOff="Do not override LED color of apps that set their own color and pulse rate"
-		android:title="Override Apps LED Settings" 
-		android:defaultValue="false" />        
- 
-	<CheckBoxPreference 
-		android:key="led_override_email"
-		android:summaryOn="Override LED color of the stock email app"
-		android:summaryOff="Do not override LED color of the stock email app"
-		android:title="Override Stock Email App" 
-		android:defaultValue="false" />    
-
-	
-	<Preference 
-		android:key="led_override_list"
-		android:title="Select Apps to Override" 
-		/>    
-		
-	
-	
-	
-				
-	<CheckBoxPreference 
-		android:key="led_override_mms"
-		android:summaryOn="Override LED color of the stock mms app"
-		android:summaryOff="Do not override LED color of the stock mms app"
-		android:title="Override Stock Mms App" 
-		android:defaultValue="false" />    	
->>>>>>> apps
 
 	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"

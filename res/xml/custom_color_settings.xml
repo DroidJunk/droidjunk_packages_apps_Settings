@@ -160,14 +160,7 @@
 		android:title="P U L L D O W N   N O T I F I C A T I O N S"
 		android:key="pd_notif">
 
- 	<ColorPickerPreference
-		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="pd_notif_icon_color"
-		android:title="Icon Color"
-		android:summary="Color for the notification icon (reboot required)"
-		android:defaultValue="#ffffffff" 
-		alphaSlider="false" />        
-        
+       
  	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="pd_notif_icon_bg_color"
