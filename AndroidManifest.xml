@@ -1422,8 +1422,20 @@
                 <category android:name="com.android.settings.SHORTCUT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.CustomQuietSettings" />
+                android:value="com.android.settings.CustomQuietTimeSettings" />
         </activity>	
+        
+        <activity android:name="Settings$CustomQTSettingsActivity"
+            android:label="Quiet Time Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.CUSTOM_QT_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.CustomQuietSettings" />
+        </activity>
         
         <activity android:name="Settings$CustomNotifLedSettingsActivity"
             android:label="LED Notification Settings">

@@ -679,6 +679,7 @@ public class Settings extends PreferenceActivity implements ButtonBarHandler {
     public static class CustomToggleSettingsActivity extends Settings { /* empty */ }
     public static class CustomNavBarSettingsActivity extends Settings { /* empty */ }
     public static class CustomQuietTimeSettingsActivity extends Settings { /* empty */ }
+    public static class CustomQTSettingsActivity extends Settings { /* empty */ } /* actual preference */
     public static class CustomNotifLedSettingsActivity extends Settings { /* empty */ }
     
     public static class CustomQuickColorSettingsActivity extends Settings { /* empty */ }

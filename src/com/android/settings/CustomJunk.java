@@ -1031,6 +1031,10 @@ public class CustomJunk extends Fragment {
 					
     }
 				    		
-							
+    @Override
+    public void onResume() {
+        super.onResume();
+        
+    }							
 					
 }

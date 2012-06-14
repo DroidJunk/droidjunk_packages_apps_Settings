@@ -51,21 +51,25 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
  
 
 	private final String Junk_Settings = "JUNK_SETTINGS";
+	private final String DEFAULT_LED_COLOR_ON = "default_led_color_on";	
 	private final String DEFAULT_LED_COLOR = "default_led_color";	
 	private final String DEFAULT_LED_ON_MS = "default_led_on_ms";
 	private final String DEFAULT_LED_OFF_MS = "default_led_off_ms";
 	private final String PULSE_LED_SCREEN_ON = "pulse_led_screen_on";
 	
+	private final String INCOMING_CALL_LED_ON = "incoming_call_led_on";
 	private final String INCOMING_CALL_LED_COLOR = "incoming_call_color";
 	private final String INCOMING_CALL_LED_PULSE = "incoming_call_pulse";
 	private final String INCOMING_CALL_LED_ON_MS = "incoming_led_on_ms";
 	private final String INCOMING_CALL_LED_OFF_MS = "incoming_led_off_ms";
 	
+	private final String MISSED_CALL_LED_ON = "missed_call_led_on";
 	private final String MISSED_CALL_LED_COLOR = "missed_call_color";
 	private final String MISSED_CALL_LED_PULSE = "missed_call_pulse";
 	private final String MISSED_CALL_LED_ON_MS = "missed_call_led_on_ms";
 	private final String MISSED_CALL_LED_OFF_MS = "missed_call_led_off_ms";
 	
+	private final String VOICE_MAIL_LED_ON = "voice_mail_led_on";
 	private final String VOICE_MAIL_LED_COLOR = "voice_mail_color";
 	private final String VOICE_MAIL_LED_PULSE = "voice_mail_pulse";
 	private final String VOICE_MAIL_LED_ON_MS = "voice_mail_led_on_ms";
@@ -74,6 +78,8 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
 
+	private Boolean DefaultLedColorOn;
+	private CheckBoxPreference mDefaultLedColorOn;
 	private Preference mDefaultLedColor;
 	private DJSeekBarPreference mDefaultLedOnMs;
 	private DJSeekBarPreference mDefaultLedOffMs;
@@ -81,27 +87,30 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 
     private Boolean PulseLedScreenOn;
     
-    
+    private Boolean IncomingCallLedOn;
+    private CheckBoxPreference mIncomingCallLedOn;
     private Preference mIncomingCallColor;
 	private CheckBoxPreference mIncomingCallPulse;
 	private DJSeekBarPreference mIncomingCallLedOnMs;
 	private DJSeekBarPreference mIncomingCallLedOffMs;
 	private Boolean IncomingCallPulse;
     
-
+	private Boolean MissedCallLedOn;
+	private CheckBoxPreference mMissedCallLedOn;
     private Preference mMissedCallColor;
 	private CheckBoxPreference mMissedCallPulse;
 	private DJSeekBarPreference mMissedCallLedOnMs;
 	private DJSeekBarPreference mMissedCallLedOffMs;
 	private Boolean MissedCallPulse;
 	
+	private Boolean VoiceMailLedOn;
+	private CheckBoxPreference mVoiceMailLedOn;
     private Preference mVoiceMailColor;
 	private CheckBoxPreference mVoiceMailPulse;
 	private DJSeekBarPreference mVoiceMailLedOnMs;
 	private DJSeekBarPreference mVoiceMailLedOffMs;
 	private Boolean VoiceMailPulse;
 	
-	private Preference mAppList;
 	
     /** If there is no setting in the provider, use this. */
     @Override
@@ -115,17 +124,20 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         
         addPreferencesFromResource(R.xml.custom_led_settings);
         
+        mDefaultLedColorOn = (CheckBoxPreference) findPreference(DEFAULT_LED_COLOR_ON);
+        mDefaultLedColorOn.setOnPreferenceChangeListener(this);
         mDefaultLedColor = (Preference) findPreference(DEFAULT_LED_COLOR);
         mDefaultLedColor.setOnPreferenceChangeListener(this);
-
         mDefaultLedOnMs = (DJSeekBarPreference) findPreference(DEFAULT_LED_ON_MS);
         mDefaultLedOnMs.setOnPreferenceChangeListener(this);
         mDefaultLedOffMs = (DJSeekBarPreference) findPreference(DEFAULT_LED_OFF_MS);
         mDefaultLedOffMs.setOnPreferenceChangeListener(this);
+
         mPulseLedScreenOn = (CheckBoxPreference) findPreference(PULSE_LED_SCREEN_ON);
         mPulseLedScreenOn.setOnPreferenceChangeListener(this);
 
-
+        mIncomingCallLedOn = (CheckBoxPreference) findPreference(INCOMING_CALL_LED_ON);
+        mIncomingCallLedOn.setOnPreferenceChangeListener(this);
         mIncomingCallColor = (Preference) findPreference(INCOMING_CALL_LED_COLOR);
         mIncomingCallColor.setOnPreferenceChangeListener(this);
         mIncomingCallPulse = (CheckBoxPreference) findPreference(INCOMING_CALL_LED_PULSE);
@@ -134,7 +146,9 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         mIncomingCallLedOnMs.setOnPreferenceChangeListener(this);
         mIncomingCallLedOffMs = (DJSeekBarPreference) findPreference(INCOMING_CALL_LED_OFF_MS);
         mIncomingCallLedOffMs.setOnPreferenceChangeListener(this);        
-        
+
+        mMissedCallLedOn = (CheckBoxPreference) findPreference(MISSED_CALL_LED_ON);
+        mMissedCallLedOn.setOnPreferenceChangeListener(this);
         mMissedCallColor = (Preference) findPreference(MISSED_CALL_LED_COLOR);
         mMissedCallColor.setOnPreferenceChangeListener(this);
         mMissedCallPulse = (CheckBoxPreference) findPreference(MISSED_CALL_LED_PULSE);
@@ -144,7 +158,8 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         mMissedCallLedOffMs = (DJSeekBarPreference) findPreference(MISSED_CALL_LED_OFF_MS);
         mMissedCallLedOffMs.setOnPreferenceChangeListener(this);                
         
-   
+        mVoiceMailLedOn = (CheckBoxPreference) findPreference(VOICE_MAIL_LED_ON);
+        mVoiceMailLedOn.setOnPreferenceChangeListener(this);
         mVoiceMailColor = (Preference) findPreference(VOICE_MAIL_LED_COLOR);
         mVoiceMailColor.setOnPreferenceChangeListener(this);
         mVoiceMailPulse = (CheckBoxPreference) findPreference(VOICE_MAIL_LED_PULSE);
@@ -161,6 +176,8 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 		Cursor cur = Settings.NotifOptions.getDefaultLed(getActivity().getBaseContext().getContentResolver());
 		sharedPref = prefMgr.getSharedPreferences();
     	SharedPreferences.Editor editor = sharedPref.edit();
+    	DefaultLedColorOn = cur.getString(1).equals("Default=true");
+    	editor.putBoolean(DEFAULT_LED_COLOR_ON, DefaultLedColorOn);
     	editor.putBoolean(PULSE_LED_SCREEN_ON, cur.getString(2).equals("PulseScreenOn=true"));
         editor.putInt(DEFAULT_LED_COLOR, cur.getInt(3));
         editor.putInt(DEFAULT_LED_ON_MS, cur.getInt(4));
@@ -168,7 +185,9 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         editor.commit();
 
 		cur = Settings.NotifOptions.getIncomingCallLed(getActivity().getBaseContext().getContentResolver());
+		IncomingCallLedOn = cur.getString(1).equals("Incoming=true");
     	IncomingCallPulse = cur.getString(2).equals("true");
+    	editor.putBoolean(INCOMING_CALL_LED_ON, IncomingCallLedOn);
 		editor.putBoolean(INCOMING_CALL_LED_PULSE, IncomingCallPulse);
         editor.putInt(INCOMING_CALL_LED_COLOR, cur.getInt(3));
         editor.putInt(INCOMING_CALL_LED_ON_MS, cur.getInt(4));
@@ -177,7 +196,9 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         
         
 		cur = Settings.NotifOptions.getMissedCallLed(getActivity().getBaseContext().getContentResolver());
+		MissedCallLedOn = cur.getString(1).equals("Missed=true");
     	MissedCallPulse = cur.getString(2).equals("true");
+    	editor.putBoolean(MISSED_CALL_LED_ON, MissedCallLedOn);
 		editor.putBoolean(MISSED_CALL_LED_PULSE, MissedCallPulse);
         editor.putInt(MISSED_CALL_LED_COLOR, cur.getInt(3));
         editor.putInt(MISSED_CALL_LED_ON_MS, cur.getInt(4));
@@ -185,7 +206,9 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         editor.commit();             
         
 		cur = Settings.NotifOptions.getVoiceMailLed(getActivity().getBaseContext().getContentResolver());
+		VoiceMailLedOn = cur.getString(1).equals("VoiceMail=true");
     	VoiceMailPulse = cur.getString(2).equals("true");
+    	editor.putBoolean(VOICE_MAIL_LED_ON, VoiceMailLedOn);
 		editor.putBoolean(VOICE_MAIL_LED_PULSE, VoiceMailPulse);
         editor.putInt(VOICE_MAIL_LED_COLOR, cur.getInt(3));
         editor.putInt(VOICE_MAIL_LED_ON_MS, cur.getInt(4));
@@ -235,8 +258,9 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
     }
 
     private void updateDb(){
- 		 ContentValues values = new ContentValues(4);
+ 		 ContentValues values = new ContentValues(5);
          // Write the default led option values to the database     
+ 		 values.put(Settings.NotifOptions.NAME, "Default=" + DefaultLedColorOn.toString());
  		 values.put(Settings.NotifOptions.PKG_NAME, "PulseScreenOn=" + PulseLedScreenOn.toString());
  		 values.put(Settings.NotifOptions.LED_COLOR, prefMgr.getSharedPreferences().getInt(DEFAULT_LED_COLOR, -1));
          values.put(Settings.NotifOptions.LED_ON_MS, mDefaultLedOnMs.getProgress());
@@ -245,8 +269,9 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
          Settings.NotifOptions.updateDefaultLed(getActivity().getBaseContext().getContentResolver(), values);
          values = null;
          
- 		 values = new ContentValues(4);
-         // Write the default led option values to the database     
+ 		 values = new ContentValues(5);
+         // Write the default led option values to the database    
+ 		 values.put(Settings.NotifOptions.NAME, "Incoming=" + IncomingCallLedOn.toString());
  		 values.put(Settings.NotifOptions.PKG_NAME, IncomingCallPulse.toString());
  		 values.put(Settings.NotifOptions.LED_COLOR, prefMgr.getSharedPreferences().getInt(INCOMING_CALL_LED_COLOR, -1));
          values.put(Settings.NotifOptions.LED_ON_MS, mIncomingCallLedOnMs.getProgress());
@@ -255,8 +280,9 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
          Settings.NotifOptions.updateIncomingCallLed(getActivity().getBaseContext().getContentResolver(), values);   
          values = null;
          
- 		 values = new ContentValues(4);
+ 		 values = new ContentValues(5);
          // Write the default led option values to the database     
+ 		 values.put(Settings.NotifOptions.NAME, "Missed=" + MissedCallLedOn.toString());
  		 values.put(Settings.NotifOptions.PKG_NAME, MissedCallPulse.toString());
  		 values.put(Settings.NotifOptions.LED_COLOR, prefMgr.getSharedPreferences().getInt(MISSED_CALL_LED_COLOR, -1));
          values.put(Settings.NotifOptions.LED_ON_MS, mMissedCallLedOnMs.getProgress());
@@ -266,8 +292,9 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
          values = null;         
          
          
- 		 values = new ContentValues(4);
+ 		 values = new ContentValues(5);
          // Write the default led option values to the database     
+ 		 values.put(Settings.NotifOptions.NAME, "VoiceMail=" + VoiceMailLedOn.toString());
  		 values.put(Settings.NotifOptions.PKG_NAME, VoiceMailPulse.toString());
  		 values.put(Settings.NotifOptions.LED_COLOR, prefMgr.getSharedPreferences().getInt(VOICE_MAIL_LED_COLOR, -1));
          values.put(Settings.NotifOptions.LED_ON_MS, mVoiceMailLedOnMs.getProgress());
@@ -281,25 +308,10 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
      }
     
     
-    @Override
-    public void onResume() {
-        super.onResume();
-          
-    }
-
-    
-    @Override
-    public void onPause() {
-        super.onPause();
-
-    }
 
  
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-       
-    	
-    	if (preference == mAppList) AppListDialog(); 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
     
@@ -307,7 +319,15 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object objValue) {
     	
     	final String key = preference.getKey();
-     	if (DEFAULT_LED_COLOR.equals(key)) {
+
+     	if (DEFAULT_LED_COLOR_ON.equals(key)) {
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(DEFAULT_LED_COLOR_ON, (Boolean) objValue);
+            DefaultLedColorOn = (Boolean) objValue;
+            editor.commit();
+    	
+     	} else if (DEFAULT_LED_COLOR.equals(key)) {
         	sharedPref = prefMgr.getSharedPreferences();
         	SharedPreferences.Editor editor = sharedPref.edit();
             editor.putInt(DEFAULT_LED_COLOR, (Integer) objValue);
@@ -332,6 +352,12 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
            	PulseLedScreenOn = (Boolean) objValue;
             editor.commit();
 
+        } else if (INCOMING_CALL_LED_ON.equals(key)) {
+          	sharedPref = prefMgr.getSharedPreferences();
+           	SharedPreferences.Editor editor = sharedPref.edit();
+           	editor.putBoolean(INCOMING_CALL_LED_ON, (Boolean) objValue);
+           	IncomingCallLedOn = (Boolean) objValue;
+            editor.commit();
 
         } else if (INCOMING_CALL_LED_PULSE.equals(key)) {
           	sharedPref = prefMgr.getSharedPreferences();
@@ -356,6 +382,13 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
           	sharedPref = prefMgr.getSharedPreferences();
            	SharedPreferences.Editor editor = sharedPref.edit();
            	editor.putInt(INCOMING_CALL_LED_OFF_MS, mIncomingCallLedOffMs.getProgress());
+            editor.commit();
+          
+        } else if (MISSED_CALL_LED_ON.equals(key)) {
+          	sharedPref = prefMgr.getSharedPreferences();
+           	SharedPreferences.Editor editor = sharedPref.edit();
+           	editor.putBoolean(MISSED_CALL_LED_ON, (Boolean) objValue);
+           	MissedCallLedOn = (Boolean) objValue;
             editor.commit();
             
         } else if (MISSED_CALL_LED_PULSE.equals(key)) {
@@ -383,6 +416,13 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
            	editor.putInt(MISSED_CALL_LED_OFF_MS, mMissedCallLedOffMs.getProgress());
             editor.commit();
       
+        } else if (VOICE_MAIL_LED_ON.equals(key)) {
+          	sharedPref = prefMgr.getSharedPreferences();
+           	SharedPreferences.Editor editor = sharedPref.edit();
+           	editor.putBoolean(VOICE_MAIL_LED_ON, (Boolean) objValue);
+           	VoiceMailLedOn = (Boolean) objValue;
+            editor.commit();
+            
         }  else if (VOICE_MAIL_LED_PULSE.equals(key)) {
           	sharedPref = prefMgr.getSharedPreferences();
            	SharedPreferences.Editor editor = sharedPref.edit();
@@ -408,100 +448,12 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
            	editor.putInt(VOICE_MAIL_LED_OFF_MS, mVoiceMailLedOffMs.getProgress());
             editor.commit();
             
-            
-            
-            
-        } else if ("led_override_list".equals(key)) {
-        	AppListDialog();       
-      
         }
      	
         updateDb();    
         return true;
     }
     
-  
-    private void AppListDialog() {
-    	Builder alertDialog = new AlertDialog.Builder(getActivity());
-    	alertDialog.setTitle("Theme Presets");
-    	alertDialog.setNegativeButton("Cancel", null);
-    	alertDialog.setPositiveButton("Select", null);
-    	final Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
-    	mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-
-    	List<String> listItems = getAppNames(false);
-
-
-
-    	final CharSequence[] cs = listItems.toArray(new CharSequence[listItems.size()]);
-    	alertDialog.setMultiChoiceItems(cs, null, null);
-    	alertDialog.show();
-    	
-    }    
-    
-    
-    
-    class PInfo {
-        private String appname = "";
-        private String pname = "";
-        private String versionName = "";
-        private int versionCode = 0;
-        private Drawable icon;
-//        private void prettyPrint() {
-            //Log.v(appname + "\t" + pname + "\t" + versionName + "\t" + versionCode);
-//        }
-    }
-
- 
- 
-    
-    private ArrayList<PInfo> getPackages() {
-        ArrayList<PInfo> apps = getInstalledApps(false); /* false = no system packages */
-        final int max = apps.size();
-        for (int i=0; i<max; i++) {
-            //apps.get(i).prettyPrint();
-        	
-        }
-        return apps;
-    }
-
-    private ArrayList<PInfo> getInstalledApps(boolean getSysPackages) {
-        ArrayList<PInfo> res = new ArrayList<PInfo>();        
-        List<PackageInfo> packs = getPackageManager().getInstalledPackages(0);
-        for(int i=0;i<packs.size();i++) {
-            PackageInfo p = packs.get(i);
-            if ((!getSysPackages) && (p.versionName == null)) {
-                continue ;
-            }
-            PInfo newInfo = new PInfo();
-            newInfo.appname = p.applicationInfo.loadLabel(getPackageManager()).toString();
-            newInfo.pname = p.packageName;
-            newInfo.versionName = p.versionName;
-            newInfo.versionCode = p.versionCode;
-            newInfo.icon = p.applicationInfo.loadIcon(getPackageManager());
-            res.add(newInfo);
-        }
-        return res; 
-    }    
-    
-    
-    private ArrayList<String> getAppNames(boolean getSysPackages) {
-        ArrayList<String> res = new ArrayList<String>();        
-        List<PackageInfo> packs = getPackageManager().getInstalledPackages(0);
-        for(int i=0;i<packs.size();i++) {
-            PackageInfo p = packs.get(i);
-            if ((p.applicationInfo.flags & p.applicationInfo.FLAG_SYSTEM) !=0) {
-            	continue;
-            }
-//            if ((!getSysPackages) && (p.versionName == null)) {
-//                continue ;
-//            }
-            String newInfo = p.applicationInfo.loadLabel(getPackageManager()).toString();
-            res.add(newInfo);
-        }
-        Collections.sort(res);
-        return res; 
-    }     
     
     
     

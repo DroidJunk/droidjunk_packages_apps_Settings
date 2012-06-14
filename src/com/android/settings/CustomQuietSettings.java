@@ -66,12 +66,15 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
     public int QtStopHour = 0;
     public int QtStopMin = 0;
     
-
+    public int day;
+    private String mTitle, mSummaryOn, mSummaryOff;
     
     /** If there is no setting in the provider, use this. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        day = getActivity().getIntent().getIntExtra("junk_qt_day", 1); 
         
         prefMgr = getPreferenceManager();
         prefMgr.setSharedPreferencesName("Junk_Settings");
@@ -96,7 +99,7 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
 		mQtNotifVibrateOn.setOnPreferenceChangeListener(this);
 		
 		
-		Cursor cur = Settings.QuietTime.getCursor(getActivity().getBaseContext().getContentResolver());
+		Cursor cur = Settings.QuietTime.getCursor(getActivity().getBaseContext().getContentResolver(), String.valueOf(day));
 		sharedPref = prefMgr.getSharedPreferences();
     	SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean(QUIET_TIME, cur.getInt(1) == 1);
@@ -109,8 +112,47 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
         editor.putBoolean(NOTIF_VIBRATE_ON, cur.getInt(8) == 1);
         editor.commit();
 
+        if (day == 1) {
+        	mTitle = "Quiet Time";
+        	mSummaryOn = "Quiet Time is on";
+        	mSummaryOff = "Quiet Time is off";
+        } else if (day == 2) {
+        	mTitle = "Sunday";
+        	mSummaryOn = "Sunday is on";
+        	mSummaryOff = "Sunday is off";
+        } else if (day == 3) {
+        	mTitle = "Monday";
+        	mSummaryOn = "Monday is on";
+        	mSummaryOff = "Monday is off";
+        } else if (day == 4) {
+        	mTitle = "Tuesday";
+        	mSummaryOn = "Tuesday is on";
+        	mSummaryOff = "Tuesday is off";
+        } else if (day == 5) {
+        	mTitle = "Wednesday";
+        	mSummaryOn = "Wednesday is on";
+        	mSummaryOff = "Wednesday is off";
+        } else if (day == 6) {
+        	mTitle = "Thursday";
+        	mSummaryOn = "Thursday is on";
+        	mSummaryOff = "Thursday is off";
+        } else if (day == 7) {
+        	mTitle = "Friday";
+        	mSummaryOn = "Friday is on";
+        	mSummaryOff = "Friday is off";
+        } else if (day == 8) {
+        	mTitle = "Saturday";
+        	mSummaryOn = "Saturday is on";
+        	mSummaryOff = "Saturday is off";
+        };
+        
+        
+        
         
         mQuietTimeOn.setChecked(cur.getInt(1) == 1);
+        mQuietTimeOn.setTitle(mTitle);
+        mQuietTimeOn.setSummaryOn(mSummaryOn);
+        mQuietTimeOn.setSummaryOff(mSummaryOff);
         mQtNotifLedOn.setChecked(cur.getInt(6) == 1);
         mQtNotifSoundOn.setChecked(cur.getInt(7) == 1);
         mQtNotifVibrateOn.setChecked(cur.getInt(8) == 1);
@@ -135,7 +177,7 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
          values.put(Settings.QuietTime.QT_SOUND_ON, prefMgr.getSharedPreferences().getBoolean(NOTIF_SOUND_ON, true));
          values.put(Settings.QuietTime.QT_VIBRATE_ON, prefMgr.getSharedPreferences().getBoolean(NOTIF_VIBRATE_ON, true));
 
-         Settings.QuietTime.updateQT(getActivity().getBaseContext().getContentResolver(), values);
+         Settings.QuietTime.updateQT(getActivity().getBaseContext().getContentResolver(), values, String.valueOf(day));
          
     }
          

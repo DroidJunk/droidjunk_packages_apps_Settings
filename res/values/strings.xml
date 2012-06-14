@@ -3874,7 +3874,18 @@ found in the list of installed apps.</string>
 	<string name="junk_frontend_apply_theme">Apply Theme</string>
 	<string name="junk_frontend_name_theme">Theme Name</string>
 	
+	<string name="junk_quiet_time">Quiet Time</string>
+	<string name="junk_quiet_time_all">Default Settings</string>
+	<string name="junk_quiet_time_sun">Sunday</string>	
+	<string name="junk_quiet_time_mon">Monday</string>
+	<string name="junk_quiet_time_tue">Tuesday</string>
+	<string name="junk_quiet_time_wed">Wednesday</string>
+	<string name="junk_quiet_time_thur">Thursday</string>
+	<string name="junk_quiet_time_fri">Friday</string>
+	<string name="junk_quiet_time_sat">Saturday</string>
+	<string name="junk_quiet_time_text_indiv">Individual Days</string>
 
+	
 	<!-- ***************************************************************************************** -->
 	<!-- ***************************************************************************************** -->
 
