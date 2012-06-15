@@ -38,6 +38,7 @@ public class CustomToggleShowHideSettings extends SettingsPreferenceFragment imp
 	private final String TOGGLES_WIFI_ON = "toggles_show_wifi";
 	private final String TOGGLES_GPS_ON = "toggles_show_gps";
 	private final String TOGGLES_BLUETOOTH_ON = "toggles_show_bluetooth";
+	private final String TOGGLES_NFC_ON = "toggles_show_nfc";
 	private final String TOGGLES_SOUND_ON = "toggles_show_sound";
 	private final String TOGGLES_AIRPLANE_ON = "toggles_show_airplane";
 	private final String TOGGLES_BRIGHTNESS_ON = "toggles_show_brightness";
@@ -51,6 +52,7 @@ public class CustomToggleShowHideSettings extends SettingsPreferenceFragment imp
 	private CheckBoxPreference mShowWifi;
 	private CheckBoxPreference mShowGps;
 	private CheckBoxPreference mShowBluetooth;
+	private CheckBoxPreference mShowNfc;
 	private CheckBoxPreference mShowSound;
 	private CheckBoxPreference mShowAirplane;
 	private CheckBoxPreference mShowBrightness;
@@ -81,6 +83,8 @@ public class CustomToggleShowHideSettings extends SettingsPreferenceFragment imp
         mShowGps.setOnPreferenceChangeListener(this);
         mShowBluetooth = (CheckBoxPreference) findPreference(TOGGLES_BLUETOOTH_ON);
         mShowBluetooth.setOnPreferenceChangeListener(this);
+        mShowNfc = (CheckBoxPreference) findPreference(TOGGLES_NFC_ON);
+        mShowNfc.setOnPreferenceChangeListener(this);
         mShowSound = (CheckBoxPreference) findPreference(TOGGLES_SOUND_ON);
         mShowSound.setOnPreferenceChangeListener(this);
         mShowAirplane = (CheckBoxPreference) findPreference(TOGGLES_AIRPLANE_ON);
@@ -153,7 +157,14 @@ public class CustomToggleShowHideSettings extends SettingsPreferenceFragment imp
        	   	i.putExtra(TOGGLES_BLUETOOTH_ON, (Boolean) objValue);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;
-            
+
+        } else if (TOGGLES_NFC_ON.equals(key)) {
+        	Intent i = new Intent();
+        	i.setAction(Junk_Toggle_Settings);
+       	   	i.putExtra(TOGGLES_NFC_ON, (Boolean) objValue);
+       	   	getActivity().sendBroadcast(i);
+       	   	i = null;
+       	   	
         } else if (TOGGLES_SOUND_ON.equals(key)) {
         	Intent i = new Intent();
         	i.setAction(Junk_Toggle_Settings);

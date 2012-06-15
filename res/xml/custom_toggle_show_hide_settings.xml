@@ -52,6 +52,13 @@
 		android:summaryOff="Bluetooth Toggle is off"
 		android:title="Bluetooth Toggle" 
 		android:defaultValue="true"	/>
+	
+	<CheckBoxPreference 
+		android:key="toggles_show_nfc"
+		android:summaryOn="NFC Toggle is on"
+		android:summaryOff="NFC Toggle is off"
+		android:title="NFC Toggle" 
+		android:defaultValue="true"	/>	
 		
 	<CheckBoxPreference 
 		android:key="toggles_show_sound"
