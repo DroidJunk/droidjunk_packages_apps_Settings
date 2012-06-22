@@ -50,7 +50,7 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
  
 
-	private final String Junk_Settings = "JUNK_SETTINGS";
+	private final String Junk_Led_Settings_Changed = "JUNK_LED_SETTINGS_CHANGED";
 	private final String DEFAULT_LED_COLOR_ON = "default_led_color_on";	
 	private final String DEFAULT_LED_COLOR = "default_led_color";	
 	private final String DEFAULT_LED_ON_MS = "default_led_on_ms";
@@ -303,7 +303,7 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
          Settings.NotifOptions.updateVoiceMailLed(getActivity().getBaseContext().getContentResolver(), values);   
          values = null;     
        
-         
+
          
      }
     
@@ -451,6 +451,11 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         }
      	
         updateDb();    
+     	Intent i = new Intent();
+     	i.setAction(Junk_Led_Settings_Changed);
+     	getActivity().sendBroadcast(i);
+     	i = null; 
+     	Log.v("************************ INTENT FOR LED SETTINGS S E N T ","1212");
         return true;
     }
     

@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 public class CustomQuietTimeSettings extends Fragment {
 
+	private final String Junk_QuietTime_Settings = "JUNK_QUIET_TIME_SETTINGS";
 	private View mView;
 	private boolean qtOn, sunOn, monOn, tueOn, wedOn, thurOn, friOn, satOn;
 
@@ -74,6 +75,10 @@ public class CustomQuietTimeSettings extends Fragment {
 		        	mQTOnOff.setBackgroundResource(R.drawable.junk_on);
 		        }
 		        updateDb("1");
+		     	Intent i = new Intent();
+		     	i.setAction(Junk_QuietTime_Settings );
+		     	getActivity().sendBroadcast(i);
+		     	i = null;   
 			}
  		});
 		

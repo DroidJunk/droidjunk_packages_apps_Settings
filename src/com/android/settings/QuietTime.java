@@ -55,6 +55,10 @@ public final class QuietTime implements Parcelable {
         p.writeInt(ledon ? 1 : 0);
         p.writeInt(soundon ? 1 : 0);
         p.writeInt(vibrateon ? 1 : 0);
+        p.writeInt(now ? 1 : 0);
+        p.writeInt(allow ? 1 : 0);
+        p.writeInt(extra1 ? 1 : 0);
+        p.writeInt(extra2);
       
     }
     //////////////////////////////
@@ -120,10 +124,35 @@ public final class QuietTime implements Parcelable {
          */
         public static final String VIBRATE_ON = "vibrateon";       
         
+        /**
+         * True if quiet is should be on now
+         * <P>Type: BOOLEAN</P>
+         */
+        public static final String ON_NOW = "now";
+        
+        /**
+         * True if allow notifications
+         * <P>Type: BOOLEAN</P>
+         */
+        public static final String ALLOW = "allow";
+        
+        /**
+         * Future Use
+         * <P>Type: BOOLEAN</P>
+         */
+        public static final String EXTRA_1 = "extra1";
+        
+        /**
+         * Future Use
+         * <P>Type: INTEGER</P>
+         */
+        public static final String EXTRA_2 = "extra2";
+        
+        
 
         static final String[] QUIET_TIME_QUERY_COLUMNS = {
             _ID, ENABLED, START_HOUR, START_MIN, STOP_HOUR, STOP_MIN,
-            LED_ON, SOUND_ON, VIBRATE_ON };
+            LED_ON, SOUND_ON, VIBRATE_ON, ON_NOW, ALLOW, EXTRA_1, EXTRA_2 };
 
         /**
          * These save calls to cursor.getColumnIndexOrThrow()
@@ -138,6 +167,10 @@ public final class QuietTime implements Parcelable {
         public static final int QUIETTIME_LED_ON_INDEX = 6;
         public static final int QUIETTIME_SOUND_ON_INDEX = 7;
         public static final int QUIETTIME_VIBRATE_ON_INDEX = 8;
+        public static final int QUIETTIME_ON_NOW_INDEX = 9;
+        public static final int QUIETTIME_ALLOW_INDEX = 10;
+        public static final int QUIETTIME_EXTRA_1_INDEX = 11;
+        public static final int QUIETTIME_EXTRA_2_INDEX = 12;
         
     }
     //////////////////////////////
@@ -154,6 +187,10 @@ public final class QuietTime implements Parcelable {
     public boolean    ledon;
     public boolean    soundon;
     public boolean    vibrateon;
+    public boolean    now;
+    public boolean    allow;
+    public boolean    extra1;
+    public int		  extra2;
     
 
     public QuietTime(Cursor c) {
@@ -166,6 +203,10 @@ public final class QuietTime implements Parcelable {
         ledon = c.getInt(Columns.QUIETTIME_LED_ON_INDEX) == 1;
         soundon = c.getInt(Columns.QUIETTIME_SOUND_ON_INDEX) == 1;
         vibrateon = c.getInt(Columns.QUIETTIME_VIBRATE_ON_INDEX)  == 1;
+        now = c.getInt(Columns.QUIETTIME_ON_NOW_INDEX)  == 1;
+        allow = c.getInt(Columns.QUIETTIME_ALLOW_INDEX)  == 1;
+        extra1 = c.getInt(Columns.QUIETTIME_EXTRA_1_INDEX)  == 1;
+        extra2 = c.getInt(Columns.QUIETTIME_EXTRA_2_INDEX);
 
     }
 
@@ -179,6 +220,10 @@ public final class QuietTime implements Parcelable {
         ledon = p.readInt() == 1;
         soundon = p.readInt() == 1;
         vibrateon = p.readInt() == 1;
+        now = p.readInt() == 1;
+        allow = p.readInt() == 1;
+        extra1 = p.readInt() == 1;
+        extra2 = p.readInt();
         
     }
 
@@ -193,6 +238,10 @@ public final class QuietTime implements Parcelable {
         ledon = true;
         soundon = true;
         vibrateon = true;
+        now = false;
+        allow = false;
+        extra1 = false;
+        extra2 = 0;
     }
 
 

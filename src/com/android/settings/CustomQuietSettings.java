@@ -20,6 +20,7 @@ package com.android.settings;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ import android.provider.Settings;
 public class CustomQuietSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     
-
+	private final String Junk_QuietTime_Settings = "JUNK_QUIET_TIME_SETTINGS";
 	private final String QUIET_TIME = "quiet_time_on";
 	private final String START_HOUR = "qt_start_hour";
 	private final String START_MIN = "qt_start_min";
@@ -179,6 +180,7 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
 
          Settings.QuietTime.updateQT(getActivity().getBaseContext().getContentResolver(), values, String.valueOf(day));
          
+        
     }
          
          
@@ -264,7 +266,11 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
         }
     	
      	
-     	updateDb();        
+     	updateDb();     
+     	Intent i = new Intent();
+     	i.setAction(Junk_QuietTime_Settings );
+     	getActivity().sendBroadcast(i);
+     	i = null;   
         return true;
     }
     
