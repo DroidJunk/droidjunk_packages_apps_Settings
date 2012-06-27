@@ -22,51 +22,52 @@
 
 	<CheckBoxPreference 
 		android:key="quiet_time_on"
-		android:summaryOn="Quiet Time is on"
-		android:summaryOff="Quiet Time is off"
-		android:title="Quiet Time" 
+		android:summaryOn="Daily is on"
+		android:summaryOff="Daily is off"
+		android:title="Daily" 
 		android:defaultValue="false"	/>
+	
 			
  	<Preference 
  		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="quiet_time_on"
 		android:key="qt_start_hour"
-		android:title="Quiet Time Start Hour" 
+		android:title="Start Hour" 
 		android:defaultValue="21"	/>
 		
  	<Preference 
  		android:layout="?android:attr/preferenceLayoutChild"
 	    android:dependency="quiet_time_on"
 		android:key="qt_stop_hour"
-		android:title="Quiet Time Stop Hour" 
+		android:title="Stop Hour" 
 		android:defaultValue="7"	/>
-
+ 	
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="quiet_time_on"
 		android:key="qt_led_on"
-		android:summaryOn="Notification Led is on"
-		android:summaryOff="Notification Led is off"
-		android:title="Quiet Time Led" 
-		android:defaultValue="false"	/>   	
+		android:summaryOn="Notification Led is off"
+		android:summaryOff="Notification Led is on"
+		android:title="Turn Led Off" 
+		android:defaultValue="true"	/>   	
 	
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="quiet_time_on"
 		android:key="qt_sound_on"
-		android:summaryOn="Notification Sound is on"
-		android:summaryOff="Notification Sound is off"
-		android:title="Quiet Time Sound" 
-		android:defaultValue="false"	/>   					
+		android:summaryOn="Notification Sound is off"
+		android:summaryOff="Notification Sound is on"
+		android:title="Turn Sound Off" 
+		android:defaultValue="true"	/>   					
    				
  	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="quiet_time_on"
 		android:key="qt_vibrate_on"
-		android:summaryOn="Notification Vibrate is on"
-		android:summaryOff="Notification Vibrate is off"
-		android:title="Quiet Time Vibrate" 
-		android:defaultValue="false"	/>   		   
+		android:summaryOn="Notification Vibrate is off"
+		android:summaryOff="Notification Vibrate is on"
+		android:title="Turn Vibrate Off" 
+		android:defaultValue="true"	/>   		   
 
 
 </PreferenceScreen>

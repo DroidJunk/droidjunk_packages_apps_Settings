@@ -52,6 +52,7 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
 	private CheckBoxPreference mQuietTimeOn;
+	
     private Preference mQtStartHour;
     private Preference mQtStartMin;
     private Preference mQtStopHour;
@@ -114,9 +115,9 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
         editor.commit();
 
         if (day == 1) {
-        	mTitle = "Quiet Time";
-        	mSummaryOn = "Quiet Time is on";
-        	mSummaryOff = "Quiet Time is off";
+        	mTitle = "Daily";
+        	mSummaryOn = "Daily is on";
+        	mSummaryOff = "Daily is off";
         } else if (day == 2) {
         	mTitle = "Sunday";
         	mSummaryOn = "Sunday is on";
@@ -161,13 +162,14 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
 		QtStartMin = prefMgr.getSharedPreferences().getInt(START_MIN, 0);
 		QtStopHour = prefMgr.getSharedPreferences().getInt(STOP_HOUR, 7);
 		QtStopMin = prefMgr.getSharedPreferences().getInt(STOP_MIN, 0);
+		cur.close();
 		
     }
 
     
 
     private void updateDb(){
-		 ContentValues values = new ContentValues(8);
+		 ContentValues values = new ContentValues(9);
          // Write the quiet time values to the database           
          values.put(Settings.QuietTime.QT_ENABLED, prefMgr.getSharedPreferences().getBoolean(QUIET_TIME, false));
          values.put(Settings.QuietTime.QT_START_HOUR, prefMgr.getSharedPreferences().getInt(START_HOUR, 21));
@@ -177,14 +179,8 @@ public class CustomQuietSettings extends SettingsPreferenceFragment implements
          values.put(Settings.QuietTime.QT_LED_ON, prefMgr.getSharedPreferences().getBoolean(NOTIF_LED_ON, true));
          values.put(Settings.QuietTime.QT_SOUND_ON, prefMgr.getSharedPreferences().getBoolean(NOTIF_SOUND_ON, true));
          values.put(Settings.QuietTime.QT_VIBRATE_ON, prefMgr.getSharedPreferences().getBoolean(NOTIF_VIBRATE_ON, true));
-
          Settings.QuietTime.updateQT(getActivity().getBaseContext().getContentResolver(), values, String.valueOf(day));
-         
-        
     }
-         
-         
-       
     
     
     

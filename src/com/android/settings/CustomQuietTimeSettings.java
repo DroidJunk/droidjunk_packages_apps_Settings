@@ -6,6 +6,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.TextAppearanceSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +21,25 @@ public class CustomQuietTimeSettings extends Fragment {
 
 	private final String Junk_QuietTime_Settings = "JUNK_QUIET_TIME_SETTINGS";
 	private View mView;
+	private int qtMode;
+	private final int MODE_OFF = 0;
+	private final int MODE_ON = 1;
 	private boolean qtOn, sunOn, monOn, tueOn, wedOn, thurOn, friOn, satOn;
-
-	private Button mbutQT, mbutAllDays, mbutSun, mbutMon, mbutTue, mbutWed;
-	private Button mbutThur, mbutFri, mbutSat;
 	
-	private ImageView mQTOnOff, mSunOnOff, mMonOnOff, mTueOnOff;
+    private int mStopMin = 0;
+    private int mStopHour = 0;
+    private int mStartMin = 0;
+    private int mStartHour = 0;    
+    private boolean mTurnOffLed = false;
+    private boolean mTurnOffSound = false;
+    private boolean mTurnOffVibrate = false;
+    private boolean qtUseNotif = false;
+	
+
+	private Button mbutQT, mbutUseNotif, mbutAllDays, mbutSun, mbutMon, mbutTue;
+	private Button mbutWed, mbutThur, mbutFri, mbutSat;
+	
+	private ImageView mQTOnOff, mQTUseNotif, mQTDailyOnOff, mSunOnOff, mMonOnOff, mTueOnOff;
 	private ImageView mWedOnOff, mThurOnOff, mFriOnOff, mSatOnOff;
 
 	@Override
@@ -42,6 +60,7 @@ public class CustomQuietTimeSettings extends Fragment {
         super.onActivityCreated(savedInstanceState);
         
         mbutQT = (Button) getActivity().findViewById(R.id.quiet_time);
+        mbutUseNotif = (Button) getActivity().findViewById(R.id.quiet_time_use_notif);
         mbutAllDays = (Button) getActivity().findViewById(R.id.all_days);
         mbutSun = (Button) getActivity().findViewById(R.id.sunday);
         mbutMon = (Button) getActivity().findViewById(R.id.monday);
@@ -52,6 +71,8 @@ public class CustomQuietTimeSettings extends Fragment {
         mbutSat = (Button) getActivity().findViewById(R.id.saturday);
         
         mQTOnOff = (ImageView) getActivity().findViewById(R.id.quiet_time_onoff);
+        mQTUseNotif = (ImageView) getActivity().findViewById(R.id.quiet_time_notif_onoff);
+        mQTDailyOnOff = (ImageView) getActivity().findViewById(R.id.quiet_time_daily_onoff);
         mSunOnOff = (ImageView) getActivity().findViewById(R.id.quiet_time_sunday_onoff);
         mMonOnOff = (ImageView) getActivity().findViewById(R.id.quiet_time_monday_onoff);
         mTueOnOff = (ImageView) getActivity().findViewById(R.id.quiet_time_tuesday_onoff);
@@ -67,13 +88,24 @@ public class CustomQuietTimeSettings extends Fragment {
 			 
 			@Override
 			public void onClick(View arg0) {
-		        if (qtOn) {
-		        	qtOn = false;
-		        	mQTOnOff.setBackgroundResource(R.drawable.junk_off);
-		        } else {
-		        	qtOn = true;
-		        	mQTOnOff.setBackgroundResource(R.drawable.junk_on);
+				if (qtMode == 0) {
+					qtMode = 1;
+				} else {
+					qtMode = 0;
+				}
+		        switch (qtMode) {
+		    	case MODE_OFF:
+		    		mQTOnOff.setBackgroundResource(R.drawable.junk_off);
+		    		mbutQT.setText(Html.fromHtml("Quiet Time Mode<br/><small>OFF</small>"));
+		    		break;
+
+		    	case MODE_ON:
+		    		mQTOnOff.setBackgroundResource(R.drawable.junk_on);
+		    		mbutQT.setText(Html.fromHtml("Quiet Time Mode<br/><small>ON</small>"));
+		    		break;
+
 		        }
+		        
 		        updateDb("1");
 		     	Intent i = new Intent();
 		     	i.setAction(Junk_QuietTime_Settings );
@@ -81,6 +113,31 @@ public class CustomQuietTimeSettings extends Fragment {
 		     	i = null;   
 			}
  		});
+		
+		mbutUseNotif.setOnClickListener(new Button.OnClickListener() {
+			 
+			@Override
+			public void onClick(View arg0) {
+				if (qtUseNotif) {
+					qtUseNotif = false;
+				} else {
+					qtUseNotif = true;
+				}
+		        if (qtUseNotif) {
+		    		mQTUseNotif.setBackgroundResource(R.drawable.junk_on);
+		    		mbutUseNotif.setText(Html.fromHtml("Show Notifications<br/><small>ON</small>"));
+		        } else {
+		    		mQTUseNotif.setBackgroundResource(R.drawable.junk_off);
+		    		mbutUseNotif.setText(Html.fromHtml("Show Notifications<br/><small>OFF</small>"));
+		        }
+		        
+		        updateDb("1");
+		     	Intent i = new Intent();
+		     	i.setAction(Junk_QuietTime_Settings );
+		     	getActivity().sendBroadcast(i);
+		     	i = null;   
+			}
+ 		});		
 		
 		mbutAllDays.setOnClickListener(new Button.OnClickListener() {
 			 
@@ -192,9 +249,10 @@ public class CustomQuietTimeSettings extends Fragment {
     
 				    		
     private void updateDb(String id){
-		 ContentValues values = new ContentValues(1);
+		 ContentValues values = new ContentValues(2);
          // Write the quiet time values to the database           
-         values.put(Settings.QuietTime.QT_ENABLED, qtOn);
+         values.put(Settings.QuietTime.QT_MODE, qtMode);
+         values.put(Settings.QuietTime.QT_EXTRA_1, qtUseNotif);
          Settings.QuietTime.updateQT(getActivity().getBaseContext().getContentResolver(), values, id);
          
     }				
@@ -207,8 +265,11 @@ public class CustomQuietTimeSettings extends Fragment {
 				
     
     private void checkButtons() {
+    	
 		Cursor cur = Settings.QuietTime.getCursor(getActivity().getBaseContext().getContentResolver(), "1");
+		qtMode = cur.getInt(9);
 		qtOn = cur.getInt(1) == 1;
+		qtUseNotif = cur.getInt(11) == 1;
 		cur = Settings.QuietTime.getCursor(getActivity().getBaseContext().getContentResolver(), "2");
 		sunOn = cur.getInt(1) == 1;
 		cur = Settings.QuietTime.getCursor(getActivity().getBaseContext().getContentResolver(), "3");
@@ -223,47 +284,147 @@ public class CustomQuietTimeSettings extends Fragment {
 		friOn = cur.getInt(1) == 1;
 		cur = Settings.QuietTime.getCursor(getActivity().getBaseContext().getContentResolver(), "8");
 		satOn = cur.getInt(1) == 1;
+		cur.close();
 
+        switch (qtMode) {
+    	case MODE_OFF:
+    		mQTOnOff.setBackgroundResource(R.drawable.junk_off);
+    		mbutQT.setText(Html.fromHtml("Quiet Time Mode<br/><small>OFF</small>"));
+    		break;
+
+    	case MODE_ON:
+    		mQTOnOff.setBackgroundResource(R.drawable.junk_on);
+    		mbutQT.setText(Html.fromHtml("Quiet Time Mode<br/><small>ON</small>"));
+    		break;
+        }
+
+        if (qtUseNotif) {
+        	Log.e("**********************","True");
+        	mQTUseNotif.setBackgroundResource(R.drawable.junk_on);
+        	mbutUseNotif.setText(Html.fromHtml("Show Notifications<br/><small>ON</small>"));
+        } else {
+        	Log.e("**********************","False");
+        	mQTUseNotif.setBackgroundResource(R.drawable.junk_off);
+        	mbutUseNotif.setText(Html.fromHtml("Show Notifications<br/><small>OFF</small>"));
+        }        
         
         if (qtOn) {
-        	mQTOnOff.setBackgroundResource(R.drawable.junk_on);
+        	mQTDailyOnOff.setBackgroundResource(R.drawable.junk_on);
+        	mbutAllDays.setText(Html.fromHtml("Daily<br/><small>"+ getSettingString("1") +"</small>"));
         } else {
-        	mQTOnOff.setBackgroundResource(R.drawable.junk_off);
+        	mQTDailyOnOff.setBackgroundResource(R.drawable.junk_off);
+        	mbutAllDays.setText(Html.fromHtml("Daily<br/><small>"+ getSettingString("1") +"</small>"));
         }
+        
         if (sunOn) {
         	mSunOnOff.setBackgroundResource(R.drawable.junk_on);
+        	mbutSun.setText(Html.fromHtml("Sunday<br/><small>"+ getSettingString("2") +"</small>"));
         } else {
         	mSunOnOff.setBackgroundResource(R.drawable.junk_off);
+        	mbutSun.setText(Html.fromHtml("Sunday<br/><small>"+ getSettingString("2") +"</small>"));
         }
         if (monOn) {
         	mMonOnOff.setBackgroundResource(R.drawable.junk_on);
+        	mbutMon.setText(Html.fromHtml("Monday<br/><small>"+ getSettingString("3") +"</small>"));
         } else {
         	mMonOnOff.setBackgroundResource(R.drawable.junk_off);
+        	mbutMon.setText(Html.fromHtml("Monday<br/><small>"+ getSettingString("3") +"</small>"));
         }
         if (tueOn) {
         	mTueOnOff.setBackgroundResource(R.drawable.junk_on);
+        	mbutTue.setText(Html.fromHtml("Tuesday<br/><small>"+ getSettingString("4") +"</small>"));
         } else {
         	mTueOnOff.setBackgroundResource(R.drawable.junk_off);
+        	mbutTue.setText(Html.fromHtml("Tuesday<br/><small>"+ getSettingString("4") +"</small>"));
         }
         if (wedOn) {
         	mWedOnOff.setBackgroundResource(R.drawable.junk_on);
+        	mbutWed.setText(Html.fromHtml("Wednesday<br/><small>"+ getSettingString("5") +"</small>"));
         } else {
         	mWedOnOff.setBackgroundResource(R.drawable.junk_off);
+        	mbutWed.setText(Html.fromHtml("Wednesday<br/><small>"+ getSettingString("5") +"</small>"));
         }
         if (thurOn) {
         	mThurOnOff.setBackgroundResource(R.drawable.junk_on);
+        	mbutThur.setText(Html.fromHtml("Thursday<br/><small>"+ getSettingString("6") +"</small>"));
         } else {
         	mThurOnOff.setBackgroundResource(R.drawable.junk_off);
+        	mbutThur.setText(Html.fromHtml("Thursday<br/><small>"+ getSettingString("6") +"</small>"));
         }
         if (friOn) {
         	mFriOnOff.setBackgroundResource(R.drawable.junk_on);
+        	mbutFri.setText(Html.fromHtml("Friday<br/><small>"+ getSettingString("7") +"</small>"));
         } else {
         	mFriOnOff.setBackgroundResource(R.drawable.junk_off);
+        	mbutFri.setText(Html.fromHtml("Friday<br/><small>"+ getSettingString("7") +"</small>"));
         }
         if (satOn) {
         	mSatOnOff.setBackgroundResource(R.drawable.junk_on);
+        	mbutSat.setText(Html.fromHtml("Saturday<br/><small>"+ getSettingString("8") +"</small>"));
         } else {
         	mSatOnOff.setBackgroundResource(R.drawable.junk_off);
+        	mbutSat.setText(Html.fromHtml("Saturday<br/><small>"+ getSettingString("8") +"</small>"));
         }
     }
+    
+    
+    private String getSettingString(String id) {
+    	getQuietTimeDaySettings(id);
+        String minPad = "";
+        String notifStop = "";
+        String notifStart = "";
+        String turnOffLed = "";
+        String turnOffSound = "";
+        String turnOffVibrate = "";
+        
+        
+      	if (mStopMin < 10) minPad = "0";
+        if (mStopHour > 12) {
+           	notifStop = String.valueOf(mStopHour - 12) + ":" + minPad + String.valueOf(mStopMin) + "pm";;
+        } else {
+           	notifStop = String.valueOf(mStopHour) + ":" + minPad + String.valueOf(mStopMin) + "am";;
+        }
+        minPad = "";
+      	if (mStartMin < 10) minPad = "0";
+        if (mStartHour > 12) {
+           	notifStart = String.valueOf(mStartHour - 12) + ":" + minPad + String.valueOf(mStartMin) + "pm";
+        } else {
+           	notifStart = String.valueOf(mStartHour) + ":" + minPad + String.valueOf(mStartMin) + "am";;
+        }
+        
+        if (mTurnOffLed) {
+        	turnOffLed = "<br/>Led:Off  -  ";
+        } else {
+        	turnOffLed = "<br/>Led:On  -  ";
+        }
+
+        if (mTurnOffSound) {
+        	turnOffSound = "Sound:Off  -  ";
+        } else {
+        	turnOffSound = "Sound:On  -  ";
+        }
+        if (mTurnOffVibrate) {
+        	turnOffVibrate = "Vibrate:Off";
+        } else {
+        	turnOffVibrate = "Vibrate:On";
+        }
+
+        
+    	return notifStart + " - " + notifStop +  turnOffLed + turnOffSound + turnOffVibrate;
+    }
+    
+    
+    // Get the settings    
+    private void getQuietTimeDaySettings(String id){
+    	Cursor cur = Settings.QuietTime.getCursor(getActivity().getContentResolver(), id);
+       	mStartHour = cur.getInt(2);
+      	mStartMin = cur.getInt(3);
+       	mStopHour = cur.getInt(4);
+       	mStopMin = cur.getInt(5);
+       	mTurnOffLed = cur.getInt(6) == 1;
+       	mTurnOffSound = cur.getInt(7) == 1;
+       	mTurnOffVibrate = cur.getInt(8) == 1;
+        cur.close();
+    }
+    
 }
