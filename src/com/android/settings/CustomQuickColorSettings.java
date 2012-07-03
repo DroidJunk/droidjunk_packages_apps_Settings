@@ -47,9 +47,21 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 	
 	// Battery
     private final String Junk_Battery_Settings = "JUNK_BATTERY_SETTINGS";
+	private final String QK_BATTERY_CIRCLE_COLOR_ONE = "qk_battery_circle_color_one";
+	private final String QK_BATTERY_CIRCLE_COLOR_TWO = "qk_battery_circle_color_two";
+	private final String QK_BATTERY_CIRCLE_COLOR_THREE = "qk_battery_circle_color_three";
+	private final String QK_BATTERY_NUMBER_COLOR_ONE = "qk_battery_number_color_one";
+	private final String QK_BATTERY_NUMBER_COLOR_TWO = "qk_battery_number_color_two";
+	private final String QK_BATTERY_NUMBER_COLOR_THREE = "qk_battery_number_color_three";
 	private final String QK_BATTERY_LEVEL_COLOR_ONE = "qk_battery_levels_color_one";
 	private final String QK_BATTERY_LEVEL_COLOR_TWO = "qk_battery_levels_color_two";
-	private final String QK_BATTERY_LEVEL_COLOR_THREE = "qk_battery_levels_color_three";    
+	private final String QK_BATTERY_LEVEL_COLOR_THREE = "qk_battery_levels_color_three";   
+	private final String BATTERY_CIRCLE_COLOR_ONE = "battery_circle_color_one";
+	private final String BATTERY_CIRCLE_COLOR_TWO = "battery_circle_color_two";
+	private final String BATTERY_CIRCLE_COLOR_THREE = "battery_circle_color_three";
+	private final String BATTERY_NUMBER_COLOR_ONE = "battery_number_color_one";
+	private final String BATTERY_NUMBER_COLOR_TWO = "battery_number_color_two";
+	private final String BATTERY_NUMBER_COLOR_THREE = "battery_number_color_three";
 	private final String BATTERY_LEVEL_COLOR_ONE = "battery_levels_color_one";
 	private final String BATTERY_LEVEL_COLOR_TWO = "battery_levels_color_two";
 	private final String BATTERY_LEVEL_COLOR_THREE = "battery_levels_color_three";    
@@ -155,6 +167,12 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 	private CheckBoxPreference mIconColor;
 	
 	// Battery
+    private CheckBoxPreference mBatteryCircleColorOne;
+    private CheckBoxPreference mBatteryCircleColorTwo;
+    private CheckBoxPreference mBatteryCircleColorThree;
+    private CheckBoxPreference mBatteryNumberColorOne;
+    private CheckBoxPreference mBatteryNumberColorTwo;
+    private CheckBoxPreference mBatteryNumberColorThree;
     private CheckBoxPreference mBatteryLevelColorOne;
     private CheckBoxPreference mBatteryLevelColorTwo;
     private CheckBoxPreference mBatteryLevelColorThree;
@@ -225,6 +243,18 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
 
        	mIconColor = (CheckBoxPreference) findPreference(QK_ICON_COLOR);
 		mIconColor.setOnPreferenceChangeListener(this);	
+		mBatteryCircleColorOne = (CheckBoxPreference) findPreference(QK_BATTERY_CIRCLE_COLOR_ONE);
+		mBatteryCircleColorOne.setOnPreferenceChangeListener(this);
+		mBatteryCircleColorTwo = (CheckBoxPreference) findPreference(QK_BATTERY_CIRCLE_COLOR_TWO);
+		mBatteryCircleColorTwo.setOnPreferenceChangeListener(this);
+		mBatteryCircleColorThree = (CheckBoxPreference) findPreference(QK_BATTERY_CIRCLE_COLOR_THREE);
+		mBatteryCircleColorThree.setOnPreferenceChangeListener(this);
+		mBatteryNumberColorOne = (CheckBoxPreference) findPreference(QK_BATTERY_NUMBER_COLOR_ONE);
+		mBatteryNumberColorOne.setOnPreferenceChangeListener(this);
+		mBatteryNumberColorTwo = (CheckBoxPreference) findPreference(QK_BATTERY_NUMBER_COLOR_TWO);
+		mBatteryNumberColorTwo.setOnPreferenceChangeListener(this);
+		mBatteryNumberColorThree = (CheckBoxPreference) findPreference(QK_BATTERY_NUMBER_COLOR_THREE);
+		mBatteryNumberColorThree.setOnPreferenceChangeListener(this);
 		mDepletedLevelColorOne = (CheckBoxPreference) findPreference(QK_DEPLETED_LEVEL_COLOR_ONE);
 		mDepletedLevelColorOne.setOnPreferenceChangeListener(this);
 		mDepletedLevelColorTwo = (CheckBoxPreference) findPreference(QK_DEPLETED_LEVEL_COLOR_TWO);
@@ -349,7 +379,91 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
   	   	   	getActivity().sendBroadcast(i);
   	   	   	i = null;
   		}
+ 
+  		if (mBatteryCircleColorOne.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(BATTERY_CIRCLE_COLOR_ONE, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_CIRCLE_COLOR_ONE, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+  		} 		
+
+  		if (mBatteryCircleColorTwo.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(BATTERY_CIRCLE_COLOR_TWO, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_CIRCLE_COLOR_TWO, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+  		} 		
+
+  		if (mBatteryCircleColorThree.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(BATTERY_CIRCLE_COLOR_THREE, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_CIRCLE_COLOR_THREE, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+  		} 		
   		
+  		
+  		if (mBatteryNumberColorOne.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(BATTERY_NUMBER_COLOR_ONE, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_NUMBER_COLOR_ONE, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+  		} 		  		
+
+  		if (mBatteryNumberColorTwo.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(BATTERY_NUMBER_COLOR_TWO, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_NUMBER_COLOR_TWO, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+  		} 		  		
+
+  		if (mBatteryNumberColorThree.isChecked()) {
+  			
+        	sharedPref = prefMgr.getSharedPreferences();
+        	SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(BATTERY_NUMBER_COLOR_THREE, (Integer) objValue);
+            editor.commit();
+  			
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_NUMBER_COLOR_THREE, (Integer) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+  		} 		  		
   		
   		if (mDepletedLevelColorOne.isChecked()) {
   			
@@ -952,7 +1066,13 @@ public class CustomQuickColorSettings extends SettingsPreferenceFragment impleme
     private void clearCheckMarks() {
     	
        	mIconColor.setChecked(false);
-		mDepletedLevelColorOne.setChecked(false);
+       	mBatteryCircleColorOne.setChecked(false);
+       	mBatteryCircleColorTwo.setChecked(false);
+       	mBatteryCircleColorThree.setChecked(false);
+       	mBatteryNumberColorOne.setChecked(false);
+       	mBatteryNumberColorTwo.setChecked(false);
+       	mBatteryNumberColorThree.setChecked(false);
+       	mDepletedLevelColorOne.setChecked(false);
 		mDepletedLevelColorTwo.setChecked(false);
 		mDepletedLevelColorThree.setChecked(false);
 		mBatteryLevelColorOne.setChecked(false);

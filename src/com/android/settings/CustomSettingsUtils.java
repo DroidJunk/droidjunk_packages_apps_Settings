@@ -55,6 +55,15 @@ public class CustomSettingsUtils {
 
     private final static String Junk_Battery_Settings = "JUNK_BATTERY_SETTINGS";	
 	private final static String BATTERY_ICONS = "battery_icon_num";
+	private final static String BATTERY_SHOW_CIRCLE = "battery_show_circle";
+	private final static String BATTERY_SHOW_SQUARE = "battery_show_square";
+	private final static String BATTERY_SHOW_NUMBER = "battery_show_number";
+	private final static String BATTERY_CIRCLE_COLOR_ONE = "battery_circle_color_one";
+	private final static String BATTERY_CIRCLE_COLOR_TWO = "battery_circle_color_two";
+	private final static String BATTERY_CIRCLE_COLOR_THREE = "battery_circle_color_three";
+	private final static String BATTERY_NUMBER_COLOR_ONE = "battery_number_color_one";
+	private final static String BATTERY_NUMBER_COLOR_TWO = "battery_number_color_two";
+	private final static String BATTERY_NUMBER_COLOR_THREE = "battery_number_color_three";
 	private final static String BATTERY_BAR_BOTTOM = "battery_bar_bottom";
 	private final static String BATTERY_BAR_RIGHT = "battery_bar_right";
 	private final static String BATTERY_BAR_WIDTH = "battery_bar_width";
@@ -135,6 +144,9 @@ public class CustomSettingsUtils {
     private static boolean showSearchButton, showLeftMenuButton, showLeftMenuButtonLand;
     private static boolean showRightMenuButton, showRightMenuButtonLand, showSearchButtonLand;
     private static boolean showTopMenuButtonLand, showBotMenuButtonLand;
+    private static boolean showBatCircle, showBatNumber, showBatSquare;
+    private static int circleLevelOneColor, circleLevelTwoColor, circleLevelThreeColor;
+    private static int numberLevelOneColor, numberLevelTwoColor, numberLevelThreeColor;
     private static int dateBarColor, shadeColor, gripColor, carrierBarColor, notifIconColor, notifIconBgColor;
     private static int notifTextColor, notifTextBgColor, navBarColor, navBarButtonColor, navBarGlowColor, navBarAnim;
     private static int batteryBarWidth, batteryLevelOne, batteryLevelOneColor;
@@ -156,6 +168,15 @@ public class CustomSettingsUtils {
     public static void GetSettings(SharedPreferences prefMgr) {
   
     	batteryIconNum = prefMgr.getString(BATTERY_ICONS, "0");
+    	showBatCircle = prefMgr.getBoolean(BATTERY_SHOW_CIRCLE, false);
+    	showBatNumber = prefMgr.getBoolean(BATTERY_SHOW_NUMBER, false);
+    	showBatSquare = prefMgr.getBoolean(BATTERY_SHOW_SQUARE, false);
+    	circleLevelOneColor = prefMgr.getInt(BATTERY_CIRCLE_COLOR_ONE, 0xff3fa2c7);
+    	circleLevelTwoColor = prefMgr.getInt(BATTERY_CIRCLE_COLOR_TWO, 0xffff9000);
+    	circleLevelThreeColor = prefMgr.getInt(BATTERY_CIRCLE_COLOR_THREE, 0xffff0000);    	
+    	numberLevelOneColor = prefMgr.getInt(BATTERY_NUMBER_COLOR_ONE, 0xff3fa2c7);
+    	numberLevelTwoColor = prefMgr.getInt(BATTERY_NUMBER_COLOR_TWO, 0xffff9000);
+    	numberLevelThreeColor = prefMgr.getInt(BATTERY_NUMBER_COLOR_THREE, 0xffff0000);    	
     	batteryBarBottom = prefMgr.getBoolean(BATTERY_BAR_BOTTOM, false);
     	batteryBarRight = prefMgr.getBoolean(BATTERY_BAR_RIGHT, false);
     	batteryBarWidth = prefMgr.getInt(BATTERY_BAR_WIDTH, 5);
@@ -256,6 +277,15 @@ public class CustomSettingsUtils {
     	SharedPreferences.Editor editor = prefMgr.edit();
     	
     	editor.putString(BATTERY_ICONS, batteryIconNum);
+    	editor.putBoolean(BATTERY_SHOW_CIRCLE, showBatCircle);
+    	editor.putBoolean(BATTERY_SHOW_NUMBER, showBatNumber);
+    	editor.putBoolean(BATTERY_SHOW_SQUARE, showBatSquare);
+    	editor.putInt(BATTERY_CIRCLE_COLOR_ONE, circleLevelOneColor);
+    	editor.putInt(BATTERY_CIRCLE_COLOR_TWO, circleLevelTwoColor);
+    	editor.putInt(BATTERY_CIRCLE_COLOR_THREE, circleLevelThreeColor);
+    	editor.putInt(BATTERY_NUMBER_COLOR_ONE, numberLevelOneColor);
+    	editor.putInt(BATTERY_NUMBER_COLOR_TWO, numberLevelTwoColor);
+    	editor.putInt(BATTERY_NUMBER_COLOR_THREE, numberLevelThreeColor);
     	editor.putBoolean(BATTERY_BAR_BOTTOM, batteryBarBottom);
     	editor.putBoolean(BATTERY_BAR_RIGHT, batteryBarRight);
     	editor.putInt(BATTERY_BAR_WIDTH, batteryBarWidth);
@@ -382,6 +412,59 @@ public class CustomSettingsUtils {
            	   	context.sendBroadcast(i);
            	   	i = null; 
         	}
+        
+    	i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_SHOW_CIRCLE, showBatCircle);
+        context.sendBroadcast(i);
+        i = null;
+ 
+    	i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_SHOW_SQUARE, showBatSquare);
+        context.sendBroadcast(i);
+        
+        i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_SHOW_NUMBER, showBatNumber);
+        context.sendBroadcast(i);
+        i = null;
+        
+    	i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_CIRCLE_COLOR_ONE, circleLevelOneColor);
+        context.sendBroadcast(i);
+        i = null;
+        
+    	i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_CIRCLE_COLOR_TWO, circleLevelTwoColor);
+        context.sendBroadcast(i);
+        i = null;
+        
+    	i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_CIRCLE_COLOR_THREE, circleLevelThreeColor);
+        context.sendBroadcast(i);
+        i = null;        
+        
+    	i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_NUMBER_COLOR_ONE, numberLevelOneColor);
+        context.sendBroadcast(i);
+        i = null;        
+
+    	i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_NUMBER_COLOR_TWO, numberLevelTwoColor);
+        context.sendBroadcast(i);
+        i = null;        
+
+    	i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_NUMBER_COLOR_THREE, numberLevelThreeColor);
+        context.sendBroadcast(i);
+        i = null;        
         
        	i = new Intent();
         i.setAction(Junk_Battery_Settings);

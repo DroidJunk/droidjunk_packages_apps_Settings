@@ -19,7 +19,7 @@
 	>
 
     <PreferenceCategory
-		android:title="B A T T E R Y   A N D   S I G N A L   I C O N S"
+		android:title="S I G N A L   I C O N S"
 		android:key="quickcolor_icons">
 
 		<ColorPickerPreference
@@ -29,31 +29,12 @@
 			android:defaultValue="#ff3fa2c7" 
 			alphaSlider="false" /> 			
 
-		<ColorPickerPreference
-			android:layout="?android:attr/preferenceLayoutChild" 
-			android:key="depleted_levels_color_one"
-			android:title="Depleted Level One Color"
-			android:summary="Color assigned from Max Level One down to 0"
-			android:defaultValue="#ff800000" 
-			alphaSlider="false" />
-
-		<ColorPickerPreference
-			android:layout="?android:attr/preferenceLayoutChild" 
-			android:key="depleted_levels_color_two"
-			android:title="Depleted Level Two Color"
-			android:summary="Color assigned from Max Level Two down to Max Level One"
-			android:defaultValue="#ffba6900" 
-			alphaSlider="false" />	
+    </PreferenceCategory>		
 		
-		<ColorPickerPreference
-			android:layout="?android:attr/preferenceLayoutChild" 
-			android:key="depleted_levels_color_three"
-			android:title="Depleted Level Three Color"
-			android:summary="Color assigned from 100 down to Max Level Two"
-			android:defaultValue="#ff296c85" 
-			alphaSlider="false" />		
-				
-						
+    <PreferenceCategory
+		android:title="B A T T E R Y   I C O N S"
+		android:key="quickcolor_battery">		
+
 		<ColorPickerPreference
 			android:layout="?android:attr/preferenceLayoutChild" 
 			android:key="battery_levels_color_one"
@@ -75,10 +56,91 @@
 			android:key="battery_levels_color_three"
 			android:title="Battery Level Three Color"
 			android:summary="Color for Min Level Three"
-			android:defaultValue="#ff3792b4" 
-			alphaSlider="false" />				
+			android:defaultValue="#ff3fa2c7" 
+			alphaSlider="false" />			        
+        		
+		<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild" 
+			android:key="depleted_levels_color_one"
+			android:title="Depleted Level One Color"
+			android:summary="Color assigned from Max Level One down to 0"
+			android:defaultValue="#ff800000" 
+			alphaSlider="false" />
+		
+		<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild" 
+			android:key="depleted_levels_color_two"
+			android:title="Depleted Level Two Color"
+			android:summary="Color assigned from Max Level Two down to Max Level One"
+			android:defaultValue="#ffba6900" 
+			alphaSlider="false" />	
+		
+		<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild" 
+			android:key="depleted_levels_color_three"
+			android:title="Depleted Level Three Color"
+			android:summary="Color assigned from 100 down to Max Level Two"
+			android:defaultValue="#ff296c85" 
+			alphaSlider="false" />		
+				
+						
+	
 			
-    </PreferenceCategory>
+    </PreferenceCategory>        
+        
+    <PreferenceCategory
+		android:title="B A T T E R Y   E X T R A S"
+		android:key="quickcolor_battery_extras">        
+        
+		<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild" 
+			android:key="battery_circle_color_one"
+			android:title="Circle/Square Color Level One"
+			android:summary="Color of the battery circle or square"
+			android:defaultValue="#ffff0000" 
+			alphaSlider="true" />	
+			
+		<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild" 
+			android:key="battery_circle_color_two"
+			android:title="Circle/Square Color Level Two"
+			android:summary="Color of the battery circle or square"
+			android:defaultValue="#ffff9000" 
+			alphaSlider="true" />		
+			
+		<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild" 
+			android:key="battery_circle_color_three"
+			android:title="Circle/Square Color Level Three"
+			android:summary="Color of the battery circle or square"
+			android:defaultValue="#ff3fa2c7" 
+			alphaSlider="true" />				
+		
+		<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild" 
+			android:key="battery_number_color_one"
+			android:title="Number Color Level One"
+			android:summary="Color of the battery number"
+			android:defaultValue="#ffff0000" 
+			alphaSlider="true" />	
+
+		<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild" 
+			android:key="battery_number_color_two"
+			android:title="Number Color Level Two"
+			android:summary="Color of the battery number"
+			android:defaultValue="#ffff9000" 
+			alphaSlider="true" />	
+
+		<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild" 
+			android:key="battery_number_color_three"
+			android:title="Number Color Level Three"
+			android:summary="Color of the battery number"
+			android:defaultValue="#ff3fa2c7" 
+			alphaSlider="true" />	
+
+    </PreferenceCategory>      						
 
  
 

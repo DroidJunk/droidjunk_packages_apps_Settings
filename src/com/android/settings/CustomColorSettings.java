@@ -44,6 +44,13 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 	
 	// Battery
     private final String Junk_Battery_Settings = "JUNK_BATTERY_SETTINGS";
+	private final String BATTERY_CIRCLE_COLOR_ONE = "battery_circle_color_one";
+	private final String BATTERY_CIRCLE_COLOR_TWO = "battery_circle_color_two";
+	private final String BATTERY_CIRCLE_COLOR_THREE = "battery_circle_color_three";
+	private final String BATTERY_NUMBER_COLOR_ONE = "battery_number_color_one";
+	private final String BATTERY_NUMBER_COLOR_TWO = "battery_number_color_two";
+	private final String BATTERY_NUMBER_COLOR_THREE = "battery_number_color_three";
+    
 	private final String BATTERY_LEVEL_COLOR_ONE = "battery_levels_color_one";
 	private final String BATTERY_LEVEL_COLOR_TWO = "battery_levels_color_two";
 	private final String BATTERY_LEVEL_COLOR_THREE = "battery_levels_color_three";    
@@ -105,6 +112,13 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 
 	private Preference mIconColor;
 	
+    private Preference mBatteryCircleColorOne;
+    private Preference mBatteryCircleColorTwo;
+    private Preference mBatteryCircleColorThree;
+    private Preference mBatteryNumberColorOne;
+    private Preference mBatteryNumberColorTwo;
+    private Preference mBatteryNumberColorThree;
+    
     private Preference mBatteryLevelColorOne;
     private Preference mBatteryLevelColorTwo;
     private Preference mBatteryLevelColorThree;
@@ -170,6 +184,20 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
        	
         mIconColor = (Preference) findPreference(ICON_COLOR);
 		mIconColor.setOnPreferenceChangeListener(this);	
+		mBatteryCircleColorOne = (Preference) findPreference(BATTERY_CIRCLE_COLOR_ONE);
+		mBatteryCircleColorOne.setOnPreferenceChangeListener(this);
+		mBatteryCircleColorTwo = (Preference) findPreference(BATTERY_CIRCLE_COLOR_TWO);
+		mBatteryCircleColorTwo.setOnPreferenceChangeListener(this);
+		mBatteryCircleColorThree = (Preference) findPreference(BATTERY_CIRCLE_COLOR_THREE);
+		mBatteryCircleColorThree.setOnPreferenceChangeListener(this);
+
+		mBatteryNumberColorOne = (Preference) findPreference(BATTERY_NUMBER_COLOR_ONE);
+		mBatteryNumberColorOne.setOnPreferenceChangeListener(this);
+		mBatteryNumberColorTwo = (Preference) findPreference(BATTERY_NUMBER_COLOR_TWO);
+		mBatteryNumberColorTwo.setOnPreferenceChangeListener(this);
+		mBatteryNumberColorThree = (Preference) findPreference(BATTERY_NUMBER_COLOR_THREE);
+		mBatteryNumberColorThree.setOnPreferenceChangeListener(this);
+
 		mDepletedLevelColorOne = (Preference) findPreference(DEPLETED_LEVEL_COLOR_ONE);
 		mDepletedLevelColorOne.setOnPreferenceChangeListener(this);
 		mDepletedLevelColorTwo = (Preference) findPreference(DEPLETED_LEVEL_COLOR_TWO);
@@ -290,7 +318,48 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
    	   	i.putExtra(ICON_COLOR, (Integer) objValue);
    	   	getActivity().sendBroadcast(i);
    	   	i = null;
-   	   	
+  	} else if (BATTERY_CIRCLE_COLOR_ONE.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_CIRCLE_COLOR_ONE, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+  	} else if (BATTERY_CIRCLE_COLOR_TWO.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_CIRCLE_COLOR_TWO, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;
+        
+  	} else if (BATTERY_CIRCLE_COLOR_THREE.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_CIRCLE_COLOR_THREE, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;        
+        
+  	} else if (BATTERY_NUMBER_COLOR_ONE.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_NUMBER_COLOR_ONE, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;        
+
+  	} else if (BATTERY_NUMBER_COLOR_TWO.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_NUMBER_COLOR_TWO, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;        
+
+  	} else if (BATTERY_NUMBER_COLOR_THREE.equals(key)) {
+    	Intent i = new Intent();
+        i.setAction(Junk_Battery_Settings);
+        i.putExtra(BATTERY_NUMBER_COLOR_THREE, (Integer) objValue);
+        getActivity().sendBroadcast(i);
+        i = null;        
+        
   	} else if (DEPLETED_LEVEL_COLOR_ONE.equals(key)) {
     	Intent i = new Intent();
         i.setAction(Junk_Battery_Settings);

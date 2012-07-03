@@ -189,10 +189,11 @@ public class CustomJunk extends Fragment {
 		}// Assets
 
         prefMgr = getActivity().getBaseContext().getSharedPreferences("Junk_Settings", Context.MODE_WORLD_READABLE);
+ 
         
         // Keeping these values as strings for backward compatibility
         BatteryIconValue = Integer.valueOf(prefMgr.getString(BATTERY_ICONS, "0"));
-        if (BatteryIconValue == 4) {
+        if (BatteryIconValue == 6) {
    			mBatterySettings.setEnabled(false);
    			mChargingSettings.setEnabled(false);
    		} else if (BatteryIconValue == 0) {
@@ -401,7 +402,7 @@ public class CustomJunk extends Fragment {
 			public void onClick(View arg0) {
 			    Intent i = new Intent();
 			    i.setAction("android.settings.CUSTOM_COLOR_SETTINGS");
-			    i.putExtra("junk_color_rowid", 8);
+			    i.putExtra("junk_color_rowid", 16);
 		        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		        getActivity().getBaseContext().startActivity(i);
 		        i = null;
@@ -415,7 +416,7 @@ public class CustomJunk extends Fragment {
 			public void onClick(View arg0) {
 			    Intent i = new Intent();
 			    i.setAction("android.settings.CUSTOM_COLOR_SETTINGS");
-			    i.putExtra("junk_color_rowid", 16);
+			    i.putExtra("junk_color_rowid", 24);
 		        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		        getActivity().getBaseContext().startActivity(i);
 		        i = null;
@@ -428,7 +429,7 @@ public class CustomJunk extends Fragment {
 			public void onClick(View arg0) {
 			    Intent i = new Intent();
 			    i.setAction("android.settings.CUSTOM_COLOR_SETTINGS");
-			    i.putExtra("junk_color_rowid", 18);
+			    i.putExtra("junk_color_rowid", 26);
 		        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		        getActivity().getBaseContext().startActivity(i);
 		        i = null;
@@ -441,7 +442,7 @@ public class CustomJunk extends Fragment {
 			public void onClick(View arg0) {
 			    Intent i = new Intent();
 			    i.setAction("android.settings.CUSTOM_COLOR_SETTINGS");
-			    i.putExtra("junk_color_rowid", 34);
+			    i.putExtra("junk_color_rowid", 42);
 		        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		        getActivity().getBaseContext().startActivity(i);
 		        i = null;
@@ -454,7 +455,7 @@ public class CustomJunk extends Fragment {
 			public void onClick(View arg0) {
 			    Intent i = new Intent();
 			    i.setAction("android.settings.CUSTOM_COLOR_SETTINGS");
-			    i.putExtra("junk_color_rowid", 12);
+			    i.putExtra("junk_color_rowid", 20);
 		        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		        getActivity().getBaseContext().startActivity(i);
 		        i = null;
@@ -847,7 +848,7 @@ public class CustomJunk extends Fragment {
 			    	editor.putString(BATTERY_ICONS, String.valueOf(BatteryIconValue));
 			    	editor.commit();
 			    	resendBatteryIntents();
-		  			if (BatteryIconValue == 4) {
+		  			if (BatteryIconValue == 6) {
 		   				mBatterySettings.setEnabled(false);
 		   				mChargingSettings.setEnabled(false);
 		   			} else if (BatteryIconValue == 0) {

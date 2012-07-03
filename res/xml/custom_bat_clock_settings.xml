@@ -4,12 +4,19 @@
     android:title="Stock Battery Settings"
     android:key="stock_bat_settings"
 	 >
+   
     
-  
     <PreferenceCategory
 		android:title="E X T R A S"
 		android:key="battery_bars">    
     
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_show_circle"
+		android:summaryOn="Circle is on"
+		android:summaryOff="Circle is off"
+		android:title="Show Circle" 
+		android:defaultValue="false"	/>	        
 	
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
@@ -21,6 +28,7 @@
     
     </PreferenceCategory>	    
     
+  
     <PreferenceCategory
 		android:title="D E P L E T E D   L E V E L S"
 		android:key="depleted_color_ranges"

@@ -5,12 +5,32 @@
     android:key="number_junk_settings"
 	 >
 
- 
-    
+    <PreferenceCategory
+		android:title="E X T R A S"
+		android:key="battery_bars">
+
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_show_circle"
+		android:summaryOn="Circle is on"
+		android:summaryOff="Circle is off"
+		android:title="Show Circle" 
+		android:defaultValue="false"	/>	       
+
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_show_square"
+		android:summaryOn="Square is on"
+		android:summaryOff="Square is off"
+		android:title="Show Square" 
+		android:defaultValue="false"	/>	       
+
+    </PreferenceCategory>
+	
     <PreferenceCategory
 		android:title="B A T T E R Y   B A R S"
 		android:key="battery_bars">
-		    
+
    	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="battery_bar_bottom"

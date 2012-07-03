@@ -45,16 +45,28 @@ public class CustomBatterySettings extends SettingsPreferenceFragment implements
 	
 	private final String DEPLETED_LEVEL_ONE = "depleted_levels_one";
 	private final String DEPLETED_LEVEL_TWO = "depleted_levels_two";
+
+	private final String BATTERY_SHOW_CIRCLE = "battery_show_circle";
+	private final String BATTERY_SHOW_SQUARE = "battery_show_square";
+	private final String BATTERY_SHOW_NUMBER = "battery_show_number";
+	
 	
 	private final int BATTERY_STOCK = 0;
     private final int BATTERY_NUMBER = 1;
     private final int BATTERY_CIRCLE = 2;
     private final int BATTERY_PIE = 3;
-    private final int BATTERY_NONE = 4;
+    private final int BATTERY_THINKING_MAN = 4;
+    private final int BATTERY_THE_DOT = 5;
+    private final int BATTERY_NONE = 6;
 
 	private PreferenceManager prefMgr;
 	private SharedPreferences sharedPref;
 	private int mBatteryIconValue = 0;
+	
+	private CheckBoxPreference mBatteryShowCircle;
+	private CheckBoxPreference mBatteryShowSquare;
+	private CheckBoxPreference mBatteryShowNumber;
+	
 	private CheckBoxPreference mBatteryBarBottom;
 	private CheckBoxPreference mBatteryBarRight;
 	
@@ -129,6 +141,10 @@ public class CustomBatterySettings extends SettingsPreferenceFragment implements
         case BATTERY_NUMBER:
         	addPreferencesFromResource(R.xml.custom_bat_number_settings);
     		
+            mBatteryShowCircle = (CheckBoxPreference) findPreference(BATTERY_SHOW_CIRCLE);
+    		mBatteryShowCircle.setOnPreferenceChangeListener(this);
+    		mBatteryShowSquare = (CheckBoxPreference) findPreference(BATTERY_SHOW_SQUARE);
+    		mBatteryShowSquare.setOnPreferenceChangeListener(this);
             mBatteryBarBottom = (CheckBoxPreference) findPreference(BATTERY_BAR_BOTTOM);
     		mBatteryBarBottom.setOnPreferenceChangeListener(this);
             mBatteryBarRight = (CheckBoxPreference) findPreference(BATTERY_BAR_RIGHT);
@@ -167,6 +183,9 @@ public class CustomBatterySettings extends SettingsPreferenceFragment implements
 
         case BATTERY_CIRCLE:
         	addPreferencesFromResource(R.xml.custom_bat_circle_settings);
+ 
+            mBatteryShowNumber = (CheckBoxPreference) findPreference(BATTERY_SHOW_NUMBER);
+    		mBatteryShowNumber.setOnPreferenceChangeListener(this);
         	
     		mBatteryLevelOne = (DJSeekBarPreference) findPreference(BATTERY_LEVEL_ONE);
        		mBatteryLevelOne.setOnPreferenceChangeListener(this);
@@ -196,6 +215,45 @@ public class CustomBatterySettings extends SettingsPreferenceFragment implements
 
         case BATTERY_PIE:
         	addPreferencesFromResource(R.xml.custom_bat_circle_settings);
+
+            mBatteryShowNumber = (CheckBoxPreference) findPreference(BATTERY_SHOW_NUMBER);
+    		mBatteryShowNumber.setOnPreferenceChangeListener(this);
+    		
+    		mBatteryLevelOne = (DJSeekBarPreference) findPreference(BATTERY_LEVEL_ONE);
+       		mBatteryLevelOne.setOnPreferenceChangeListener(this);
+    		mBatteryLevelOne.setMax(100);
+    		mBatteryLevelOne.setMin(0);
+    		mBatteryLevelOne.setProgress(batLevelOne);
+ 
+    		mBatteryLevelTwo = (DJSeekBarPreference) findPreference(BATTERY_LEVEL_TWO);
+    		mBatteryLevelTwo.setOnPreferenceChangeListener(this);
+    		mBatteryLevelTwo.setMax(100);
+    		mBatteryLevelTwo.setMin(0);
+    		mBatteryLevelTwo.setProgress(batLevelTwo);
+
+    		
+    		mDepletedLevelOne = (DJSeekBarPreference) findPreference(DEPLETED_LEVEL_ONE);
+    		mDepletedLevelOne.setOnPreferenceChangeListener(this);
+    		mDepletedLevelOne.setMax(100);
+    		mDepletedLevelOne.setMin(0);
+    		mDepletedLevelOne.setProgress(depletedLevelOne);
+
+    		mDepletedLevelTwo = (DJSeekBarPreference) findPreference(DEPLETED_LEVEL_TWO);
+    		mDepletedLevelTwo.setOnPreferenceChangeListener(this);
+    		mDepletedLevelTwo.setMax(100);
+    		mDepletedLevelTwo.setMin(0);
+    		mDepletedLevelTwo.setProgress(depletedLevelTwo);
+            break;  
+            
+        case BATTERY_THINKING_MAN:
+        	addPreferencesFromResource(R.xml.custom_bat_clock_settings);
+
+            mBatteryShowCircle = (CheckBoxPreference) findPreference(BATTERY_SHOW_CIRCLE);
+    		mBatteryShowCircle.setOnPreferenceChangeListener(this);
+
+            mBatteryShowNumber = (CheckBoxPreference) findPreference(BATTERY_SHOW_NUMBER);
+    		mBatteryShowNumber.setOnPreferenceChangeListener(this);
+    		
         	
     		mBatteryLevelOne = (DJSeekBarPreference) findPreference(BATTERY_LEVEL_ONE);
        		mBatteryLevelOne.setOnPreferenceChangeListener(this);
@@ -221,7 +279,44 @@ public class CustomBatterySettings extends SettingsPreferenceFragment implements
     		mDepletedLevelTwo.setMax(100);
     		mDepletedLevelTwo.setMin(0);
     		mDepletedLevelTwo.setProgress(depletedLevelTwo);
-            break;            
+            break;
+            
+            
+        case BATTERY_THE_DOT:
+        	addPreferencesFromResource(R.xml.custom_bat_pointer_settings);
+
+            mBatteryShowCircle = (CheckBoxPreference) findPreference(BATTERY_SHOW_CIRCLE);
+    		mBatteryShowCircle.setOnPreferenceChangeListener(this);
+    		
+            mBatteryShowNumber = (CheckBoxPreference) findPreference(BATTERY_SHOW_NUMBER);
+    		mBatteryShowNumber.setOnPreferenceChangeListener(this);
+        	
+    		mBatteryLevelOne = (DJSeekBarPreference) findPreference(BATTERY_LEVEL_ONE);
+       		mBatteryLevelOne.setOnPreferenceChangeListener(this);
+    		mBatteryLevelOne.setMax(100);
+    		mBatteryLevelOne.setMin(0);
+    		mBatteryLevelOne.setProgress(batLevelOne);
+ 
+    		mBatteryLevelTwo = (DJSeekBarPreference) findPreference(BATTERY_LEVEL_TWO);
+    		mBatteryLevelTwo.setOnPreferenceChangeListener(this);
+    		mBatteryLevelTwo.setMax(100);
+    		mBatteryLevelTwo.setMin(0);
+    		mBatteryLevelTwo.setProgress(batLevelTwo);
+
+    		
+    		mDepletedLevelOne = (DJSeekBarPreference) findPreference(DEPLETED_LEVEL_ONE);
+    		mDepletedLevelOne.setOnPreferenceChangeListener(this);
+    		mDepletedLevelOne.setMax(100);
+    		mDepletedLevelOne.setMin(0);
+    		mDepletedLevelOne.setProgress(depletedLevelOne);
+
+    		mDepletedLevelTwo = (DJSeekBarPreference) findPreference(DEPLETED_LEVEL_TWO);
+    		mDepletedLevelTwo.setOnPreferenceChangeListener(this);
+    		mDepletedLevelTwo.setMax(100);
+    		mDepletedLevelTwo.setMin(0);
+    		mDepletedLevelTwo.setProgress(depletedLevelTwo);
+            break;
+            
             
         case BATTERY_NONE:
             break;           
@@ -301,6 +396,44 @@ public class CustomBatterySettings extends SettingsPreferenceFragment implements
        	   	i.putExtra(BATTERY_BAR_WIDTH, (Integer) objValue + 1);
        	   	getActivity().sendBroadcast(i);
        	   	i = null;       	   	
+  
+        } else if (BATTERY_SHOW_CIRCLE.equals(key)) {
+            if (mBatteryIconValue == BATTERY_CIRCLE) {
+            	mBatteryShowSquare.setChecked(false);
+            	Intent i = new Intent();
+            	i.setAction(Junk_Battery_Settings);
+            	i.putExtra(BATTERY_SHOW_SQUARE, false);
+            	getActivity().sendBroadcast(i);
+                i = null;
+            }
+        	
+            Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_SHOW_CIRCLE, (Boolean) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
+            
+        } else if (BATTERY_SHOW_SQUARE.equals(key)) {
+            if (mBatteryIconValue == BATTERY_CIRCLE) {
+                mBatteryShowCircle.setChecked(false);
+            	Intent i = new Intent();
+            	i.setAction(Junk_Battery_Settings);
+            	i.putExtra(BATTERY_SHOW_CIRCLE, false);
+            	getActivity().sendBroadcast(i);
+                i = null;
+            }
+
+        	Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_SHOW_SQUARE, (Boolean) objValue);
+            getActivity().sendBroadcast(i);
+            
+        } else if (BATTERY_SHOW_NUMBER.equals(key)) {
+            Intent i = new Intent();
+            i.setAction(Junk_Battery_Settings);
+            i.putExtra(BATTERY_SHOW_NUMBER, (Boolean) objValue);
+            getActivity().sendBroadcast(i);
+            i = null;
        	   	
         } else if (DEPLETED_LEVEL_ONE.equals(key)) {
         	depletedLevelOne = (Integer) objValue;
@@ -355,7 +488,19 @@ public class CustomBatterySettings extends SettingsPreferenceFragment implements
    	   		i.putExtra(BATTERY_ICONS, sharedPref.getString(BATTERY_ICONS, "0"));
    	   		getActivity().sendBroadcast(i);
    	   		i = null;
-    	
+ 
+    		i = new Intent();
+    		i.setAction(Junk_Battery_Settings );
+   	   		i.putExtra(BATTERY_SHOW_CIRCLE, sharedPref.getBoolean(BATTERY_SHOW_CIRCLE, false));
+   	   		getActivity().sendBroadcast(i);
+   	   		i = null;
+
+    		i = new Intent();
+    		i.setAction(Junk_Battery_Settings );
+   	   		i.putExtra(BATTERY_SHOW_NUMBER, sharedPref.getBoolean(BATTERY_SHOW_NUMBER, false));
+   	   		getActivity().sendBroadcast(i);
+   	   		i = null;
+   	   		
         	i = new Intent();
         	i.setAction(Junk_Battery_Settings );
        	   	i.putExtra(BATTERY_BAR_BOTTOM, sharedPref.getBoolean(BATTERY_BAR_BOTTOM, false));

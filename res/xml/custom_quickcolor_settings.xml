@@ -37,7 +37,7 @@
    	
    		
     <PreferenceCategory
-		android:title="B A T T E R Y   A N D   S I G N A L   I C O N S"
+		android:title="S I G N A L   I C O N S"
 		android:key="quickcolor_icons">
 
 	<CheckBoxPreference 
@@ -45,8 +45,35 @@
 		android:key="qk_icon_color"
 		android:title="Signal Icons" 
 		android:defaultValue="false"	/>		
-
+		
+	</PreferenceCategory>
 	
+    
+
+		
+    <PreferenceCategory
+		android:title="B A T T E R Y   I C O N S"
+		android:key="quickcolor_battery_ cons">    
+    	
+        
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_battery_levels_color_one"
+		android:title="Battery Level One" 
+		android:defaultValue="false"	/>		
+		
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_battery_levels_color_two"
+		android:title="Battery Level Two" 
+		android:defaultValue="false"	/>			
+		
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_battery_levels_color_three"
+		android:title="Battery Level Three" 
+		android:defaultValue="false"	/>	        
+        
 	<CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="qk_depleted_levels_color_one"
@@ -64,29 +91,53 @@
 		android:key="qk_depleted_levels_color_three"
 		android:title="Depleted Level Three Color"
 		android:defaultValue="false"	/>	
-	
-				
-	<CheckBoxPreference 
-		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="qk_battery_levels_color_one"
-		android:title="Battery Level One" 
-		android:defaultValue="false"	/>		
-		
-	<CheckBoxPreference 
-		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="qk_battery_levels_color_two"
-		android:title="Battery Level Two" 
-		android:defaultValue="false"	/>			
-		
-	<CheckBoxPreference 
-		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="qk_battery_levels_color_three"
-		android:title="Battery Level Three" 
-		android:defaultValue="false"	/>	
-		
 					
     </PreferenceCategory>
 
+    
+    <PreferenceCategory
+		android:title="B A T T E R Y   E X T R A S"
+		android:key="quickcolor_battery_extras">
+    
+    
+	<CheckBoxPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_battery_circle_color_one"
+		android:title="Circle/Square Color Level One"
+		android:defaultValue="false"	/>
+
+	<CheckBoxPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_battery_circle_color_two"
+		android:title="Circle/Square Color Level Two"
+		android:defaultValue="false"	/>
+	
+	<CheckBoxPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_battery_circle_color_three"
+		android:title="Circle/Square Color Level One"
+		android:defaultValue="false"	/>
+			
+	<CheckBoxPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_battery_number_color_one"
+		android:title="Number Color Level One"
+		android:defaultValue="false"	/>			
+
+	<CheckBoxPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_battery_number_color_two"
+		android:title="Number Color Level Two"
+		android:defaultValue="false"	/>			
+	
+	<CheckBoxPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="qk_battery_number_color_three"
+		android:title="Number Color Level Three"
+		android:defaultValue="false"	/>			
+
+	</PreferenceCategory>	    
+    
     <PreferenceCategory
 		android:title="C H A R G I N G   I C O N"
 		android:key="quickcolor_charging">
