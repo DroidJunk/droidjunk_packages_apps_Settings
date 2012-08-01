@@ -32,6 +32,7 @@ import android.accounts.OnAccountsUpdateListener;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -59,6 +60,8 @@ import android.widget.ListAdapter;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -130,6 +133,68 @@ public class Settings extends PreferenceActivity
         mAuthenticatorHelper.updateAuthDescriptions(this);
         mAuthenticatorHelper.onAccountsUpdated(this, null);
 
+        // Junk
+        
+        File junkBackupDir = new File("/sdcard/.junk/backup/");
+        junkBackupDir.mkdirs();        
+
+        boolean settingsRestored = false;
+        try {
+        	if (!BackupUtils.settingsExist() & BackupUtils.backupExist(
+        			"sdcard/.junk/backup/Junk_Settings.xml")) {
+        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Settings.xml",
+						"data/data/com.android.settings/shared_prefs/Junk_Settings.xml");
+        		Log.v("JUNK: Settings Backup Found: ","Restoring Junk Settings");
+        		settingsRestored = true;
+        	} else {
+        		Log.v("JUNK: Settings Restore: ","Settings exist or there is not a backup");	
+        	}
+        } catch (IOException e) {
+        	Log.e("JUNK: Settings Restore: ","ERROR JUNK SETTINGS");
+        };	
+
+        try {        
+        	if (!BackupUtils.themeOneExist() & BackupUtils.backupExist(
+        			"sdcard/.junk/backup/Junk_Theme_One.xml")) {
+        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Theme_One.xml",
+						"data/data/com.android.settings/shared_prefs/Junk_Theme_One.xml");
+        	}
+        } catch (IOException e) {
+        	Log.e("JUNK: Settings Restore: ","ERROR THEME ONE");
+        };	
+        	
+        try {        
+        	if (!BackupUtils.themeTwoExist() & BackupUtils.backupExist(
+        			"sdcard/.junk/backup/Junk_Theme_Two.xml")) {
+        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Theme_Two.xml",
+						"data/data/com.android.settings/shared_prefs/Junk_Theme_Two.xml");
+        	}
+        } catch (IOException e) {
+        	Log.e("JUNK: Settings Restore: ","ERROR THEME TWO");
+        };	
+
+        try {        
+        	if (!BackupUtils.themeThreeExist() & BackupUtils.backupExist(
+        			"sdcard/.junk/backup/Junk_Theme_Three.xml")) {
+        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Theme_Three.xml",
+						"data/data/com.android.settings/shared_prefs/Junk_Theme_Three.xml");
+        	}
+        } catch (IOException e) {
+        	Log.e("JUNK: Settings Restore: ","ERROR THEME THREE");
+        };
+        
+        if (settingsRestored) {
+            SharedPreferences prefMgr = getBaseContext().getSharedPreferences(
+            		"Junk_Settings", Context.MODE_PRIVATE);
+
+        	CustomSettingsUtils.GetSettings(prefMgr);
+        	CustomSettingsUtils.SendIntents(getBaseContext());
+        	
+        }
+        
+        // End Junk
+        
+        
         getMetaData();
         mInLocalHeaderSwitch = true;
         super.onCreate(savedInstanceState);
@@ -787,4 +852,21 @@ public class Settings extends PreferenceActivity
     public static class AdvancedWifiSettingsActivity extends Settings { /* empty */ }
     public static class TextToSpeechSettingsActivity extends Settings { /* empty */ }
     public static class AndroidBeamSettingsActivity extends Settings { /* empty */ }
+    
+    // Junk
+    public static class CustomJunkSettingsActivity extends Settings { /* empty */ }
+    public static class CustomClockSettingsActivity extends Settings { /* empty */ }
+    public static class CustomBatterySettingsActivity extends Settings { /* empty */ }
+    public static class CustomChargingSettingsActivity extends Settings { /* empty */ }
+    public static class CustomPulldownSettingsActivity extends Settings { /* empty */ }
+    public static class CustomToggleSettingsActivity extends Settings { /* empty */ }
+    public static class CustomArrangeTogglesActivity extends Settings { /* empty */ }
+    public static class CustomNavBarSettingsActivity extends Settings { /* empty */ }
+    public static class CustomQuietTimeSettingsActivity extends Settings { /* empty */ }
+    public static class CustomQTSettingsActivity extends Settings { /* empty */ } /* actual preference */
+    public static class CustomNotifLedSettingsActivity extends Settings { /* empty */ }
+    
+    public static class CustomQuickColorSettingsActivity extends Settings { /* empty */ }
+    public static class CustomColorSettingsActivity extends Settings { /* empty */ }
+    // End Junk
 }

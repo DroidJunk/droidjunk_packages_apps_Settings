@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+	
+<ScrollView  
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:scrollbars="none" 
+	android:layout_width="match_parent" 
+	android:layout_height="fill_parent"
+	 >    
+		
+	<LinearLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical"
+    	android:layout_marginTop="8dp"
+    	android:layout_marginBottom="8dp"
+    	android:layout_marginLeft="4dp"
+    	android:layout_marginRight="4dp"
+    	>
+
+
+	<FrameLayout
+	   	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+	    >    
+		<Button
+       		android:id="@+id/quiet_time"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:text="@string/junk_quiet_time"
+	    	android:layout_gravity="center_vertical" 
+	    	/>    
+
+		<ImageView
+		    android:id="@+id/quiet_time_onoff"
+    	    android:layout_width="24dp"
+    	    android:layout_height="24dp"
+       		android:layout_marginLeft="16dp"
+	    	android:layout_gravity="center_vertical"
+        	android:background="@drawable/junk_off" />
+	    
+	</FrameLayout>	
+
+	<FrameLayout
+	   	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+	    >    
+		<Button
+       		android:id="@+id/quiet_time_use_notif"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:text="@string/junk_quiet_time_notif"
+	    	android:layout_gravity="center_vertical" 
+	    	/>    
+
+		<ImageView
+		    android:id="@+id/quiet_time_notif_onoff"
+    	    android:layout_width="24dp"
+    	    android:layout_height="24dp"
+       		android:layout_marginLeft="16dp"
+	    	android:layout_gravity="center_vertical"
+        	android:background="@drawable/junk_off" />
+	    
+	</FrameLayout>	
+	
+	
+	<FrameLayout
+	   	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+	    >	
+		
+    	<Button
+    		android:id="@+id/all_days"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:text="@string/junk_quiet_time_daily" 
+        	android:layout_marginTop="6dip"
+        	/>
+    
+		<ImageView
+		    android:id="@+id/quiet_time_daily_onoff"
+    	    android:layout_width="24dp"
+    	    android:layout_height="24dp"
+       		android:layout_marginLeft="16dp"
+	    	android:layout_gravity="center_vertical"
+        	android:background="@drawable/junk_off" />
+	    
+	</FrameLayout>	    
+
+
+	<FrameLayout
+	   	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+	    >    
+	
+    	<Button
+    	   	android:id="@+id/sunday"
+    	    android:layout_width="match_parent"
+       		android:layout_height="wrap_content"
+        	android:textSize="16dip" 
+        	android:layout_gravity="center_vertical" 
+        	android:text="@string/junk_quiet_time_sun"
+        	 />
+
+    	<ImageView
+		    android:id="@+id/quiet_time_sunday_onoff"
+    	    android:layout_width="24dp"
+    	    android:layout_height="24dp"
+       		android:layout_marginLeft="16dp"
+	    	android:layout_gravity="center_vertical"
+        	android:background="@drawable/junk_off" />
+	    
+	</FrameLayout>	
+    	
+	<FrameLayout
+	   	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+	    >    
+	
+    	<Button
+    	    android:id="@+id/monday"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:layout_gravity="center_vertical" 
+    	    android:text="@string/junk_quiet_time_mon"
+    	    android:textSize="16dip"
+    	     />
+
+    	<ImageView
+		    android:id="@+id/quiet_time_monday_onoff"
+    	    android:layout_width="24dp"
+    	    android:layout_height="24dp"
+       		android:layout_marginLeft="16dp"
+	    	android:layout_gravity="center_vertical"
+        	android:background="@drawable/junk_off" />
+	    
+	</FrameLayout>	
+    	
+	    
+	<FrameLayout
+	   	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+	    >    
+		    	    
+		<Button
+    	   	android:id="@+id/tuesday"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:textSize="16dip" 
+    	    android:layout_gravity="center_vertical" 
+    	    android:text="@string/junk_quiet_time_tue" 
+			/>
+   
+		<ImageView
+		    android:id="@+id/quiet_time_tuesday_onoff"
+    	    android:layout_width="24dp"
+    	    android:layout_height="24dp"
+       		android:layout_marginLeft="16dp"
+	    	android:layout_gravity="center_vertical"
+        	android:background="@drawable/junk_off" />
+	    
+	</FrameLayout>	
+		
+	    
+	<FrameLayout
+	   	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+	    >    
+		    	    
+    	<Button
+    	   	android:id="@+id/wednesday"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+       		android:textSize="16dip" 
+        	android:layout_gravity="center_vertical" 
+        	android:text="@string/junk_quiet_time_wed" />
+  
+		<ImageView
+		    android:id="@+id/quiet_time_wednesday_onoff"
+    	    android:layout_width="24dp"
+    	    android:layout_height="24dp"
+       		android:layout_marginLeft="16dp"
+	    	android:layout_gravity="center_vertical"
+        	android:background="@drawable/junk_off" />
+	    
+	</FrameLayout>	
+    		
+
+	<FrameLayout
+	   	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+	    >    
+		
+		
+    	<Button
+       		android:id="@+id/thursday"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:textSize="16dip" 
+        	android:layout_gravity="center_vertical" 
+        	android:text="@string/junk_quiet_time_thur" />
+    
+		<ImageView
+		    android:id="@+id/quiet_time_thursday_onoff"
+    	    android:layout_width="24dp"
+    	    android:layout_height="24dp"
+       		android:layout_marginLeft="16dp"
+	    	android:layout_gravity="center_vertical"
+        	android:background="@drawable/junk_off" />
+	    
+	</FrameLayout>	
+    		    
+	<FrameLayout
+	   	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+	    >    
+		    	    
+    	<Button
+       		android:id="@+id/friday"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:textSize="16dip" 
+        	android:layout_gravity="center_vertical" 
+        	android:text="@string/junk_quiet_time_fri" />
+    
+		<ImageView
+		    android:id="@+id/quiet_time_friday_onoff"
+    	    android:layout_width="24dp"
+    	    android:layout_height="24dp"
+       		android:layout_marginLeft="16dp"
+	    	android:layout_gravity="center_vertical"
+        	android:background="@drawable/junk_off" />
+	    
+	</FrameLayout>	
+    	
+
+	<FrameLayout
+	   	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+	    >    
+		    	    
+    	<Button
+    		android:id="@+id/saturday"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:textSize="16dip" 
+        	android:layout_gravity="center_vertical" 
+        	android:text="@string/junk_quiet_time_sat" />
+        
+		<ImageView
+		    android:id="@+id/quiet_time_saturday_onoff"
+    	    android:layout_width="24dp"
+    	    android:layout_height="24dp"
+       		android:layout_marginLeft="16dp"
+	    	android:layout_gravity="center_vertical"
+        	android:background="@drawable/junk_off" />
+	    
+	</FrameLayout>	
+    	
+    
+    </LinearLayout>    
+
+</ScrollView>
