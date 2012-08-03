@@ -20,7 +20,6 @@ package com.android.settings;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.DJSeekBarPreference;
@@ -60,39 +59,30 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 	private final String VOICE_MAIL_LED_OFF_MS = "voice_mail_led_off_ms";
 	
 	private PreferenceManager prefMgr;
-	private SharedPreferences sharedPref;
 
-	private Boolean DefaultLedColorOn;
 	private CheckBoxPreference mDefaultLedColorOn;
 	private Preference mDefaultLedColor;
 	private DJSeekBarPreference mDefaultLedOnMs;
 	private DJSeekBarPreference mDefaultLedOffMs;
 	private CheckBoxPreference mPulseLedScreenOn;
 
-    private Boolean PulseLedScreenOn;
-    
     private CheckBoxPreference mIncomingCallLedOn;
     private Preference mIncomingCallColor;
 	private CheckBoxPreference mIncomingCallPulse;
 	private DJSeekBarPreference mIncomingCallLedOnMs;
 	private DJSeekBarPreference mIncomingCallLedOffMs;
 
-    
-	private Boolean MissedCallLedOn;
 	private CheckBoxPreference mMissedCallLedOn;
     private Preference mMissedCallColor;
 	private CheckBoxPreference mMissedCallPulse;
 	private DJSeekBarPreference mMissedCallLedOnMs;
 	private DJSeekBarPreference mMissedCallLedOffMs;
-	private Boolean MissedCallPulse;
-	
-	private Boolean VoiceMailLedOn;
+
 	private CheckBoxPreference mVoiceMailLedOn;
     private Preference mVoiceMailColor;
 	private CheckBoxPreference mVoiceMailPulse;
 	private DJSeekBarPreference mVoiceMailLedOnMs;
 	private DJSeekBarPreference mVoiceMailLedOffMs;
-	private Boolean VoiceMailPulse;
 	
 	
     /** If there is no setting in the provider, use this. */
