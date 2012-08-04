@@ -76,8 +76,9 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 	private final String BATTERY_LABEL_COLOR = "battery_label_color";
 	private final String TEMP_LABEL_COLOR = "temp_label_color";
 	private final String CARRIER_COLOR = "carrier_color";
-	private final String DATE_COLOR = "date_color";
-	private final String DATE_BAR_COLOR = "date_bar_color";
+	private final String HEADER_BAR_COLOR = "header_bar_color";
+	private final String HEADER_CLOCK_COLOR = "header_clock_color";
+	private final String HEADER_DATE_COLOR = "header_date_color";
 	
 	private final String CLEAR_BUTTON_COLOR = "clear_button_color";
 	private final String CLEAR_BUTTON_TEXT_COLOR = "clear_button_text_color";
@@ -138,8 +139,9 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
     private Preference mCarrierColor;
     private Preference mBatteryColor;
     private Preference mTempColor;
-    private Preference mDateColor;
-    private Preference mDateBarColor;
+    private Preference mHeaderBarColor;
+    private Preference mHeaderClockColor;
+    private Preference mHeaderDateColor;
     private Preference mCloseBarColor;
     private Preference mClearButtonColor;
     private Preference mClearButtonTextColor;
@@ -228,16 +230,18 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 		mBatteryColor.setOnPreferenceChangeListener(this);
 	    mTempColor = (Preference) findPreference(TEMP_LABEL_COLOR);
 		mTempColor.setOnPreferenceChangeListener(this);
-        mDateColor = (Preference) findPreference(DATE_COLOR);
-        mDateBarColor = (Preference) findPreference(DATE_BAR_COLOR);
-		mDateBarColor.setOnPreferenceChangeListener(this);
+        mHeaderBarColor = (Preference) findPreference(HEADER_BAR_COLOR);
+		mHeaderBarColor.setOnPreferenceChangeListener(this);
+        mHeaderClockColor = (Preference) findPreference(HEADER_CLOCK_COLOR);
+		mHeaderClockColor.setOnPreferenceChangeListener(this);
+		mHeaderDateColor = (Preference) findPreference(HEADER_DATE_COLOR);
+		mHeaderDateColor.setOnPreferenceChangeListener(this);
         mCloseBarColor = (Preference) findPreference(PD_HANDLE_COLOR);
 		mCloseBarColor.setOnPreferenceChangeListener(this);
         mClearButtonColor = (Preference) findPreference(CLEAR_BUTTON_COLOR);
 		mClearButtonColor.setOnPreferenceChangeListener(this);
         mClearButtonTextColor = (Preference) findPreference(CLEAR_BUTTON_TEXT_COLOR);
 		mClearButtonTextColor.setOnPreferenceChangeListener(this);
-		mDateColor.setOnPreferenceChangeListener(this);
         mClockColor = (Preference) findPreference(CLOCK_COLOR);
 		mClockColor.setOnPreferenceChangeListener(this);
         mShadeColor = (Preference) findPreference(PD_SHADE_COLOR);
@@ -466,19 +470,26 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
         getActivity().sendBroadcast(i);
         i = null;
         
-    } else if (DATE_COLOR.equals(key)) {
+    } else if (HEADER_BAR_COLOR.equals(key)) {
     	Intent i = new Intent();
     	i.setAction(Junk_Pulldown_Settings );
-    	i.putExtra(DATE_COLOR, (Integer) objValue);
+    	i.putExtra(HEADER_BAR_COLOR, (Integer) objValue);
     	getActivity().sendBroadcast(i);
     	i = null;        
 
-    } else if (DATE_BAR_COLOR.equals(key)) {
+    } else if (HEADER_CLOCK_COLOR.equals(key)) {
     	Intent i = new Intent();
     	i.setAction(Junk_Pulldown_Settings );
-    	i.putExtra(DATE_BAR_COLOR, (Integer) objValue);
+    	i.putExtra(HEADER_CLOCK_COLOR, (Integer) objValue);
     	getActivity().sendBroadcast(i);
-    	i = null;        
+    	i = null;        	
+    	
+    } else if (HEADER_DATE_COLOR.equals(key)) {
+    	Intent i = new Intent();
+    	i.setAction(Junk_Pulldown_Settings );
+    	i.putExtra(HEADER_DATE_COLOR, (Integer) objValue);
+    	getActivity().sendBroadcast(i);
+    	i = null;        	
     	
     } else if (CLOCK_COLOR.equals(key)) {
     	Intent i = new Intent();

@@ -254,23 +254,30 @@
     <PreferenceCategory
 		android:title="S T A T U S B A R   P U L L D O W N"
 		android:key="quickcolor_pulldown">
-   				
-		<ColorPickerPreference
-			android:layout="?android:attr/preferenceLayoutChild"
-			android:key="date_color"
-			android:title="Date Color"
-			android:summary="Color for statusbar date"	
-			android:defaultValue="#ff3792b4" 
-			alphaSlider="false" /> 		
-        
+   		
 	 	<ColorPickerPreference
 			android:layout="?android:attr/preferenceLayoutChild"
-			android:key="date_bar_color"
-			android:title="Date Bar Color"
-			android:summary="Color for the date bar"
-			android:defaultValue="#ffffffff" 	
-			alphaSlider="true" /> 	        
-				
+			android:key="header_bar_color"
+			android:title="Header Bar Color"
+			android:summary="Color for the header bar"
+			android:defaultValue="#ff000000" 	
+			alphaSlider="false" /> 	            
+
+		<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild"
+			android:key="header_clock_color"
+			android:title="Header Clock Color"
+			android:summary="Color for header clock"	
+			android:defaultValue="#ffffffff" 
+			alphaSlider="false" /> 	 	
+	 			
+		<ColorPickerPreference
+			android:layout="?android:attr/preferenceLayoutChild"
+			android:key="header_date_color"
+			android:title="Header Date Color"
+			android:summary="Color for header date"	
+			android:defaultValue="#ffffffff" 
+			alphaSlider="false" /> 		
 		
         <ColorPickerPreference
 			android:layout="?android:attr/preferenceLayoutChild"

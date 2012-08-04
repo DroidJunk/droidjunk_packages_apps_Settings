@@ -17,25 +17,14 @@
 package com.android.settings;
 
 
-
-import java.util.Calendar;
-
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.CheckBoxPreference;
 import android.widget.TimePicker;
-import android.provider.Settings;
-
-
-
-
 
 
 public class CustomQuietSettings extends SettingsPreferenceFragment implements
