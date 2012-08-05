@@ -80,12 +80,9 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 	private final String HEADER_CLOCK_COLOR = "header_clock_color";
 	private final String HEADER_DATE_COLOR = "header_date_color";
 	
-	private final String CLEAR_BUTTON_COLOR = "clear_button_color";
-	private final String CLEAR_BUTTON_TEXT_COLOR = "clear_button_text_color";
+	private final String HEADER_BUTTON_COLOR = "header_button_color";
 	private final String PD_HANDLE_COLOR = "pd_handle_color";
 	private final String PD_SHADE_COLOR = "pd_shade_color";
-	private final String PD_GRIP_COLOR = "pd_grip_color";
-	private final String PD_CARRIER_FRAME_COLOR = "pd_carrier_frame_color";
 	private final String PD_NOTIF_ICON_BG_COLOR = "pd_notif_icon_bg_color";
 	private final String PD_NOTIF_TEXT_COLOR = "pd_notif_text_color";
 	private final String PD_NOTIF_TEXT_BG_COLOR = "pd_notif_text_bg_color";
@@ -143,11 +140,8 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
     private Preference mHeaderClockColor;
     private Preference mHeaderDateColor;
     private Preference mCloseBarColor;
-    private Preference mClearButtonColor;
-    private Preference mClearButtonTextColor;
+    private Preference mHeaderButtonColor;
     private Preference mShadeColor;
-    private Preference mGripColor;
-    private Preference mCarrierFrameColor;
     private Preference mNotifIconBgColor;
     private Preference mNotifTextColor;
     private Preference mNotifTextBgColor;
@@ -238,18 +232,12 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
 		mHeaderDateColor.setOnPreferenceChangeListener(this);
         mCloseBarColor = (Preference) findPreference(PD_HANDLE_COLOR);
 		mCloseBarColor.setOnPreferenceChangeListener(this);
-        mClearButtonColor = (Preference) findPreference(CLEAR_BUTTON_COLOR);
-		mClearButtonColor.setOnPreferenceChangeListener(this);
-        mClearButtonTextColor = (Preference) findPreference(CLEAR_BUTTON_TEXT_COLOR);
-		mClearButtonTextColor.setOnPreferenceChangeListener(this);
+        mHeaderButtonColor = (Preference) findPreference(HEADER_BUTTON_COLOR);
+		mHeaderButtonColor.setOnPreferenceChangeListener(this);
         mClockColor = (Preference) findPreference(CLOCK_COLOR);
 		mClockColor.setOnPreferenceChangeListener(this);
         mShadeColor = (Preference) findPreference(PD_SHADE_COLOR);
 		mShadeColor.setOnPreferenceChangeListener(this);        
-        mGripColor = (Preference) findPreference(PD_GRIP_COLOR);
-		mGripColor.setOnPreferenceChangeListener(this);        
-        mCarrierFrameColor = (Preference) findPreference(PD_CARRIER_FRAME_COLOR);
-		mCarrierFrameColor.setOnPreferenceChangeListener(this);        
         mNotifIconBgColor = (Preference) findPreference(PD_NOTIF_ICON_BG_COLOR);
         mNotifIconBgColor.setOnPreferenceChangeListener(this);        
         mNotifTextColor = (Preference) findPreference(PD_NOTIF_TEXT_COLOR);
@@ -274,9 +262,6 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
         mToggleTextOffColor.setOnPreferenceChangeListener(this);
         mToggleDividerColor = (Preference) findPreference(TOGGLE_DIVIDER_COLOR);
         mToggleDividerColor.setOnPreferenceChangeListener(this);
-        
-        
-
         
     }
 
@@ -591,20 +576,13 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
         getActivity().sendBroadcast(i);
         i = null;
   	
-    } else if (CLEAR_BUTTON_COLOR.equals(key)) {
+    } else if (HEADER_BUTTON_COLOR.equals(key)) {
     	Intent i = new Intent();
     	i.setAction(Junk_Pulldown_Settings );
-    	i.putExtra(CLEAR_BUTTON_COLOR, (Integer) objValue);
+    	i.putExtra(HEADER_BUTTON_COLOR, (Integer) objValue);
     	getActivity().sendBroadcast(i);
     	i = null;      
 
-    } else if (CLEAR_BUTTON_TEXT_COLOR.equals(key)) {
-    	Intent i = new Intent();
-    	i.setAction(Junk_Pulldown_Settings );
-    	i.putExtra(CLEAR_BUTTON_TEXT_COLOR, (Integer) objValue);
-    	getActivity().sendBroadcast(i);
-    	i = null;      	
-    	
     } else if (PD_HANDLE_COLOR.equals(key)) {
     	Intent i = new Intent();
     	i.setAction(Junk_Pulldown_Settings );
@@ -626,20 +604,6 @@ public class CustomColorSettings extends SettingsPreferenceFragment implements
     	i.putExtra(PD_SHADE_COLOR, (Integer) objValue);
     	getActivity().sendBroadcast(i);
     	i = null;         	
-
-    } else if (PD_GRIP_COLOR.equals(key)) {
-    	Intent i = new Intent();
-    	i.setAction(Junk_Pulldown_Settings );
-    	i.putExtra(PD_GRIP_COLOR, (Integer) objValue);
-    	getActivity().sendBroadcast(i);
-    	i = null;           	
-
-    } else if (PD_CARRIER_FRAME_COLOR.equals(key)) {
-    	Intent i = new Intent();
-    	i.setAction(Junk_Pulldown_Settings );
-    	i.putExtra(PD_CARRIER_FRAME_COLOR, (Integer) objValue);
-    	getActivity().sendBroadcast(i);
-    	i = null;           	
 
     } else if (PD_NOTIF_ICON_BG_COLOR.equals(key)) {
     	Intent i = new Intent();

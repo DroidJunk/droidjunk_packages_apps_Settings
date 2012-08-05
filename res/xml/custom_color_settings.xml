@@ -281,20 +281,12 @@
 		
         <ColorPickerPreference
 			android:layout="?android:attr/preferenceLayoutChild"
-			android:key="clear_button_color"
-			android:title="Clear All Button Color"
-			android:summary="Color for clear all button (reboot required)"
-			android:defaultValue="#ff3792b4" 
+			android:key="header_button_color"
+			android:title="Header Buttons Color"
+			android:summary="Color for header buttons"
+			android:defaultValue="#ffffffff" 
 			alphaSlider="false" /> 	
 			
-        <ColorPickerPreference
-			android:layout="?android:attr/preferenceLayoutChild"
-			android:key="clear_button_text_color"
-			android:title="Clear All Button Text Color"
-			android:summary="Color for clear all button text (reboot required)"
-			android:defaultValue="#ff3792b4" 
-			alphaSlider="false" /> 	        
-
 		<ColorPickerPreference
 			android:layout="?android:attr/preferenceLayoutChild"
 			android:key="pd_shade_color"
@@ -313,29 +305,12 @@
 		
 		<ColorPickerPreference
 			android:layout="?android:attr/preferenceLayoutChild"
-			android:key="pd_grip_color"
-			android:title="Pulldown Grip Color"
-			android:summary="Color for statusbar pulldown grip"
-			android:defaultValue="#ff000000" 
-			alphaSlider="true" /> 			
-        
-		<ColorPickerPreference
-			android:layout="?android:attr/preferenceLayoutChild"
 			android:key="carrier_color"
 			android:title="Carrier Text Color"
 			android:summary="Color for the carrier text"
 			android:defaultValue="#ff3792b4" 
 			alphaSlider="false" /> 
 
-		<ColorPickerPreference
-			android:layout="?android:attr/preferenceLayoutChild"
-			android:key="pd_carrier_frame_color"
-			android:title="Carrier Bar Color"
-			android:summary="Color for carrier bar"
-			android:defaultValue="#ff3792b4" 
-			alphaSlider="true" /> 		
-				
-					
 		<ColorPickerPreference
 			android:layout="?android:attr/preferenceLayoutChild"
 			android:key="battery_label_color"
