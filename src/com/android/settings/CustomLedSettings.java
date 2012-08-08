@@ -26,6 +26,7 @@ import android.preference.DJSeekBarPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.util.Log;
 
 
 
@@ -171,8 +172,6 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
         mVoiceMailLedOffMs.setMax(50);
         mVoiceMailLedOffMs.setDefaultValue(prefMgr.getSharedPreferences().getInt(VOICE_MAIL_LED_OFF_MS, 3));
         mVoiceMailLedOffMs.setProgress(prefMgr.getSharedPreferences().getInt(VOICE_MAIL_LED_OFF_MS, 3)); 
-        
-
 		
     }
 
@@ -266,7 +265,6 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
          	i.setAction(Junk_Led_Settings);
          	i.putExtra(MISSED_CALL_LED_ON, (Boolean) objValue);
          	getActivity().sendBroadcast(i);
-         	i = null;
             
         } else if (MISSED_CALL_LED_PULSE.equals(key)) {
          	Intent i = new Intent();
