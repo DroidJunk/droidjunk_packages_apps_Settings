@@ -175,10 +175,6 @@ public class CustomLedSettings extends SettingsPreferenceFragment implements
 		
     }
 
-
-    
-    
-
  
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {

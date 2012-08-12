@@ -38,13 +38,13 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.INetworkManagementService;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserId;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceActivity.Header;
 import android.preference.PreferenceFragment;
 import android.text.TextUtils;
 import android.util.Log;
@@ -53,7 +53,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
@@ -135,7 +134,10 @@ public class Settings extends PreferenceActivity
 
         // Junk
         
-        File junkBackupDir = new File("/sdcard/.junk/backup/");
+        //File junkBackupDir = new File("/sdcard/.junk/backup/");
+        Log.e("***************************** ",String.valueOf(Environment.getDataDirectory()));
+        Log.e("***************************** ",String.valueOf(Environment.getExternalStorageDirectory()));
+        File junkBackupDir = new File(Environment.getExternalStorageDirectory() + "/.junk/backup/");
         junkBackupDir.mkdirs();        
 
         boolean settingsRestored = false;

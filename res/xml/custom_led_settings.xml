@@ -51,16 +51,14 @@
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="default_led_color_on"
    		android:key="default_led_on_ms"
-		android:title="LED On Seconds (in 10ths)"
-		android:summary="Number of seconds LED is on"
+		android:title="LED On Time Adjustment"
 		android:defaultValue="3" />	
 		
 	<DJSeekBarPreference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="default_led_color_on"
    		android:key="default_led_off_ms"
-		android:title="LED Off Seconds (in 10ths)"
-		android:summary="Number of seconds LED is off"
+		android:title="LED Off Time Adjustment"
 		android:defaultValue="3" />
 			
    	</PreferenceCategory>
@@ -95,26 +93,25 @@
 		android:summaryOff="LED will be steady on"
 		android:title="LED Pulse" 
 		android:defaultValue="true"	/>		
-		
 
 	<DJSeekBarPreference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="incoming_call_pulse"
    		android:key="incoming_led_on_ms"
-		android:title="LED On Seconds (in 10ths)"
-		android:summary="Number of seconds LED is on"
+		android:title="LED On Time Adjustment"
 		android:defaultValue="3" />	
 		
 	<DJSeekBarPreference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="incoming_call_pulse"
    		android:key="incoming_led_off_ms"
-		android:title="LED Off Seconds (in 10ths)"
-		android:summary="Number of seconds LED is off"
+		android:title="LED Off Time Adjustment"
 		android:defaultValue="3" />
 
 	</PreferenceCategory>
 
+    
+    
     <PreferenceCategory
 		android:title="M I S S E D   C A L L S"
 		android:key="missed_call_leds">
@@ -126,7 +123,6 @@
 		android:summaryOff="Missed Call LED is off"
 		android:title="Use Missed Call LED" 
 		android:defaultValue="true" />         
-        
         
 	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
@@ -145,13 +141,12 @@
 		android:summaryOff="LED will be steady on"
 		android:title="LED Pulse" 
 		android:defaultValue="true"	/>		
-		
 
 	<DJSeekBarPreference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="missed_call_pulse"
    		android:key="missed_call_led_on_ms"
-		android:title="LED On Seconds (in 10ths)"
+		android:title="LED On Time Adjustment"
 		android:summary="Number of seconds LED is on"
 		android:defaultValue="3" />	
 		
@@ -159,12 +154,13 @@
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="missed_call_pulse"
    		android:key="missed_call_led_off_ms"
-		android:title="LED Off Seconds (in 10ths)"
-		android:summary="Number of seconds LED is off"
+		android:title="LED Off Time Adjustment"
 		android:defaultValue="3" />
 
   	</PreferenceCategory>
   	
+    
+    
     <PreferenceCategory
 		android:title="V O I C E   M A I L"
 		android:key="voice_mail_leds">
@@ -176,8 +172,6 @@
 		android:summaryOff="Voice Mail LED is off"
 		android:title="Use Voice Mail LED" 
 		android:defaultValue="true" />         
-        
-        
         
 	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
@@ -196,33 +190,22 @@
 		android:summaryOff="LED will be steady on"
 		android:title="Pulse LED" 
 		android:defaultValue="true"	/>		
-		
 
 	<DJSeekBarPreference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="voice_mail_pulse"
    		android:key="voice_mail_led_on_ms"
-		android:title="LED On Seconds (in 10ths)"
-		android:summary="Number of seconds LED is on"
+		android:title="LED On Time Adjustment"
 		android:defaultValue="3" />	
 		
 	<DJSeekBarPreference	
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:dependency="voice_mail_pulse"
    		android:key="voice_mail_led_off_ms"
-		android:title="LED Off Seconds (in 10ths)"
-		android:summary="Number of seconds LED is off"
+		android:title="LED Off Time Adjustment"
 		android:defaultValue="3" />
-
-
 			
    	</PreferenceCategory>
-
-
-
-
-
-
 
 </PreferenceScreen>
 
