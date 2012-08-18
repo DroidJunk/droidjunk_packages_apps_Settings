@@ -21,10 +21,8 @@ public class CustomNavBarSettings extends SettingsPreferenceFragment
 	private final String Junk_NavBar_Settings = "JUNK_NAVBAR_SETTINGS";
     private final String NAV_BAR_ANIM_SPEED = "nav_anim_speed";
     private final String NAV_BAR_BUTTON_INTENS = "nav_button_intens";
-    private final String SHOW_SEARCH_BUTTON = "search_button";
 	private final String SHOW_LEFT_MENU_BUTTON = "left_menu_button";
 	private final String SHOW_RIGHT_MENU_BUTTON = "right_menu_button";
-    private final String SHOW_SEARCH_BUTTON_LAND = "search_button_land";
 	private final String SHOW_TOP_MENU_BUTTON_LAND = "top_menu_button_land";
 	private final String SHOW_BOT_MENU_BUTTON_LAND = "bottom_menu_button_land";
 
@@ -32,10 +30,8 @@ public class CustomNavBarSettings extends SettingsPreferenceFragment
 
 	private DJSeekBarPreference mNavBarAnimSpeed;
 	private DJSeekBarPreference mNavBarButtonIntens;
-	private CheckBoxPreference mShowSearchButton;
 	private CheckBoxPreference mShowLeftMenuButton;
 	private CheckBoxPreference mShowRightMenuButton;
-	private CheckBoxPreference mShowSearchButtonLand;
 	private CheckBoxPreference mShowTopMenuButtonLand;
 	private CheckBoxPreference mShowBotMenuButtonLand;
 	
@@ -60,14 +56,10 @@ public class CustomNavBarSettings extends SettingsPreferenceFragment
             mNavBarButtonIntens.setOnPreferenceChangeListener(this);
             mNavBarButtonIntens.setMax(5);
             mNavBarButtonIntens.setProgress(prefMgr.getSharedPreferences().getInt(NAV_BAR_BUTTON_INTENS, 0));  
-            mShowSearchButton = (CheckBoxPreference) findPreference(SHOW_SEARCH_BUTTON);
-            mShowSearchButton.setOnPreferenceChangeListener(this);
             mShowLeftMenuButton = (CheckBoxPreference) findPreference(SHOW_LEFT_MENU_BUTTON);
             mShowLeftMenuButton.setOnPreferenceChangeListener(this);
             mShowRightMenuButton = (CheckBoxPreference) findPreference(SHOW_RIGHT_MENU_BUTTON);
             mShowRightMenuButton.setOnPreferenceChangeListener(this);
-            mShowSearchButtonLand = (CheckBoxPreference) findPreference(SHOW_SEARCH_BUTTON_LAND);
-            mShowSearchButtonLand.setOnPreferenceChangeListener(this);
             mShowTopMenuButtonLand = (CheckBoxPreference) findPreference(SHOW_TOP_MENU_BUTTON_LAND);
             mShowTopMenuButtonLand.setOnPreferenceChangeListener(this);
             mShowBotMenuButtonLand = (CheckBoxPreference) findPreference(SHOW_BOT_MENU_BUTTON_LAND);
@@ -102,13 +94,6 @@ public class CustomNavBarSettings extends SettingsPreferenceFragment
             	getActivity().sendBroadcast(i);
             	i = null;        
            	   	
-            } else if (SHOW_SEARCH_BUTTON.equals(key)) {
-            	Intent i = new Intent();
-            	i.setAction(Junk_NavBar_Settings );
-            	i.putExtra(SHOW_SEARCH_BUTTON, (Boolean) objValue);
-            	getActivity().sendBroadcast(i);
-            	i = null;        
-
             } else if (SHOW_LEFT_MENU_BUTTON.equals(key)) {
             	Intent i = new Intent();
             	i.setAction(Junk_NavBar_Settings );
@@ -120,13 +105,6 @@ public class CustomNavBarSettings extends SettingsPreferenceFragment
             	Intent i = new Intent();
             	i.setAction(Junk_NavBar_Settings );
             	i.putExtra(SHOW_RIGHT_MENU_BUTTON, (Boolean) objValue);
-            	getActivity().sendBroadcast(i);
-            	i = null;        
-
-            } else if (SHOW_SEARCH_BUTTON_LAND.equals(key)) {
-            	Intent i = new Intent();
-            	i.setAction(Junk_NavBar_Settings );
-            	i.putExtra(SHOW_SEARCH_BUTTON_LAND, (Boolean) objValue);
             	getActivity().sendBroadcast(i);
             	i = null;        
 

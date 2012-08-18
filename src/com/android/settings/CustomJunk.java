@@ -1,5 +1,6 @@
 package com.android.settings;
 
+import java.io.File;
 import java.io.IOException;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -9,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -148,6 +150,7 @@ public class CustomJunk extends Fragment {
            		"Junk_Theme_Three", Context.MODE_WORLD_READABLE);
         mThemeThreeApply.setEnabled(prefMgr.getBoolean(SAVED_THEME,false));
         mThemeThreeText.setText(prefMgr.getString(THEME_THREE_NAME,"Theme Three"));
+
 
         
     	try {

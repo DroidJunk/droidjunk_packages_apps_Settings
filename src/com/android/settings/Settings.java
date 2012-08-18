@@ -132,6 +132,15 @@ public class Settings extends PreferenceActivity
         mAuthenticatorHelper.updateAuthDescriptions(this);
         mAuthenticatorHelper.onAccountsUpdated(this, null);
 
+
+        
+        
+        getMetaData();
+        mInLocalHeaderSwitch = true;
+        super.onCreate(savedInstanceState);
+        mInLocalHeaderSwitch = false;
+        
+        
         // Junk
         
         //File junkBackupDir = new File("/sdcard/.junk/backup/");
@@ -197,10 +206,11 @@ public class Settings extends PreferenceActivity
         // End Junk
         
         
-        getMetaData();
-        mInLocalHeaderSwitch = true;
-        super.onCreate(savedInstanceState);
-        mInLocalHeaderSwitch = false;
+        
+        
+        
+        
+        
 
         if (!onIsHidingHeaders() && onIsMultiPane()) {
             highlightHeader(mTopLevelHeaderId);
