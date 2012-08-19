@@ -210,29 +210,29 @@
     <PreferenceCategory
 		android:title="S T A T U S B A R   P U L L D O W N"
 		android:key="quickcolor_pulldown">
-   			
+ 
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="qk_date_bar_color"
-		android:title="Date Bar" 
+		android:key="qk_header_bar_color"
+		android:title="Header Bar" 
 		android:defaultValue="false"	/>	        
         	
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="qk_date_color"
-		android:title="Date" 
+		android:key="qk_header_clock_color"
+		android:title="Header Clock" 
 		android:defaultValue="false"	/>			
 		
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="qk_clear_button_color"
-		android:title="Clear All Button" 
+		android:key="qk_header_date_color"
+		android:title="Header Date" 
 		android:defaultValue="false"	/>	       
 		
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="qk_clear_button_text_color"
-		android:title="Clear All Button Text" 
+		android:key="qk_header_button_color"
+		android:title="Header Buttons" 
 		android:defaultValue="false"	/>	     	
 	
 	<CheckBoxPreference 
@@ -243,20 +243,8 @@
 	
 	<CheckBoxPreference 
 		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="qk_pd_carrier_frame_color"
-		android:title="Carrier Bar" 
-		android:defaultValue="false"	/>			
-		
-	<CheckBoxPreference 
-		android:layout="?android:attr/preferenceLayoutChild" 
 		android:key="qk_pd_handle_color"
 		android:title="Pulldown Handle" 
-		android:defaultValue="false"	/>			
-		
-	<CheckBoxPreference 
-		android:layout="?android:attr/preferenceLayoutChild" 
-		android:key="qk_pd_grip_color"
-		android:title="Pulldown Grip" 
 		android:defaultValue="false"	/>			
 		
 	<CheckBoxPreference 

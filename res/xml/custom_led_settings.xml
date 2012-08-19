@@ -18,6 +18,22 @@
         android:title="LED Settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+	<CheckBoxPreference
+		android:key="use_led"
+		android:summaryOn="LED will be used"
+		android:summaryOff="LED will not be used"
+		android:title="Use LED for notifications" 
+		android:defaultValue="true"
+		/>    
+
+	<CheckBoxPreference
+		android:key="pulse_flash_led"
+		android:summaryOn="LED pulse"
+		android:summaryOff="LED flash"
+		android:title="Pulse or Flash Led" 
+		android:defaultValue="false"
+		/>    
+	
 	<CheckBoxPreference 
 		android:key="pulse_led_screen_on"
 		android:summaryOn="Pulse LED with Screen On"

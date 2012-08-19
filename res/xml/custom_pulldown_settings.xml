@@ -38,7 +38,7 @@
 		android:key="header_clock_size"
 		android:title="Header Clock Text Size"
 		android:summary="Size of the header clock text"
-		android:defaultValue="35" />
+		android:defaultValue="22" />
 	
     <CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild"

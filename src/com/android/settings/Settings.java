@@ -135,17 +135,12 @@ public class Settings extends PreferenceActivity
 
         
         
-        getMetaData();
-        mInLocalHeaderSwitch = true;
-        super.onCreate(savedInstanceState);
-        mInLocalHeaderSwitch = false;
+
         
         
         // Junk
         
         //File junkBackupDir = new File("/sdcard/.junk/backup/");
-        Log.e("***************************** ",String.valueOf(Environment.getDataDirectory()));
-        Log.e("***************************** ",String.valueOf(Environment.getExternalStorageDirectory()));
         File junkBackupDir = new File(Environment.getExternalStorageDirectory() + "/.junk/backup/");
         junkBackupDir.mkdirs();        
 
@@ -207,7 +202,10 @@ public class Settings extends PreferenceActivity
         
         
         
-        
+        getMetaData();
+        mInLocalHeaderSwitch = true;
+        super.onCreate(savedInstanceState);
+        mInLocalHeaderSwitch = false;       
         
         
         

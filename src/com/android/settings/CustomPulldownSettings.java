@@ -50,7 +50,7 @@ public class CustomPulldownSettings extends SettingsPreferenceFragment implement
 	private CheckBoxPreference mHeaderDateShow;
     private DJSeekBarPreference mHeaderClockSize;
     private DJSeekBarPreference mHeaderDateSize;
-    public int headerClockSize = 35;
+    public int headerClockSize = 22;
     public int headerDateSize = 10;
 	
 	private CheckBoxPreference mShowCarrier;

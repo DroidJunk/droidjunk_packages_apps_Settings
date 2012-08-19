@@ -26,7 +26,7 @@
 			android:layout="?android:attr/preferenceLayoutChild" 
 			android:key="icon_color"
 			android:title="Statusbar Signal Icons Color"
-			android:defaultValue="#ff3fa2c7" 
+			android:defaultValue="#ff33b5e5" 
 			alphaSlider="false" /> 			
 
     </PreferenceCategory>		
@@ -56,7 +56,7 @@
 			android:key="battery_levels_color_three"
 			android:title="Battery Level Three Color"
 			android:summary="Color for Min Level Three"
-			android:defaultValue="#ff3fa2c7" 
+			android:defaultValue="#ff33b5e5" 
 			alphaSlider="false" />			        
         		
 		<ColorPickerPreference
@@ -113,7 +113,7 @@
 			android:key="battery_circle_color_three"
 			android:title="Circle/Square Color Level Three"
 			android:summary="Color of the battery circle or square"
-			android:defaultValue="#ff3fa2c7" 
+			android:defaultValue="#ff33b5e5" 
 			alphaSlider="true" />				
 		
 		<ColorPickerPreference
@@ -137,7 +137,7 @@
 			android:key="battery_number_color_three"
 			android:title="Number Color Level Three"
 			android:summary="Color of the battery number"
-			android:defaultValue="#ff3fa2c7" 
+			android:defaultValue="#ff33b5e5" 
 			alphaSlider="true" />	
 
     </PreferenceCategory>      						
@@ -212,7 +212,7 @@
 			android:key="clock_color"
 			android:title="Clock Color"
 			android:summary="Color for statusbar clock"
-			android:defaultValue="#ff3792b4" 
+			android:defaultValue="#ff33b5e5" 
 			alphaSlider="false" /> 
  
     </PreferenceCategory>
@@ -236,7 +236,7 @@
 		android:key="pd_notif_text_color"
 		android:title="Text Color"
 		android:summary="Notification text color (reboot required)"
-		android:defaultValue="#ffffffff" 
+		android:defaultValue="#fff6f6f6" 
 		alphaSlider="false" /> 		
  	
  	
@@ -284,7 +284,7 @@
 			android:key="header_button_color"
 			android:title="Header Buttons Color"
 			android:summary="Color for header buttons"
-			android:defaultValue="#ffffffff" 
+			android:defaultValue="#ff33b5e5" 
 			alphaSlider="false" /> 	
 			
 		<ColorPickerPreference
@@ -292,7 +292,7 @@
 			android:key="pd_shade_color"
 			android:title="Pulldown Shade"
 			android:summary="Color for statusbar pulldown shade"
-			android:defaultValue="#80000000" 
+			android:defaultValue="#eb000000" 
 			alphaSlider="true" /> 				
         	
 		<ColorPickerPreference
@@ -300,7 +300,7 @@
 			android:key="pd_handle_color"
 			android:title="Pulldown Handle Color"
 			android:summary="Color for statusbar pulldown handle"
-			android:defaultValue="#ff3792b4" 
+			android:defaultValue="#ff33b5e5" 
 			alphaSlider="true" /> 	
 		
 		<ColorPickerPreference
