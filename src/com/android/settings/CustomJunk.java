@@ -445,7 +445,7 @@ public class CustomJunk extends Fragment {
 			public void onClick(View arg0) {
 			    Intent i = new Intent();
 			    i.setAction("android.settings.CUSTOM_COLOR_SETTINGS");
-			    i.putExtra("junk_color_rowid", 42);
+			    i.putExtra("junk_color_rowid", 40);
 		        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		        getActivity().getBaseContext().startActivity(i);
 		        i = null;

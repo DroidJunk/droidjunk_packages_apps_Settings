@@ -228,7 +228,7 @@
 		android:key="pd_notif_icon_bg_color"
 		android:title="Icon Background Color"
 		android:summary="Background color for the notification icon (reboot required)"
-		android:defaultValue="#ff000000" 
+		android:defaultValue="#ff0e303d" 
 		alphaSlider="false" /> 		
         
 	<ColorPickerPreference
@@ -245,7 +245,7 @@
 		android:key="pd_notif_text_bg_color"
 		android:title="Text Background Color"
 		android:summary="Background color for the notification text (reboot required)"
-		android:defaultValue="#ff000000" 
+		android:defaultValue="#ff154557" 
 		alphaSlider="false" /> 		
 
     </PreferenceCategory>
@@ -300,7 +300,7 @@
 			android:key="pd_handle_color"
 			android:title="Pulldown Handle Color"
 			android:summary="Color for statusbar pulldown handle"
-			android:defaultValue="#ff33b5e5" 
+			android:defaultValue="#ff007aa7" 
 			alphaSlider="true" /> 	
 		
 		<ColorPickerPreference
