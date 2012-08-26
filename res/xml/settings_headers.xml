@@ -17,22 +17,6 @@
 <preference-headers
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-    
-	<!-- ***************************************************************************************** -->
-	<!-- *****************************      NEW JUNK SETTINGS      ******************************* -->
-	<!-- ***************************************************************************************** -->
-
-    <!-- CUSTOMIZE -->
-    <header android:title="@string/junk_settings_main" />
-
-    <header
-        android:id="@+id/custom_settings"
-        android:icon="@drawable/junk_settings"
-        android:fragment="com.android.settings.CustomJunk"
-        android:title="@string/junk_settings_main" />
-
-	<!-- ***************************************************************************************** -->    
-    
 
     <!-- WIRELESS and NETWORKS -->
     <header android:title="@string/header_category_wireless_networks" />

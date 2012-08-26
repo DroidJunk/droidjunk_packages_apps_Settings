@@ -17,7 +17,6 @@
 package com.android.settings.inputmethod;
 
 import com.android.settings.R;
-import com.android.settings.Settings.KeyboardLayoutPickerActivity;
 
 import android.app.AlertDialog;
 import android.app.Activity;

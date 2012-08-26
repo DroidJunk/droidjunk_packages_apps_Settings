@@ -51,7 +51,6 @@ import android.widget.TextView;
 
 import com.android.settings.AccountPreference;
 import com.android.settings.R;
-import com.android.settings.Settings;
 
 import java.util.ArrayList;
 import java.util.Date;
