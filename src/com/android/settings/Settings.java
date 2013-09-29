@@ -37,6 +37,7 @@ import android.os.UserManager;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -57,11 +58,14 @@ import com.android.settings.accounts.AuthenticatorHelper;
 import com.android.settings.accounts.ManageAccountsSettings;
 import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.bluetooth.BluetoothSettings;
+import com.android.settings.junk.JunkSettingsUtils;
 import com.android.settings.wfd.WifiDisplaySettings;
 import com.android.settings.wifi.WifiEnabler;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -130,9 +134,12 @@ public class Settings extends PreferenceActivity
 
     protected HashMap<Integer, Integer> mHeaderIndexMap = new HashMap<Integer, Integer>();
 
+
     private AuthenticatorHelper mAuthenticatorHelper;
     private Header mLastHeader;
     private boolean mListeningToAccountUpdates;
+    private List<Header> mHeaders;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,6 +153,65 @@ public class Settings extends PreferenceActivity
 
         mDevelopmentPreferences = getSharedPreferences(DevelopmentSettings.PREF_FILE,
                 Context.MODE_PRIVATE);
+
+        File junkBackupDir = new File("/sdcard/.junk/backup/");
+        junkBackupDir.mkdirs();        
+
+        boolean settingsRestored = false;
+        try {
+        	if (!BackupUtils.settingsExist() & BackupUtils.backupExist(
+        			"sdcard/.junk/backup/Junk_Settings.xml")) {
+        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Settings.xml",
+						"data/data/com.android.settings/shared_prefs/Junk_Settings.xml");
+        		Log.v("JUNK: Settings Backup Found: ","Restoring Junk Settings");
+        		settingsRestored = true;
+        	} else {
+        		Log.v("JUNK: Settings Restore: ","Settings exist or there is not a backup");	
+        	}
+        } catch (IOException e) {
+        	Log.e("JUNK: Settings Restore: ","ERROR JUNK SETTINGS");
+        };	
+
+        try {        
+        	if (!BackupUtils.themeOneExist() & BackupUtils.backupExist(
+        			"sdcard/.junk/backup/Junk_Theme_One.xml")) {
+        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Theme_One.xml",
+						"data/data/com.android.settings/shared_prefs/Junk_Theme_One.xml");
+        	}
+        } catch (IOException e) {
+        	Log.e("JUNK: Settings Restore: ","ERROR THEME ONE");
+        };	
+        	
+        try {        
+        	if (!BackupUtils.themeTwoExist() & BackupUtils.backupExist(
+        			"sdcard/.junk/backup/Junk_Theme_Two.xml")) {
+        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Theme_Two.xml",
+						"data/data/com.android.settings/shared_prefs/Junk_Theme_Two.xml");
+        	}
+        } catch (IOException e) {
+        	Log.e("JUNK: Settings Restore: ","ERROR THEME TWO");
+        };	
+
+        try {        
+        	if (!BackupUtils.themeThreeExist() & BackupUtils.backupExist(
+        			"sdcard/.junk/backup/Junk_Theme_Three.xml")) {
+        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Theme_Three.xml",
+						"data/data/com.android.settings/shared_prefs/Junk_Theme_Three.xml");
+        	}
+        } catch (IOException e) {
+        	Log.e("JUNK: Settings Restore: ","ERROR THEME THREE");
+        };
+        
+        if (settingsRestored) {
+            SharedPreferences prefMgr = getBaseContext().getSharedPreferences(
+            		"Junk_Settings", Context.MODE_PRIVATE);
+
+        	JunkSettingsUtils.GetSettings(prefMgr);
+        	JunkSettingsUtils.SendIntents(getBaseContext());
+        	
+        }
+      
+		
 
         getMetaData();
         mInLocalHeaderSwitch = true;
@@ -796,6 +862,8 @@ public class Settings extends PreferenceActivity
         invalidateHeaders();
     }
 
+
+    
     /*
      * Settings subclasses for launching independently.
      */
@@ -836,9 +904,28 @@ public class Settings extends PreferenceActivity
     public static class AdvancedWifiSettingsActivity extends Settings { /* empty */ }
     public static class TextToSpeechSettingsActivity extends Settings { /* empty */ }
     public static class AndroidBeamSettingsActivity extends Settings { /* empty */ }
+
     public static class WifiDisplaySettingsActivity extends Settings { /* empty */ }
     public static class DreamSettingsActivity extends Settings { /* empty */ }
     public static class NotificationStationActivity extends Settings { /* empty */ }
     public static class UserSettingsActivity extends Settings { /* empty */ }
     public static class NotificationAccessSettingsActivity extends Settings { /* empty */ }
+    
+    
+    public static class JunkSettingsActivity extends Settings { /* empty */ }
+    public static class CustomClockSettingsActivity extends Settings { /* empty */ }
+    public static class CustomBatterySettingsActivity extends Settings { /* empty */ }
+    public static class CustomChargingSettingsActivity extends Settings { /* empty */ }
+    public static class CustomPulldownSettingsActivity extends Settings { /* empty */ }
+    public static class CustomToggleSettingsActivity extends Settings { /* empty */ }
+    public static class CustomNavBarSettingsActivity extends Settings { /* empty */ }
+    public static class CustomQuietTimeSettingsActivity extends Settings { /* empty */ }
+    public static class CustomNotifLedSettingsActivity extends Settings { /* empty */ }
+    
+    public static class CustomQuickColorSettingsActivity extends Settings { /* empty */ }
+    public static class CustomColorSettingsActivity extends Settings { /* empty */ }
+    
+    
+   
+    
 }
