@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Stock Battery Settings"
+    android:key="stock_bat_settings"
+	 >
+    
+    
+    <PreferenceCategory
+		android:title="B A T T E R Y   I C O N S"
+		android:key="battery_icons"
+		android:summary="Battery Icons"	>        
+    	
+    <CheckBoxPreference
+		android:key="battery_stock"
+		android:title="Stock" /> 			
+
+	<CheckBoxPreference
+		android:key="battery_number"
+		android:title="Number" /> 			
+        
+	<CheckBoxPreference
+		android:key="battery_circle"
+		android:title="Circle" /> 		
+		
+	<CheckBoxPreference 
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_show_number"
+		android:summary="Show number when using circle icon"
+		android:title="Show Number" 
+		android:defaultValue="false"	/>	  	
+    
+	<CheckBoxPreference
+		android:key="battery_none"
+		android:title="None" />
+	 	
+    </PreferenceCategory>	    
+
+    
+          
+    
+    <PreferenceCategory
+		android:title="B A T T E R Y   L E V E L S"
+		android:key="battery_color_ranges"
+		android:summary="Battery colors based on battery level"	>    
+ 
+	<DJSeekBarPreference
+	    android:layout="?android:attr/preferenceLayoutChild"
+		android:key="battery_levels_one"
+		android:title="Battery Level One"
+		android:summary="Maximimum level for the color"
+		android:defaultValue="10" />	
+		
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_levels_color_one"
+		android:title="Battery Level One Color"
+		android:summary="Color used up to Battery Level One"
+		android:defaultValue="#ffff0000" 
+		alphaSlider="false" />
+	
+ 	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="depleted_levels_color_one"
+		android:title="Depleted Level One Color"
+		android:summary="Color used up to Battery Level One for the depleted portion"
+		android:defaultValue="#ff800000" 
+		alphaSlider="false" />
+    	
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_number_color_one"
+		android:title="Number Level One Color"
+		android:summary="Color for the number up to Battery Level One when using circle battery"
+		android:defaultValue="#ffff0000" 
+		alphaSlider="false" />
+ 	
+ 	
+ 	
+ 	
+	<DJSeekBarPreference
+	    android:layout="?android:attr/preferenceLayoutChild"
+		android:key="battery_levels_two"
+		android:title="Battery Level Two"
+		android:summary="Maximimum level for the color"
+		android:defaultValue="30" />	
+		
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_levels_color_two"
+		android:title="Battery Level Two Color"
+		android:summary="Color used up to Battery Level Two"
+		android:defaultValue="#ffff9000" 
+		alphaSlider="false" />	
+		
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="depleted_levels_color_two"
+		android:title="Depleted Level Two Color"
+		android:summary="Color used up to Battery Level Two for the depleted portion"
+		android:defaultValue="#ffba6900" 
+		alphaSlider="false" />	
+
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_number_color_two"
+		android:title="Number Level Two Color"
+		android:summary="Color for the number up to Battery Level Two when using circle battery"
+		android:defaultValue="#ffff0000" 
+		alphaSlider="false" />
+		
+	
+	
+	
+	
+	
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_levels_color_three"
+		android:title="Battery Level Three Color"
+		android:summary="Color used above Battery Level Two"
+		android:defaultValue="#ff3fa2c7" 
+		alphaSlider="false" />	
+		
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="depleted_levels_color_three"
+		android:title="Depleted Level Three Color"
+		android:summary="Color of used above Battery Level Two for the depleted portion"
+		android:defaultValue="#ff296c85" 
+		alphaSlider="false" />	
+		
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild" 
+		android:key="battery_number_color_three"
+		android:title="Number Level Three Color"
+		android:summary="Color for the number above Battery Level Two when using circle battery"
+		android:defaultValue="#ffff0000" 
+		alphaSlider="false" />
+	
+   
+    </PreferenceCategory>	
+
+</PreferenceScreen>

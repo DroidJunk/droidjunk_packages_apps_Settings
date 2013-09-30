@@ -31,19 +31,6 @@
         android:fragment="com.android.settings.junk.JunkThemeSettings"
         android:key="junk_theme_settings"
         android:title="Themes" />
-
-    
-    <!-- COLORS -->
-    <PreferenceScreen
-        android:fragment="com.android.settings.junk.JunkQuickColorSettings"
-        android:key="junk_quick_color_settings"
-        android:title="Quick Colors" />
-
-    <PreferenceScreen
-        android:fragment="com.android.settings.junk.JunkColorGroups"
-        android:key="junk_color_groups_settings"
-        android:title="Color Groups" />
-    
     
     <!-- NOTIFICATION  SETTINGS -->
     <PreferenceScreen
@@ -68,11 +55,6 @@
         	android:title="Clock" />
     
     	<!-- Battery -->
-    	<PreferenceScreen
-    		android:fragment="com.android.settings.junk.JunkBatteryIconSettings"
-        	android:key="junk_battery_icon_settings"
-        	android:title="Battery Icons" />
-
     	<PreferenceScreen
     		android:fragment="com.android.settings.junk.JunkBatterySettings"
         	android:key="junk_battery_settings"

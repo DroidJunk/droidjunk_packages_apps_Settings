@@ -18,13 +18,27 @@
         android:title="Statusbar Pulldown Settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-
-
     
     <PreferenceCategory
 		android:title="H E A D E R"
 		android:key="header_settings">
 
+ 	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="header_bar_color"
+		android:title="Header Bar Color"
+		android:summary="Header Bar Color"
+		android:defaultValue="#ffffffff" 	
+		alphaSlider="true" /> 	        
+        
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="buttons_color"
+		android:title="Header Buttons Color"
+		android:summary="Header buttons color"
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="false" /> 	
+        
 	<CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="header_clock_show"
@@ -32,7 +46,15 @@
 		android:summaryOff="Do not show the header clock in the pulldown"
 		android:title="Show Header Clock" 
 		android:defaultValue="true"	/>   
-
+        
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="header_clock_color"
+		android:title="Header Clock Color"
+		android:summary="Color for header clock"	
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="false" /> 		
+ 	
 	<DJSeekBarPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="header_clock_size"
@@ -48,6 +70,14 @@
 		android:title="Show Header Date" 
 		android:defaultValue="true"	/>   
 
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="date_color"
+		android:title="Date Color"
+		android:summary="Color for statusbar date"	
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="false" /> 		
+    
 	<DJSeekBarPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="header_date_size"
@@ -55,15 +85,38 @@
 		android:summary="Size of the header date text"
 		android:defaultValue="10" />		 	
 
-
-
-
     </PreferenceCategory>    
+  
     
     
     
     <PreferenceCategory
-		android:title="C A R R I E R"
+		android:title="P U L L D O W N   S H A D E"
+		android:key="pulldown_settings">    
+
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="pd_shade_color"
+		android:title="Pulldown Shade"
+		android:summary="Color for statusbar pulldown shade"
+		android:defaultValue="#80000000" 
+		alphaSlider="true" /> 				
+        	
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="pd_handle_color"
+		android:title="Pulldown Handle Color"
+		android:summary="Color for statusbar pulldown handle"
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="true" /> 	    
+    
+    </PreferenceCategory>
+	
+    
+    
+    
+    <PreferenceCategory
+		android:title="P U L L D O W N   C A R R I E R"
 		android:key="carrier_settings">
 
 	<CheckBoxPreference
@@ -73,7 +126,6 @@
 		android:summaryOff="Do not show the carrier in the pulldown"
 		android:title="Show Carrier" 
 		android:defaultValue="true"	/>        
-        				
   				
 	<DJSeekBarPreference 
 		android:layout="?android:attr/preferenceLayoutChild"
@@ -81,9 +133,20 @@
 		android:key="carrier_size"
 		android:title="Carrier Text Size"
 		android:summary="Size of the carrier text"
-		android:defaultValue="15" />		 
+		android:defaultValue="15" />	
+	
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="carrier_color"
+		android:title="Carrier Text Color"
+		android:summary="Color for the carrier text"
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="false" /> 
+		 
     </PreferenceCategory>
   
+    
+    
     <PreferenceCategory
 		android:title="C U S T O M   C A R R I E R"
 		android:key="carrier_settings_custom">
@@ -106,57 +169,9 @@
 		android:dialogTitle="Carrier Text"
 		android:dialogMessage="Enter text"	
 		android:defaultValue="- J  U  N  K -" />
-    </PreferenceCategory>
 
-    <PreferenceCategory
-		android:title="B A T T E R Y   L E V E L"
-		android:key="battery_label_settings">
+	</PreferenceCategory>
 
-	<CheckBoxPreference
-		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="show_battery_label"
-		android:summaryOn="Show the battery level in the pulldown"
-		android:summaryOff="Do not show the battery level in the pulldown"
-		android:title="Show Battery Level" 
-		android:defaultValue="true"	/>		        
-   				
-	<DJSeekBarPreference 
-		android:layout="?android:attr/preferenceLayoutChild"
-    	android:dependency="show_battery_label"
-		android:key="battery_label_size"
-		android:title="Battery Level Text Size"
-		android:summary="Size of the battery level text"
-		android:defaultValue="14" />		 
-    </PreferenceCategory>    
-
-    
-    <PreferenceCategory
-		android:title="B A T T E R Y   T E M P E R A T U R E"
-		android:key="temp_label_settings">
-
-        
-    <CheckBoxPreference
-		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="show_temp_label"
-		android:summaryOn="Show the battery temperature in the pulldown"
-		android:summaryOff="Do not show the battery temperature in the pulldown"
-		android:title="Show Battery Temperature" 
-		android:defaultValue="true"	/>    
-   				
-  				
-	<DJSeekBarPreference 
-		android:layout="?android:attr/preferenceLayoutChild"
-    	android:dependency="show_temp_label"
-		android:key="temp_label_size"
-		android:title="Battery Temperature Text Size"
-		android:summary="Size of the battery temperature text"
-		android:defaultValue="14" />		 
-    </PreferenceCategory>        
-  
-    
-    
- 
-    
 
 
 </PreferenceScreen>

@@ -154,63 +154,6 @@ public class Settings extends PreferenceActivity
         mDevelopmentPreferences = getSharedPreferences(DevelopmentSettings.PREF_FILE,
                 Context.MODE_PRIVATE);
 
-        File junkBackupDir = new File("/sdcard/.junk/backup/");
-        junkBackupDir.mkdirs();        
-
-        boolean settingsRestored = false;
-        try {
-        	if (!BackupUtils.settingsExist() & BackupUtils.backupExist(
-        			"sdcard/.junk/backup/Junk_Settings.xml")) {
-        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Settings.xml",
-						"data/data/com.android.settings/shared_prefs/Junk_Settings.xml");
-        		Log.v("JUNK: Settings Backup Found: ","Restoring Junk Settings");
-        		settingsRestored = true;
-        	} else {
-        		Log.v("JUNK: Settings Restore: ","Settings exist or there is not a backup");	
-        	}
-        } catch (IOException e) {
-        	Log.e("JUNK: Settings Restore: ","ERROR JUNK SETTINGS");
-        };	
-
-        try {        
-        	if (!BackupUtils.themeOneExist() & BackupUtils.backupExist(
-        			"sdcard/.junk/backup/Junk_Theme_One.xml")) {
-        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Theme_One.xml",
-						"data/data/com.android.settings/shared_prefs/Junk_Theme_One.xml");
-        	}
-        } catch (IOException e) {
-        	Log.e("JUNK: Settings Restore: ","ERROR THEME ONE");
-        };	
-        	
-        try {        
-        	if (!BackupUtils.themeTwoExist() & BackupUtils.backupExist(
-        			"sdcard/.junk/backup/Junk_Theme_Two.xml")) {
-        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Theme_Two.xml",
-						"data/data/com.android.settings/shared_prefs/Junk_Theme_Two.xml");
-        	}
-        } catch (IOException e) {
-        	Log.e("JUNK: Settings Restore: ","ERROR THEME TWO");
-        };	
-
-        try {        
-        	if (!BackupUtils.themeThreeExist() & BackupUtils.backupExist(
-        			"sdcard/.junk/backup/Junk_Theme_Three.xml")) {
-        		BackupUtils.copyBackup("sdcard/.junk/backup/Junk_Theme_Three.xml",
-						"data/data/com.android.settings/shared_prefs/Junk_Theme_Three.xml");
-        	}
-        } catch (IOException e) {
-        	Log.e("JUNK: Settings Restore: ","ERROR THEME THREE");
-        };
-        
-        if (settingsRestored) {
-            SharedPreferences prefMgr = getBaseContext().getSharedPreferences(
-            		"Junk_Settings", Context.MODE_PRIVATE);
-
-        	JunkSettingsUtils.GetSettings(prefMgr);
-        	JunkSettingsUtils.SendIntents(getBaseContext());
-        	
-        }
-      
 		
 
         getMetaData();
