@@ -43,9 +43,6 @@
         android:key="junk_led_settings"
         android:title="Notification LED" />
     
-     
-    
-    
     
     <!-- STATUSBAR -->
     	<!-- Clock -->
