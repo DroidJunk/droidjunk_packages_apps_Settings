@@ -1491,6 +1491,27 @@
                 android:resource="@id/junk_settings" />
         </activity>
    
+        
+        <activity android:name="com.android.settings.junk.JunkQuietTimeSettings"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Junk Rom Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>   
+        
+        <activity android:name="Settings$JunkQuietTimeSettingsActivity"
+            android:label="Quiet Time Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.android.settings.junk.CUSTOM_QUIET_TIME_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.junk.JunkQuietTimeSettings" />
+        </activity>
 
         
 	<!-- ***************************************************************************************** -->	

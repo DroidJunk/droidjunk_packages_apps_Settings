@@ -72,9 +72,9 @@
 
 	<ColorPickerPreference
 		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="date_color"
-		android:title="Date Color"
-		android:summary="Color for statusbar date"	
+		android:key="header_date_color"
+		android:title="Header Date Color"
+		android:summary="Color for header date"	
 		android:defaultValue="#ff3792b4" 
 		alphaSlider="false" /> 		
     

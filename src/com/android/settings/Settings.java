@@ -856,17 +856,7 @@ public class Settings extends PreferenceActivity
     
     
     public static class JunkSettingsActivity extends Settings { /* empty */ }
-    public static class CustomClockSettingsActivity extends Settings { /* empty */ }
-    public static class CustomBatterySettingsActivity extends Settings { /* empty */ }
-    public static class CustomChargingSettingsActivity extends Settings { /* empty */ }
-    public static class CustomPulldownSettingsActivity extends Settings { /* empty */ }
-    public static class CustomToggleSettingsActivity extends Settings { /* empty */ }
-    public static class CustomNavBarSettingsActivity extends Settings { /* empty */ }
-    public static class CustomQuietTimeSettingsActivity extends Settings { /* empty */ }
-    public static class CustomNotifLedSettingsActivity extends Settings { /* empty */ }
-    
-    public static class CustomQuickColorSettingsActivity extends Settings { /* empty */ }
-    public static class CustomColorSettingsActivity extends Settings { /* empty */ }
+    public static class JunkQuietTimeSettingsActivity extends Settings { /* empty */ }
     
     
    
