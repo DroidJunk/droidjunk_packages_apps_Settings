@@ -23,22 +23,6 @@
 		android:title="H E A D E R"
 		android:key="header_settings">
 
- 	<ColorPickerPreference
-		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="header_bar_color"
-		android:title="Header Bar Color"
-		android:summary="Header Bar Color"
-		android:defaultValue="#ffffffff" 	
-		alphaSlider="true" /> 	        
-        
-	<ColorPickerPreference
-		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="buttons_color"
-		android:title="Header Buttons Color"
-		android:summary="Header buttons color"
-		android:defaultValue="#ff3792b4" 
-		alphaSlider="false" /> 	
-        
 	<CheckBoxPreference
 		android:layout="?android:attr/preferenceLayoutChild"
 		android:key="header_clock_show"
@@ -113,64 +97,6 @@
     </PreferenceCategory>
 	
     
-    
-    
-    <PreferenceCategory
-		android:title="P U L L D O W N   C A R R I E R"
-		android:key="carrier_settings">
-
-	<CheckBoxPreference
-		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="show_carrier"
-		android:summaryOn="Show the carrier in the pulldown"
-		android:summaryOff="Do not show the carrier in the pulldown"
-		android:title="Show Carrier" 
-		android:defaultValue="true"	/>        
-  				
-	<DJSeekBarPreference 
-		android:layout="?android:attr/preferenceLayoutChild"
-    	android:dependency="show_carrier"
-		android:key="carrier_size"
-		android:title="Carrier Text Size"
-		android:summary="Size of the carrier text"
-		android:defaultValue="15" />	
-	
-	<ColorPickerPreference
-		android:layout="?android:attr/preferenceLayoutChild"
-		android:key="carrier_color"
-		android:title="Carrier Text Color"
-		android:summary="Color for the carrier text"
-		android:defaultValue="#ff3792b4" 
-		alphaSlider="false" /> 
-		 
-    </PreferenceCategory>
-  
-    
-    
-    <PreferenceCategory
-		android:title="C U S T O M   C A R R I E R"
-		android:key="carrier_settings_custom">
-
-   	<CheckBoxPreference 
-		android:layout="?android:attr/preferenceLayoutChild"
-   	    android:dependency="show_carrier"
-		android:key="carrier_custom"
-		android:summaryOn="Show custom carrier name"
-		android:summaryOff="Show default carrier name"
-		android:title="Custom Carrier" 
-		android:defaultValue="false"	/>
-
-	<EditTextPreference
-		android:layout="?android:attr/preferenceLayoutChild"
-        android:dependency="carrier_custom"
-		android:key="carrier_custom_text"
-		android:title="Custom Carrier Name" 
-		android:summary="Change the text for the carrier"
-		android:dialogTitle="Carrier Text"
-		android:dialogMessage="Enter text"	
-		android:defaultValue="- J  U  N  K -" />
-
-	</PreferenceCategory>
 
 
 
