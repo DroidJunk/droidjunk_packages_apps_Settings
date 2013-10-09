@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="Statusbar Pulldown Settings"
+        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+    
+    <PreferenceCategory
+		android:title="H E A D E R"
+		android:key="header_settings">
+
+	<CheckBoxPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="header_clock_show"
+		android:summaryOn="Show the header clock in the pulldown"
+		android:summaryOff="Do not show the header clock in the pulldown"
+		android:title="Show Header Clock" 
+		android:defaultValue="true"	/>   
+        
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="header_clock_color"
+		android:title="Header Clock Color"
+		android:summary="Color for header clock"	
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="false" /> 		
+ 	
+	<DJSeekBarPreference 
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="header_clock_size"
+		android:title="Header Clock Text Size"
+		android:summary="Size of the header clock text"
+		android:defaultValue="35" />
+
+    <CheckBoxPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="header_date_show"
+		android:summaryOn="Show the header date in the pulldown"
+		android:summaryOff="Do not show the header date in the pulldown"
+		android:title="Show Header Date" 
+		android:defaultValue="true"	/>   
+
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="header_date_color"
+		android:title="Header Date Color"
+		android:summary="Color for header date"	
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="false" /> 		
+    
+	<DJSeekBarPreference 
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="header_date_size"
+		android:title="Header Date Text Size"
+		android:summary="Size of the header date text"
+		android:defaultValue="10" />		 	
+
+    </PreferenceCategory>    
+  
+    
+    
+    
+    <PreferenceCategory
+		android:title="P U L L D O W N   S H A D E"
+		android:key="pulldown_settings">    
+
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="pd_shade_color"
+		android:title="Pulldown Shade"
+		android:summary="Color for statusbar pulldown shade"
+		android:defaultValue="#80000000" 
+		alphaSlider="true" /> 				
+        	
+	<ColorPickerPreference
+		android:layout="?android:attr/preferenceLayoutChild"
+		android:key="pd_handle_color"
+		android:title="Pulldown Handle Color"
+		android:summary="Color for statusbar pulldown handle"
+		android:defaultValue="#ff3792b4" 
+		alphaSlider="true" /> 	    
+    
+    </PreferenceCategory>
+	
+    
+
+
+
+</PreferenceScreen>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="@string/junk_settings_main"
+        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+    
+    <!-- BACKUP AND RESTORE -->
+     <PreferenceScreen
+        android:fragment="com.android.settings.junk.JunkBackupRestore"
+        android:key="junk_backup_restore_settings"
+        android:title="Backup and Restore" />
+     
+     
+    <!-- THEMES -->
+    <PreferenceScreen
+        android:fragment="com.android.settings.junk.JunkThemeSettings"
+        android:key="junk_theme_settings"
+        android:title="Themes" />
+    
+    <!-- NOTIFICATION  SETTINGS -->
+    <PreferenceScreen
+        android:fragment="com.android.settings.junk.JunkQuietTimeMainSettings"
+        android:key="junk_qt_main_settings"
+        android:title="Quiet Time" />
+    
+    <PreferenceScreen
+    	android:fragment="com.android.settings.junk.JunkLedSettings"
+        android:key="junk_led_settings"
+        android:title="Notification LED" />
+    
+    
+    <!-- STATUSBAR -->
+    	<!-- Clock -->
+    	<PreferenceScreen
+    		android:fragment="com.android.settings.junk.JunkClockSettings"
+        	android:key="junk_clock_settings"
+        	android:title="Clock" />
+    
+    	<!-- Battery -->
+    	<PreferenceScreen
+    		android:fragment="com.android.settings.junk.JunkBatterySettings"
+        	android:key="junk_battery_settings"
+        	android:title="Battery" />
+    		
+    	<!-- Charging -->    	
+    	<PreferenceScreen
+    		android:fragment="com.android.settings.junk.JunkChargeSettings"
+        	android:key="junk_charge_settings"
+        	android:title="Charging" />
+
+    
+    <!-- STATUSBAR PULLDOWN -->
+    	<!-- Pulldown -->    	
+    	<PreferenceScreen
+    		android:fragment="com.android.settings.junk.JunkPulldownSettings"
+        	android:key="junk_pulldown_settings"
+        	android:title="Notification Pulldown" />
+    		
+    	<!-- Navigation Bar -->    	
+    	<PreferenceScreen
+    		android:fragment="com.android.settings.junk.JunkNavBarSettings"
+        	android:key="junk_navbar_settings"
+        	android:title="Navigation Bar" />
+
+
+</PreferenceScreen>

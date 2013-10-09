@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+  	<PreferenceCategory
+		android:title="N A V I G A T I O N   B A R">
+
+  	    
+		<ColorPickerPreference
+			android:key="nav_bar_color"
+			android:title="Navigation Bar Color"
+			android:defaultValue="#ff000000"
+			/>  	    
+ 	    
+		<ColorPickerPreference
+			android:key="nav_button_color"
+			android:title="Navigation Button Color"
+			android:defaultValue="#ffffffff" />
+			    
+		<DJSeekBarPreference	
+			android:layout="?android:attr/preferenceLayoutChild"
+   			android:key="nav_anim_speed"
+			android:title="Navigation Bar Glow Animation"
+			android:summary="Set to 0 to turn animatin off"
+			android:defaultValue="5" />		
+		
+		<DJSeekBarPreference	
+			android:layout="?android:attr/preferenceLayoutChild"
+   			android:key="nav_button_intens"
+			android:title="Navigation Bar Button Glow"
+			android:summary="Button icon itensity.  Glow effect is reduced with higher settings."
+			android:defaultValue="5" />		
+				
+		<ColorPickerPreference
+			android:key="nav_button_glow_color"
+			android:title="Navigation Button Glow Color"
+			android:defaultValue="#ffffffff"
+			/>		
+			
+		<ColorPickerPreference
+			android:key="nav_lightsout_color"
+			android:title="Navigation Lights Out Color"
+			android:summary="Small buttons used during camera, video, photos and etc."
+			android:defaultValue="#ffffffff"
+			/>			
+				
+    </PreferenceCategory>
+
+   	
+
+</PreferenceScreen>

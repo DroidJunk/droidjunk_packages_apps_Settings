@@ -1460,6 +1460,61 @@
             </intent-filter>
         </activity>
 
+	<!-- ***************************************************************************************** -->
+	<!-- *****************************      NEW JUNK SETTINGS      ******************************* -->
+	<!-- ***************************************************************************************** -->        
+        
+        
+        <!-- Main Junk Settings -->
+        <activity android:name="com.android.settings.junk.JunkSettings"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Junk Rom Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- Main Junk Settings Shortcut -->
+        <activity android:name="Settings$JunkSettingsActivity"
+            android:label="Junk Rom Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.JUNK_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.junk.JunkSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/junk_settings" />
+        </activity>
+   
+        
+        <activity android:name="com.android.settings.junk.JunkQuietTimeSettings"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Junk Rom Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>   
+        
+        <activity android:name="Settings$JunkQuietTimeSettingsActivity"
+            android:label="Quiet Time Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.android.settings.junk.CUSTOM_QUIET_TIME_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.junk.JunkQuietTimeSettings" />
+        </activity>
+
+        
+	<!-- ***************************************************************************************** -->	
+		
         <activity android:name="com.android.settings.accounts.ChooseAccountActivity"
             android:label="@string/header_add_an_account"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -1497,7 +1552,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.app.action.START_ENCRYPTION" />
-                <category android:name="android.intent.category.DEFAULT" /> />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.CryptKeeperSettings" />
@@ -1595,6 +1650,9 @@
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/appwidget_info" />
         </receiver>
+	
+   		<activity android:name=".About" android:label="Change Log"
+		    android:screenOrientation="portrait" />
 
         <receiver android:name=".bluetooth.BluetoothDiscoverableTimeoutReceiver">
             <intent-filter>
